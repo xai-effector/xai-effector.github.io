@@ -1,0 +1,1898 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../02_rhale_vs_ale_vs_pdp/">
+      
+      
+        <link rel="next" href="../04_regional_effects_real_f/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
+    
+    
+      
+        <title>Regional Effects (known black-box function) - Effector Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto Flex";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#regional-effects-known-black-box-function" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Effector Documentation" class="md-header__button md-logo" aria-label="Effector Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Effector Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Regional Effects (known black-box function)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9h-1.9M20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69m-9.15 3.96h2.3L12 9l-1.15 3.65Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12c0-2.42-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12 20 8.69Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Effector Documentation" class="md-nav__button md-logo" aria-label="Effector Documentation" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    Effector Documentation
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_global_effect_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Global Feature Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_regional_effect_intro/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regional Feature Effect
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_API/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API reference
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Real examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Real examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../real-examples/01_bike_sharing_dataset/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bike-Sharing Dataset
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Synthetic examples
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Synthetic examples
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01_linear_model/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Intro to Feature Effect methods with a linear model
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_rhale_vs_ale_vs_pdp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RHALE vs ALE vs PDP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Regional Effects (known black-box function)
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Regional Effects (known black-box function)
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulation example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulation example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-generating-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Generating Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#black-box-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Black-box function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncorrelated-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncorrelated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncorrelated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-pdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-pdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correlated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-pdp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-pdp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional-PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rhale" class="md-nav__link">
+    <span class="md-ellipsis">
+      (RH)ALE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(RH)ALE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncorrelated-setting_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncorrelated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncorrelated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-rhale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-rhale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-setting_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correlated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-rhale_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-rhale_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shap-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SHAP DP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SHAP DP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncorrelated-setting_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncorrelated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncorrelated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-shap-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global SHAP DP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-shap-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional SHAP-DP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-setting_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correlated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-shap-dp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global SHAP-DP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-shap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional SHAP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04_regional_effects_real_f/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Regional Effects (unknown black-box function)
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#simulation-example" class="md-nav__link">
+    <span class="md-ellipsis">
+      Simulation example
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Simulation example">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-generating-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Generating Distribution
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#black-box-function" class="md-nav__link">
+    <span class="md-ellipsis">
+      Black-box function
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncorrelated-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncorrelated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncorrelated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-pdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-pdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-setting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correlated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-pdp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-pdp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional-PDP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rhale" class="md-nav__link">
+    <span class="md-ellipsis">
+      (RH)ALE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="(RH)ALE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncorrelated-setting_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncorrelated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncorrelated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-rhale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-rhale" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-setting_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correlated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-rhale_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-rhale_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional RHALE
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shap-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SHAP DP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="SHAP DP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#uncorrelated-setting_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Uncorrelated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Uncorrelated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-shap-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global SHAP DP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-shap-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional SHAP-DP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#correlated-setting_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Correlated setting
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Correlated setting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#global-shap-dp_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Global SHAP-DP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regional-shap" class="md-nav__link">
+    <span class="md-ellipsis">
+      Regional SHAP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="regional-effects-known-black-box-function">Regional Effects (known black-box function)</h1>
+<p>This tutorial provides a gentle overview of Regional Effect methods and introduces the <code>Effector</code> package. Regional Effects serve as a bridge between local and global feature effects. Αs shown in <a href="https://proceedings.mlr.press/v151/herbinger22a/herbinger22a.pdf">REPID</a>, regional effect methods split the feature space in subregions where the feature interactions are minimized.</p>
+<p>In this tutorial, we show how to use <code>Effector</code> to explain a black box function using regional effect plots. The tutorial is organized as follows:</p>
+<ul>
+<li>Introduction of the simulation example, using two datasets, one with uncorrelated and the other with correlated features. </li>
+<li>Examine how PDP/RHALE/SHAP plots model the feature effect and how their regional counterpart can minimize feature interactions, providing better explanations.</li>
+<li>Show how each of these methods behaves under correlated and uncorrelated features.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">effector</span>
+</code></pre></div>
+<h2 id="simulation-example">Simulation example</h2>
+<h3 id="data-generating-distribution">Data Generating Distribution</h3>
+<p>We will generate <span class="arithmatex">\(N=1000\)</span> examples with <span class="arithmatex">\(D=3\)</span> features, which are uniformly distributed as follows:</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Description</th>
+<th>Distribution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(x_1\)</span></td>
+<td>Uniformly distributed between <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(1\)</span></td>
+<td><span class="arithmatex">\(x_1 \sim \mathcal{U}(-1,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_2\)</span></td>
+<td>Uniformly distributed between <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(1\)</span></td>
+<td><span class="arithmatex">\(x_2 \sim \mathcal{U}(-1,1)\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_3\)</span></td>
+<td>Uniformly distributed between <span class="arithmatex">\(-1\)</span> and <span class="arithmatex">\(1\)</span></td>
+<td><span class="arithmatex">\(x_3 \sim \mathcal{U}(-1,1)\)</span></td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<p>For the correlated setting we keep the distributional assumptions for <span class="arithmatex">\(x_2\)</span> and <span class="arithmatex">\(x_3\)</span> but define <span class="arithmatex">\(x_1\)</span> such that it is identical to <span class="arithmatex">\(x_3\)</span> by: <span class="arithmatex">\(x_1 = x_3\)</span>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">generate_dataset_uncorrelated</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">generate_dataset_correlated</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="n">N</span><span class="p">)</span>
+    <span class="n">x1</span> <span class="o">=</span> <span class="n">x3</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">((</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">),</span> <span class="n">axis</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># generate the dataset for the uncorrelated and correlated setting</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="n">X_uncor_train</span> <span class="o">=</span> <span class="n">generate_dataset_uncorrelated</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">X_uncor_test</span> <span class="o">=</span> <span class="n">generate_dataset_uncorrelated</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<span class="n">X_cor_train</span> <span class="o">=</span> <span class="n">generate_dataset_correlated</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
+<span class="n">X_cor_test</span> <span class="o">=</span> <span class="n">generate_dataset_correlated</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="black-box-function">Black-box function</h3>
+<p>We will use the following linear model with a subgroup-specific interaction term:
+ $$ y = 3x_1I_{x_3&gt;0} - 3x_1I_{x_3\leq0} + x_3$$ </p>
+<p>On a global level, there is a high heterogeneity for the features <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_3\)</span> due to their interaction with each other. However, this heterogeneity vanishes to 0 if the feature space is separated into subregions:</p>
+<p><center></p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Region</th>
+<th>Average Effect</th>
+<th>Heterogeneity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(x_1\)</span></td>
+<td><span class="arithmatex">\(x_3&gt;0\)</span></td>
+<td><span class="arithmatex">\(3x_1\)</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_1\)</span></td>
+<td><span class="arithmatex">\(x_3\leq 0\)</span></td>
+<td><span class="arithmatex">\(-3x_1\)</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_2\)</span></td>
+<td>all</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_3\)</span></td>
+<td><span class="arithmatex">\(x_3&gt;0\)</span></td>
+<td><span class="arithmatex">\(x_3\)</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_3\)</span></td>
+<td><span class="arithmatex">\(x_3\leq 0\)</span></td>
+<td><span class="arithmatex">\(x_3\)</span></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+<p></center></p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">model</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">2</span><span class="p">],</span> <span class="o">-</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">2</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">f</span>
+
+<span class="k">def</span> <span class="nf">model_jac</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">dy_dx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+    <span class="n">ind1</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span>
+    <span class="n">ind2</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span>
+
+    <span class="n">dy_dx</span><span class="p">[</span><span class="n">ind1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">dy_dx</span><span class="p">[</span><span class="n">ind2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+    <span class="n">dy_dx</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">dy_dx</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">Y_uncor_train</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_uncor_train</span><span class="p">)</span>
+<span class="n">Y_uncor_test</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_uncor_test</span><span class="p">)</span>
+<span class="n">Y_cor_train</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_cor_train</span><span class="p">)</span>
+<span class="n">Y_cor_test</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X_cor_test</span><span class="p">)</span>      
+</code></pre></div>
+<hr />
+<h2 id="pdp">PDP</h2>
+<p>The PDP is defined as <strong><em>the average of the model's output over the entire dataset, while varying the feature of interest.</em></strong>:</p>
+<div class="arithmatex">\[ \text{PDP}(x_s) = \mathbb{E}_{x_c}[f(x_s, x_c)] \]</div>
+<p>and is approximated using the training data: </p>
+<div class="arithmatex">\[ \hat{\text{PDP}}(x_s) = \frac{1}{N} \sum_{j=1}^N f(x_s, x^{(i)}_c) =  \frac{1}{N} \sum_{j=1}^N ICE^i(x_s)\]</div>
+<p>The PDP is simply the average over the underlying ICE curves (local effects). The ICE curves show how the feature of interest influences the prediction of the ML model <em>for each single instance</em>. The ICE curves show the heterogeneity of the local effects.</p>
+<h3 id="uncorrelated-setting">Uncorrelated setting</h3>
+<h4 id="global-pdp">Global PDP</h4>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_9_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_9_1.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_9_2.png" /></p>
+<h4 id="regional-pdp">Regional PDP</h4>
+<p>Regional PDP will search for explanations that minimize the interaction-related heterogeneity.</p>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 27.85it/s]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 0 - Full partition tree:
+Node id: 0, name: x1, heter: 1.74 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.28 || nof_instances:   496 || weight: 0.50
+        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.29 || nof_instances:   504 || weight: 0.50
+--------------------------------------------------
+Feature 0 - Statistics per tree level:
+Level 0, heter: 1.74
+        Level 1, heter: 0.29 || heter drop: 1.45 (83.59%)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_13_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_13_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 1 - Full partition tree:
+Node id: 0, name: x2, heter: 1.84 || nof_instances:  1000 || weight: 1.00
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+Level 0, heter: 1.84
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 2 - Full partition tree:
+Node id: 0, name: x3, heter: 1.75 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x3 | x1 &lt;= -0.0, heter: 0.86 || nof_instances:   489 || weight: 0.49
+        Node id: 2, name: x3 | x1  &gt; -0.0, heter: 0.86 || nof_instances:   511 || weight: 0.51
+--------------------------------------------------
+Feature 2 - Statistics per tree level:
+Level 0, heter: 1.75
+        Level 1, heter: 0.86 || heter drop: 0.89 (51.06%)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_16_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_16_1.png" /></p>
+<h4 id="conclusion">Conclusion</h4>
+<p>For the Global PDP:</p>
+<ul>
+<li>the average effect of <span class="arithmatex">\(x_1\)</span> is <span class="arithmatex">\(0\)</span> with some heterogeneity implied by the interaction with <span class="arithmatex">\(x_1\)</span>. The heterogeneity is expressed with two opposite lines; <span class="arithmatex">\(-3x_1\)</span> when <span class="arithmatex">\(x_1 \leq 0\)</span> and <span class="arithmatex">\(3x_1\)</span> when <span class="arithmatex">\(x_1 &gt;0\)</span></li>
+<li>the average effect of <span class="arithmatex">\(x_2\)</span> to be <span class="arithmatex">\(0\)</span> without heterogeneity</li>
+<li>the average effect of <span class="arithmatex">\(x_3\)</span> to be <span class="arithmatex">\(x_3\)</span> with some heterogeneity due to the interaction with <span class="arithmatex">\(x_1\)</span>. The heterogeneity is expressed with a discontinuity around <span class="arithmatex">\(x_3=0\)</span>, with either a positive or a negative offset depending on the value of <span class="arithmatex">\(x_1^i\)</span></li>
+</ul>
+<hr />
+<p>For the Regional PDP:</p>
+<ul>
+<li>For <span class="arithmatex">\(x_1\)</span>, the algorithm finds two regions, one for <span class="arithmatex">\(x_3 \leq 0\)</span> and one for <span class="arithmatex">\(x_3 &gt; 0\)</span></li>
+<li>when <span class="arithmatex">\(x_3&gt;0\)</span> the effect is <span class="arithmatex">\(3x_1\)</span></li>
+<li>when <span class="arithmatex">\(x_3 \leq 0\)</span>, the effect is <span class="arithmatex">\(-3x_1\)</span></li>
+<li>For <span class="arithmatex">\(x_2\)</span> the algorithm does not find any subregion </li>
+<li>For <span class="arithmatex">\(x_3\)</span>, there is a change in the offset:</li>
+<li>when <span class="arithmatex">\(x_1&gt;0\)</span> the line is <span class="arithmatex">\(x_3 - 3x_1^i\)</span> in the first half and <span class="arithmatex">\(x_3 + 3x_1^i\)</span> later</li>
+<li>when <span class="arithmatex">\(x_1&lt;0\)</span> the line is <span class="arithmatex">\(x_3 + 3x_1^i\)</span> in the first half and <span class="arithmatex">\(x_3 - 3x_1^i\)</span> later</li>
+</ul>
+<h3 id="correlated-setting">Correlated setting</h3>
+<p>PDP assumes feature independence, therefore, it is <em>not</em> a good explanation method for the correlated case.
+Due to this face, we expect the explanations to be identical with the uncorrelated case, which is not correct as we will see later in (RH)ALE plots.</p>
+<h4 id="global-pdp_1">Global PDP</h4>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_20_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_20_1.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_20_2.png" /></p>
+<h4 id="regional-pdp_1">Regional-PDP</h4>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 23.85it/s]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 0 - Full partition tree:
+Node id: 0, name: x1, heter: 1.74 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= 0.0, heter: 0.29 || nof_instances:   514 || weight: 0.51
+        Node id: 2, name: x1 | x3  &gt; 0.0, heter: 0.30 || nof_instances:   486 || weight: 0.49
+--------------------------------------------------
+Feature 0 - Statistics per tree level:
+Level 0, heter: 1.74
+        Level 1, heter: 0.29 || heter drop: 1.45 (83.23%)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_24_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_24_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 1 - Full partition tree:
+Node id: 0, name: x2, heter: 1.04 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x2 | x1 &lt;= 0.54, heter: 0.59 || nof_instances:   783 || weight: 0.78
+        Node id: 2, name: x2 | x1  &gt; 0.54, heter: 0.54 || nof_instances:   217 || weight: 0.22
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+Level 0, heter: 1.04
+        Level 1, heter: 0.58 || heter drop: 0.46 (44.15%)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 2 - Full partition tree:
+Node id: 0, name: x3, heter: 1.75 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.86 || nof_instances:   514 || weight: 0.51
+        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.89 || nof_instances:   486 || weight: 0.49
+--------------------------------------------------
+Feature 2 - Statistics per tree level:
+Level 0, heter: 1.75
+        Level 1, heter: 0.88 || heter drop: 0.87 (49.77%)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_27_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_27_1.png" /></p>
+<h4 id="conclusion_1">Conclusion</h4>
+<p>As expected, the global and the regional PDP explanations are identical with the uncorrelated case.</p>
+<h2 id="rhale">(RH)ALE</h2>
+<p>(RH)ALE defines the feature effect as <em>the integral of the partial derivative of the model's output with respect to the feature of interest</em>:</p>
+<div class="arithmatex">\[\text{ALE}(x_s) = \int_{z=0}^{x_s} \mathbb{E}_{x_c|x_s=z}\left [ \frac{\partial f}{\partial x_s} (z, x_c) \right ] \partial z\]</div>
+<p>The approximation is defined as:</p>
+<div class="arithmatex">\[\hat{\text{ALE}}(x_s) = \sum_{k=1}^{k_{x_s}} \frac{1}{| \mathcal{S}_k |} \sum_{i: x^{(i)} \in \mathcal{S}_k} \left [ f(z_k, x_c) - f(z_{k-1}, x_c) \right ]\]</div>
+<p><span class="arithmatex">\(\hat{\text{ALE}}(x_s)\)</span> uses a Riemannian sum to approximate the integral of <span class="arithmatex">\(\text{ALE}(x_s)\)</span>. The axis of the <span class="arithmatex">\(s\)</span>-th feature is split in <span class="arithmatex">\(K\)</span> bins (intervals) of equal size. In each bin, the average effect of the feature of interest is estimated using the instances that fall in the bin. The average effect in each bin is called bin-effect. </p>
+<p>Robust and Heterogeneity-aware ALE (RHALE) is a variant of ALE, proposed by <a href="https://arxiv.org/abs/2309.11193">Gkolemis et. al</a>, where the local effects are computed using automatic differentiation:</p>
+<div class="arithmatex">\[\hat{\text{RHALE}}(x_s) = \sum_{k=1}^{k_{x_s}} \frac{1}{ \left | \mathcal{S}_k \right |} \sum_{i: x^{(i)} \in \mathcal{S}_k} \frac{\partial f}{\partial x_s} (x_s^{(i)}, x_c^{(i)})\]</div>
+<p>In their paper, <a href="https://arxiv.org/abs/2309.11193">Gkolemis et. al</a> showed that RHALE has specific advantages over ALE: (a) it ensures on-distribution sampling (b) an unbiased estimation of the heterogeneity and (c) an optimal trade-off between bias and variance. In our example, we will use the RHALE approximation.</p>
+<h3 id="uncorrelated-setting_1">Uncorrelated setting</h3>
+<h4 id="global-rhale">Global RHALE</h4>
+<div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+
+<span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_31_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_31_1.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_31_2.png" /></p>
+<h4 id="regional-rhale">Regional RHALE</h4>
+<p>The disadvantage of RHALE plot is that it does not reveal the type of heterogeneity. Therefore, Regional (RH)ALE plots are very helpful to identify the type of heterogeneity. Let's see that in practice:</p>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
+    <span class="n">model_jac</span><span class="o">=</span> <span class="n">model_jac</span><span class="p">,</span> 
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
+
+<span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">regional_rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span>
+    <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>  0%|          | 0/3 [00:00&lt;?, ?it/s]invalid value encountered in divide
+100%|██████████| 3/3 [00:00&lt;00:00, 14.58it/s]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 0 - Full partition tree:
+Node id: 0, name: x1, heter: 5.94 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.00 || nof_instances:   496 || weight: 0.50
+        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.00 || nof_instances:   504 || weight: 0.50
+--------------------------------------------------
+Feature 0 - Statistics per tree level:
+Level 0, heter: 5.94
+        Level 1, heter: 0.00 || heter drop: 5.94 (100.00%)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_35_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_35_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 1 - Full partition tree:
+Node id: 0, name: x2, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+Level 0, heter: 0.00
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 2 - Full partition tree:
+Node id: 0, name: x3, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+--------------------------------------------------
+Feature 2 - Statistics per tree level:
+Level 0, heter: 0.00
+</code></pre>
+<h4 id="conclusion_2">Conclusion</h4>
+<p>The explanations are similar to the ones obtained with the PDP plots. The average effect of <span class="arithmatex">\(x_1\)</span> is <span class="arithmatex">\(0\)</span> with some heterogeneity due to the interaction with <span class="arithmatex">\(x_1\)</span>. The heterogeneity is shown with the red vertical bars. The average effect of <span class="arithmatex">\(x_2\)</span> is <span class="arithmatex">\(0\)</span> without heterogeneity. The average effect of <span class="arithmatex">\(x_3\)</span> is <span class="arithmatex">\(x_3\)</span>, but in contrast with the PDP plots, there is no heterogeneity. The regional RHALE plots explain the type of the heterogeneity for <span class="arithmatex">\(x_1\)</span>.</p>
+<h3 id="correlated-setting_1">Correlated setting</h3>
+<p>In the correlated setting <span class="arithmatex">\(x_3=x_1\)</span>, therefore the model's formula becomes:</p>
+<p>$$ y = 3x_1I_{x_1&gt;0} - 3x_1I_{x_1\leq0} + x_3$$ </p>
+<h4 id="global-rhale_1">Global RHALE</h4>
+<p>RHALE plots respect feature correlations, therefore we expect the explanations to follow the formula above.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span> 
+                       <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> 
+                       <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">,</span> 
+                       <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_41_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_41_1.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_41_2.png" /></p>
+<h4 id="regional-rhale_1">Regional RHALE</h4>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
+    <span class="n">model_jac</span><span class="o">=</span> <span class="n">model_jac</span><span class="p">,</span> 
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
+
+<span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">regional_rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span>
+    <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 16.78it/s]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 0 - Full partition tree:
+Node id: 0, name: x1, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+--------------------------------------------------
+Feature 0 - Statistics per tree level:
+Level 0, heter: 0.00
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 1 - Full partition tree:
+Node id: 0, name: x2, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+Level 0, heter: 0.00
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 2 - Full partition tree:
+Node id: 0, name: x3, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+--------------------------------------------------
+Feature 2 - Statistics per tree level:
+Level 0, heter: 0.00
+</code></pre>
+<h4 id="conclusion_3">Conclusion</h4>
+<p>The global RHALE plots follow the formula obtained after setting <span class="arithmatex">\(x_1=x_3\)</span> while the Regional (RH)ALE plot do not find any subregions in the correlated case.</p>
+<h2 id="shap-dp">SHAP DP</h2>
+<h3 id="uncorrelated-setting_2">Uncorrelated setting</h3>
+<h4 id="global-shap-dp">Global SHAP DP</h4>
+<div class="highlight"><pre><span></span><code><span class="n">shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">SHAPDependence</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+
+<span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_50_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_50_1.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_50_2.png" /></p>
+<h4 id="regional-shap-dp">Regional SHAP-DP</h4>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalSHAP</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
+
+<span class="n">regional_shap</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>100%|██████████| 3/3 [00:05&lt;00:00,  1.85s/it]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 0 - Full partition tree:
+Node id: 0, name: x1, heter: 0.75 || nof_instances:   100 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= 0.02, heter: 0.10 || nof_instances:    51 || weight: 0.51
+        Node id: 2, name: x1 | x3  &gt; 0.02, heter: 0.00 || nof_instances:    49 || weight: 0.49
+--------------------------------------------------
+Feature 0 - Statistics per tree level:
+Level 0, heter: 0.75
+        Level 1, heter: 0.05 || heter drop: 0.70 (92.93%)
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_54_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_54_1.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 1 - Full partition tree:
+Node id: 0, name: x2, heter: 0.00 || nof_instances:   100 || weight: 1.00
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+Level 0, heter: 0.00
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 2 - Full partition tree:
+Node id: 0, name: x3, heter: 0.75 || nof_instances:   100 || weight: 1.00
+--------------------------------------------------
+Feature 2 - Statistics per tree level:
+Level 0, heter: 0.75
+</code></pre>
+<h4 id="conclusion_4">Conclusion</h4>
+<p>Global SHAP-DP:</p>
+<ul>
+<li>the average effect of <span class="arithmatex">\(x_1\)</span> is <span class="arithmatex">\(0\)</span> with some heterogeneity implied by the interaction with <span class="arithmatex">\(x_1\)</span>. The heterogeneity is expressed with two opposite lines; <span class="arithmatex">\(-3x_1\)</span> when <span class="arithmatex">\(x_1 \leq 0\)</span> and <span class="arithmatex">\(3x_1\)</span> when <span class="arithmatex">\(x_1 &gt;0\)</span></li>
+<li>the average effect of <span class="arithmatex">\(x_2\)</span> to be <span class="arithmatex">\(0\)</span> without heterogeneity</li>
+<li>the average effect of <span class="arithmatex">\(x_3\)</span> to be <span class="arithmatex">\(x_3\)</span> with some heterogeneity due to the interaction with <span class="arithmatex">\(x_1\)</span>. In contrast with other methods, SHAP spread the heterogeneity along the x-axis.</li>
+</ul>
+<p>Regional SHAP-DP:</p>
+<h3 id="correlated-setting_2">Correlated setting</h3>
+<h4 id="global-shap-dp_1">Global SHAP-DP</h4>
+<div class="highlight"><pre><span></span><code><span class="n">shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">SHAPDependence</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+
+<span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_59_0.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_59_1.png" /></p>
+<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_59_2.png" /></p>
+<h4 id="regional-shap">Regional SHAP</h4>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalSHAP</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
+
+<span class="n">regional_shap</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span>
+    <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
+<span class="p">)</span>
+</code></pre></div>
+<pre><code>100%|██████████| 3/3 [00:05&lt;00:00,  1.77s/it]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 0 - Full partition tree:
+Node id: 0, name: x1, heter: 0.09 || nof_instances:   100 || weight: 1.00
+--------------------------------------------------
+Feature 0 - Statistics per tree level:
+Level 0, heter: 0.09
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 1 - Full partition tree:
+Node id: 0, name: x2, heter: 0.00 || nof_instances:   100 || weight: 1.00
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+Level 0, heter: 0.00
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Feature 2 - Full partition tree:
+Node id: 0, name: x3, heter: 0.09 || nof_instances:   100 || weight: 1.00
+--------------------------------------------------
+Feature 2 - Statistics per tree level:
+Level 0, heter: 0.09
+</code></pre>
+<h4 id="conclusion_5">Conclusion</h4>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../02_rhale_vs_ale_vs_pdp/" class="md-footer__link md-footer__link--prev" aria-label="Previous: RHALE vs ALE vs PDP">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                RHALE vs ALE vs PDP
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../04_regional_effects_real_f/" class="md-footer__link md-footer__link--next" aria-label="Next: Regional Effects (unknown black-box function)">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Regional Effects (unknown black-box function)
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/givasile/effector" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2023 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "header.autohide"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
