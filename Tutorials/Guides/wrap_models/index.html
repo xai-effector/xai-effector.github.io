@@ -9,23 +9,25 @@
       
       
       
+        <link rel="prev" href="../../../Feature%20Effect/02_regional_effect_intro/">
       
-        <link rel="next" href="Feature%20Effect/01_global_effect_intro/">
+      
+        <link rel="next" href="../../synthetic-examples/01_linear_model/">
       
       
-      <link rel="icon" href="assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.2.7">
     
     
       
-        <title>Effector Documentation</title>
+        <title>Wrap black-models in common ML libraries - Effector Documentation</title>
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.046329b4.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.046329b4.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.85d0ee34.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.85d0ee34.min.css">
       
       
 
@@ -44,9 +46,9 @@
       
     
     
-      <link rel="stylesheet" href="assets/_mkdocstrings.css">
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
     
-    <script>__md_scope=new URL(".",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -75,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#home" class="md-skip">
+        <a href="#wrap-ml-models-into-callables" class="md-skip">
           Skip to content
         </a>
       
@@ -91,7 +93,7 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="." title="Effector Documentation" class="md-header__button md-logo" aria-label="Effector Documentation" data-md-component="logo">
+    <a href="../../.." title="Effector Documentation" class="md-header__button md-logo" aria-label="Effector Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -111,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Home
+              Wrap black-models in common ML libraries
             
           </span>
         </div>
@@ -219,7 +221,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="." title="Effector Documentation" class="md-nav__button md-logo" aria-label="Effector Documentation" data-md-component="logo">
+    <a href="../../.." title="Effector Documentation" class="md-nav__button md-logo" aria-label="Effector Documentation" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
@@ -234,29 +236,9 @@
       
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Home
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="." class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -265,94 +247,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#motivation" class="md-nav__link">
-    Motivation
-  </a>
-  
-    <nav class="md-nav" aria-label="Motivation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-effect" class="md-nav__link">
-    Global Effect
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#heterogeneity" class="md-nav__link">
-    Heterogeneity
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-effect" class="md-nav__link">
-    Regional Effect
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methods-and-publications" class="md-nav__link">
-    Methods and Publications
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods and Publications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    Methods
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#publications" class="md-nav__link">
-    Publications
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -397,7 +291,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Feature%20Effect/01_global_effect_intro/" class="md-nav__link">
+      <a href="../../../Feature%20Effect/01_global_effect_intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -417,7 +311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Feature%20Effect/02_regional_effect_intro/" class="md-nav__link">
+      <a href="../../../Feature%20Effect/02_regional_effect_intro/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -442,17 +336,19 @@
       
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
@@ -465,7 +361,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -476,17 +372,19 @@
                 
   
   
+    
+  
   
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
         
           <label class="md-nav__link" for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
             
@@ -499,7 +397,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_1">
             <span class="md-nav__icon md-icon"></span>
             Guides
@@ -510,9 +408,18 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="Tutorials/Guides/wrap_models/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -521,6 +428,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -574,7 +482,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tutorials/synthetic-examples/01_linear_model/" class="md-nav__link">
+      <a href="../../synthetic-examples/01_linear_model/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -594,7 +502,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tutorials/synthetic-examples/02_rhale_vs_ale_vs_pdp/" class="md-nav__link">
+      <a href="../../synthetic-examples/02_rhale_vs_ale_vs_pdp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -614,7 +522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tutorials/synthetic-examples/03_regional_effects_synthetic_f/" class="md-nav__link">
+      <a href="../../synthetic-examples/03_regional_effects_synthetic_f/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -634,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tutorials/synthetic-examples/04_regional_effects_real_f/" class="md-nav__link">
+      <a href="../../synthetic-examples/04_regional_effects_real_f/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -696,7 +604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="Tutorials/real-examples/01_bike_sharing_dataset/" class="md-nav__link">
+      <a href="../../real-examples/01_bike_sharing_dataset/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -731,7 +639,7 @@
   
   
     <li class="md-nav__item">
-      <a href="api/" class="md-nav__link">
+      <a href="../../../api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -750,7 +658,7 @@
   
   
     <li class="md-nav__item">
-      <a href="contributing/" class="md-nav__link">
+      <a href="../../../contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -769,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="references/" class="md-nav__link">
+      <a href="../../../references/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -802,82 +710,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#installation" class="md-nav__link">
-    Installation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#motivation" class="md-nav__link">
-    Motivation
-  </a>
-  
-    <nav class="md-nav" aria-label="Motivation">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-effect" class="md-nav__link">
-    Global Effect
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#heterogeneity" class="md-nav__link">
-    Heterogeneity
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-effect" class="md-nav__link">
-    Regional Effect
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#methods-and-publications" class="md-nav__link">
-    Methods and Publications
-  </a>
-  
-    <nav class="md-nav" aria-label="Methods and Publications">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#methods" class="md-nav__link">
-    Methods
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#publications" class="md-nav__link">
-    Publications
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -891,118 +723,97 @@
                   
 
 
-<h1 id="home">Home</h1>
-<p><code>Effector</code> is a python package for <a href="./Feature Effect/01_global_effect_intro/">global</a> and <a href="./Feature Effect/02_regional_effect_intro/">regional</a> effect analysis.</p>
-<hr />
-<p><img alt="using effector" src="static/effector_intro.gif" /></p>
-<hr />
-<h3 id="installation">Installation</h3>
-<p><code>Effector</code> is compatible with <code>Python 3.7+</code>. We recommend to first create a virtual environment with <code>conda</code>:</p>
-<div class="highlight"><pre><span></span><code>conda<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span>effector<span class="w"> </span><span class="nv">python</span><span class="o">=</span><span class="m">3</span>.7
-conda<span class="w"> </span>activate<span class="w"> </span>effector
+<h1 id="wrap-ml-models-into-callables">Wrap ML models into callables</h1>
+<p>In this tutorial, we provide brief snippets for wrapping ML models into callables.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">scikit-learn</label><label for="__tabbed_1_2">pytorch</label><label for="__tabbed_1_3">tensorflow</label><label for="__tabbed_1_4">xgboost</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">model_callable</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="c1"># Attention: scikit-learn does not provide a method for computing the Jacobian using automatic differentiation.</span>
 </code></pre></div>
-<p>and then install <code>Effector</code> via <code>pip</code>:</p>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>effector
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">torch</span>
+<span class="kn">import</span> <span class="nn">torch.nn</span> <span class="k">as</span> <span class="nn">nn</span>
+
+<span class="k">class</span> <span class="nc">Net</span><span class="p">(</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+  <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Net</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">D</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+  <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fc2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">Net</span><span class="p">()</span>
+
+<span class="c1"># train model</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">optim</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">parameters</span><span class="p">(),</span> <span class="n">lr</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+<span class="n">criterion</span> <span class="o">=</span> <span class="n">nn</span><span class="o">.</span><span class="n">MSELoss</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">epoch</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+  <span class="n">optimizer</span><span class="o">.</span><span class="n">zero_grad</span><span class="p">()</span>
+  <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+  <span class="n">loss</span> <span class="o">=</span> <span class="n">criterion</span><span class="p">(</span><span class="n">y_pred</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+  <span class="n">loss</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+  <span class="n">optimizer</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">model_callable</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">))</span><span class="o">.</span><span class="n">detach</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">model_jac_callable</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="n">X</span><span class="o">.</span><span class="n">requires_grad</span> <span class="o">=</span> <span class="kc">True</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 </code></pre></div>
-<hr />
-<h3 id="motivation">Motivation</h3>
-<h4 id="global-effect">Global Effect</h4>
-<p>Global effect is one the simplest ways to interpret a black-box model;
-it simply shows how a particular feature relates to the model's output.
-Given the dataset <code>X</code> (<code>np.ndarray</code>) and the black-box predictive function <code>model</code> (<code>callable</code>), 
-you can use <code>Effector</code> to get the global effect of a <code>feature</code> in a single line of code:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># for Robust and Heterogeneity-aware ALE (RHALE)</span>
-<span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+
+<span class="c1"># define model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">Sequential</span><span class="p">([</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s1">&#39;relu&#39;</span><span class="p">),</span>
+  <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">layers</span><span class="o">.</span><span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="c1"># train model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s1">&#39;adam&#39;</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s1">&#39;mse&#39;</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">model_callable</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">model_jac_callable</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">model</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
 </code></pre></div>
-<p>For example, the following code shows the global effect of the feature hour (<code>hr</code>) on the 
-number of bikes (<code>cnt</code>) rent within a day (check <a href="Tutorials/real-examples/01_bike_sharing_dataset.ipynb">this</a> 
-notebook for more details). It is easy to interpret what the black-box model has learned:
-There are two peaks in rentals during a day, one in the morning and one in the evening,
-where people go to work and return home, respectively:</p>
-<p><img alt="Feature effect plot" src="Tutorials/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_19_1.png" /></p>
-<hr />
-<h4 id="heterogeneity">Heterogeneity</h4>
-<p>However, there are cases where the global effect can be misleading. This happens 
-when there are many particular instances that deviate from the global effect.
-In <code>Effector</code>, the user can understand where the global effect is misleading, 
-using the argument <code>heterogeneity</code>, while plotting:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># for RHALE</span>
-<span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">xgboost</span> <span class="k">as</span> <span class="nn">xgb</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">xgb</span><span class="o">.</span><span class="n">XGBRegressor</span><span class="p">()</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">model_callable</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>
+  <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+
+<span class="n">Attention</span><span class="p">:</span> <span class="n">Tree</span> <span class="n">based</span> <span class="n">models</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">differentiable</span><span class="p">,</span> <span class="n">so</span> <span class="n">there</span> <span class="ow">is</span> <span class="n">no</span> <span class="n">way</span> <span class="n">to</span> <span class="n">compute</span> <span class="n">the</span> <span class="n">Jacobian</span><span class="o">.</span>
 </code></pre></div>
-<p><img alt="Feature effect plot" src="Tutorials/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" /></p>
-<p>For more details, check the <a href="./Feature Effect/01_global_effect_intro/">global effect tutorial</a>.</p>
-<hr />
-<h4 id="regional-effect">Regional Effect</h4>
-<p>In this cases, it is useful to search if there are subspaces where the effect.
-In <code>Effector</code> this can be also done in a single line of code:</p>
-<div class="highlight"><pre><span></span><code><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-<p>In the bike sharing dataset, we can see that the effect of the feature hour (<code>hr</code>) 
-follows to different patterns (regional effects) depending on the day of the week (subspaces).
-In weekdays, the effect is similar to the global effect, while in weekends, the effect is
-completely different; there is a single peak in the morning when people rent bikes to go for sightseeing.</p>
-<p><img alt="Feature effect plot" src="./../Tutorials/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" />
-<img alt="Feature effect plot" src="./../Tutorials/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_1.png" /></p>
-<p>For more details, check the <a href="./Feature Effect/02_regional_effect_intro/">regional effect tutorial</a>.</p>
-<hr />
-<h2 id="methods-and-publications">Methods and Publications</h2>
-<h3 id="methods">Methods</h3>
-<p><code>Effector</code> implements the following methods:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th>Global Effect</th>
-<th>Regional Effect</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PDP</td>
-<td><a href="./api/#effector.global_effect_pdp.PDP"><code>PDP</code></a></td>
-<td><a href="./../../03_API/#effector.regional_effect_pdp.RegionalPDP"><code>RegionalPDP</code></a></td>
-</tr>
-<tr>
-<td>d-PDP</td>
-<td><a href="./../../03_API/#effector.global_effect_pdp.DerivativePDP"><code>DerivativePDP</code></a></td>
-<td><a href="./../../03_API/#effector.regional_effect_pdp.RegionalDerivativePDP"><code>RegionalDerivativePDP</code></a></td>
-</tr>
-<tr>
-<td>ALE</td>
-<td><a href="./../../03_API/#effector.global_effect_ale.ALE"><code>ALE</code></a></td>
-<td><a href="./../../03_API/#effector.regional_effect_ale.RegionalALE"><code>RegionalALE</code></a></td>
-</tr>
-<tr>
-<td>RHALE</td>
-<td><a href="./../../03_API/#effector.global_effect_ale.RHALE"><code>RHALE</code></a></td>
-<td><a href="./../../03_API/#effector.regional_effect_ale.RegionalRHALE"><code>RegionalRHALE</code></a></td>
-</tr>
-<tr>
-<td>SHAP-DP</td>
-<td><a href="./../../03_API/#effector.global_effect_shap.SHAPDependence"><code>SHAPDependence</code></a></td>
-<td><a href="./../../03_API/#effector.regional_effect_shap.RegionalSHAPDependence"><code>RegionalSHAP</code></a></td>
-</tr>
-</tbody>
-</table>
-<h3 id="publications">Publications</h3>
-<p>The methods above are based on the following publications:</p>
-<ul>
-<li>PDP and d-PDP: <a href="https://projecteuclid.org/euclid.aos/1013203451">Friedman, Jerome H. "Greedy function approximation: a gradient boosting machine." Annals of statistics (2001): 1189-1232.</a></li>
-<li>ALE: <a href="https://arxiv.org/abs/1612.08468">Apley, Daniel W. "Visualizing the effects of predictor variables in black box supervised learning models." arXiv preprint arXiv:1612.08468 (2016).</a></li>
-<li>RHALE: <a href="https://ebooks.iospress.nl/doi/10.3233/FAIA230354">Gkolemis, Vasilis, "RHALE</a></li>
-<li>
-<p>SHAP-DP: <a href="https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions">Lundberg, Scott M., and Su-In Lee. "A unified approach to interpreting model predictions." Advances in neural information processing systems. 2017.</a></p>
-</li>
-<li>
-<p>Regional Effect:</p>
-</li>
-<li>
-<p><a href="https://proceedings.mlr.press/v151/herbinger22a.html">REPID: Regional Effect Plots with implicit Interaction Detection</a></p>
-</li>
-<li><a href="https://arxiv.org/pdf/2306.00541.pdf">Decomposing Global Feature Effects Based on Feature Interactions</a></li>
-<li><a href="https://arxiv.org/abs/2309.12215">Regionally Additive Models: Explainable-by-design models minimizing feature interactions</a></li>
-</ul>
+</div>
+</div>
+</div>
 
 
 
@@ -1023,15 +834,31 @@ completely different; there is a single peak in the morning when people rent bik
       
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
+          
+          <a href="../../../Feature%20Effect/02_regional_effect_intro/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Regional Effect" rel="prev">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Regional Effect
+              </div>
+            </div>
+          </a>
+        
         
           
-          <a href="Feature%20Effect/01_global_effect_intro/" class="md-footer__link md-footer__link--next" aria-label="Next: Global Effect" rel="next">
+          <a href="../../synthetic-examples/01_linear_model/" class="md-footer__link md-footer__link--next" aria-label="Next: Linear Model" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Global Effect
+                Linear Model
               </div>
             </div>
             <div class="md-footer__button md-icon">
@@ -1079,12 +906,12 @@ completely different; there is a single peak in the morning when people rent bik
       <div class="md-dialog__inner md-typeset"></div>
     </div>
     
-    <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer", "header.autohide"], "search": "assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide"], "search": "../../../assets/javascripts/workers/search.dfff1995.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.dff1b7c8.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.dff1b7c8.min.js"></script>
       
-        <script src="javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
       
