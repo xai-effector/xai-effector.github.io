@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../01_linear_model/">
-      
-      
-        <link rel="next" href="../03_regional_effects_synthetic_f/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>RHALE vs ALE vs PDP - Effector Documentation</title>
+        <title>Global Effect - Methods Comparison - Effector Documentation</title>
       
     
     
@@ -77,7 +73,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#rhale-vs-ale-vs-pdp" class="md-skip">
+        <a href="#global-effect-methods-comparison" class="md-skip">
           Skip to content
         </a>
       
@@ -113,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              RHALE vs ALE vs PDP
+              Global Effect - Methods Comparison
             
           </span>
         </div>
@@ -336,19 +332,17 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
             
@@ -361,7 +355,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Tutorials
@@ -434,19 +428,17 @@
                 
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
             
@@ -459,7 +451,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Synthetic Datasets
@@ -490,133 +482,17 @@
                 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    RHALE vs ALE vs PDP
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../02_global_effect_methods_comparision.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    RHALE vs ALE vs PDP
+    Global Effect - Methods Comparison
   </span>
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#dataset" class="md-nav__link">
-    Dataset
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
-    Model
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ale-definition" class="md-nav__link">
-    ALE Definition
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rhale-definition" class="md-nav__link">
-    RHALE definition
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ale-approximation" class="md-nav__link">
-    ALE approximation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rhale-approximation" class="md-nav__link">
-    RHALE approximation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#more-about-the-automatic-bin-splitting" class="md-nav__link">
-    More about the automatic bin-splitting
-  </a>
-  
-    <nav class="md-nav" aria-label="More about the automatic bin-splitting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#greedy-approach" class="md-nav__link">
-    Greedy approach
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#dynamic-programming-approach" class="md-nav__link">
-    Dynamic Programming approach
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pdp" class="md-nav__link">
-    PDP
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -823,48 +699,49 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#dataset" class="md-nav__link">
-    Dataset
+  <a href="#problem-setup" class="md-nav__link">
+    Problem setup
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#model" class="md-nav__link">
-    Model
+  <a href="#ale-based-methods" class="md-nav__link">
+    ALE-based methods
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
+    <nav class="md-nav" aria-label="ALE-based methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#ale-definition" class="md-nav__link">
     ALE Definition
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rhale-definition" class="md-nav__link">
     RHALE definition
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#ale-approximation" class="md-nav__link">
     ALE approximation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#rhale-approximation" class="md-nav__link">
     RHALE approximation
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#more-about-the-automatic-bin-splitting" class="md-nav__link">
     More about the automatic bin-splitting
   </a>
@@ -890,10 +767,42 @@
     </nav>
   
 </li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
-  <a href="#pdp" class="md-nav__link">
-    PDP
+  <a href="#pdp-family-of-methods" class="md-nav__link">
+    PDP family of methods
+  </a>
+  
+    <nav class="md-nav" aria-label="PDP family of methods">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pdp-and-ice-definition" class="md-nav__link">
+    PDP and ICE definition
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-pdp-and-d-ice-definition-and-approximation" class="md-nav__link">
+    d-PDP and d-ICE definition and approximation
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#shap-dependence-plots" class="md-nav__link">
+    SHAP Dependence Plots
   </a>
   
 </li>
@@ -913,15 +822,15 @@
                   
 
 
-<h1 id="rhale-vs-ale-vs-pdp">RHALE vs ALE vs PDP</h1>
-<p>Robust and Heterogeneity-aware ALE (RHALE) is a recently proposed method <a href="https://arxiv.org/abs/2309.11193">(Gkolemis et. al, 2023)</a> that enhances ALE with (a) quantification of the heterogeneity and (b) automatic bin splitting. The automatic bin splitting is a crucial contribution because it resolves the problem of choosing the number of bins. In this notebook we will go in-depth on how RHALE works and how it compares to ALE, following the example of the paper.</p>
+<h1 id="global-effect-methods-comparison">Global Effect - Methods Comparison</h1>
+<p>In this tutorial, we will compare all the global effect methods implemented in <code>Effector</code>, namely: ALE, RHALE, PDP-ICE, d-PDP-ICE and SHAP Dependence Plots. 
+The synthetic example that we will used, was introduced by <a href="https://arxiv.org/abs/2309.11193">(Gkolemis et. al, 2023)</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">effector</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </code></pre></div>
-<hr />
-<h3 id="dataset">Dataset</h3>
-<p>We will generate <span class="arithmatex">\(N=60\)</span> examples with <span class="arithmatex">\(D=3\)</span> features. In the following table, observe that <span class="arithmatex">\(x_3\)</span> is highly-dependent on <span class="arithmatex">\(x_1\)</span>, i.e., <span class="arithmatex">\(x_3 \approx x_1\)</span>.; this will later help us to compute the ground truth ALE effect.</p>
+<h2 id="problem-setup">Problem setup</h2>
+<p>We will generate <span class="arithmatex">\(N=60\)</span> examples with <span class="arithmatex">\(D=3\)</span> features, as described in the following table. Observe that <span class="arithmatex">\(x_3\)</span> is highly-dependent on <span class="arithmatex">\(x_1\)</span>, i.e., <span class="arithmatex">\(x_3 \approx x_1\)</span>.; this will later help us to compute the ground truth ALE effect.</p>
 <table>
 <thead>
 <tr>
@@ -970,8 +879,6 @@
 <span class="n">N2</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">generate_samples</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">sigma_2</span><span class="o">=</span><span class="n">sigma_2</span><span class="p">,</span> <span class="n">sigma_3</span><span class="o">=</span><span class="n">sigma_3</span><span class="p">)</span>
 </code></pre></div>
-<hr />
-<h3 id="model">Model</h3>
 <p>The <em>black-box</em> function is:</p>
 <div class="arithmatex">\[
 f(x) = \sin(2\pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3&lt;0}) + x_1 x_2 + x_2
@@ -1018,15 +925,16 @@ f(x) = \sin(2\pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3&lt;0}) + x_1 x_
     <span class="n">dydx</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
     <span class="k">return</span> <span class="n">dydx</span>
 </code></pre></div>
-<h2 id="ale-definition">ALE Definition</h2>
+<h2 id="ale-based-methods">ALE-based methods</h2>
+<h3 id="ale-definition">ALE Definition</h3>
 <p>ALE defines the feature effect as:</p>
 <div class="arithmatex">\[\text{ALE}(x_s) = \int_{z=0}^{x_s} \mathbb{E}_{x_c|x_s=z}\left [ \frac{\partial f}{\partial x_s} (z, x_c) \right ] \partial z \]</div>
 <p>where <span class="arithmatex">\(x_s\)</span> is the feature of interest and <span class="arithmatex">\(x_c\)</span> are the other features. In our case, <span class="arithmatex">\(x_1\)</span> is the feature of interest and <span class="arithmatex">\(x_2, x_3\)</span> are the other features.
-Taking advantage of <span class="arithmatex">\(x_3 \approx x_1\)</span>, it holds that:</p>
+In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, it holds that:</p>
 <div class="arithmatex">\[
 \mathbb{E}_{x_2, x_3|x_1=z} \left [ \frac{\partial f}{\partial x_1} (z, x_2, x_3) \right ] \approx - 2 \pi z \cos(2 \pi z) \mathbb{1}_{z&lt;0}$, 
 \]</div>
-<p>the ground-truth ALE effect can be computed in closed-form:</p>
+<p>and therefore the ALE and RHALE effect is defined as:</p>
 <div class="arithmatex">\[\text{ALE}(x_1) = \int_{z=0}^{x_1} \mathbb{E}_{x_2, x_3|x_1=z} \left [ \frac{\partial f}{\partial x_1} (z, x_2, x_3) \right ] \partial z
 \approx - \sin(2\pi x_1) \mathbb{1}_{x_1&lt;0} + c\]</div>
 <div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ale_gt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1035,20 +943,26 @@ Taking advantage of <span class="arithmatex">\(x_3 \approx x_1\)</span>, it hold
     <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
     <span class="n">c</span> <span class="o">=</span> <span class="mf">0.31</span>
     <span class="k">return</span> <span class="n">y</span> <span class="o">-</span> <span class="n">c</span>
+
+<span class="k">def</span> <span class="nf">ale_gt_derivative_effect</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">dydx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span>
+    <span class="n">dydx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">dydx</span><span class="p">,</span> <span class="n">sigma_2</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">ale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground truth&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ground-truth ALE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">ale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ALE effect&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ALE and RHALE definition&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_10_0.png" /></p>
-<h2 id="rhale-definition">RHALE definition</h2>
-<p><em>RHALE definition</em> is a simple extension on the ALE definition, with the addition of the heterogeneity term. For visualizing the heterogeneity, RHALE proposes two plots one below the other. The top plot is the ALE effect and the bottom plot is the derivative of the ALE effect. The derivative of the ALE effect is the effect of the feature of interest on the model output. The heterogeneity is the standard deviation of the derivative of the ALE effect.</p>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_11_0.png" /></p>
+<h3 id="rhale-definition">RHALE definition</h3>
+<p>RHALE extends ALE definition, adding an heterogeneity term. For visualizing the heterogeneity, RHALE proposes two plots one below the other. The top plot is the RHALE effect which is identical to the ALE effect. The bottom plot is the derivative of the ALE effect and the heterogeneity is the standard deviation of the derivative effect.</p>
 <p>RHALE quantifies the heterogeneity as the standard deviation of the derivative of the model with respect to the feature of interest:</p>
 <div class="arithmatex">\[
 \sigma(z) = \sigma_{x_c|x_s=z} \left [ \frac{\partial f}{\partial x_s} (z, x_c) \right ]
@@ -1075,14 +989,13 @@ Taking advantage of <span class="arithmatex">\(x_3 \approx x_1\)</span>, it hold
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground truth&quot;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ground-truth RHALE&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ground-truth RHALE and ALE&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;dy_dx1&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_13_0.png" /></p>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_14_0.png" /></p>
 <div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">rhale_gt_derivative_effect</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground truth&quot;</span><span class="p">)</span>
@@ -1093,8 +1006,8 @@ Taking advantage of <span class="arithmatex">\(x_3 \approx x_1\)</span>, it hold
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_14_0.png" /></p>
-<h2 id="ale-approximation">ALE approximation</h2>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_15_0.png" /></p>
+<h3 id="ale-approximation">ALE approximation</h3>
 <p>Bin splitting is a major limitation of ALE. The user has to choose the number of bins, where different number of bins can lead to very different results. In terms of the main ALE effect, a wrong bin-splitting may lead to unstable results. In terms of the heterogeneity, a wrong bin-splitting may lead to a biased estimation of the heterogeneity. More information can be found at the <a href="https://arxiv.org/abs/2309.11193">RHALE paper</a>.</p>
 <p>In our example, if setting a low number of bins (wide bins), e.g., 5, we get the following approximation:</p>
 <div class="highlight"><pre><span></span><code><span class="n">feat</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1108,7 +1021,7 @@ Taking advantage of <span class="arithmatex">\(x_3 \approx x_1\)</span>, it hold
 <span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_16_0.png" /></p>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_17_0.png" /></p>
 <p>The approximation with wide bins has two drawbacks:</p>
 <ul>
 <li>the average ale effect is of low resolution; for example the change in the effect at <span class="arithmatex">\(x_1=0\)</span> is not captured</li>
@@ -1123,14 +1036,14 @@ Taking advantage of <span class="arithmatex">\(x_3 \approx x_1\)</span>, it hold
 <span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_18_0.png" /></p>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_19_0.png" /></p>
 <p>The approximation with narrow bins has two drawbacks:</p>
 <ul>
 <li>the average ale effect is noisy; for example, the effect at <span class="arithmatex">\(x_1&gt;0\)</span> in not zero.</li>
 <li>the heterogeneity is even more noisy. It has many spikes that are not present in the ground-truth heterogeneity.</li>
 </ul>
 <p>In real-world problems, the user has to choose the number of bins without any guidance. This is a major drawback of ALE, because the user does not know which approximation to trust, the one with wide bins or the one with narrow bins. </p>
-<h2 id="rhale-approximation">RHALE approximation</h2>
+<h3 id="rhale-approximation">RHALE approximation</h3>
 <p>RHALE proposes an automatic bin-splitting approach to resolve the issue. Let's first see it practice:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># rhale</span>
 <span class="n">feat</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1139,10 +1052,10 @@ Taking advantage of <span class="arithmatex">\(x_3 \approx x_1\)</span>, it hold
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_21_0.png" /></p>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_22_0.png" /></p>
 <p>The approximation is much better, both in terms of the average effect and the heterogeneity. For example, the heterogeneity is almost constant around <span class="arithmatex">\(2\)</span> and the spikes are gone.
 This happens due to the automatic bin-splitting, which creates bins of different sizes. In the beginning, area <span class="arithmatex">\([-0.5, 0]\)</span>, the bins are smaller for a good trade-off between bias and variance. In the end, area <span class="arithmatex">\([0, 0.5]\)</span>, a single bin is created to limit the variance without adding bias.</p>
-<h2 id="more-about-the-automatic-bin-splitting">More about the automatic bin-splitting</h2>
+<h3 id="more-about-the-automatic-bin-splitting">More about the automatic bin-splitting</h3>
 <p>So, how is the automatic bin-splitting working? 
 Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice resolution of the ALE plot and (b) does not introduce bias in the heterogeneity, only in case the effect is linear inside the bin (or the derivative-effect is constant). In our example, this happens in the area, <span class="arithmatex">\([0, 0.5]\)</span>. Intuitively, bin splitting algorithms search for such areas (to create a single bin there) and in all other cases they try to minimize the bias-variance trade-off.</p>
 <p>In <code>Effector</code>, there are two automatic bin-splitting methods:</p>
@@ -1150,7 +1063,7 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <li><code>Greedy</code>: the user has to choose the maximum number of bins and the minimum number of samples per bin</li>
 <li><code>DynamicProgramming</code>: the user has to choose the maximum number of bins and the minimum number of samples per bin</li>
 </ul>
-<h3 id="greedy-approach">Greedy approach</h3>
+<h4 id="greedy-approach">Greedy approach</h4>
 <p><code>Greedy</code> has three parameters; <code>init_nof_bins</code>, <code>min_points_per_bin</code> and <code>discount</code>. <code>max_nof_bins</code> is the initial (and maximum) number of bins. The algorithm then tries to merge bins in a greedy way, i.e., it moves along the axis (from left to right) and if merging with the next bin leads to a similar variance then it merges the bins. In fact, discount expresses to what extent the algorithm favors the creation of wider bins. The higher the discount the more the algorithm tries to minimize the variance, sacrificing some bias and vice versa. <code>min_points_per_bin</code> is the minimum number of samples each bin should have. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Greedy</span>
 <span class="n">feat</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1159,8 +1072,8 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_25_0.png" /></p>
-<h3 id="dynamic-programming-approach">Dynamic Programming approach</h3>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_26_0.png" /></p>
+<h4 id="dynamic-programming-approach">Dynamic Programming approach</h4>
 <p><code>DynamicProgramming</code> has three parameters; <code>max_nof_bins</code>, <code>min_points_per_bin</code> and <code>discount</code>. <code>max_nof_bins</code> is the maximum number of bins. The algorithm then tries to find the optimal binning, i.e., the binning that minimizes the bias-variance trade-off. <code>min_points_per_bin</code> is the minimum number of samples each bin should have. <code>discount</code> is the discount factor of the algorithm. The higher the discount the more the algorithm tries to minimize the variance, sacrificing some bias and vice versa. For more details, we refer the reader to the <a href="https://arxiv.org/abs/2309.11193">RHALE paper</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># DynamicProgramming</span>
 <span class="n">feat</span> <span class="o">=</span> <span class="mi">0</span>
@@ -1169,15 +1082,92 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_27_0.png" /></p>
-<h2 id="pdp">PDP</h2>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_28_0.png" /></p>
+<h2 id="pdp-family-of-methods">PDP family of methods</h2>
 <p>We have invested a significant amount of time in exploring ALE and RHALE, attempting to achieve the most accurate approximation of the ALE definition. Is it worthwhile? For instance, PDP-ICE is a widely used method for both average effect and heterogeneity. So, why not opt for PDP-ICE instead of delving into these sophisticated ALE approximations?</p>
 <p>In short, yes, especially in scenarios where the features exhibit correlation. Both PDP and ICE operate under the implicit assumption of feature independence. In cases where this assumption is substantially violated, relying on PDP and ICE may result in erroneous conclusions, stemming from extrapolation into unobserved regions.</p>
 <p>In our example, it is evident that <span class="arithmatex">\(x_3\)</span> is highly dependent on <span class="arithmatex">\(x_1\)</span>. Therefore, let's examine the implications of employing PDP-ICE.</p>
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
+<h3 id="pdp-and-ice-definition">PDP and ICE definition</h3>
+<p>The PDP is defined as <strong><em>the average prediction over the entire dataset when setting the feature of interest at a specific value.</em></strong>:</p>
+<div class="arithmatex">\[ \text{PDP}(x_s) = \mathbb{E}_{x_c}[f(x_s, x_c)] \]</div>
+<p>The ICE plots show the ouput of instance <span class="arithmatex">\(i\)</span> if changing the feature of interest <span class="arithmatex">\(x_s\)</span>:</p>
+<div class="arithmatex">\[\text{ICE}^{(i)}(x_s, x^{(i)}_c) = f(x_s, x^{(i)}_c)\]</div>
+<p>ICE plots are plotted of the PDP.</p>
+<p>In our example, the PDP and ICE plots are:</p>
+<div class="arithmatex">\[\text{PDP}(x_1) = \mathbb{E}_{x_2, x_3}[f(x_1, x_2, x_3)] = \sin(2\pi x_1) \mathbb{1}_{x_1&lt;0} - \frac{5}{3} \sin(2\pi x_1)\]</div>
+<div class="arithmatex">\[\text{ICE}^{(i)}(x_1, x^{(i)}_2, x^{(i)}_3) = f(x_1, x^{(i)}_2, x^{(i)}_3) = \sin(2\pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3^{(i)}} &lt; 0) + x_1 x_2^{(i)}\]</div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">gt_pdp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">5</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">gt_ice</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">ind_1</span> <span class="o">=</span> <span class="n">x3</span> <span class="o">&lt;</span> <span class="mi">5</span>
+    <span class="n">x_2_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)],</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">ind_1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)],</span> <span class="mi">0</span><span class="p">)[</span><span class="n">ind_1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x</span> <span class="o">*</span> <span class="n">x_2_i</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)],</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
 </code></pre></div>
-<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_29_0.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">gt_pdp</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground truth&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">gt_ice</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="mi">50</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground truth&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">gt_ice</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="mi">50</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ground-truth PDP&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_32_0.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_33_0.png" /></p>
 <p>It is crucial to recognize that heterogeneity arises from extrapolation into regions with low density. For instance, considering the data-generating distribution, it is highly improbable to observe a scenario where x_1&lt;0 and x_3&gt;0. However, PDP-ICE disrupts this correlation, leading some individual conditional expectations (ICEs) to trace <span class="arithmatex">\(-\sin(2\pi x_1)\)</span> within the interval <span class="arithmatex">\([-0.5, 0]\)</span>.</p>
+<h3 id="d-pdp-and-d-ice-definition-and-approximation">d-PDP and d-ICE definition and approximation</h3>
+<p>The d-PDP and d-ICE are the derivative of the PDP and ICE, respectively. The d-PDP is the effect of the feature of interest on the model output. The d-ICE is the effect of the feature of interest on the model output for a specific instance.</p>
+<p>In our example, the d-PDP and d-ICE plots are:</p>
+<div class="arithmatex">\[\text{d-PDP}(x_1) = \frac{\partial}{\partial x_1} \mathbb{E}_{x_2, x_3}[f(x_1, x_2, x_3)] = - 2 \pi x_1 \cos(2 \pi x_1) \mathbb{1}_{x_1&lt;0} - \frac{10 \pi}{3} \cos(2 \pi x_1)\]</div>
+<div class="arithmatex">\[\text{d-ICE}^{(i)}(x_1, x^{(i)}_2, x^{(i)}_3) = \frac{\partial}{\partial x_1} f(x_1, x^{(i)}_2, x^{(i)}_3) = 2 \pi x_1 \cos(2 \pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3^{(i)}} &lt; 0) + x_2^{(i)}\]</div>
+<div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">gt_d_pdp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">gt_d_ice</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">x3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+    <span class="n">ind_1</span> <span class="o">=</span> <span class="n">x3</span> <span class="o">&lt;</span> <span class="mi">5</span>
+    <span class="n">x_2_i</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
+
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)],</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">y</span><span class="p">[</span><span class="n">ind_1</span><span class="p">,</span> <span class="p">:]</span> <span class="o">-=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="mi">4</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">)],</span> <span class="mi">0</span><span class="p">)[</span><span class="n">ind_1</span><span class="p">,</span> <span class="p">:]</span>
+    <span class="n">y</span> <span class="o">+=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">x_2_i</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">gt_d_pdp</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="s2">&quot;b&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground truth&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">gt_d_ice</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="mi">50</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;ground truth&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">gt_d_ice</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="mi">50</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span><span class="o">.</span><span class="n">T</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Ground-truth PDP&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;$x_1$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;$y$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_37_0.png" /></p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">DerivativePDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_38_0.png" /></p>
+<h2 id="shap-dependence-plots">SHAP Dependence Plots</h2>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">SHAPDependence</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+</code></pre></div>
+<p><img alt="png" src="../02_rhale_vs_ale_vs_pdp_files/02_rhale_vs_ale_vs_pdp_40_0.png" /></p>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 
@@ -1196,44 +1186,6 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../01_linear_model/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Linear Model" rel="prev">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Linear Model
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../03_regional_effects_synthetic_f/" class="md-footer__link md-footer__link--next" aria-label="Next: Regional Effect in depth (a)" rel="next">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Regional Effect in depth (a)
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
