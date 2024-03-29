@@ -12,7 +12,7 @@
         <link rel="prev" href="../../../regional_effect_intro/">
       
       
-        <link rel="next" href="../02_rhale_vs_ale_vs_pdp/">
+        <link rel="next" href="../03_regional_effects_synthetic_f/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -77,7 +77,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#intro-to-feature-effect-methods-with-a-linear-model" class="md-skip">
+        <a href="#feature-effect-on-a-linear-model" class="md-skip">
           Skip to content
         </a>
       
@@ -597,7 +597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../02_rhale_vs_ale_vs_pdp/" class="md-nav__link">
+      <a href="../02_rhale_vs_ale_vs_pdp.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1058,8 +1058,15 @@
                   
 
 
-<h1 id="intro-to-feature-effect-methods-with-a-linear-model">Intro to Feature Effect methods with a linear model</h1>
-<p>This tutorial is a (slow and gentle) introduction to the basic global <a href="https://christophm.github.io/interpretable-ml-book/global-methods.html">feature effect methods</a> and the <code>Effector</code> package. If you only care about using <code>Effector</code>'s API, you can go directly to the <a href="#conclusion">Conclusion</a>.</p>
+<h1 id="feature-effect-on-a-linear-model">Feature Effect on a linear model</h1>
+<ul>
+<li>Author: <a href="https://givasile.github.io/">givasile</a></li>
+<li>Date created: 2024/04/29</li>
+<li>Last modified: 2024/05/29</li>
+<li><strong>Description</strong>: Apply global effect on a linear model</li>
+</ul>
+<p><a href="https://colab.research.google.com/github/givasile/effector/blob/main/synthetic-examples/01_linear_model.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> 
+<a href="https://github.com/givasile/effector/blob/main/synthetic-examples/01_linear_model.ipynb"><img alt="Show in Github" src="https://xai-effector.github.io/static/github-mark-white.svg" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">effector</span>
 </code></pre></div>
@@ -1249,9 +1256,9 @@ Let's check it out the PDP effect using <code>effector</code>.</p>
 <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">10</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_8_0.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_8_1.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_8_2.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_9_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_9_1.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_9_2.png" /></p>
 <h3 id="feature-effect-interpretation">Feature effect interpretation</h3>
 <p>As we expected, all feature effects are linear. Looking closer, we can also confirm the gradients of the effects: 
 <span class="arithmatex">\(7\)</span> for <span class="arithmatex">\(x_1\)</span>, <span class="arithmatex">\(-3\)</span> for <span class="arithmatex">\(x_2\)</span> and <span class="arithmatex">\(4\)</span> for <span class="arithmatex">\(x_3\)</span>.
@@ -1297,9 +1304,9 @@ If we compare the effect of a specific feature on two different subgroups (check
 <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_10_0.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_10_1.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_10_2.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_11_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_11_1.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_11_2.png" /></p>
 <h3 id="heterogeneity">Heterogeneity</h3>
 <p>Feature effect methods output a 1-1 plot that visualizes the <strong>average</strong> effect of a specific feature on the output; 
 the averaging is performed over the instance-level effects. 
@@ -1315,7 +1322,7 @@ In other words, to what extent the average effects are a good explanation for th
 For example in the plot below, we can see that there is no heterogeneity in the instance-level effects, i.e., all instance-level effects are lines with gradient 7.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_13_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_14_0.png" /></p>
 <p>Keep in mind that it is important to define correctly the argument <code>centering</code>.
 Setting <code>centering=True</code> centers the PDP plot around the <span class="arithmatex">\(y\)</span> axis, which facilitates the comparison of the underlying feature effects (as above).</p>
 <p>However, there are cases where the intercept maybe useful.
@@ -1326,20 +1333,20 @@ In contrast, this difference will be visible under the uncentered ICE curves.</p
 <p>In our example, setting <code>centering=False</code> gives the following plot; ICE plots with different intercepts but identical gradient.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_15_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_16_0.png" /></p>
 <h4 id="option-b-std-of-the-residuals">Option (b): STD of the residuals</h4>
 <p>A second way to check for heterogeneity is by plotting the standard deviation of the instance-level effects as <span class="arithmatex">\(\pm\)</span> interval around the PDP plot.
 This is done setting <code>confidence_interval="std"</code> in the <code>plot</code> method. 
 In practice, this approach simply plots the std of the ICE plots instead of the ICE plots themselves.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_17_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_18_0.png" /></p>
 <p>In this case, if we do not perform centering, it is difficult to differentiate whether the heterogeneity is provoked by the gradient or in the intercept.
 Therefore, we recommend to try both the centered and the uncentered version of the ICE, before coming to a conclusion. 
 If the heterogeneity is only present on the latter, then it is due to different intercepts.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_19_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_20_0.png" /></p>
 <h3 id="derivative-pdp-d-pdp">Derivative-PDP (d-PDP)</h3>
 <p>A similar analysis can be done using the derivative of the model; the name of this approach is Derivative-PDP (d-PDP) and the equivalent of the ICE plots are the Derivative-ICE (d-ICE) plots. The d-PDP and d-ICE are defined as:</p>
 <div class="arithmatex">\[ \text{d-PDP}(x_s) = \mathbb{E}_{x_c}[\frac{\partial f}{\partial x_s} (x_s, x_c)] \approx \frac{1}{N} \sum_{j=1}^N \frac{\partial f}{\partial x_s} (x_s, x_c^{(i)}) \]</div>
@@ -1357,17 +1364,17 @@ If the heterogeneity is only present on the latter, then it is due to different 
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">predict_grad</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">predict_grad</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_21_0.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_21_1.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_22_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_22_1.png" /></p>
 <h2 id="accumulated-local-effects-ale">Accumulated Local Effects (ALE)</h2>
 <p>The next major category of feature effect techniques is <a href="https://christophm.github.io/interpretable-ml-book/ale.html">Accumulated Local Effects (ALE)</a>. Before we go into the specifics, let's apply the ALE plot to our example.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_23_0.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_23_1.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_23_2.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_24_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_24_1.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_24_2.png" /></p>
 <h3 id="fearure-effect-interpretation">Fearure effect interpretation</h3>
 <p>In each of the figures above, there are two subfigures; the upper subfigure is the average feature effect (the typical ALE plot) and the lower subfigure is the derivative of the effect.
 The upper subfigure shows how much the feature of interest <em>contributes</em> to the prediction (like PDP) while the bottom subplot shows how much a change in the feature of interest <em>changes</em> the prediction (like d-PDP). 
@@ -1399,12 +1406,12 @@ For example, for <span class="arithmatex">\(x_1\)</span> the upper subplot shows
 Let's see how centering works for <span class="arithmatex">\(x_1\)</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_25_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_26_0.png" /></p>
 <h3 id="heterogeneity_1">Heterogeneity</h3>
 <p>In ALE plots, the only way to check the heterogeneity of the instance-level effects is by plotting the standard deviation of the instance-level effects as <span class="arithmatex">\(\pm\)</span> interval around the ALE plot. In <code>Effector</code> this can be done by setting <code>heterogeneity=True"</code>. The plot below shows that the heterogeneity is zero, which is correct. However, as we will see below <a href="#robust-and-heterogeneity-aware-ale-rhale">(RHALE section)</a>, ALE's fixed size bin-splitting is not the best way to estimate the heterogeneity. In contrast, the automatic bin-splitting introduced by <a href="https://arxiv.org/abs/2309.11193">RHALE</a> provides a better estimation of the heterogeneity.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_27_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_28_0.png" /></p>
 <h3 id="bin-splitting">Bin-Splitting</h3>
 <p>As you may have noticed at the bottom plots of the figures above, <span class="arithmatex">\(x_1\)</span> axis has been split in <span class="arithmatex">\(K=20\)</span> bins (intervals) of equal size. The derivative-effect is provided per bin (bin-effect), which in our example is <span class="arithmatex">\(7\)</span> for all bins. </p>
 <p>In fact, bin-splitting is apparent also at the top plot; the top plot is not a line, but a piecewise linear function, where each <em>piece</em> is a line in the are covered by each bin and gradient equal to the bin-effect. However, since the bin-effect is the same for all bins, the top plot looks like a line.</p>
@@ -1426,13 +1433,13 @@ Let's see how centering works for <span class="arithmatex">\(x_1\)</span>:</p>
 <span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">bm</span><span class="p">)</span>
 <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_29_0.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_29_1.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_30_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_30_1.png" /></p>
 <h2 id="robust-and-heterogeneity-aware-ale-rhale">Robust and Heterogeneity-aware ALE (RHALE)</h2>
 <p>Robust and Heterogeneity-aware ALE (RHALE) is a variant of ALE, proposed by <a href="https://arxiv.org/abs/2309.11193">Gkolemis et. al</a>. In their paper, they showed that RHALE has specific advantages over ALE: (a) it ensures on-distribution sampling (b) an unbiased estimation of the heterogeneity and (c) an optimal trade-off between bias and variance. These are achieved using an automated variable-size binning splitting approach. Let's see how it works in practice.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">predict_grad</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_31_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_32_0.png" /></p>
 <h3 id="fearure-effect-interpretation_1">Fearure effect interpretation</h3>
 <p>The interpretation is exactly the same as with the typical ALE; The top subplot is the average feature effect and the bottom subfigure is the derivative of the effect. 
 The crucial difference, is that the automatic bin-splitting approach <em>optimally</em> creates a single bin that covers the whole area between <span class="arithmatex">\(x=0\)</span> and <span class="arithmatex">\(x=1\)</span>. As we saw above, the gradient of the feature effect is constant and equal to <span class="arithmatex">\(7\)</span> for all <span class="arithmatex">\(x_1\)</span> values. Therefore, merging all bins into one, reduces the variance of the estimation; the estimation is based on more instances, so the variance is lower. </p>
@@ -1464,14 +1471,14 @@ The crucial difference, is that the automatic bin-splitting approach <em>optimal
 <p>Let's see how this works for <span class="arithmatex">\(x_1\)</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">predict_grad</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_33_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_34_0.png" /></p>
 <h3 id="heterogeneity_2">Heterogeneity</h3>
 <p>As before, the heterogeneity is given by the the standard deviation of the instance-level effects as <span class="arithmatex">\(\pm\)</span> interval around the ALE plot.
 It is important to notice, that automatic bin-splitting provides a better estimation of the heterogeneity, compared to the equisized binning method used by ALE. (check tutorial <a href="./ale.ipynb">ALE</a> for more details). 
 The plot below correctly informs shows that the heterogeneity is zero.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">predict_grad</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_35_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_36_0.png" /></p>
 <h3 id="bin-splitting_1">Bin-Splitting</h3>
 <p>So how the automatic bin-splitting works? </p>
 <div class="arithmatex">\[\text{ALE}(x_s) = \int_{z=0}^{x_s} \mathbb{E}_{x_c|x_s=z}\left [ \frac{\partial f}{\partial x_s} (z, x_c) \right ] \partial z\]</div>
@@ -1485,7 +1492,7 @@ For more details about that, you can check the in-depth <a href="./ale.ipynb">AL
 <p>TODO add intro</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_38_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_39_0.png" /></p>
 <h3 id="fearure-effect-interpretation_2">Fearure effect interpretation</h3>
 <p>TODO add content </p>
 <p><center></p>
@@ -1514,7 +1521,7 @@ For more details about that, you can check the in-depth <a href="./ale.ipynb">AL
 <p>Let's see how this works for <span class="arithmatex">\(x_1\)</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_40_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_41_0.png" /></p>
 <h3 id="heterogeneity_3">Heterogeneity</h3>
 <p>As before, the heterogeneity is given by the the standard deviation of the instance-level effects as <span class="arithmatex">\(\pm\)</span> interval around the ALE plot.
 It is important to notice, that automatic bin-splitting provides a better estimation of the heterogeneity, compared to the equisized binning method used by ALE. (check tutorial <a href="./ale.ipynb">ALE</a> for more details). 
@@ -1522,8 +1529,8 @@ The plot below correctly informs shows that the heterogeneity is zero.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_42_0.png" /></p>
-<p><img alt="png" src="../01_linear_model_files/01_linear_model_42_1.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_43_0.png" /></p>
+<p><img alt="png" src="../01_linear_model_files/01_linear_model_43_1.png" /></p>
 <h2 id="conclusion">Conclusion</h2>
 <p>In this tutorial, we introduced the various feature effect methods of <code>Effector</code> and used them to explain a linear model. </p>
 <p>In summary, given a dataset <code>X: (N, D)</code> and a black-box model <code>model: (N, D) -&gt; (N)</code>,
@@ -1597,13 +1604,13 @@ The argument <code>confidence_interval=True|False</code> indicates whether to pl
         
         
           
-          <a href="../02_rhale_vs_ale_vs_pdp/" class="md-footer__link md-footer__link--next" aria-label="Next: Global Effect - Methods Comparison" rel="next">
+          <a href="../03_regional_effects_synthetic_f/" class="md-footer__link md-footer__link--next" aria-label="Next: Regional Effect in depth (a)" rel="next">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                Global Effect - Methods Comparison
+                Regional Effect in depth (a)
               </div>
             </div>
             <div class="md-footer__button md-icon">
