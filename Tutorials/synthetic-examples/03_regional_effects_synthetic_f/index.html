@@ -9,10 +9,6 @@
       
       
       
-        <link rel="prev" href="../02_global_effect_methods_comparison/">
-      
-      
-        <link rel="next" href="../04_regional_effects_real_f/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -20,7 +16,7 @@
     
     
       
-        <title>Regional Effect in depth (a) - effector</title>
+        <title>Regional Effects (known black-box function) - effector</title>
       
     
     
@@ -113,7 +109,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Regional Effect in depth (a)
+              Regional Effects (known black-box function)
             
           </span>
         </div>
@@ -312,35 +308,33 @@
       
   
   
-    
-  
   
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
         
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
-    Tutorials
+    Main Example
   </span>
   
 
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
-            Tutorials
+            Main Example
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -348,21 +342,86 @@
                 
   
   
-    
+  
+    <li class="md-nav__item">
+      <a href="../02_regional_pdp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    PDP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
   
   
+  
+    <li class="md-nav__item">
+      <a href="../02_regional_rhale/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    RHALE
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02_regional_shapdp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    SHAP-DP
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
-          <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -373,8 +432,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_5_1">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Synthetic Datasets
           </label>
@@ -424,336 +483,6 @@
                 
   
   
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Regional Effect in depth (a)
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Regional Effect in depth (a)
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#simulation-example" class="md-nav__link">
-    Simulation example
-  </a>
-  
-    <nav class="md-nav" aria-label="Simulation example">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#data-generating-distribution" class="md-nav__link">
-    Data Generating Distribution
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#black-box-function" class="md-nav__link">
-    Black-box function
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#pdp" class="md-nav__link">
-    PDP
-  </a>
-  
-    <nav class="md-nav" aria-label="PDP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uncorrelated-setting" class="md-nav__link">
-    Uncorrelated setting
-  </a>
-  
-    <nav class="md-nav" aria-label="Uncorrelated setting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-pdp" class="md-nav__link">
-    Global PDP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-pdp" class="md-nav__link">
-    Regional PDP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#correlated-setting" class="md-nav__link">
-    Correlated setting
-  </a>
-  
-    <nav class="md-nav" aria-label="Correlated setting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-pdp_1" class="md-nav__link">
-    Global PDP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-pdp_1" class="md-nav__link">
-    Regional-PDP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion_1" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#rhale" class="md-nav__link">
-    (RH)ALE
-  </a>
-  
-    <nav class="md-nav" aria-label="(RH)ALE">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uncorrelated-setting_1" class="md-nav__link">
-    Uncorrelated setting
-  </a>
-  
-    <nav class="md-nav" aria-label="Uncorrelated setting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-rhale" class="md-nav__link">
-    Global RHALE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-rhale" class="md-nav__link">
-    Regional RHALE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion_2" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#correlated-setting_1" class="md-nav__link">
-    Correlated setting
-  </a>
-  
-    <nav class="md-nav" aria-label="Correlated setting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-rhale_1" class="md-nav__link">
-    Global RHALE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-rhale_1" class="md-nav__link">
-    Regional RHALE
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion_3" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#shap-dp" class="md-nav__link">
-    SHAP DP
-  </a>
-  
-    <nav class="md-nav" aria-label="SHAP DP">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#uncorrelated-setting_2" class="md-nav__link">
-    Uncorrelated setting
-  </a>
-  
-    <nav class="md-nav" aria-label="Uncorrelated setting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-shap-dp" class="md-nav__link">
-    Global SHAP DP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-shap-dp" class="md-nav__link">
-    Regional SHAP-DP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion_4" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#correlated-setting_2" class="md-nav__link">
-    Correlated setting
-  </a>
-  
-    <nav class="md-nav" aria-label="Correlated setting">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#global-shap-dp_1" class="md-nav__link">
-    Global SHAP-DP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#regional-shap" class="md-nav__link">
-    Regional SHAP
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion_5" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
     <li class="md-nav__item">
       <a href="../04_regional_effects_real_f/" class="md-nav__link">
@@ -776,10 +505,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -792,9 +520,9 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
-          <label class="md-nav__link" for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -805,8 +533,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_2">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Real Datasets
           </label>
@@ -838,10 +566,9 @@
     </li>
   
 
-              
-            
-              
-                
+    
+      
+      
   
   
   
@@ -854,9 +581,9 @@
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
         
-          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -867,8 +594,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_5_3">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
             <span class="md-nav__icon md-icon"></span>
             Guides
           </label>
@@ -889,14 +616,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -1269,6 +988,8 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">effector</span>
 </code></pre></div>
+<pre><code>Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
+</code></pre>
 <h2 id="simulation-example">Simulation example</h2>
 <h3 id="data-generating-distribution">Data Generating Distribution</h3>
 <p>We will generate <span class="arithmatex">\(N=1000\)</span> examples with <span class="arithmatex">\(D=3\)</span> features, which are uniformly distributed as follows:</p>
@@ -1401,13 +1122,13 @@
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">()</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 24.75it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 21.02it/s]
 
 
 
 
 
-&lt;effector.binning_methods.DynamicProgramming at 0x7fba4f889dd0&gt;
+&lt;effector.binning_methods.DynamicProgramming at 0x7515286ff250&gt;
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1422,18 +1143,18 @@
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 21.68it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 21.16it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
 Node id: 0, name: x1, heter: 1.74 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.29 || nof_instances:   506 || weight: 0.51
-        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.29 || nof_instances:   494 || weight: 0.49
+        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.29 || nof_instances:   482 || weight: 0.48
+        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.29 || nof_instances:   518 || weight: 0.52
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
 Level 0, heter: 1.74
-        Level 1, heter: 0.29 || heter drop: 1.45 (83.38%)
+        Level 1, heter: 0.29 || heter drop: 1.45 (83.24%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1443,21 +1164,21 @@ Level 0, heter: 1.74
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 1.83 || nof_instances:  1000 || weight: 1.00
+Node id: 0, name: x2, heter: 1.82 || nof_instances:  1000 || weight: 1.00
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 1.83
+Level 0, heter: 1.82
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 1.75 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.88 || nof_instances:   503 || weight: 0.50
-        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.87 || nof_instances:   497 || weight: 0.50
+Node id: 0, name: x3, heter: 1.74 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.88 || nof_instances:   494 || weight: 0.49
+        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.87 || nof_instances:   506 || weight: 0.51
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 1.75
-        Level 1, heter: 0.88 || heter drop: 0.88 (50.05%)
+Level 0, heter: 1.74
+        Level 1, heter: 0.87 || heter drop: 0.87 (49.73%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1498,18 +1219,18 @@ Due to this face, we expect the explanations to be identical with the uncorrelat
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 57.57it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 55.47it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
 Node id: 0, name: x1, heter: 1.74 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= 0.0, heter: 0.33 || nof_instances:   474 || weight: 0.47
-        Node id: 2, name: x1 | x3  &gt; 0.0, heter: 0.28 || nof_instances:   526 || weight: 0.53
+        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.30 || nof_instances:   522 || weight: 0.52
+        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.28 || nof_instances:   478 || weight: 0.48
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
 Level 0, heter: 1.74
-        Level 1, heter: 0.30 || heter drop: 1.44 (82.70%)
+        Level 1, heter: 0.29 || heter drop: 1.45 (83.34%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1519,24 +1240,24 @@ Level 0, heter: 1.74
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 1.03 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x2 | x1 &lt;= 0.55, heter: 0.61 || nof_instances:   760 || weight: 0.76
-        Node id: 2, name: x2 | x1  &gt; 0.55, heter: 0.51 || nof_instances:   240 || weight: 0.24
+Node id: 0, name: x2, heter: 1.01 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x2 | x1 &lt;= 0.54, heter: 0.61 || nof_instances:   778 || weight: 0.78
+        Node id: 2, name: x2 | x1  &gt; 0.54, heter: 0.54 || nof_instances:   222 || weight: 0.22
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 1.03
-        Level 1, heter: 0.59 || heter drop: 0.45 (43.38%)
+Level 0, heter: 1.01
+        Level 1, heter: 0.60 || heter drop: 0.41 (41.05%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 1.73 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.88 || nof_instances:   474 || weight: 0.47
-        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.84 || nof_instances:   526 || weight: 0.53
+Node id: 0, name: x3, heter: 1.75 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x3 | x1 &lt;= -0.0, heter: 0.89 || nof_instances:   522 || weight: 0.52
+        Node id: 2, name: x3 | x1  &gt; -0.0, heter: 0.85 || nof_instances:   478 || weight: 0.48
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 1.73
-        Level 1, heter: 0.86 || heter drop: 0.87 (50.45%)
+Level 0, heter: 1.75
+        Level 1, heter: 0.87 || heter drop: 0.88 (50.43%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1585,18 +1306,18 @@ Level 0, heter: 1.73
     <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 30.15it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 25.05it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 5.96 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.00 || nof_instances:   506 || weight: 0.51
-        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.00 || nof_instances:   494 || weight: 0.49
+Node id: 0, name: x1, heter: 5.97 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.00 || nof_instances:   482 || weight: 0.48
+        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.00 || nof_instances:   518 || weight: 0.52
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 5.96
-        Level 1, heter: 0.00 || heter drop: 5.96 (100.00%)
+Level 0, heter: 5.97
+        Level 1, heter: 0.00 || heter drop: 5.97 (100.00%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1656,18 +1377,15 @@ Level 0, heter: 0.00
     <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 30.33it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 34.98it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 0.13 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x2 &lt;= 0.1, heter: 0.00 || nof_instances:   550 || weight: 0.55
-        Node id: 2, name: x1 | x2  &gt; 0.1, heter: 0.00 || nof_instances:   450 || weight: 0.45
+Node id: 0, name: x1, heter: 0.00 || nof_instances:  1000 || weight: 1.00
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 0.13
-        Level 1, heter: 0.00 || heter drop: 0.13 (100.00%)
+Level 0, heter: 0.00
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
@@ -1712,18 +1430,18 @@ Level 0, heter: 0.00
     <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:03&lt;00:00,  1.02s/it]
+<pre><code>100%|██████████| 3/3 [00:03&lt;00:00,  1.06s/it]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 0.65 || nof_instances:   100 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= 0.01, heter: 0.00 || nof_instances:    50 || weight: 0.50
-        Node id: 2, name: x1 | x3  &gt; 0.01, heter: 0.00 || nof_instances:    50 || weight: 0.50
+Node id: 0, name: x1, heter: 0.77 || nof_instances:   100 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.00 || nof_instances:    49 || weight: 0.49
+        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.00 || nof_instances:    51 || weight: 0.51
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 0.65
-        Level 1, heter: 0.00 || heter drop: 0.65 (100.00%)
+Level 0, heter: 0.77
+        Level 1, heter: 0.00 || heter drop: 0.77 (100.00%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1741,10 +1459,10 @@ Level 0, heter: 0.00
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 0.72 || nof_instances:   100 || weight: 1.00
+Node id: 0, name: x3, heter: 0.73 || nof_instances:   100 || weight: 1.00
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 0.72
+Level 0, heter: 0.73
 </code></pre>
 <h4 id="conclusion_4">Conclusion</h4>
 <p>Global SHAP-DP:</p>
@@ -1778,7 +1496,7 @@ Level 0, heter: 0.72
     <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:03&lt;00:00,  1.03s/it]
+<pre><code>100%|██████████| 3/3 [00:03&lt;00:00,  1.11s/it]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
@@ -1799,10 +1517,10 @@ Level 0, heter: 0.00
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">show_partitioning</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 0.10 || nof_instances:   100 || weight: 1.00
+Node id: 0, name: x3, heter: 0.09 || nof_instances:   100 || weight: 1.00
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 0.10
+Level 0, heter: 0.09
 </code></pre>
 <h4 id="conclusion_5">Conclusion</h4>
 
@@ -1821,44 +1539,6 @@ Level 0, heter: 0.10
       
         <footer class="md-footer">
   
-    
-      
-      <nav class="md-footer__inner md-grid" aria-label="Footer" >
-        
-          
-          <a href="../02_global_effect_methods_comparison/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Global Effect - Methods Comparison" rel="prev">
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
-            </div>
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              <div class="md-ellipsis">
-                Global Effect - Methods Comparison
-              </div>
-            </div>
-          </a>
-        
-        
-          
-          <a href="../04_regional_effects_real_f/" class="md-footer__link md-footer__link--next" aria-label="Next: Regional Effect in depth (b)" rel="next">
-            <div class="md-footer__title">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              <div class="md-ellipsis">
-                Regional Effect in depth (b)
-              </div>
-            </div>
-            <div class="md-footer__button md-icon">
-              
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4Z"/></svg>
-            </div>
-          </a>
-        
-      </nav>
     
   
   <div class="md-footer-meta md-typeset">
