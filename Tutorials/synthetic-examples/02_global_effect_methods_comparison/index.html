@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1550,7 +1559,7 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_11_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_11_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_11_0.png" /></a></p>
 <h3 id="rhale-definition">RHALE definition</h3>
 <p>RHALE extends ALE definition, adding an heterogeneity term. For visualizing the heterogeneity, RHALE proposes two plots one below the other. The top plot is the RHALE effect which is identical to the ALE effect. The bottom plot is the derivative of the ALE effect and the heterogeneity is the standard deviation of the derivative effect.</p>
 <p>RHALE quantifies the heterogeneity as the standard deviation of the derivative of the model with respect to the feature of interest:</p>
@@ -1585,7 +1594,7 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_14_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_14_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_14_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">rhale_gt_derivative_effect</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">&quot;b--&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;derivative effect&quot;</span><span class="p">)</span>
@@ -1596,7 +1605,7 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_15_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_15_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_15_0.png" /></a></p>
 <h3 id="ale-approximation">ALE approximation</h3>
 <p>Bin splitting is a major limitation of ALE. The user has to choose the number of bins, where different number of bins can lead to very different results. In terms of the main ALE effect, a wrong bin-splitting may lead to unstable results. In terms of the heterogeneity, a wrong bin-splitting may lead to a biased estimation of the heterogeneity. More information can be found at the <a href="https://arxiv.org/abs/2309.11193">RHALE paper</a>.</p>
 <p>In our example, if setting a low number of bins (wide bins), e.g., 5, we get the following approximation:</p>
@@ -1611,7 +1620,7 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 <span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_17_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_17_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_17_0.png" /></a></p>
 <p>The approximation with wide bins has two drawbacks:</p>
 <ul>
 <li>the average ale effect is of low resolution; for example the change in the effect at <span class="arithmatex">\(x_1=0\)</span> is not captured</li>
@@ -1626,7 +1635,7 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 <span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_19_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_19_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_19_0.png" /></a></p>
 <p>The approximation with narrow bins has two drawbacks:</p>
 <ul>
 <li>the average ale effect is noisy; for example, the effect at <span class="arithmatex">\(x_1&gt;0\)</span> in not zero.</li>
@@ -1642,7 +1651,7 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_22_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_22_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_22_0.png" /></a></p>
 <p>The approximation is much better, both in terms of the average effect and the heterogeneity. For example, the heterogeneity is almost constant around <span class="arithmatex">\(2\)</span> and the spikes are gone.
 This happens due to the automatic bin-splitting, which creates bins of different sizes. In the beginning, area <span class="arithmatex">\([-0.5, 0]\)</span>, the bins are smaller for a good trade-off between bias and variance. In the end, area <span class="arithmatex">\([0, 0.5]\)</span>, a single bin is created to limit the variance without adding bias.</p>
 <h3 id="more-about-the-automatic-bin-splitting">More about the automatic bin-splitting</h3>
@@ -1662,7 +1671,7 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_26_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_26_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_26_0.png" /></a></p>
 <h4 id="dynamic-programming-approach">Dynamic Programming approach</h4>
 <p><code>DynamicProgramming</code> has three parameters; <code>max_nof_bins</code>, <code>min_points_per_bin</code> and <code>discount</code>. <code>max_nof_bins</code> is the maximum number of bins. The algorithm then tries to find the optimal binning, i.e., the binning that minimizes the bias-variance trade-off. <code>min_points_per_bin</code> is the minimum number of samples each bin should have. <code>discount</code> is the discount factor of the algorithm. The higher the discount the more the algorithm tries to minimize the variance, sacrificing some bias and vice versa. For more details, we refer the reader to the <a href="https://arxiv.org/abs/2309.11193">RHALE paper</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># DynamicProgramming</span>
@@ -1672,7 +1681,7 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">feat</span><span class="p">],</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_28_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_28_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_28_0.png" /></a></p>
 <h2 id="pdp-family-of-methods">PDP family of methods</h2>
 <p>We have invested a significant amount of time in exploring ALE and RHALE, attempting to achieve the most accurate approximation of the ALE definition. Is it worthwhile? For instance, PDP-ICE is a widely used method for both average effect and heterogeneity. So, why not opt for PDP-ICE instead of delving into these sophisticated ALE approximations?</p>
 <p>In short, yes, especially in scenarios where the features exhibit correlation. Both PDP and ICE operate under the implicit assumption of feature independence. In cases where this assumption is substantially violated, relying on PDP and ICE may result in erroneous conclusions, stemming from extrapolation into unobserved regions.</p>
@@ -1713,10 +1722,10 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_32_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_32_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_32_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_33_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_33_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_33_0.png" /></a></p>
 <p>It is crucial to recognize that heterogeneity arises from extrapolation into regions with low density. For instance, considering the data-generating distribution, it is highly improbable to observe a scenario where x_1&lt;0 and x_3&gt;0. However, PDP-ICE disrupts this correlation, leading some individual conditional expectations (ICEs) to trace <span class="arithmatex">\(-\sin(2\pi x_1)\)</span> within the interval <span class="arithmatex">\([-0.5, 0]\)</span>.</p>
 <h3 id="d-pdp-and-d-ice-definition-and-approximation">d-PDP and d-ICE definition and approximation</h3>
 <p>The d-PDP and d-ICE are the derivative of the PDP and ICE, respectively. The d-PDP is the effect of the feature of interest on the model output. The d-ICE is the effect of the feature of interest on the model output for a specific instance.</p>
@@ -1750,10 +1759,10 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_37_0.png" /></p>
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_37_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_37_0.png" /></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_38_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_38_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_38_0.png" /></a></p>
 <h2 id="shap-dependence-plots">SHAP Dependence Plots</h2>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gt_shape</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
@@ -1785,10 +1794,13 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_41_0.png" /></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_41_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_41_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_0.png" /></p>
+<pre><code>/home/givasile/github/packages/effector/effector/global_effect_shap.py:343: RuntimeWarning: invalid value encountered in sqrt
+  np.sqrt(self.feature_effect["feature_" + str(feature)]["spline_std"](x))
+</code></pre>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 
@@ -1808,6 +1820,8 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1892,10 +1906,10 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -1904,5 +1918,7 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

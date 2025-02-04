@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1804,7 +1813,7 @@ The model achieves a root mean squared error on the test of about <span class="a
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" /></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" /></a></p>
 <h3 id="rhale">RHALE</h3>
 <div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="n">target_name</span><span class="p">)</span>
 </code></pre></div>
@@ -1817,7 +1826,7 @@ The model achieves a root mean squared error on the test of about <span class="a
 /home/givasile/miniconda3/envs/effector-dev/lib/python3.10/site-packages/numpy/_core/_methods.py:210: RuntimeWarning: invalid value encountered in divide
   ret = ret.dtype.type(ret / rcount)
 </code></pre>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" /></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" /></a></p>
 <h3 id="conclusion">Conclusion</h3>
 <p>The global effect of feature <code>hour</code> on the target variable <code>bike-rentals</code> shows two high peaks, one at around 8:00 and another at around 17:00, which probably corresponds to the morning and evening commute hours of the working days. However, the effect is quite heterogeneous. For this reason, we will analyze the regional effects which may explain the underlying heterogeneity.</p>
 <h2 id="regional-effect">Regional Effect</h2>
@@ -1865,8 +1874,8 @@ Level 0, heter: 5.46
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">)</span>
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" /></p>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" /></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" /></a></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" /></a></p>
 <h3 id="regionalpdp">RegionalPDP</h3>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span>
@@ -1909,19 +1918,19 @@ Level 0, heter: 0.43
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_0.png" /></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_0.png" /></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_0.png" /></a></p>
 <h3 id="conclusion_1">Conclusion</h3>
 <p>The both PDP and RHALE regional effect reveal two distinct explanations; one for the working days and another for the non-working days. For the working days, the effect is quite similar to the global effect (unfortunately, working ways dominate our life), with two high peaks at around 8:00 and 17:00. However, for the non-working days, the effect is quite different, with a single high peak at around 13:00 which probably corresponds to sightseeing and leisure activities.</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
     <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_0.png" /></p>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_1.png" /></p>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_2.png" /></p>
-<p><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_3.png" /></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_0.png" /></a></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_1.png" /></a></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_2.png" /></a></p>
+<p><a class="glightbox" href="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_3.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
 <span class="n">tic</span> <span class="o">=</span> <span class="n">timeit</span><span class="o">.</span><span class="n">default_timer</span><span class="p">()</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
@@ -1960,6 +1969,8 @@ Level 0, heter: 0.43
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2044,10 +2055,10 @@ Level 0, heter: 0.43
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -2056,5 +2067,7 @@ Level 0, heter: 0.43
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

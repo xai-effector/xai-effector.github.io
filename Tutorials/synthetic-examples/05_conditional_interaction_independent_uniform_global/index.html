@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1470,9 +1479,9 @@ Below we will see how PDP, ALE, and RHALE handle this interaction.</p>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_0.png" /></p>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_1.png" /></p>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_2.png" /></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_1.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_2.png" /></a></p>
 <p>PDP states that:</p>
 <ul>
 <li><span class="arithmatex">\(x_1\)</span> has a zero average effect on the model output</li>
@@ -1591,9 +1600,9 @@ NameError: name 'np' is not defined
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_0.png" /></p>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_1.png" /></p>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_2.png" /></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_1.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_2.png" /></a></p>
 <p>ALE states that:
 - <span class="arithmatex">\(x_1\)</span> has a zero average effect on the model output (same as PDP)
 - <span class="arithmatex">\(x_2\)</span> has a constant effect when <span class="arithmatex">\(x_2 &lt;0\)</span> or <span class="arithmatex">\(x_2 &gt;0\)</span>, but when moving from <span class="arithmatex">\(x_2^-\)</span> to <span class="arithmatex">\(x_2^+\)</span> it adds (on average) <span class="arithmatex">\(+\frac{2}{3}\)</span> units to <span class="arithmatex">\(y\)</span> (same as PDP)
@@ -1662,7 +1671,7 @@ ALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} \sum_{i: 
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_26_0.png" /></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_26_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_26_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="c1"># [0, 1, 2]:</span>
     <span class="n">y_ale</span> <span class="o">=</span> <span class="n">ale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1689,9 +1698,9 @@ ALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} \sum_{i: 
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_0.png" /></p>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_1.png" /></p>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_2.png" /></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_1.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_2.png" /></a></p>
 <p>RHALE states that:
 - <span class="arithmatex">\(x_1\)</span> has a zero average effect on the model output (same as PDP)
 - <span class="arithmatex">\(x_2\)</span> has a zero average effect on the model output (different than PDP and ALE)
@@ -1750,7 +1759,7 @@ RHALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} (z_k - 
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_37_0.png" /></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_37_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_37_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">y_ale</span> <span class="o">=</span> <span class="n">rhale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">y_gt</span> <span class="o">=</span> <span class="n">rhale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xx</span><span class="p">)</span>
@@ -1777,6 +1786,8 @@ For <span class="arithmatex">\(x_2\)</span>, however, it does not capture the ab
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1861,10 +1872,10 @@ For <span class="arithmatex">\(x_2\)</span>, however, it does not capture the ab
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -1873,5 +1884,7 @@ For <span class="arithmatex">\(x_2\)</span>, however, it does not capture the ab
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

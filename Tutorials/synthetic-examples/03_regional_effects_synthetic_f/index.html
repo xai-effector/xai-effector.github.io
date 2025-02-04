@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1813,8 +1822,6 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
 </code></pre></div>
-<pre><code>Using `tqdm.autonotebook.tqdm` in notebook mode. Use `tqdm.tqdm` instead to force console mode (e.g. in jupyter console)
-</code></pre>
 <h2 id="simulation-example">Simulation example</h2>
 <h3 id="data-generating-distribution">Data Generating Distribution</h3>
 <p>We will generate <span class="arithmatex">\(N=1000\)</span> examples with <span class="arithmatex">\(D=3\)</span> features, which are uniformly distributed as follows:</p>
@@ -1947,69 +1954,69 @@
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">()</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 21.02it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 26.42it/s]
 
 
 
 
 
-&lt;effector.binning_methods.DynamicProgramming at 0x7515286ff250&gt;
+&lt;effector.binning_methods.DynamicProgramming at 0x7219c27ae500&gt;
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_1.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_2.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_1.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_2.png" /></a></p>
 <h4 id="regional-pdp">Regional PDP</h4>
 <p>Regional PDP will search for explanations that minimize the interaction-related heterogeneity.</p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 21.16it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 30.26it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 1.74 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.29 || nof_instances:   482 || weight: 0.48
-        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.29 || nof_instances:   518 || weight: 0.52
+Node id: 0, name: x1, heter: 3.44 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= 0.09, heter: 0.94 || nof_instances:   562 || weight: 0.56
+        Node id: 2, name: x1 | x3  &gt; 0.09, heter: 0.07 || nof_instances:   438 || weight: 0.44
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 1.74
-        Level 1, heter: 0.29 || heter drop: 1.45 (83.24%)
+Level 0, heter: 3.44
+        Level 1, heter: 0.56 || heter drop : 2.88 (units), 83.72% (pcg)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_14_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_14_1.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_14_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_14_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_14_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_14_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 1.82 || nof_instances:  1000 || weight: 1.00
+Node id: 0, name: x2, heter: 3.43 || nof_instances:  1000 || weight: 1.00
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 1.82
+Level 0, heter: 3.43
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 1.74 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.88 || nof_instances:   494 || weight: 0.49
-        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.87 || nof_instances:   506 || weight: 0.51
+Node id: 0, name: x3, heter: 3.10 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x3 | x1 &lt;= -0.09, heter: 0.62 || nof_instances:   455 || weight: 0.46
+        Node id: 2, name: x3 | x1  &gt; -0.09, heter: 0.95 || nof_instances:   545 || weight: 0.55
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 1.74
-        Level 1, heter: 0.87 || heter drop: 0.87 (49.73%)
+Level 0, heter: 3.10
+        Level 1, heter: 0.80 || heter drop : 2.30 (units), 74.21% (pcg)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_17_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_17_1.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_17_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_17_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_17_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_17_1.png" /></a></p>
 <h4 id="conclusion">Conclusion</h4>
 <p>For the Global PDP:</p>
 <ul>
@@ -2037,58 +2044,58 @@ Due to this face, we expect the explanations to be identical with the uncorrelat
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_1.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_2.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_1.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_2.png" /></a></p>
 <h4 id="regional-pdp_1">Regional-PDP</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 55.47it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 32.24it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 1.74 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.30 || nof_instances:   522 || weight: 0.52
-        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.28 || nof_instances:   478 || weight: 0.48
+Node id: 0, name: x1, heter: 3.44 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= -0.09, heter: 0.07 || nof_instances:   475 || weight: 0.47
+        Node id: 2, name: x1 | x3  &gt; -0.09, heter: 0.95 || nof_instances:   525 || weight: 0.53
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 1.74
-        Level 1, heter: 0.29 || heter drop: 1.45 (83.34%)
+Level 0, heter: 3.44
+        Level 1, heter: 0.53 || heter drop : 2.91 (units), 84.61% (pcg)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_25_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_25_1.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_25_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_25_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_25_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_25_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 1.01 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x2 | x1 &lt;= 0.54, heter: 0.61 || nof_instances:   778 || weight: 0.78
-        Node id: 2, name: x2 | x1  &gt; 0.54, heter: 0.54 || nof_instances:   222 || weight: 0.22
+Node id: 0, name: x2, heter: 0.94 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x2 | x1 &lt;= 0.45, heter: 0.31 || nof_instances:   748 || weight: 0.75
+        Node id: 2, name: x2 | x1  &gt; 0.45, heter: 0.41 || nof_instances:   252 || weight: 0.25
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 1.01
-        Level 1, heter: 0.60 || heter drop: 0.41 (41.05%)
+Level 0, heter: 0.94
+        Level 1, heter: 0.33 || heter drop : 0.61 (units), 64.71% (pcg)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 1.75 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x3 | x1 &lt;= -0.0, heter: 0.89 || nof_instances:   522 || weight: 0.52
-        Node id: 2, name: x3 | x1  &gt; -0.0, heter: 0.85 || nof_instances:   478 || weight: 0.48
+Node id: 0, name: x3, heter: 2.90 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x3 | x1 &lt;= -0.09, heter: 0.61 || nof_instances:   475 || weight: 0.47
+        Node id: 2, name: x3 | x1  &gt; -0.09, heter: 0.80 || nof_instances:   525 || weight: 0.53
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 1.75
-        Level 1, heter: 0.87 || heter drop: 0.88 (50.43%)
+Level 0, heter: 2.90
+        Level 1, heter: 0.71 || heter drop : 2.19 (units), 75.48% (pcg)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_28_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_28_1.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_28_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_28_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_28_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_28_1.png" /></a></p>
 <h4 id="conclusion_1">Conclusion</h4>
 <p>As expected, the global and the regional PDP explanations are identical with the uncorrelated case.</p>
 <h2 id="rhale">(RH)ALE</h2>
@@ -2111,9 +2118,9 @@ Level 0, heter: 1.75
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_1.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_2.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_1.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_32_2.png" /></a></p>
 <h4 id="regional-rhale">Regional RHALE</h4>
 <p>The disadvantage of RHALE plot is that it does not reveal the type of heterogeneity. Therefore, Regional (RH)ALE plots are very helpful to identify the type of heterogeneity. Let's see that in practice:</p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span>
@@ -2131,24 +2138,29 @@ Level 0, heter: 1.75
     <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 25.05it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 10.67it/s]
+
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 5.97 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.00 || nof_instances:   482 || weight: 0.48
-        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.00 || nof_instances:   518 || weight: 0.52
+Node id: 0, name: x1, heter: 8.91 || nof_instances:  1000 || weight: 1.00
+        Node id: 1, name: x1 | x3 &lt;= 0.09, heter: 2.29 || nof_instances:   562 || weight: 0.56
+        Node id: 2, name: x1 | x3  &gt; 0.09, heter: 0.00 || nof_instances:   438 || weight: 0.44
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 5.97
-        Level 1, heter: 0.00 || heter drop: 5.97 (100.00%)
+Level 0, heter: 8.91
+        Level 1, heter: 1.29 || heter drop : 7.62 (units), 85.52% (pcg)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_36_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_36_1.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_36_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_36_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_36_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_36_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
@@ -2183,9 +2195,9 @@ Level 0, heter: 0.00
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="n">dy_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_1.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_2.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_1.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_2.png" /></a></p>
 <h4 id="regional-rhale_1">Regional RHALE</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> 
@@ -2202,7 +2214,12 @@ Level 0, heter: 0.00
     <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 34.98it/s]
+<pre><code> 67%|██████▋   | 2/3 [00:00&lt;00:00, 13.53it/s]
+
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+
+
+100%|██████████| 3/3 [00:00&lt;00:00, 13.21it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
@@ -2239,9 +2256,16 @@ Level 0, heter: 0.00
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_1.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_2.png" /></p>
+<pre><code>/home/givasile/miniconda3/envs/effector-dev/lib/python3.10/site-packages/numpy/_core/fromnumeric.py:4008: RuntimeWarning: Degrees of freedom &lt;= 0 for slice
+  return _methods._var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
+/home/givasile/miniconda3/envs/effector-dev/lib/python3.10/site-packages/numpy/_core/_methods.py:175: RuntimeWarning: invalid value encountered in divide
+  arrmean = um.true_divide(arrmean, div, out=arrmean,
+/home/givasile/miniconda3/envs/effector-dev/lib/python3.10/site-packages/numpy/_core/_methods.py:210: RuntimeWarning: invalid value encountered in scalar divide
+  ret = ret.dtype.type(ret / rcount)
+</code></pre>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_1.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_2.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_3.png" /></a></p>
 <h4 id="regional-shap-dp">Regional SHAP-DP</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> 
@@ -2255,24 +2279,115 @@ Level 0, heter: 0.00
     <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">11</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:03&lt;00:00,  1.06s/it]
+<pre><code>  0%|          | 0/3 [00:00&lt;?, ?it/s]
+
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+
+
+ 33%|███▎      | 1/3 [00:00&lt;00:00,  3.13it/s]
+
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+
+
+ 67%|██████▋   | 2/3 [00:00&lt;00:00,  3.54it/s]
+
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+
+
+100%|██████████| 3/3 [00:00&lt;00:00,  3.59it/s]
+
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
+Error: Input array contains only NaN values. This is probably because in all bins there is at most one point, which is not enough to compute the bin variance. Please consider decreasing the number of bins or changing the bin splitting strategy.
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 0.77 || nof_instances:   100 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= -0.0, heter: 0.00 || nof_instances:    49 || weight: 0.49
-        Node id: 2, name: x1 | x3  &gt; -0.0, heter: 0.00 || nof_instances:    51 || weight: 0.51
+Node id: 0, name: x1, heter: 0.65 || nof_instances:   100 || weight: 1.00
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 0.77
-        Level 1, heter: 0.00 || heter drop: 0.77 (100.00%)
+Level 0, heter: 0.65
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_55_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_55_1.png" /></p>
+<pre><code>---------------------------------------------------------------------------
+
+AttributeError                            Traceback (most recent call last)
+
+Cell In[35], line 1
+----&gt; 1 regional_shap.plot(feature=0, node_idx=1, heterogeneity="std", centering=True, y_limits=[-5, 5])
+      2 regional_shap.plot(feature=0, node_idx=2, heterogeneity="std", centering=True, y_limits=[-5, 5])
+
+
+File ~/github/packages/effector/effector/regional_effect_shap.py:201, in RegionalShapDP.plot(self, feature, node_idx, heterogeneity, centering, nof_points, scale_x_list, scale_y, nof_shap_values, show_avg_output, y_limits, only_shap_values)
+    199 kwargs = locals()
+    200 kwargs.pop("self")
+--&gt; 201 return self._plot(kwargs)
+
+
+File ~/github/packages/effector/effector/regional_effect.py:251, in RegionalEffectBase._plot(self, kwargs)
+    248 self.refit(kwargs["feature"])
+    250 # select only the three out of all kwargs
+--&gt; 251 fe_method = self._create_fe_object(kwargs["feature"], kwargs["node_idx"], kwargs["scale_x_list"])
+    253 kwargs_fitting = copy.deepcopy(self.kwargs_fitting)
+    254 kwargs_fitting['centering'] = kwargs["centering"]
+
+
+File ~/github/packages/effector/effector/regional_effect.py:152, in RegionalEffectBase._create_fe_object(self, feature, node_idx, scale_x_list)
+    150 assert feature_tree is not None, "Feature {} has no splits".format(feature)
+    151 node = feature_tree.get_node_by_idx(node_idx)
+--&gt; 152 name = feature_tree.scale_node_name(node.name, scale_x_list)
+    153 data = node.info["data"]
+    154 data_effect = node.info["data_effect"]
+
+
+AttributeError: 'NoneType' object has no attribute 'name'
+</code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
@@ -2305,9 +2420,9 @@ Level 0, heter: 0.73
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_0.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_1.png" /></p>
-<p><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_2.png" /></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_0.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_1.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_2.png" /></a></p>
 <h4 id="regional-shap">Regional SHAP</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> 
@@ -2365,6 +2480,8 @@ Level 0, heter: 0.09
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -2449,10 +2566,10 @@ Level 0, heter: 0.09
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -2461,5 +2578,7 @@ Level 0, heter: 0.09
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

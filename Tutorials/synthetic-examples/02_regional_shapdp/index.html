@@ -16,7 +16,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -55,7 +55,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1520,9 +1529,9 @@
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_9_0.png" /></p>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_9_1.png" /></p>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_9_2.png" /></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_9_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_9_0.png" /></a></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_9_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_9_1.png" /></a></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_9_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_9_2.png" /></a></p>
 <h4 id="regional-shap-dp">Regional SHAP-DP</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">X_uncor</span><span class="p">,</span> 
@@ -1552,8 +1561,8 @@ Level 0, heter: 0.79
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_13_0.png" /></p>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_13_1.png" /></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_13_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_13_0.png" /></a></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_13_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_13_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
@@ -1586,9 +1595,9 @@ Level 0, heter: 0.68
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_18_0.png" /></p>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_18_1.png" /></p>
-<p><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_18_2.png" /></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_18_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_18_0.png" /></a></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_18_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_18_1.png" /></a></p>
+<p><a class="glightbox" href="../02_regional_shapdp_files/02_regional_shapdp_18_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_regional_shapdp_files/02_regional_shapdp_18_2.png" /></a></p>
 <h4 id="regional-shap">Regional SHAP</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">X_cor</span><span class="p">,</span> 
@@ -1646,6 +1655,8 @@ Level 0, heter: 0.09
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1730,10 +1741,10 @@ Level 0, heter: 0.09
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -1742,5 +1753,7 @@ Level 0, heter: 0.09
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

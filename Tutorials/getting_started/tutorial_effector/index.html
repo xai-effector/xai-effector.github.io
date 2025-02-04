@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.1">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.2">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.a40c8224.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -51,7 +51,16 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -1158,8 +1167,8 @@
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_3_0.png" /></p>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_3_1.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_3_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_3_0.png" /></a></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_3_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_3_1.png" /></a></p>
 <p>All methods have two key parameters: <code>centering</code> and <code>heterogeneity</code>.</p>
 <h3 id="centering"><code>centering</code></h3>
 <p>Note above, that PDP and ALE plots are at a different y-axis level.
@@ -1171,13 +1180,13 @@ This happens because each feature effect method has its own centering.</p>
 <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_6_0.png" /></p>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_6_1.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_6_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_6_0.png" /></a></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_6_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_6_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">&quot;zero_start&quot;</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">&quot;zero_start&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_7_0.png" /></p>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_7_1.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_7_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_7_0.png" /></a></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_7_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_7_1.png" /></a></p>
 <h3 id="heterogeneity"><code>heterogeneity</code></h3>
 <p>The global effect is simply the average effect of a particular feature on the output.
 The heterogeneity shows the amount of deviation from this average effect.
@@ -1188,11 +1197,11 @@ In such cases, the <code>heterogeneity</code> parameter may be set to method-dep
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_9_0.png" /></p>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_9_1.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_9_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_9_0.png" /></a></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_9_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_9_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_10_0.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_10_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_10_0.png" /></a></p>
 <h2 id="regional-effect">Regional Effect</h2>
 <p>To get the regional effects for a particular feature, simply choose a method and run the <code>summary</code> method.</p>
 <p>The available methods are the regional counterparts of global methods: <code>RegionalPDP</code>, <code>RegionalALE</code>, <code>RegionalShapDP</code>, <code>RegionalDerPDP</code>, <code>RegionalShapDP</code>.</p>
@@ -1221,19 +1230,19 @@ Level 0, heter: 0.03
 </code></pre></div>
 <pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 77.11it/s]
 </code></pre>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_14_1.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_14_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_14_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 127.05it/s]
 </code></pre>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_15_1.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_15_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_15_1.png" /></a></p>
 <p>Inside each subregion, all instances match the average heterogeneity, making the heterogeneity zero.  </p>
 <p>To compare with the global effect, use <code>node_idx=0</code>, as this represents the parent node before any partitioning.</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 110.89it/s]
 </code></pre>
-<p><img alt="png" src="../tutorial_effector_files/tutorial_effector_17_1.png" /></p>
+<p><a class="glightbox" href="../tutorial_effector_files/tutorial_effector_17_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../tutorial_effector_files/tutorial_effector_17_1.png" /></a></p>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 
@@ -1253,6 +1262,8 @@ Level 0, heter: 0.03
             </div>
           
           
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
@@ -1299,10 +1310,10 @@ Level 0, heter: 0.03
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.5090c770.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.f13b1293.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
@@ -1311,5 +1322,7 @@ Level 0, heter: 0.03
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
     
-  </body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
