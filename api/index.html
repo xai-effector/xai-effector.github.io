@@ -2773,7 +2773,8 @@ $$</p>
 
                   <details class="quote">
                     <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">243</span>
+<span class="normal">244</span>
 <span class="normal">245</span>
 <span class="normal">246</span>
 <span class="normal">247</span>
@@ -2844,8 +2845,7 @@ $$</p>
 <span class="normal">312</span>
 <span class="normal">313</span>
 <span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">315</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -2937,7 +2937,7 @@ $$</p>
 
 
 <h4 id="effector.global_effect_ale.ALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s1">&#39;zero_integral&#39;</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3015,7 +3015,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>&#39;zero_integral&#39;</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -3031,7 +3031,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>100</code>
+                  <code>30</code>
             </td>
           </tr>
       </tbody>
@@ -3039,7 +3039,13 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">360</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
 <span class="normal">361</span>
 <span class="normal">362</span>
 <span class="normal">363</span>
@@ -3066,18 +3072,12 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">384</span>
 <span class="normal">385</span>
 <span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span>
-<span class="normal">393</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">387</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">bm</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;zero_integral&quot;</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit the ALE plot.</span>
 
@@ -3116,7 +3116,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
 
 <h4 id="effector.global_effect_ale.ALE.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3193,7 +3193,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -3214,7 +3214,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -3224,7 +3224,8 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
+<span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
@@ -3274,13 +3275,12 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Evalueate the (RH)ALE feature effect of feature `feature` at points `xs`.</span>
@@ -3337,7 +3337,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
 
 <h4 id="effector.global_effect_ale.ALE.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3396,7 +3396,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -3417,7 +3417,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -3521,7 +3521,8 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+<span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
@@ -3598,12 +3599,11 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">scale_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">show_avg_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -3951,7 +3951,13 @@ $$</p>
 
                   <details class="quote">
                     <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">397</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
 <span class="normal">398</span>
 <span class="normal">399</span>
 <span class="normal">400</span>
@@ -4026,13 +4032,7 @@ $$</p>
 <span class="normal">469</span>
 <span class="normal">470</span>
 <span class="normal">471</span>
-<span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span>
-<span class="normal">475</span>
-<span class="normal">476</span>
-<span class="normal">477</span>
-<span class="normal">478</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">472</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -4133,7 +4133,7 @@ $$</p>
 
 
 <h4 id="effector.global_effect_ale.RHALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">100</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
 
 </h4>
 
@@ -4215,7 +4215,7 @@ $$</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -4231,7 +4231,7 @@ $$</p>
               </div>
             </td>
             <td>
-                  <code>100</code>
+                  <code>30</code>
             </td>
           </tr>
       </tbody>
@@ -4239,7 +4239,13 @@ $$</p>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">519</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
 <span class="normal">520</span>
 <span class="normal">521</span>
 <span class="normal">522</span>
@@ -4273,20 +4279,14 @@ $$</p>
 <span class="normal">550</span>
 <span class="normal">551</span>
 <span class="normal">552</span>
-<span class="normal">553</span>
-<span class="normal">554</span>
-<span class="normal">555</span>
-<span class="normal">556</span>
-<span class="normal">557</span>
-<span class="normal">558</span>
-<span class="normal">559</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">553</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
         <span class="nb">str</span><span class="p">,</span> <span class="n">bm</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="n">bm</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">bm</span><span class="o">.</span><span class="n">Fixed</span>
     <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit the model.</span>
 
@@ -4330,7 +4330,7 @@ $$</p>
 
 
 <h4 id="effector.global_effect_ale.RHALE.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span></code>
 
 </h4>
 
@@ -4407,7 +4407,7 @@ $$</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -4428,7 +4428,7 @@ $$</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -4438,7 +4438,8 @@ $$</p>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
+<span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
@@ -4488,13 +4489,12 @@ $$</p>
 <span class="normal">156</span>
 <span class="normal">157</span>
 <span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">159</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="o">**</span><span class="n">kwargs</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Evalueate the (RH)ALE feature effect of feature `feature` at points `xs`.</span>
@@ -4551,7 +4551,7 @@ $$</p>
 
 
 <h4 id="effector.global_effect_ale.RHALE.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -4610,7 +4610,7 @@ $$</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -4631,7 +4631,7 @@ $$</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -4735,7 +4735,8 @@ $$</p>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">162</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">161</span>
+<span class="normal">162</span>
 <span class="normal">163</span>
 <span class="normal">164</span>
 <span class="normal">165</span>
@@ -4812,12 +4813,11 @@ $$</p>
 <span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">239</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">scale_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">show_avg_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
@@ -5331,7 +5331,7 @@ where <span class="arithmatex">\(x_s^j\)</span> are an equally spaced grid of po
 
 
 <h4 id="effector.global_effect_pdp.PDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -5394,7 +5394,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
               </div>
             </td>
             <td>
-                  <code>True</code>
+                  <code>False</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -5410,7 +5410,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
               </div>
             </td>
             <td>
-                  <code>100</code>
+                  <code>30</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -5477,8 +5477,8 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 <span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">use_vectorized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -5829,7 +5829,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 
 
 <h4 id="effector.global_effect_pdp.PDP.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s1">&#39;ice&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -5884,7 +5884,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>&#39;ice&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -6103,7 +6103,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 <span class="normal">384</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ice&quot;</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">scale_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -6434,7 +6434,10 @@ where <span class="arithmatex">\(x_s^j\)</span> are an equally spaced grid of po
 
                   <details class="quote">
                     <summary>Source code in <code>effector/global_effect_pdp.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">391</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
 <span class="normal">392</span>
 <span class="normal">393</span>
 <span class="normal">394</span>
@@ -6524,10 +6527,7 @@ where <span class="arithmatex">\(x_s^j\)</span> are an equally spaced grid of po
 <span class="normal">478</span>
 <span class="normal">479</span>
 <span class="normal">480</span>
-<span class="normal">481</span>
-<span class="normal">482</span>
-<span class="normal">483</span>
-<span class="normal">484</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">481</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -6640,7 +6640,7 @@ where <span class="arithmatex">\(x_s^j\)</span> are an equally spaced grid of po
 
 
 <h4 id="effector.global_effect_pdp.DerPDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -6703,7 +6703,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
               </div>
             </td>
             <td>
-                  <code>True</code>
+                  <code>False</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -6719,7 +6719,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
               </div>
             </td>
             <td>
-                  <code>100</code>
+                  <code>30</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -6786,8 +6786,8 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 <span class="normal">108</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">use_vectorized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -7138,7 +7138,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 
 
 <h4 id="effector.global_effect_pdp.DerPDP.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s1">&#39;ice&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -7193,7 +7193,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>&#39;ice&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -7286,7 +7286,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
               </div>
             </td>
             <td>
-                  <code>&#39;all&#39;</code>
+                  <code>100</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -7346,7 +7346,10 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">486</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
 <span class="normal">487</span>
 <span class="normal">488</span>
 <span class="normal">489</span>
@@ -7406,18 +7409,15 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 <span class="normal">543</span>
 <span class="normal">544</span>
 <span class="normal">545</span>
-<span class="normal">546</span>
-<span class="normal">547</span>
-<span class="normal">548</span>
-<span class="normal">549</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">546</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ice&quot;</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">scale_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">nof_ice</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
+    <span class="n">nof_ice</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
     <span class="n">show_avg_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">dy_limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">use_vectorized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -7492,7 +7492,7 @@ This will be automatically done when calling <code>eval</code> or <code>plot</co
 
 
 <h3 id="effector.global_effect_shap.ShapDP" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">global_effect_shap</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shap_values</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">global_effect_shap</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shap_values</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h3>
 
@@ -7622,7 +7622,7 @@ $$</p>
               </div>
             </td>
             <td>
-                  <code>100</code>
+                  <code>1000</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -7852,7 +7852,7 @@ $$</p>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">axis_limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">nof_instances</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">nof_instances</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1_000</span><span class="p">,</span>
     <span class="n">feature_names</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">target_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">shap_values</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -7959,7 +7959,7 @@ $$</p>
 
 
 <h4 id="effector.global_effect_shap.ShapDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">)</span></code>
 
 </h4>
 
@@ -8022,7 +8022,7 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -8041,7 +8041,7 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
               </div>
             </td>
             <td>
-                  <code>100</code>
+                  <code>30</code>
             </td>
           </tr>
       </tbody>
@@ -8064,7 +8064,24 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 </details>
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">193</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
 <span class="normal">194</span>
 <span class="normal">195</span>
 <span class="normal">196</span>
@@ -8100,28 +8117,11 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 <span class="normal">226</span>
 <span class="normal">227</span>
 <span class="normal">228</span>
-<span class="normal">229</span>
-<span class="normal">230</span>
-<span class="normal">231</span>
-<span class="normal">232</span>
-<span class="normal">233</span>
-<span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span>
-<span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">229</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">points_for_centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">bm</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">bm</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fit the SHAP Dependence Plot to the data.</span>
@@ -8181,7 +8181,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 
 
 <h4 id="effector.global_effect_shap.ShapDP.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -8254,7 +8254,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -8275,7 +8275,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -8306,7 +8306,24 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">248</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
 <span class="normal">251</span>
@@ -8335,29 +8352,12 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 <span class="normal">274</span>
 <span class="normal">275</span>
 <span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span>
-<span class="normal">289</span>
-<span class="normal">290</span>
-<span class="normal">291</span>
-<span class="normal">292</span>
-<span class="normal">293</span>
-<span class="normal">294</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">277</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">typing</span><span class="o">.</span><span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Evaluate the effect of the s-th feature at positions `xs`.</span>
 
@@ -8409,7 +8409,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 
 
 <h4 id="effector.global_effect_shap.ShapDP.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_shap_values</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">only_shap_values</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s1">&#39;shap_values&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_shap_values</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">only_shap_values</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 </h4>
 
@@ -8464,7 +8464,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>&#39;shap_values&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -8485,7 +8485,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -8605,7 +8605,24 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 
             <details class="quote">
               <summary>Source code in <code>effector/global_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">296</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
 <span class="normal">297</span>
 <span class="normal">298</span>
 <span class="normal">299</span>
@@ -8677,28 +8694,11 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 <span class="normal">365</span>
 <span class="normal">366</span>
 <span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
-<span class="normal">379</span>
-<span class="normal">380</span>
-<span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span>
-<span class="normal">385</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">368</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;shap_values&quot;</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">scale_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -9015,7 +9015,9 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 
                   <details class="quote">
                     <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">234</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
@@ -9051,9 +9053,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 <span class="normal">267</span>
 <span class="normal">268</span>
 <span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">270</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -9111,7 +9111,7 @@ and <code>points_for_centering=100</code>) are a moderate choice.</p>
 
 
 <h4 id="effector.regional_effect_ale.RegionalALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
 
 </h4>
 
@@ -9328,7 +9328,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>50</code>
+                  <code>30</code>
             </td>
           </tr>
       </tbody>
@@ -9336,7 +9336,9 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">290</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
 <span class="normal">291</span>
 <span class="normal">292</span>
 <span class="normal">293</span>
@@ -9437,9 +9439,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">388</span>
 <span class="normal">389</span>
 <span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span>
-<span class="normal">393</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">391</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
     <span class="n">heter_pcg_drop_thres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
@@ -9452,7 +9452,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
         <span class="nb">str</span><span class="p">,</span> <span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span>
     <span class="p">]</span> <span class="o">=</span> <span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
-    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span>
+    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find subregions by minimizing the ALE-based heterogeneity.</span>
@@ -9520,7 +9520,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
         <span class="bp">self</span><span class="o">.</span><span class="n">global_bin_limits</span><span class="p">[</span><span class="s2">&quot;feature_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">feat</span><span class="p">)]</span> <span class="o">=</span> <span class="n">global_ale</span><span class="o">.</span><span class="n">bin_limits</span><span class="p">[</span><span class="s2">&quot;feature_&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">feat</span><span class="p">)]</span>
 
         <span class="c1"># create heterogeneity function</span>
-        <span class="n">heter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_heterogeneity_function</span><span class="p">(</span><span class="n">feat</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="p">)</span>
+        <span class="n">heter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_heterogeneity_function</span><span class="p">(</span><span class="n">feat</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="p">)</span>
 
         <span class="c1"># fit feature</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">_fit_feature</span><span class="p">(</span>
@@ -9553,7 +9553,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
 
 <h4 id="effector.regional_effect_ale.RegionalALE.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -9655,7 +9655,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -9717,7 +9717,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
-<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate the regional effect for a given feature and node.</span>
 
@@ -9760,7 +9760,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
 
 <h4 id="effector.regional_effect_ale.RegionalALE.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -9769,7 +9769,9 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">395</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
 <span class="normal">396</span>
 <span class="normal">397</span>
 <span class="normal">398</span>
@@ -9780,14 +9782,12 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">403</span>
 <span class="normal">404</span>
 <span class="normal">405</span>
-<span class="normal">406</span>
-<span class="normal">407</span>
-<span class="normal">408</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">406</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -10274,7 +10274,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
 
 <h4 id="effector.regional_effect_ale.RegionalRHALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">50</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
 
 </h4>
 
@@ -10492,7 +10492,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>50</code>
+                  <code>30</code>
             </td>
           </tr>
       </tbody>
@@ -10500,7 +10500,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">109</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">108</span>
+<span class="normal">109</span>
 <span class="normal">110</span>
 <span class="normal">111</span>
 <span class="normal">112</span>
@@ -10619,7 +10620,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
         <span class="n">binning_methods</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span>
         <span class="n">binning_methods</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span>
     <span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
-    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Find subregions by minimizing the RHALE-based heterogeneity.</span>
@@ -10683,8 +10684,9 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="k">assert</span> <span class="n">min_points_per_subregion</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;min_points_per_subregion must be &gt;= 2&quot;</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
+        <span class="c1"># find global axis limits</span>
         <span class="n">heter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_heterogeneity_function</span><span class="p">(</span>
-            <span class="n">feat</span><span class="p">,</span> <span class="n">binning_method</span><span class="p">,</span> <span class="n">min_points_per_subregion</span>
+            <span class="n">feat</span><span class="p">,</span> <span class="n">binning_method</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span>
         <span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">_fit_feature</span><span class="p">(</span>
@@ -10717,7 +10719,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_ale.RegionalRHALE.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -10819,7 +10821,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -10881,7 +10883,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
-<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate the regional effect for a given feature and node.</span>
 
@@ -10924,7 +10926,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_ale.RegionalRHALE.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -10951,8 +10953,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-    <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
     <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -11308,8 +11310,7 @@ be considered <code>categorical</code>, while the rest <code>numerical</code></l
 
                   <details class="quote">
                     <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">181</span>
-<span class="normal">182</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">182</span>
 <span class="normal">183</span>
 <span class="normal">184</span>
 <span class="normal">185</span>
@@ -11388,7 +11389,8 @@ be considered <code>categorical</code>, while the rest <code>numerical</code></l
 <span class="normal">258</span>
 <span class="normal">259</span>
 <span class="normal">260</span>
-<span class="normal">261</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">261</span>
+<span class="normal">262</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -11488,7 +11490,7 @@ be considered <code>categorical</code>, while the rest <code>numerical</code></l
 
 
 <h4 id="effector.regional_effect_pdp.RegionalPDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -11703,7 +11705,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>50</code>
+                  <code>30</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -11719,7 +11721,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>50</code>
+                  <code>30</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -11866,7 +11868,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
-<span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">176</span>
+<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">heter_pcg_drop_thres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
@@ -11877,8 +11880,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">split_categorical_features</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
-    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">use_vectorized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -11987,6 +11990,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
     <span class="c1"># region splitting arguments are the first 8 arguments</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_subregion_detection</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">all_arguments</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_arguments</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">8</span><span class="p">]}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_subregion_detection</span><span class="p">[</span><span class="s2">&quot;points_for_mean_heterogeneity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">points_for_mean_heterogeneity</span>
 
     <span class="c1"># centering, points_for_centering, use_vectorized</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_fitting</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">all_arguments</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;centering&quot;</span><span class="p">,</span> <span class="s2">&quot;points_for_centering&quot;</span><span class="p">,</span> <span class="s2">&quot;use_vectorized&quot;</span><span class="p">]}</span>
@@ -12000,7 +12004,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_pdp.RegionalPDP.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -12102,7 +12106,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -12164,7 +12168,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
-<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate the regional effect for a given feature and node.</span>
 
@@ -12207,7 +12211,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_pdp.RegionalPDP.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s1">&#39;ice&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -12216,8 +12220,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">263</span>
-<span class="normal">264</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
 <span class="normal">267</span>
@@ -12232,13 +12235,14 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">276</span>
 <span class="normal">277</span>
 <span class="normal">278</span>
-<span class="normal">279</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">279</span>
+<span class="normal">280</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
-    <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="s2">&quot;ice&quot;</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">scale_x_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">nof_ice</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -12402,8 +12406,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
                   <details class="quote">
                     <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">283</span>
-<span class="normal">284</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">284</span>
 <span class="normal">285</span>
 <span class="normal">286</span>
 <span class="normal">287</span>
@@ -12425,7 +12428,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">303</span>
 <span class="normal">304</span>
 <span class="normal">305</span>
-<span class="normal">306</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">306</span>
+<span class="normal">307</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -12468,7 +12472,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_pdp.RegionalDerPDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -12683,7 +12687,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>50</code>
+                  <code>30</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -12699,7 +12703,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>50</code>
+                  <code>30</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -12846,7 +12850,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
-<span class="normal">176</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">176</span>
+<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">heter_pcg_drop_thres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
@@ -12857,8 +12862,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">split_categorical_features</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
-    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span>
+    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
+    <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">use_vectorized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -12967,6 +12972,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
     <span class="c1"># region splitting arguments are the first 8 arguments</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_subregion_detection</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">all_arguments</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_arguments</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">8</span><span class="p">]}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_subregion_detection</span><span class="p">[</span><span class="s2">&quot;points_for_mean_heterogeneity&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">points_for_mean_heterogeneity</span>
 
     <span class="c1"># centering, points_for_centering, use_vectorized</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_fitting</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="n">all_arguments</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;centering&quot;</span><span class="p">,</span> <span class="s2">&quot;points_for_centering&quot;</span><span class="p">,</span> <span class="s2">&quot;use_vectorized&quot;</span><span class="p">]}</span>
@@ -12980,7 +12986,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_pdp.RegionalDerPDP.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -13082,7 +13088,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -13144,7 +13150,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
-<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate the regional effect for a given feature and node.</span>
 
@@ -13187,7 +13193,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_pdp.RegionalDerPDP.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s1">&#39;ice&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -13196,8 +13202,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">308</span>
-<span class="normal">309</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">309</span>
 <span class="normal">310</span>
 <span class="normal">311</span>
 <span class="normal">312</span>
@@ -13212,13 +13217,14 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">321</span>
 <span class="normal">322</span>
 <span class="normal">323</span>
-<span class="normal">324</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">324</span>
+<span class="normal">325</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
-    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">heterogeneity</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="s2">&quot;ice&quot;</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">scale_x_list</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">scale_y</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">nof_ice</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
@@ -13316,7 +13322,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h3 id="effector.regional_effect_shap.RegionalShapDP" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">regional_effect_shap</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">feature_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">regional_effect_shap</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">feature_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h3>
 
@@ -13416,7 +13422,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>100</code>
+                  <code>1000</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -13624,7 +13630,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
     <span class="n">axis_limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
-    <span class="n">nof_instances</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">nof_instances</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1_000</span><span class="p">,</span>
     <span class="n">feature_types</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">cat_limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
     <span class="n">feature_names</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -13703,7 +13709,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
 
 <h4 id="effector.regional_effect_shap.RegionalShapDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">heter_small_enough</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_subregion</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">split_categorical_features</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">)</span></code>
 
 </h4>
 
@@ -13754,7 +13760,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
               </div>
             </td>
             <td>
-                  <code>0.2</code>
+                  <code>0.1</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -13858,9 +13864,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">112</span>
 <span class="normal">113</span>
 <span class="normal">114</span>
 <span class="normal">115</span>
@@ -13916,10 +13920,12 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 <span class="normal">165</span>
 <span class="normal">166</span>
 <span class="normal">167</span>
-<span class="normal">168</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
-    <span class="n">heter_pcg_drop_thres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">heter_pcg_drop_thres</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
     <span class="n">heter_small_enough</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span>
     <span class="n">max_depth</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">nof_candidate_splits_for_numerical</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
@@ -13985,7 +13991,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
 
 <h4 id="effector.regional_effect_shap.RegionalShapDP.eval" class="doc doc-heading">
-            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -14087,7 +14093,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
       </tbody>
@@ -14149,7 +14155,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 <span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
-<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">237</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Evaluate the regional effect for a given feature and node.</span>
 
@@ -14192,7 +14198,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
 
 <h4 id="effector.regional_effect_shap.RegionalShapDP.plot" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_shap_values</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">only_shap_values</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s1">&#39;shap_values&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_shap_values</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">only_shap_values</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span></code>
 
 </h4>
 
@@ -14255,7 +14261,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>&#39;shap_values&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -14270,7 +14276,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
               </div>
             </td>
             <td>
-                  <code>False</code>
+                  <code>True</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -14383,9 +14389,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
@@ -14414,11 +14418,13 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 <span class="normal">198</span>
 <span class="normal">199</span>
 <span class="normal">200</span>
-<span class="normal">201</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
          <span class="n">feature</span><span class="p">,</span>
          <span class="n">node_idx</span><span class="p">,</span>
-         <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-         <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+         <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span>
+         <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
          <span class="n">nof_points</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
          <span class="n">scale_x_list</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
          <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -14534,7 +14540,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
 
 <h3 id="effector.binning_methods.Fixed" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code>
 
 </h3>
 
@@ -14556,7 +14562,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
                     <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">35</span>
 <span class="normal">36</span>
 <span class="normal">37</span>
-<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">):</span>
+<span class="normal">38</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">nof_bins</span> <span class="o">=</span> <span class="n">nof_bins</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">min_points_per_bin</span> <span class="o">=</span> <span class="n">min_points_per_bin</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">cat_limit</span> <span class="o">=</span> <span class="n">cat_limit</span>
@@ -14588,7 +14594,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
 
 <h3 id="effector.binning_methods.Greedy" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">init_nof_bins</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">init_nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mf">0.0</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code>
 
 </h3>
 
@@ -14619,10 +14625,10 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 <span class="normal">30</span>
 <span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
-    <span class="n">init_nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="n">init_nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
+    <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span>
     <span class="n">discount</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
-    <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">max_nof_bins</span> <span class="o">=</span> <span class="n">init_nof_bins</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">min_points_per_bin</span> <span class="o">=</span> <span class="n">min_points_per_bin</span>
@@ -14656,7 +14662,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
 
 
 <h3 id="effector.binning_methods.DynamicProgramming" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">(</span><span class="n">max_nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">15</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">binning_methods</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">(</span><span class="n">max_nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code>
 
 </h3>
 
@@ -14690,7 +14696,7 @@ from whether it exceeds the <code>cat_limit</code> unique values.</li>
     <span class="n">max_nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
     <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
     <span class="n">discount</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
-    <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+    <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">max_nof_bins</span> <span class="o">=</span> <span class="n">max_nof_bins</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">min_points_per_bin</span> <span class="o">=</span> <span class="n">min_points_per_bin</span>
