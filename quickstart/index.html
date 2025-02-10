@@ -385,51 +385,12 @@
 
 <p><strong>Available quickstart tutorials:</strong></p>
 <ul>
-<li><a href="./simple_api/">Simple API</a>: use <code>effector</code> with the default fitting arguments.</li>
-<li><a href="./flexible_api/">Fleible API</a>: use <code>effector</code> with customized fitting arguments.</li>
-<li><a href="./global_effect_intro/">Global Effects</a>: <code>effector</code> global effect usage on a real example</li>
-<li><a href="./regional_effect_intro/">Regional Effects</a>: <code>effector</code> regional effect usage on a real example</li>
+<li><a href="./global_and_regional_effects/">What are Global and Regional Effects</a></li>
+<li><a href="./../notebooks/quickstart/general_api/">An overview of <code>effector</code> API</a> </li>
+<li><a href="./simple_api/">Use <code>effector</code> with default <code>.fit()</code> arguments</a></li>
+<li><a href="./flexible_api/">Use <code>effector</code> with custom <code>.fit()</code> arguments</a></li>
 </ul>
 <hr />
-<p><a href="./simple_api/">Simple API</a> means omit the <code>.fit()</code> step, which means <strong>use the default fitting arguments</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># define the global effect method</span>
-<span class="n">global_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.&lt;</span><span class="n">global_method</span><span class="o">&gt;</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-
-<span class="c1"># use its functionalities</span>
-<span class="n">global_method</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<span class="n">global_method</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># define the regional effect method</span>
-<span class="n">regional_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.&lt;</span><span class="n">regional_method</span><span class="o">&gt;</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-
-<span class="c1"># use its functionalities</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</code></pre></div>
-<hr />
-<p><a href="./flexible_api/">Flexible API</a> means use the <code>.fit()</code> step, which means <strong>customize the fitting arguments</strong>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># define the global effect method</span>
-<span class="n">global_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.&lt;</span><span class="n">global_method</span><span class="o">&gt;</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-
-<span class="c1"># fit the method</span>
-<span class="n">global_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
-
-<span class="c1"># use its functionalities</span>
-<span class="n">global_method</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<span class="n">global_method</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># define the regional effect method</span>
-<span class="n">regional_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.&lt;</span><span class="n">regional_method</span><span class="o">&gt;</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-
-<span class="c1"># fit the method</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">fit</span><span class="p">([</span><span class="n">features</span><span class="o">=...</span><span class="p">],</span> <span class="o">...</span><span class="p">)</span>
-
-<span class="c1"># use its functionalities</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=...</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">j</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xs</span><span class="p">,</span> <span class="o">...</span><span class="p">)</span>
-</code></pre></div>
 
 
 
