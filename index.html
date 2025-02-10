@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Effector
+              effector
             
           </span>
         </div>
@@ -259,7 +259,7 @@
         
   
   <span class="md-ellipsis">
-    Effector
+    effector
     
   </span>
   
@@ -389,24 +389,24 @@
 
 
 <h1 id="home">Home</h1>
-<p><code>Effector</code> is an explainability package for tabular data.
-It offers a variety of <a href="./global_effect_intro/">global</a> and <a href="./regional_effect_intro/">regional</a> effect methods, under a unified API.</p>
+<p><code>effector</code> is an explainability package for tabular data.
+It offers a variety of <a href="./global_effect_intro/">global</a> and <a href="./regional_effect_intro/">regional</a> effect methods, 
+under a unified API.</p>
 <hr />
-<p><code>Effector</code> is compatible with <code>Python 3.7+</code>. 
-Install <code>Effector</code> via <code>pip</code>:</p>
+<p><code>effector</code> is compatible with <code>Python 3.7+</code>. Install it via <code>pip</code>:</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>effector
 </code></pre></div>
 <hr />
 <ul>
-<li>Start using <code>Effector</code> with the <a href="./quickstart/">Quickstart</a>.</li>
-<li>Learn more on how to use <code>Effector</code> in the <a href="./api_docs/">API DOCS</a>.</li>
+<li>Start using <code>effector</code> with the <a href="./quickstart/">Quickstart</a>.</li>
+<li>Learn more on how to use <code>effector</code> in the <a href="./api_docs/">API DOCS</a>.</li>
 <li>Learn more about it through our <a href="./guides/">Guides</a>.</li>
-<li>Check out the <a href="./examples/">Examples</a> to see <code>Effector</code> in action.</li>
+<li>Check out the <a href="./examples/">Examples</a> to see <code>effector</code> in action.</li>
 </ul>
 <hr />
-<p>If you find <code>Effector</code> useful in your research, please consider citing the following papers:</p>
+<p>If you find <code>effector</code> useful in your research, please consider citing the following papers:</p>
 <div class="highlight"><pre><span></span><code><span class="nc">@misc</span><span class="p">{</span><span class="nl">gkolemis2024effector</span><span class="p">,</span>
-<span class="w">      </span><span class="na">title</span><span class="p">=</span><span class="s">{Effector: A Python package for regional explanations}</span><span class="p">,</span><span class="w"> </span>
+<span class="w">      </span><span class="na">title</span><span class="p">=</span><span class="s">{effector: A Python package for regional explanations}</span><span class="p">,</span><span class="w"> </span>
 <span class="w">      </span><span class="na">author</span><span class="p">=</span><span class="s">{Vasilis Gkolemis and Christos Diou and Eirini Ntoutsi and Theodore Dalamagas and Bernd Bischl and Julia Herbinger and Giuseppe Casalicchio}</span><span class="p">,</span>
 <span class="w">      </span><span class="na">year</span><span class="p">=</span><span class="s">{2024}</span><span class="p">,</span>
 <span class="w">      </span><span class="na">eprint</span><span class="p">=</span><span class="s">{2404.02629}</span><span class="p">,</span>
@@ -426,7 +426,7 @@ Install <code>Effector</code> via <code>pip</code>:</p>
 <li><a href="https://arxiv.org/abs/2309.12215">Regionally Additive Models: Explainable-by-design models minimizing feature interactions</a></li>
 </ul>
 <hr />
-<p><code>Effector</code> implements the following methods:</p>
+<p><code>effector</code> implements the following methods:</p>
 <table>
 <thead>
 <tr>
@@ -439,33 +439,33 @@ Install <code>Effector</code> via <code>pip</code>:</p>
 <tbody>
 <tr>
 <td style="text-align: center;">PDP</td>
-<td style="text-align: center;"><a href="./api/#effector.global_effect_pdp.PDP"><code>PDP</code></a></td>
-<td style="text-align: center;"><a href="./api/#effector.regional_effect_pdp.RegionalPDP"><code>RegionalPDP</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.global_effect_ale.PDP"><code>PDP</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.regional_effect_pdp.RegionalPDP"><code>RegionalPDP</code></a></td>
 <td style="text-align: center;"><a href="https://projecteuclid.org/euclid.aos/1013203451">PDP</a>, <a href="https://arxiv.org/abs/1309.6392">ICE</a>, <a href="https://arxiv.org/pdf/2306.00541.pdf">GAGDET-PD</a></td>
 </tr>
 <tr>
-<td style="text-align: center;">d-PDP</td>
-<td style="text-align: center;"><a href="./api/#effector.global_effect_pdp.DerPDP"><code>DerPDP</code></a></td>
-<td style="text-align: center;"><a href="./api/#effector.regional_effect_pdp.RegionalDerPDP"><code>RegionalDerPDP</code></a></td>
-<td style="text-align: center;"><a href="https://arxiv.org/abs/1309.6392">d-PDP, d-ICE</a></td>
-</tr>
-<tr>
-<td style="text-align: center;">ALE</td>
-<td style="text-align: center;"><a href="./api/#effector.global_effect_ale.ALE"><code>ALE</code></a></td>
-<td style="text-align: center;"><a href="./api/#effector.regional_effect_ale.RegionalALE"><code>RegionalALE</code></a></td>
-<td style="text-align: center;"><a href="https://academic.oup.com/jrsssb/article/82/4/1059/7056085">ALE</a>, <a href="https://arxiv.org/pdf/2306.00541.pdf">GAGDET-ALE</a></td>
-</tr>
-<tr>
 <td style="text-align: center;">RHALE</td>
-<td style="text-align: center;"><a href="./api/#effector.global_effect_ale.RHALE"><code>RHALE</code></a></td>
-<td style="text-align: center;"><a href="./api/#effector.regional_effect_ale.RegionalRHALE"><code>RegionalRHALE</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.global_effect_ale.RHALE"><code>RHALE</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.regional_effect_ale.RegionalRHALE"><code>RegionalRHALE</code></a></td>
 <td style="text-align: center;"><a href="https://ebooks.iospress.nl/doi/10.3233/FAIA230354">RHALE</a>, <a href="https://proceedings.mlr.press/v189/gkolemis23a/gkolemis23a.pdf">DALE</a></td>
 </tr>
 <tr>
 <td style="text-align: center;">SHAP-DP</td>
-<td style="text-align: center;"><a href="./api/#effector.global_effect_shap.ShapDP"><code>ShapDP</code></a></td>
-<td style="text-align: center;"><a href="./api/#effector.regional_effect_shap.RegionalShapDP"><code>RegionalShapDP</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.global_effect_shap.ShapDP"><code>ShapDP</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.regional_effect_shap.RegionalShapDP"><code>RegionalShapDP</code></a></td>
 <td style="text-align: center;"><a href="https://papers.nips.cc/paper/7062-a-unified-approach-to-interpreting-model-predictions">SHAP</a>, <a href="https://arxiv.org/pdf/2306.00541.pdf">GAGDET-DP</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">ALE</td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.global_effect_ale.ALE"><code>ALE</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.regional_effect_ale.RegionalALE"><code>RegionalALE</code></a></td>
+<td style="text-align: center;"><a href="https://academic.oup.com/jrsssb/article/82/4/1059/7056085">ALE</a>, <a href="https://arxiv.org/pdf/2306.00541.pdf">GAGDET-ALE</a></td>
+</tr>
+<tr>
+<td style="text-align: center;">d-PDP</td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.global_effect_pdp.DerPDP"><code>DerPDP</code></a></td>
+<td style="text-align: center;"><a href="./api_docs/api_global/#effector.regional_effect_pdp.RegionalDerPDP"><code>RegionalDerPDP</code></a></td>
+<td style="text-align: center;"><a href="https://arxiv.org/abs/1309.6392">d-PDP, d-ICE</a></td>
 </tr>
 </tbody>
 </table>

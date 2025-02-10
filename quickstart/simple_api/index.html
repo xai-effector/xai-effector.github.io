@@ -248,7 +248,7 @@
         
   
   <span class="md-ellipsis">
-    Effector
+    effector
     
   </span>
   
@@ -376,9 +376,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#black-box-model" class="md-nav__link">
+  <a href="#ml-model" class="md-nav__link">
     <span class="md-ellipsis">
-      Black-box model
+      ML model
     </span>
   </a>
   
@@ -399,6 +399,39 @@
       Global Effect
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Global Effect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      .plot()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eval" class="md-nav__link">
+    <span class="md-ellipsis">
+      .eval()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fit" class="md-nav__link">
+    <span class="md-ellipsis">
+      .fit()
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -422,9 +455,27 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#plot" class="md-nav__link">
+  <a href="#plot_1" class="md-nav__link">
     <span class="md-ellipsis">
       .plot()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#eval_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      .eval()
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fit_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      .fit()
     </span>
   </a>
   
@@ -453,15 +504,37 @@
 
   <h1>Simple api</h1>
 
-<p>Simple API means</p>
-<p>To use <code>Effector</code>, you need:</p>
+<p><code>effector</code> requires:</p>
 <ul>
 <li>a dataset, normally the test set</li>
-<li>a black-box model </li>
+<li>a Machine Learning model</li>
 <li>(optionally) the jacobian of the black-box model</li>
 </ul>
+<p class="annotate">Then pick a global (1) or regional (2) Effect Method, to explain the ML model.</p>
+<ol>
+<li>
+<p><img alt="🙋‍♂️" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f64b-200d-2642-fe0f.svg" title=":man_raising_hand:" /> <code>effector</code> provides five global effect methods:</p>
+<ul>
+<li><a href="./../../api_docs/api_global/#effector.global_effect_pdp.PDP"><code>PDP</code></a></li>
+<li><a href="./../../api_docs/api_global/#effector.global_effect_rhale.RHALE"><code>RHALE</code></a> </li>
+<li><a href="./../../api_docs/api_global/#effector.global_effect_shapdp.ShapDP"><code>ShapDP</code></a></li>
+<li><a href="./../../api_docs/api_global/#effector.global_effect_ale.ALE"><code>ALE</code></a></li>
+<li><a href="./../../api_docs/api_global/#effector.global_effect_derpdp.DerPDP"><code>DerPDP</code></a></li>
+</ul>
+</li>
+<li>
+<p><img alt="🙋‍♂️" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f64b-200d-2642-fe0f.svg" title=":man_raising_hand:" /> <code>effector</code> provides five regional effect methods:</p>
+<ul>
+<li><a href="./../../api_docs/api_regional/#effector.regional_effect_pdp.RegionalPDP"><code>RegionalPDP</code></a></li>
+<li><a href="./../../api_docs/api_regional/#effector.regional_effect_rhale.RegionalRHALE"><code>RegionalRHALE</code></a></li>
+<li><a href="./../../api_docs/api_regional/#effector.regional_effect_shapdp.RegionalShapDP"><code>RegionalShapDP</code></a></li>
+<li><a href="./../../api_docs/api_regional/#effector.regional_effect_ale.RegionalALE"><code>RegionalALE</code></a></li>
+<li><a href="./../../api_docs/api_regional/#effector.regional_effect_derpdp.DerPDP"><code>DerPDP</code></a></li>
+</ul>
+</li>
+</ol>
 <hr />
-<h2 id="dataset">Dataset</h2>
+<h3 id="dataset">Dataset</h3>
 <details class="note" open="open">
 <summary>A dataset, typically the test set</summary>
 <p>Must be a <code>np.ndarray</code> with shape <code>(N, D)</code>. </p>
@@ -475,7 +548,6 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p>Example with bike-sharing dataset:</p>
 <div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">ucimlrepo</span><span class="w"> </span><span class="kn">import</span> <span class="n">fetch_ucirepo</span> 
 
 <span class="c1"># fetch dataset </span>
@@ -492,7 +564,7 @@
 </div>
 </div>
 <hr />
-<h2 id="black-box-model">Black-box model</h2>
+<h3 id="ml-model">ML model</h3>
 <details class="note" open="open">
 <summary>A trained black-box model</summary>
 <p>Must be a <code>Callable</code> with signature <code>X: np.ndarray[N, D]) -&gt; np.ndarray[N]</code>. </p>
@@ -544,7 +616,7 @@
 </div>
 </div>
 <hr />
-<h2 id="jacobian-optional">Jacobian (optional)</h2>
+<h3 id="jacobian-optional">Jacobian (optional)</h3>
 <details class="note" open="open">
 <summary>Optional: The jacobian of the model's output w.r.t. the input</summary>
 <p>Must be a <code>Callable</code> with signature <code>X: np.ndarray[N, D]) -&gt; np.ndarray[N, D]</code>.   <br />
@@ -594,49 +666,147 @@ It is not required, but for some methods (<code>RHALE</code> and <code>DerPDP</c
 <h2 id="global-effect">Global Effect</h2>
 <details class="success" open="open">
 <summary>Global effect: how each feature affects the model's output <strong>globally</strong>, averaged over all instances.</summary>
-<p><code>Effector</code> offers many methods to visualize the global effect, all under a similar API.</p>
+<p>All <code>effector</code> global effect methods have the same API.
+They all share three main functions:</p>
+<pre><code>- `.plot()`: visualizes the global effect
+- `.eval()`: evaluates the global effect at a grid of points
+- `.fit()`: allows for customizing the global method
+</code></pre>
 </details>
+<h3 id="plot"><code>.plot()</code></h3>
+<p><code>.plot()</code> is the most common method, as it visualizes the global effect.
+For example, to plot the effect of the first feature of the synthetic dataset, use:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">PDP</label><label for="__tabbed_4_2">RHALE</label><label for="__tabbed_4_3">ShapDP</label><label for="__tabbed_4_4">ALE</label><label for="__tabbed_4_5">derPDP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_8_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-PDP" src="../../static/quickstart/simple_api_files/simple_api_8_0.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_10_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/simple_api_files/simple_api_10_0.png" /></a></p>
+<p><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_10_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/simple_api_files/simple_api_10_0.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_12_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/simple_api_files/simple_api_12_0.png" /></a></p>
+<a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_12_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-ShapDP" src="../../static/quickstart/simple_api_files/simple_api_12_0.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_14_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/simple_api_files/simple_api_14_0.png" /></a></p>
+<a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_14_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-ALE" src="../../static/quickstart/simple_api_files/simple_api_14_0.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;d-ice&quot;</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">d_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">d_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_16_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-DPDP" src="../../static/quickstart/simple_api_files/simple_api_16_0.png" /></a></p>
+<p><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_16_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img align="center" alt="Global-DerPDP" src="../../static/quickstart/simple_api_files/simple_api_16_0.png" /></a></p>
 </div>
 </div>
 </div>
-<h2 id="regional-effect">Regional Effect</h2>
-<details class="success" open="open">
-<summary>Regional Effect: How each feature affects the model's output <strong>regionally</strong>, averaged over all instances <strong>in a subregion.</strong></summary>
-<p>Sometimes, global effects are very heterogeneous (local effects deviate from the global effect).
-In these cases, there maybe subregions with less variance.
-<code>Effector</code> searches for such regions.</p>
+<details open="open">
+<summary>Some important arguments of <code>.plot()</code></summary>
+<ul>
+<li>
+<p><code>heterogeneity</code>: whether to plot the heterogeneity of the global effect. The following options are available:</p>
+<ul>
+<li>If <code>heterogeneity</code> is <code>True</code>, the heterogeneity is plot as a standard deviation around the global effect.</li>
+<li>If <code>heterogeneity</code> is <code>False</code>, the global effect is plotted.</li>
+<li>If <code>heterogeneity</code> is a string:<ul>
+<li><code>"ice"</code> for <code>pdp</code> plots</li>
+<li><code>"shap_values"</code> for <code>shap_dp</code> plots</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><code>centering</code>: whether to center the regional effect. The following options are available:</p>
+<ul>
+<li>If <code>centering</code> is <code>False</code>, the regional effect is not centered</li>
+<li>If <code>centering</code> is <code>True</code> or <code>zero_integral</code>, the regional effect is centered around the y axis.</li>
+<li>If <code>centering</code> is <code>zero_start</code>, the regional effect starts from <code>y=0</code></li>
+</ul>
+</li>
+</ul>
 </details>
-<h3 id="summary"><code>.summary()</code></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDP</label><label for="__tabbed_5_2">RHALE</label><label for="__tabbed_5_3">ShapDP</label><label for="__tabbed_5_4">ALE</label><label for="__tabbed_5_5">DerPDP</label></div>
+<h3 id="eval"><code>.eval()</code></h3>
+<p><code>.eval()</code> evaluates the global effect at a grid of points.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDP</label><label for="__tabbed_5_2">RHALE</label><label for="__tabbed_5_3">ShapDP</label><label for="__tabbed_5_4">ALE</label><label for="__tabbed_5_5">derPDP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">rhale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">rhale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">shap_dp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">shap_dp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">ale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">ale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">d_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">d_pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">d_pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="fit"><code>.fit()</code></h3>
+<p>If you want to customize the global effect, use <code>.fit()</code> before <code>.plot()</code> or <code>.eval()</code>.
+Check this <a href="./../flexible_api">tutorial</a> for more details.</p>
+<div class="highlight"><pre><span></span><code><span class="n">global_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.&lt;</span><span class="n">method_name</span><span class="o">&gt;</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+
+<span class="c1"># customize the global effect</span>
+<span class="n">global_effect</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">global_effect</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">global_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
+<h2 id="regional-effect">Regional Effect</h2>
+<details class="success" open="open">
+<summary>Regional Effect: How each feature affects the model's output <strong>regionally</strong>, averaged over instances <strong>inside a subregion.</strong></summary>
+<p>Sometimes, global effects are very heterogeneous (local effects deviate from the global effect).
+They all share three main functions:</p>
+<pre><code>- `.summary()`: provides a summary of the regional effect
+- `.plot()`: visualizes the global effect
+- `.eval()`: evaluates the global effect at a grid of points
+- `.fit()`: allows for customizing the global method
+</code></pre>
+</details>
+<h3 id="summary"><code>.summary()</code></h3>
+<p class="annotate"><code>summary()</code> is the first step in understanding the regional effect.<br />
+Behind the scenes, it searches for a partitioning of the feature space into meaningful subregions (1)
+and outputs what if any has been found.
+Users should check the summary before plotting or evaluating the regional effect.
+To plot or evaluate a specific regional effect, they can use the node index <code>node_idx</code> from the partition tree.</p>
+<ol>
+<li>meaningful in this context means that the regional effects in the respective subregions have lower heterogeneity than the global effect.</li>
+</ol>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">PDP</label><label for="__tabbed_6_2">RHALE</label><label for="__tabbed_6_3">ShapDP</label><label for="__tabbed_6_4">ALE</label><label for="__tabbed_6_5">DerPDP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">r_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">r_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
  <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">34.79</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
@@ -649,7 +819,8 @@ In these cases, there maybe subregions with less variance.
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">r_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">r_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
  <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">93.45</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
@@ -662,7 +833,8 @@ In these cases, there maybe subregions with less variance.
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">r_shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">r_shap_dp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
 <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">8.33</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
@@ -675,7 +847,8 @@ In these cases, there maybe subregions with less variance.
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">r_ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">r_ale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
  <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">114.57</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
@@ -688,7 +861,8 @@ In these cases, there maybe subregions with less variance.
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">r_der_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">r_der_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
  <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">100.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
@@ -702,8 +876,10 @@ In these cases, there maybe subregions with less variance.
 </div>
 </div>
 </div>
-<h3 id="plot"><code>.plot()</code></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">PDP</label><label for="__tabbed_6_2">RHALE</label><label for="__tabbed_6_3">ShapDP</label><label for="__tabbed_6_4">ALE</label><label for="__tabbed_6_5">derPDP</label></div>
+<h3 id="plot_1"><code>.plot()</code></h3>
+<p><code>.plot()</code> visualizes the regional effect. Apart from the feature index, it requires the <code>node_idx</code> from the partition tree.
+Apart from the added <code>node_idx</code> argument, the API is the same as the global effect.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="7:5"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">PDP</label><label for="__tabbed_7_2">RHALE</label><label for="__tabbed_7_3">ShapDP</label><label for="__tabbed_7_4">ALE</label><label for="__tabbed_7_5">derPDP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
@@ -803,6 +979,56 @@ In these cases, there maybe subregions with less variance.
 </div>
 </div>
 <hr />
+<h3 id="eval_1"><code>.eval()</code></h3>
+<p><code>.eval()</code> evaluates the regional effect at a grid of points.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="8:5"><input checked="checked" id="__tabbed_8_1" name="__tabbed_8" type="radio" /><input id="__tabbed_8_2" name="__tabbed_8" type="radio" /><input id="__tabbed_8_3" name="__tabbed_8" type="radio" /><input id="__tabbed_8_4" name="__tabbed_8" type="radio" /><input id="__tabbed_8_5" name="__tabbed_8" type="radio" /><div class="tabbed-labels"><label for="__tabbed_8_1">PDP</label><label for="__tabbed_8_2">RHALE</label><label for="__tabbed_8_3">ShapDP</label><label for="__tabbed_8_4">ALE</label><label for="__tabbed_8_5">derPDP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+<span class="n">y_mu</span><span class="p">,</span> <span class="n">y_sigma</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="fit_1"><code>.fit()</code></h3>
+<p>If you want to customize the regional effect, use <code>.fit()</code> before <code>.summary()</code>, <code>.plot()</code> or <code>.eval()</code>.
+Check this <a href="./../flexible_api">tutorial</a> for more details. 
+In general, the most important argument is <code>space_partitioning</code>, which controls the method that partitions the feature space. </p>
+<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.&lt;</span><span class="n">method_name</span><span class="o">&gt;</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+
+<span class="c1"># customize the regional effect</span>
+<span class="n">space_partitioning</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">regional_effect</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="n">space_partitioning</span><span class="o">=</span><span class="n">space_partitioning</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">regional_effect</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">regional_effect</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span>
+</code></pre></div>
 
 
 
