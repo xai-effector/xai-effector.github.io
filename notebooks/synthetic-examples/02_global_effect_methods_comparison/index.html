@@ -16,7 +16,7 @@
     
     
       
-        <title>Global Effect - Methods Comparison - effector</title>
+        <title>Global Effect - An in-depth tutorial - effector</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#global-effect-methods-comparison" class="md-skip">
+        <a href="#global-effect-an-in-depth-tutorial" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Global Effect - Methods Comparison
+              Global Effect - An in-depth tutorial
             
           </span>
         </div>
@@ -519,7 +519,7 @@
 
 
 
-<h1 id="global-effect-methods-comparison">Global Effect - Methods Comparison</h1>
+<h1 id="global-effect-an-in-depth-tutorial">Global Effect - An in-depth tutorial</h1>
 <p>In this tutorial, we will compare all the global effect methods implemented in <code>Effector</code>, namely: ALE, RHALE, PDP-ICE, d-PDP-ICE and SHAP Dependence Plots. 
 The synthetic example that we will used, was introduced by <a href="https://arxiv.org/abs/2309.11193">(Gkolemis et. al, 2023)</a>.</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -893,12 +893,11 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_41_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_41_0.png" /></a></p>
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="n">shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">shap_dp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">init_nof_bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
+<span class="n">shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
-<pre><code>/home/givasile/github/packages/effector/effector/global_effect_shap.py:343: RuntimeWarning: invalid value encountered in sqrt
-  np.sqrt(self.feature_effect["feature_" + str(feature)]["spline_std"](x))
-</code></pre>
-<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_1.png" /></a></p>
+<p><a class="glightbox" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 

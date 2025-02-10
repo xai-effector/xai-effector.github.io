@@ -16,7 +16,7 @@
     
     
       
-        <title>Global and Regional Effects - effector</title>
+        <title>Global and regional effects - effector</title>
       
     
     
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Global and Regional Effects
+              Global and regional effects
             
           </span>
         </div>
@@ -393,15 +393,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#resources-for-further-reading" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resources for further reading
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -418,7 +409,7 @@
 
 
 
-  <h1>Global and Regional Effects</h1>
+  <h1>Global and regional effects</h1>
 
 <h2 id="global-effects">Global effects</h2>
 <details class="question" open="open">
@@ -452,12 +443,12 @@
 </div>
 <p>Interesting! The model has a meaningful behavior:</p>
 <ul>
-<li>🔍 month, humidity, and windspeed have little impact. </li>
-<li>🌡️ Temperature has a stronger positive effect, but </li>
-<li>⏰ hour is the most important feature; let's focus on that</li>
+<li>🔍 month, humidity, and windspeed have little impact </li>
+<li>🌡️ Temperature has a stronger positive effect</li>
+<li>⏰ hour is the most important feature; let's focus on that!</li>
 </ul>
 <hr />
-<p>Let's focus on feature <code>hour</code> and analyze with more global effect methods.</p>
+<p>Let's focus on feature <code>hour</code>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">PDP</label><label for="__tabbed_2_2">RHALE</label><label for="__tabbed_2_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -477,7 +468,7 @@
 </div>
 </div>
 </div>
-<p>All methods aggree on the effect;
+<p>All methods agree on the general trend;
 there is an abrupt increase in the number of bike rentals at about 8:00 AM (beginning of the workday)
 and at about 5:00 PM (end of the workday). 
 The following table provides a more detailed interpretation of the plot: </p>
@@ -508,11 +499,11 @@ The following table provides a more detailed interpretation of the plot: </p>
 <td>Small increase.</td>
 </tr>
 <tr>
-<td>15-17</td>
-<td>High increase; at 17 bike rentals reach the maximum.</td>
+<td>15.00-17.00</td>
+<td>High increase; at 17.00 bike rentals reach the maximum.</td>
 </tr>
 <tr>
-<td>17-24</td>
+<td>17.00-24.00</td>
 <td>A constant drop; at 19.00 rentals reach the average and keep decreasing.</td>
 </tr>
 </tbody>
@@ -521,7 +512,7 @@ The following table provides a more detailed interpretation of the plot: </p>
 <hr />
 <p>Global feature effect plots provide an immediate <em>interpretation</em> of the model's inner workings.</p>
 <details class="question" open="open">
-<summary>Criticism 1: Does this makes sense?</summary>
+<summary>Criticism 1: Does it makes sense?</summary>
 <p>It seems reasonable. On a typical workday, people commute between 6:00–8:30 AM and return between 3:00–5:00 PM. But a city transportation expert might have a better perspective.</p>
 </details>
 <details class="question" open="open">
@@ -530,24 +521,40 @@ The following table provides a more detailed interpretation of the plot: </p>
 </details>
 <hr />
 <h2 id="heterogeneity">Heterogeneity</h2>
-<p>Criticism 2 questions whether the explanation applies to the entire dataset. Let's check the heterogeneity:</p>
-<p>🔴 <strong>red ICE curves in PDP</strong><br />
-🔴 <strong>red bars in RHALE plots</strong><br />
-🔴 <strong>red SHAP values in SHAP-DP plots</strong>  </p>
-<p>These indicate that the global effect might be masking cases that deviate from the overall trend.
+<p>Criticism 2 questions whether the explanation applies to the entire dataset. 
+A simple way to check this is to look at the heterogeneity of the global effect:</p>
+<ul>
+<li>🔴 <strong>red ICE curves in PDP</strong>  </li>
+<li>🔴 <strong>red bars in RHALE plots</strong>  </li>
+<li>🔴 <strong>red SHAP values in SHAP-DP plots</strong>  </li>
+</ul>
+<p>Let's take a look again:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">PDP</label><label for="__tabbed_3_2">RHALE</label><label for="__tabbed_3_3">SHAP-DP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_1.png" /></a>}</p>
+</div>
+<div class="tabbed-block">
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" /></a></p>
+</div>
+<div class="tabbed-block">
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" /></a></p>
+</div>
+</div>
+</div>
+<p>They all indicate a high heterogeneity; there are cases that deviate from the average pattern.
 Moreover, PDP-ICE analysis highlights two distinct patterns:</p>
 <ul>
-<li>There is one cluster, that behaves as described above. </li>
+<li>There is one cluster, that follows the global pattern.</li>
 <li>There is a second cluster that behaves differently, with a rise starting at 9:00 AM, a peak at 12:00 AM and a decline at 6:00 PM.</li>
 </ul>
 <details class="danger" open="open">
 <summary>Don't rush to conclusions</summary>
-<p>There is a small piece of the puzzle missing.
-Although we have identified the two distinct patterns, we still don't know what causes them.
-Of course, we can guess that the first pattern is related to the working days, and the second pattern is related to the weekends and holidays.
-But this is simply our intuition, and we need to confirm it with the data. 
-We need to find the features that are responsible for the two distinct patterns.
-<a href="./02_regional_effect_intro.md">Regional effect plots</a> are the answer to this question.</p>
+<p>What do these two patterns mean?
+One could guess that the first pattern is related to the working days, and the second pattern is related to the weekends and holidays.  <br />
+But this is just a guess. We need to confirm it with the data.
+If there is a condition that can be used to separate the two patterns, the regional effect analysis will find it.
+Hopefully, there is the <code>workingday</code> feature, so if our guess is correct, we will see two distinct patterns for the <code>hour</code> feature, depending on the value of the <code>workingday</code> feature.</p>
 </details>
 <hr />
 <h2 id="regional-effects">Regional effects</h2>
@@ -556,22 +563,86 @@ We need to find the features that are responsible for the two distinct patterns.
 <p>Because they are super simple and provide richer information that global effects.</p>
 </details>
 <details class="note" open="open">
-<summary>When Global Effect is a weak explanation?</summary>
-<p>In cases where the global effect plot shows high heterogeneity, it is useful to analyze the regional effect.
-Why is this the case? Because when many instances behave differently from the average pattern, 
-it means that <strong>the effect of feature <span class="arithmatex">\(x_s\)</span> on the output <span class="arithmatex">\(y\)</span>, depends on the values of other features <span class="arithmatex">\(x_{\setminus s}\)</span>.</strong>
-In these cases, the average effect of feature <span class="arithmatex">\(x_s\)</span> on the output <span class="arithmatex">\(y\)</span> is a weak explanation.</p>
+<summary>The global effect is sometimes a weak explanation</summary>
+<p>Whn global effect has a high heterogeneity, it is useful to analyze the regional effect.
+When many instances behave differently from the average pattern,
+it means that global effect may hide some important information behind average values. 
+In these cases, regional effect analysis can provide a more detailed explanation.</p>
 </details>
 <details class="note" open="open">
-<summary>When Regional Effect can provide a good solution</summary>
-<p>In cases where the global effect plot shows high heterogeneity, 
-it <strong>may</strong> be the case that there are subregions where the instances behave similarly.
-Regional Effect Plots search for subregions where 
-<strong>the effect of feature <span class="arithmatex">\(x_s\)</span> on the output <span class="arithmatex">\(y\)</span>, has smaller dependence on the values of other features <span class="arithmatex">\(x_{\setminus s}\)</span>.</strong></p>
+<summary>When regional effect can provide a good solution</summary>
+<p>Unfortunatelly, it does not mean we will always find regional effects that provide a better explanation.
+That depends on whether conditioning on a feature can separate the instances into subregions where the instances behave similarly.
+If such a feature exists, regional effect analysis will provide a better explanation.
+If not, the regional effect analysis will not manage to do something better than the global effect analysis.</p>
 </details>
 <p>So let's apply regional effect analysis to the <span class="arithmatex">\(\mathtt{hour}\)</span> feature.
 <code>Effector</code> provides a simple API for that, similar to the global effect API:</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">PDP</label><label for="__tabbed_3_2">RHALE</label><label for="__tabbed_3_3">SHAP-DP</label></div>
+<p>We first summarize the regional effect analysis for the <code>hour</code> using:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">PDP</label><label for="__tabbed_4_2">RHALE</label><label for="__tabbed_4_3">SHAP-DP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">r_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+<span class="n">r_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
+Node id: 0, name: hr, heter: 0.44 || nof_instances:  5000 || weight: 1.00
+        Node id: 1, name: hr | workingday == 0.00, heter: 0.38 || nof_instances:  1588 || weight: 0.32
+                Node id: 3, name: hr | workingday == 0.00 and temp &lt;= 6.81, heter: 0.19 || nof_instances:   785 || weight: 0.16
+                Node id: 4, name: hr | workingday == 0.00 and temp &gt; 6.81, heter: 0.22 || nof_instances:   803 || weight: 0.16
+        Node id: 2, name: hr | workingday != 0.00, heter: 0.30 || nof_instances:  3412 || weight: 0.68
+                Node id: 5, name: hr | workingday != 0.00 and temp &lt;= 6.81, heter: 0.21 || nof_instances:  1467 || weight: 0.29
+                Node id: 6, name: hr | workingday != 0.00 and temp &gt; 6.81, heter: 0.21 || nof_instances:  1945 || weight: 0.39
+--------------------------------------------------
+Feature 3 - Statistics per tree level:
+Level 0, heter: 0.44
+        Level 1, heter: 0.32 || heter drop : 0.12 (units), 27.28% (pcg)
+                Level 2, heter: 0.21 || heter drop : 0.12 (units), 35.73% (pcg)
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><div class="highlight"><pre><span></span><code><span class="n">r_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">)</span>
+<span class="n">r_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
+Node id: 0, name: hr, heter: 5.68 || nof_instances: 13903 || weight: 1.00
+        Node id: 1, name: hr | workingday == 0.00, heter: 0.75 || nof_instances:  4385 || weight: 0.32
+        Node id: 2, name: hr | workingday != 0.00, heter: 5.44 || nof_instances:  9518 || weight: 0.68
+--------------------------------------------------
+Feature 3 - Statistics per tree level:
+Level 0, heter: 5.68
+        Level 1, heter: 3.96 || heter drop : 1.71 (units), 30.22% (pcg)
+</code></pre></div></p>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">r_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+<span class="n">r_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
+Node id: 0, name: hr, heter: 0.06 || nof_instances:   500 || weight: 1.00
+        Node id: 1, name: hr | workingday == 0.00, heter: 0.02 || nof_instances:   155 || weight: 0.31
+                Node id: 3, name: hr | workingday == 0.00 and temp &lt;= 6.81, heter: 0.01 || nof_instances:    83 || weight: 0.17
+                Node id: 4, name: hr | workingday == 0.00 and temp &gt; 6.81, heter: 0.03 || nof_instances:    72 || weight: 0.14
+        Node id: 2, name: hr | workingday != 0.00, heter: 0.03 || nof_instances:   345 || weight: 0.69
+                Node id: 5, name: hr | workingday != 0.00 and temp &lt;= 6.81, heter: 0.02 || nof_instances:   156 || weight: 0.31
+                Node id: 6, name: hr | workingday != 0.00 and temp &gt; 6.81, heter: 0.02 || nof_instances:   189 || weight: 0.38
+--------------------------------------------------
+Feature 3 - Statistics per tree level:
+Level 0, heter: 0.06
+        Level 1, heter: 0.03 || heter drop : 0.03 (units), 56.04% (pcg)
+                Level 2, heter: 0.02 || heter drop : 0.01 (units), 20.57% (pcg)
+</code></pre></div>
+</div>
+</div>
+</div>
+<details class="question" open="open">
+<summary>That' is quite interesting</summary>
+<p>All methods confirm our intuition: there are two meaninful subregions based on the <code>workingday</code> feature. 
+This is the first split in the partition tree and the most important one, for all methods.
+However PDP and SHAP-DP also provide a second split based on the <code>temperature</code> feature.</p>
+</details>
+<p>Let's visualize the regional effects!</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDP</label><label for="__tabbed_5_2">RHALE</label><label for="__tabbed_5_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -649,18 +720,6 @@ They reveal another key factor: <strong>temperature</strong>. The impact of <cod
 <p>✔️ This makes sense—temperature matters for sightseeing, but not for commuting.</p>
 </details>
 <hr />
-<h2 id="resources-for-further-reading">Resources for further reading</h2>
-<p>Below we provide some resources for further reading.</p>
-<p>Papers:</p>
-<ul>
-<li><a href="http://www1.beuth-hochschule.de/FB_II/reports/Report-2020-001.pdf">Model-Agnostic Effects Plots for Interpreting Machine Learning Models</a> </li>
-</ul>
-<p>Books:</p>
-<ul>
-<li><a href="https://christophm.github.io/interpretable-ml-book/">https://christophm.github.io/interpretable-ml-book/</a></li>
-<li><a href="https://ema.drwhy.ai/preface.html">https://ema.drwhy.ai/preface.html</a></li>
-<li><a href="https://slds-lmu.github.io/iml_methods_limitations/">Limitations of Interpretable Machine Learning Methods</a></li>
-</ul>
 
 
 
