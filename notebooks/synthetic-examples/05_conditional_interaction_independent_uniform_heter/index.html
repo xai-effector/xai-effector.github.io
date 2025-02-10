@@ -1,0 +1,872 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.3">
+    
+    
+      
+        <title>Model with conditional interaction - effector</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7758b05.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto Flex";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#model-with-conditional-interaction" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="effector" class="md-header__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            effector
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Model with conditional interaction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="effector" class="md-nav__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    effector
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Effector
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quickstart/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quickstart
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_docs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    API Docs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../guides/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Guides
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../examples/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Examples
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#pdp" class="md-nav__link">
+    <span class="md-ellipsis">
+      PDP
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="PDP">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Effector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derivations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Derivations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ale" class="md-nav__link">
+    <span class="md-ellipsis">
+      ALE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ALE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effector_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Effector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derivations_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Derivations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rhale" class="md-nav__link">
+    <span class="md-ellipsis">
+      RHALE
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="RHALE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effector_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Effector
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#derivations_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Derivations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusions_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="model-with-conditional-interaction">Model with conditional interaction</h1>
+<p>In this example, we show the heterogeneity of the global effects, using PDP, ALE, and RHALE, on a model with conditional interactions.
+We will use the following model: </p>
+<div class="arithmatex">\[ 
+f(x_1, x_2, x_3) = -x_1^2 \mathbb{1}_{x_2 &lt;0} + x_1^2 \mathbb{1}_{x_2 \geq 0} + e^{x_3} 
+\]</div>
+<p>where the features <span class="arithmatex">\(x_1, x_2, x_3\)</span> are independent and uniformly distributed in the interval <span class="arithmatex">\([-1, 1]\)</span>.
+The model has an <em>interaction</em> between <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_2\)</span> caused by the terms: 
+<span class="arithmatex">\(f_{1,2}(x_1, x_2) = -x_1^2 \mathbb{1}_{x_2 &lt;0} + x_1^2 \mathbb{1}_{x_2 \geq 0}\)</span>.
+This means that the effect of <span class="arithmatex">\(x_1\)</span> on the output <span class="arithmatex">\(y\)</span> depends on the value of <span class="arithmatex">\(x_2\)</span> and vice versa.
+Terms like this introduce heterogeneity.
+Each global effect method has a different formula for qunatifying such heterogeneity; below, we will see how PDP, ALE, and RHALE handles it.</p>
+<p>In contrast, <span class="arithmatex">\(x_3\)</span> does not interact with any other feature, so its global effect has zero heterogeneity.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ConditionalInteraction</span><span class="p">()</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">IndependentUniform</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generate_data</span><span class="p">(</span><span class="mi">10_000</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="pdp">PDP</h2>
+<h3 id="effector">Effector</h3>
+<p>Let's see below the PDP heterogeneity for each feature, using <code>effector</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">)</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_4_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_4_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_4_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_4_1.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_4_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_4_2.png" /></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_5_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_5_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_5_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_5_1.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_5_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_5_2.png" /></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">heter_per_feat</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">y_mean</span><span class="p">,</span> <span class="n">y_var</span> <span class="o">=</span> <span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">),</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heterogeneity of x_</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">y_var</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">heter_per_feat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_var</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+</code></pre></div>
+<pre><code>Heterogeneity of x_0: 0.092
+Heterogeneity of x_1: 0.088
+Heterogeneity of x_2: 0.000
+</code></pre>
+<p>Conclusions:</p>
+<ul>
+<li>The global effect of <span class="arithmatex">\(x_1\)</span> arises from heterogenous local effects, as <span class="arithmatex">\(h(x_1) &gt; 0\)</span> for all <span class="arithmatex">\(x_1\)</span>. The std margins (red area of height <span class="arithmatex">\(\pm h(x_1)\)</span> around the global effect) musleadingly suggest that the heterogeneity is minimized at <span class="arithmatex">\(x_1 = \pm \frac{2}{3}\)</span>. ICE provide a clearer picture; they reveal two groups of effects, <span class="arithmatex">\(-x_1^2 + c_1\)</span> and <span class="arithmatex">\(x_1^2 + c_2\)</span>. The heterogeneity as a scalar value is <span class="arithmatex">\(H_{x_1} \approx 0.9\)</span>.</li>
+<li>Similar to <span class="arithmatex">\(x_1\)</span>, the global effect of <span class="arithmatex">\(x_2\)</span> arises from heterogeneous local effects. However, unlike <span class="arithmatex">\(x_1\)</span>, both std margins and ICE plots indicate a constant heterogeneity along all the axis, i.e., <span class="arithmatex">\(h(x_2) \approx 0.9 \forall x_2\)</span>. ICE plots further show a smooth range of varying local effects around the global effect, without distinct groups. The heterogeneity as a scalar is $ H_{x_2} \approx 0.9 $, which is identical to $ H_{x_1} $. This is consistent, as heterogeneity measures the interaction between a feature and all other features. In this case, since only $ x_1 $ and $ x_2 $ interact, their heterogeneity values should be the same.</li>
+<li><span class="arithmatex">\(x_3\)</span> shows no heteregeneity; all local effects align perfectly with the global effect.</li>
+</ul>
+<h3 id="derivations">Derivations</h3>
+<p>How PDP (and effector) reached such hetergoneity functions?</p>
+<p>For <span class="arithmatex">\(x_1\)</span>:</p>
+<p>The average effect is <span class="arithmatex">\(f^{PDP}(x_1) = 0\)</span>. ICE plots are: $-x_1^2 + \frac{1}{3} $ when <span class="arithmatex">\(x_2^i &lt;0\)</span> and $x_1^2 - \frac{1}{3} $ when <span class="arithmatex">\(x_2^i \geq 0\)</span>. Due to the square, they both create the same deviation from the average effect: $ \left ( x_1^2 - \frac{1}{3} \right )^2 $.</p>
+<div class="arithmatex">\[\begin{align}
+h(x_1) &amp;= \frac{1}{N} \sum_i^N \left ( f^{ICE,i}_c(x_1) - f^{PDP}_c(x_1) \right )^2 \\
+&amp;= \frac{1}{N} \sum_i^N \left ( x_1^2 - \frac{1}{3} \right )^2 \\
+&amp;=  x_1^4 - \frac{2}{3} x_1^2 + \frac{1}{9} \\
+\end{align}\]</div>
+<p>The heterogeneity as a scalar is simply the mean of the heterogeneity function:</p>
+<div class="arithmatex">\[\begin{align}
+H_{x_1} &amp;= \frac{ \int_{-1}^{1} \left ( x_1^4 - \frac{2}{3} x_1^2 + \frac{1}{9} \right ) \partial x_1}{2} = \frac{4}{45} \approx 0.9
+\end{align}\]</div>
+<p>For <span class="arithmatex">\(x_2\)</span>:</p>
+<p>The average effect is <span class="arithmatex">\(f^{PDP}(x_2) = -\frac{1}{3} \mathbb{1}_{x_2 &lt; 0} + \frac{1}{3} \mathbb{1}_{x_2 \geq 0}\)</span> and the ICE plots are <span class="arithmatex">\(f^{ICE,i}(x_2) = - (x_1^i)^2 \mathbb{1}_{x_2 &lt; 0} + (x_1^i)^2 \mathbb{1}_{x_2 \geq 0}\)</span>.</p>
+<div class="arithmatex">\[\begin{align}
+h(x_2)  &amp;= \frac{1}{N} \sum_i^N \left ( f^{ICE,i}_c(x_2) - f^{PDP}_c(x_2) \right )^2 \\
+&amp;= \frac{1}{N} \sum_i^N \left ( \mathbb{1}_{x_2 &lt; 0} \left ( -\frac{1}{3} + (x_1^i)^2 \right )^2 + \mathbb{1}_{x_2 \geq 0} \left ( -\frac{1}{3} + (x_1^i)^2 \right )^2 \right ) \\
+&amp;= \frac{1}{N} \sum_i^N  \left ( -\frac{1}{3} + (x_1^i)^2 \right )^2 \\
+&amp;= \frac{4}{45} \approx 0.9
+\end{align}\]</div>
+<p>The heterogeneity as a scalar is simply the mean of the heterogeneity function, so:</p>
+<p><span class="arithmatex">\(<span class="arithmatex">\(H_{x_2} \approx 0.9\)</span>\)</span>.</p>
+<p>For <span class="arithmatex">\(x_3\)</span>, there is no heterogeneity so <span class="arithmatex">\(h(x_3)=0\)</span> and <span class="arithmatex">\(H_{x_3} = 0\)</span>.</p>
+<h3 id="conclusions">Conclusions</h3>
+<p>PDP heterogeneity provides intuitive insights:</p>
+<ul>
+<li>The global effects of <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_2\)</span> arise from heterogeneous local effects, while <span class="arithmatex">\(x_3\)</span> shows no heterogeneity.</li>
+<li>The heterogeneity of <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_2\)</span> is quantified at the same level (0.99), which makes sense since only these two features interact.</li>
+<li>However, the heterogeneity of <span class="arithmatex">\(x_1\)</span> appears misleading when centering ICE plots, as it falsely suggests minimized heterogeneity at <span class="arithmatex">\(\pm \frac{2}{3}\)</span>, which is not accurate.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">pdp_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">**</span><span class="mi">4</span> <span class="o">-</span> <span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">9</span>
+        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ones_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mf">0.088</span>
+        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># make a test</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">pdp_mean</span><span class="p">,</span> <span class="n">pdp_heter</span> <span class="o">=</span> <span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">y_heter</span> <span class="o">=</span> <span class="n">pdp_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xx</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">pdp_heter</span><span class="p">,</span> <span class="n">y_heter</span><span class="p">,</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="ale">ALE</h2>
+<h3 id="effector_1">Effector</h3>
+<p>Let's see below the PDP effects for each feature, using <code>effector</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">)</span>
+<span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">31</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_14_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_14_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_14_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_14_1.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_14_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_14_2.png" /></a></p>
+<p>ALE states that:</p>
+<ul>
+<li>
+<p><strong>Feature <span class="arithmatex">\(x_1\)</span></strong>:<br />
+  The heterogeneity varies across all values of <span class="arithmatex">\(x_1\)</span>. It starts large at <span class="arithmatex">\(x_1 = -1\)</span>, decreases until it becomes zero at <span class="arithmatex">\(x_1 = 0\)</span>, and then increases again until <span class="arithmatex">\(x_1 = 1\)</span>.<br />
+  This behavior contrasts with the heterogeneity observed in the PDP, which has two zero-points at <span class="arithmatex">\(x_1 = \pm \frac{2}{3}\)</span>.  </p>
+</li>
+<li>
+<p><strong>Feature <span class="arithmatex">\(x_2\)</span></strong>:<br />
+  Heterogeneity is observed only around <span class="arithmatex">\(x_2 = 0\)</span>. This behavior also contrasts PDP's heterogeneity which is constant for all values of <span class="arithmatex">\(x_2\)</span></p>
+</li>
+<li>
+<p><strong>Feature <span class="arithmatex">\(x_3\)</span></strong>:<br />
+  No heterogeneity is present for this feature.  </p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">ale</span><span class="o">.</span><span class="n">feature_effect</span><span class="p">[</span><span class="s2">&quot;feature_1&quot;</span><span class="p">]</span>
+</code></pre></div>
+<pre><code>{'limits': array([-1.        , -0.93548387, -0.87096774, -0.80645161, -0.74193548,
+        -0.67741935, -0.61290323, -0.5483871 , -0.48387097, -0.41935484,
+        -0.35483871, -0.29032258, -0.22580645, -0.16129032, -0.09677419,
+        -0.03225806,  0.03225806,  0.09677419,  0.16129032,  0.22580645,
+         0.29032258,  0.35483871,  0.41935484,  0.48387097,  0.5483871 ,
+         0.61290323,  0.67741935,  0.74193548,  0.80645161,  0.87096774,
+         0.93548387,  1.00000001]),
+ 'dx': array([0.06451613, 0.06451613, 0.06451613, 0.06451613, 0.06451613,
+        0.06451613, 0.06451613, 0.06451613, 0.06451613, 0.06451613,
+        0.06451613, 0.06451613, 0.06451613, 0.06451613, 0.06451613,
+        0.06451613, 0.06451613, 0.06451613, 0.06451613, 0.06451613,
+        0.06451613, 0.06451613, 0.06451613, 0.06451613, 0.06451613,
+        0.06451613, 0.06451613, 0.06451613, 0.06451613, 0.06451613,
+        0.06451614]),
+ 'points_per_bin': array([320, 339, 318, 345, 313, 312, 331, 311, 293, 326, 309, 294, 314,
+        312, 335, 318, 354, 328, 312, 331, 315, 307, 341, 320, 330, 336,
+        312, 368, 325, 294, 337]),
+ 'bin_effect': array([0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        9.93884099, 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        ]),
+ 'bin_variance': array([ 0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+        82.51292593,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
+         0.        ]),
+ 'bin_estimator_variance': array([0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.25947461, 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        , 0.        , 0.        , 0.        , 0.        ,
+        0.        ]),
+ 'alg_params': 'fixed',
+ 'norm_const': np.float64(0.32060777402612833)}
+</code></pre>
+<h3 id="derivations_1">Derivations</h3>
+<p>For x_1:</p>
+<p>The <span class="arithmatex">\(x_1\)</span>-axis is divided into <span class="arithmatex">\(K\)</span> equal bins, indexed by <span class="arithmatex">\(k = 1, \ldots, K\)</span>, with the center of the <span class="arithmatex">\(k\)</span>-th bin denoted as <span class="arithmatex">\(c_k\)</span>. 
+In each bin: if <span class="arithmatex">\(x_2 &lt; 0\)</span>, the local effects is <span class="arithmatex">\(-2c_k\)</span>, and if <span class="arithmatex">\(x_2 \geq 0\)</span> the local effect is <span class="arithmatex">\(2 c_k\)</span>. 
+This gives a variance of <span class="arithmatex">\(4c_k^2\)</span> within each bin.
+Therefore, <span class="arithmatex">\(h(x_1) = 4c_k^2\)</span> where <span class="arithmatex">\(k\)</span> is the index of the bin that contains <span class="arithmatex">\(x_1\)</span>. </p>
+<div class="arithmatex">\[\begin{align}
+h(x_1) &amp;= \frac{1}{|\mathcal{S}_k|} \sum_{\mathbf{x}^i \in \mathcal{S}_k} \left ( \frac{f(z_k, x_2^i, x_3^i) - f(z_{k-1}, x_2^i, x_3^i)}{z_k - z_{k-1}} - \hat{\mu}_k^{ALE}  \right )^2 \\
+&amp;=  \frac{1}{|\mathcal{S}_k|} \sum_{\mathbf{x}^i \in \mathcal{S}_k} \left ( \frac{-2c_k(z_k - z_{k-1}) \mathbb{1}_{x_2^i &lt; 0} + 2c_k(z_k - z_{k-1}) \mathbb{1}_{x_2^i \geq 0}}{z_k - z_{k-1}} \right )^2 \\
+&amp;=  \frac{1}{|\mathcal{S}_k|} \sum_{\mathbf{x}^i \in \mathcal{S}_k} 4 c_k^2 \\
+&amp;=  4 c_k^2
+\end{align}\]</div>
+<p>For <span class="arithmatex">\(x_2\)</span>:</p>
+<p>In all bins except the central one, the local effects are zero. In the central bin, however, the local effects are $ 2(x_1^i)^2 $, which introduces some heterogeneity.
+So, if $ x_2 $ is not in the central bin $ k = K/2 $, <span class="arithmatex">\(h(x_2) = 0\)</span>.
+If $ x_2 $ is in the central bin $ k = K/2 $:</p>
+<div class="arithmatex">\[\begin{align}
+h(x_2) &amp;= \frac{1}{|\mathcal{S}_k|} \sum_{\mathbf{x}^i \in \mathcal{S}_k} \left( \frac{f(z_k, x_2^i, x_3^i) - f(z_{k-1}, x_2^i, x_3^i)}{z_k - z_{k-1}} - \hat{\mu}_k^{ALE} \right)^2 \\
+&amp;= \frac{2}{z_k - z_{k-1}} \frac{1}{|\mathcal{S}_k|} \sum_{\mathbf{x}^i \in \mathcal{S}_k} (x_1^i)^2 \\
+&amp;= \frac{2}{3}(z_k - z_{k-1}) \\
+&amp;\approx 10 \text{ for } K=31
+\end{align}\]</div>
+<p>So: 
+\begin{align}
+h(x_2)
+&amp;=  \begin{cases} 
+0, &amp; \text{if } x_2 \text{ is not in the central bin (}\ k = K/2\text{)}, \
+\frac{31}{3} \approx 10 &amp; \text{if } x_2 \text{ is in the central bin (}\ k = K/2\text{)}. 
+\end{cases} \
+\end{align}</p>
+<p>For <span class="arithmatex">\(x_3\)</span>:</p>
+<p>The effect is zero everywehere.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">):</span>
+    <span class="n">K</span> <span class="o">=</span> <span class="mi">31</span>
+    <span class="n">bin_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="mi">4</span><span class="o">*</span><span class="n">bin_centers</span><span class="o">**</span><span class="mi">2</span>
+    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">)</span>
+        <span class="n">y</span><span class="p">[</span><span class="mi">15</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="k">return</span> <span class="n">y</span>
+    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">bin_centers</span><span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># make a test</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">31</span>
+<span class="n">bin_centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span><span class="p">,</span> <span class="mi">1</span> <span class="o">-</span> <span class="mi">1</span><span class="o">/</span><span class="n">K</span><span class="p">,</span> <span class="n">K</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">bin_var</span> <span class="o">=</span> <span class="n">ale</span><span class="o">.</span><span class="n">feature_effect</span><span class="p">[</span><span class="sa">f</span><span class="s2">&quot;feature_</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">][</span><span class="s2">&quot;bin_variance&quot;</span><span class="p">]</span>
+    <span class="n">gt_var</span> <span class="o">=</span> <span class="n">ale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="o">~</span><span class="n">np</span><span class="o">.</span><span class="n">isnan</span><span class="p">(</span><span class="n">gt_var</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">bin_var</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">gt_var</span><span class="p">[</span><span class="n">mask</span><span class="p">],</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="conclusions_1">Conclusions</h3>
+<p>Is the heterogeneity implied by the ALE plots meaningful?
+It is</p>
+<h2 id="rhale">RHALE</h2>
+<h3 id="effector_2">Effector</h3>
+<p>Let's see below the RHALE effects for each feature, using <code>effector</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">)</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
+    <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</code></pre></div>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_23_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_23_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_23_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_23_1.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_23_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_heter_files/05_conditional_interaction_independent_uniform_heter_23_2.png" /></a></p>
+<p>RHALE states that:</p>
+<ul>
+<li>
+<p><strong>Feature <span class="arithmatex">\(x_1\)</span></strong>:
+  As in ALE, the heterogeneity varies across all values of <span class="arithmatex">\(x_1\)</span>. It starts large at <span class="arithmatex">\(x_1 = -1\)</span>, decreases until it becomes zero at <span class="arithmatex">\(x_1 = 0\)</span>, and then increases again until <span class="arithmatex">\(x_1 = 1\)</span>.  </p>
+</li>
+<li>
+<p><strong>Feature <span class="arithmatex">\(x_2\)</span></strong>:<br />
+  No heterogeneity is present for this feature.</p>
+</li>
+<li>
+<p><strong>Feature <span class="arithmatex">\(x_3\)</span></strong>:<br />
+  No heterogeneity is present for this feature.  </p>
+</li>
+</ul>
+<h3 id="derivations_2">Derivations</h3>
+<div class="arithmatex">\[\begin{align}
+H(x_1) &amp;\approx
+\end{align}\]</div>
+<div class="arithmatex">\[\begin{align}
+H(x_2) &amp;\approx
+\end{align}\]</div>
+<div class="arithmatex">\[\begin{align}
+H(x_3) &amp;\approx
+\end{align}\]</div>
+<h3 id="conclusions_2">Conclusions</h3>
+<p>Are the RHALE effects intuitive?</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/givasile/effector" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8M97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
+</html>
