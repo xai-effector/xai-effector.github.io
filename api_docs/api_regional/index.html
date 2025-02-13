@@ -647,7 +647,7 @@ Check some examples below:</p>
 <div class="highlight"><pre><span></span><code><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 
 <span class="c1"># customize the space partitioning process</span>
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">Regions</span><span class="p">(</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Regions</span><span class="p">(</span>
     <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span> <span class="c1"># percentage drop threshold (default: 0.1),</span>
     <span class="n">max_split_levels</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># maximum number of split levels (default: 2)</span>
 <span class="p">)</span>
@@ -1168,7 +1168,7 @@ Check some examples below:</p>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_fitting</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># fitting specific arguments</span>
 
     <span class="c1"># dictionary with all the information required for plotting or evaluating the regional effects</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">partitioners</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Regions</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">partitioners</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Best</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1"># self.tree_full: typing.Dict[str, Tree] = {}</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">tree</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Tree</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 </code></pre></div></td></tr></table></div>
@@ -2257,7 +2257,7 @@ Check some examples below:</p>
 
 
 <h4 id="effector.regional_effect_ale.RegionalALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;fixed&#39;</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
 
 </h4>
 
@@ -2320,7 +2320,7 @@ Check some examples below:</p>
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="effector.partitioning.Regions">Regions</span>]</code>
+                  <code><span title="typing.Union">Union</span>[str, <span title="effector.space_partitioning.Best">Best</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2328,7 +2328,7 @@ Check some examples below:</p>
               </div>
             </td>
             <td>
-                  <code>&#39;greedy&#39;</code>
+                  <code>&#39;best&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -2440,7 +2440,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">Regions</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;fixed&quot;</span><span class="p">,</span>
     <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span>
 <span class="p">):</span>
@@ -2468,7 +2468,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="sd">        points_for_mean_heterogeneity: number of equidistant points along the feature axis used for computing the mean heterogeneity</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
+        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">space_partitioner</span><span class="o">.</span><span class="n">min_points_per_subregion</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;min_points_per_subregion must be &gt;= 2&quot;</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
@@ -3051,7 +3051,7 @@ If you have the jacobian already computed, provide it directly to the constructo
 
 
 <h4 id="effector.regional_effect_ale.RegionalRHALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3114,7 +3114,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="effector.partitioning.Regions">Regions</span>]</code>
+                  <code><span title="typing.Union">Union</span>[str, <span title="effector.space_partitioning.Best">Best</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3122,7 +3122,7 @@ If you have the jacobian already computed, provide it directly to the constructo
               </div>
             </td>
             <td>
-                  <code>&#39;greedy&#39;</code>
+                  <code>&#39;best&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -3233,7 +3233,7 @@ If you have the jacobian already computed, provide it directly to the constructo
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">Regions</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
     <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
 <span class="p">):</span>
@@ -3264,7 +3264,7 @@ If you have the jacobian already computed, provide it directly to the constructo
         <span class="bp">self</span><span class="o">.</span><span class="n">compile</span><span class="p">()</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
+        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">space_partitioner</span><span class="o">.</span><span class="n">min_points_per_subregion</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;min_points_per_subregion must be &gt;= 2&quot;</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
@@ -3763,7 +3763,7 @@ If you have the jacobian already computed, provide it directly to the constructo
 
 
 <h4 id="effector.regional_effect_pdp.RegionalPDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3840,7 +3840,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>&#39;greedy&#39;</code>
+                  <code>&#39;best&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -4011,7 +4011,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
@@ -4049,7 +4049,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
+        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">space_partitioner</span><span class="o">.</span><span class="n">min_points_per_subregion</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;min_points_per_subregion must be &gt;= 2&quot;</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
@@ -4608,7 +4608,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_pdp.RegionalDerPDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -4685,7 +4685,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>&#39;greedy&#39;</code>
+                  <code>&#39;best&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -4856,7 +4856,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
@@ -4894,7 +4894,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
+        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">space_partitioner</span><span class="o">.</span><span class="n">min_points_per_subregion</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;min_points_per_subregion must be &gt;= 2&quot;</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
@@ -5423,7 +5423,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_shap.RegionalShapDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">)</span></code>
 
 </h4>
 
@@ -5483,7 +5483,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="effector.partitioning.Regions">Regions</span>]</code>
+                  <code><span title="typing.Union">Union</span>[str, <span title="effector.space_partitioning.Best">Best</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5492,7 +5492,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </div>
             </td>
             <td>
-                  <code>&#39;greedy&#39;</code>
+                  <code>&#39;best&#39;</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -5572,7 +5572,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">Regions</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+    <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
@@ -5592,7 +5592,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
+        <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">return_default</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">)</span>
 
     <span class="k">assert</span> <span class="n">space_partitioner</span><span class="o">.</span><span class="n">min_points_per_subregion</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;min_points_per_subregion must be &gt;= 2&quot;</span>
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
