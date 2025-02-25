@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
@@ -395,6 +395,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Usage
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#api" class="md-nav__link">
     <span class="md-ellipsis">
       API
@@ -620,7 +629,24 @@
   <h1>Api regional</h1>
 
 <h2 id="summary">Summary</h2>
-<p>All methods share a similar interface:</p>
+<p>All regional effect methods have a similar interface and workflow:</p>
+<ol>
+<li>create an instance of the regional effect method you want to use</li>
+<li>(optional) <code>.fit()</code> to customize the method</li>
+<li><code>.summary()</code> to print the partition tree found for each feature</li>
+<li><code>.plot()</code> to plot the regional effect of a feature at a specific node</li>
+<li><code>.eval()</code> to evaluate the regional effect of a feature at a specific node at a specific grid of points</li>
+</ol>
+<hr />
+<h2 id="usage">Usage</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># set up the input</span>
+<span class="n">X</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># input data</span>
+<span class="n">predict</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># model to be explained</span>
+<span class="n">jacobian</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># jacobian of the model</span>
+</code></pre></div>
+<ol>
+<li>
+<p><strong>Create an instance of the regional effect method you want to use</strong>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">PDP</label><label for="__tabbed_1_2">RHALE</label><label for="__tabbed_1_3">ShapDP</label><label for="__tabbed_1_4">ALE</label><label for="__tabbed_1_5">DerPDP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -632,7 +658,7 @@
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -645,210 +671,75 @@
 </div>
 </div>
 </div>
-<p>They all have the four methods:</p>
-<ul>
-<li><code>.fit()</code></li>
-<li><code>.summary()</code></li>
-<li><code>.plot()</code></li>
-<li><code>.eval()</code></li>
-</ul>
-<hr />
-<dl>
-<dt><code>.fit(features, centering, **method_specific_args)</code></dt>
-<dd>
-<p>Fits the regional effect method to the data.</p>
+</li>
+<li>
+<p><strong>Customize the regional effect method (optional)</strong>:</p>
+<p><code>.fit(features, **method_specific_args)</code></p>
 <details class="tip">
 <summary>This is the place for customization</summary>
-<p>The <code>.fit()</code> step can be omitted if you are ok with the default settings.
+<p>The <code>.fit()</code> step can be omitted if you are ok with the default settings; you can directly call the <code>.summary()</code>, <code>.plot()</code>, or <code>.eval()</code> methods.
 However, if you want more control over the fitting process, you can pass additional arguments to the <code>.fit()</code> method.
-Check some examples below:</p>
+Check the Usage section below and the method-specific documentation for more information.</p>
 </details>
 <details class="example">
 <summary>Usage</summary>
-<div class="highlight"><pre><span></span><code><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
-
-<span class="c1"># customize the space partitioning process</span>
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Regions</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># customize the space partitioning algorithm</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span>
     <span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span> <span class="c1"># percentage drop threshold (default: 0.1),</span>
     <span class="n">max_split_levels</span><span class="o">=</span><span class="mi">1</span> <span class="c1"># maximum number of split levels (default: 2)</span>
 <span class="p">)</span>
-</code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">PDP</label><label for="__tabbed_2_2">RHALE</label><label for="__tabbed_2_3">ShapDP</label><label for="__tabbed_2_4">ALE</label><label for="__tabbed_2_5">DerPDP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-    <span class="n">features</span><span class="p">,</span> 
-    <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">,</span>
-    <span class="n">centering</span><span class="o">=</span><span class="kc">True</span> <span class="c1"># center the data (default: False</span>
+<span class="n">r_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="c1"># list of features to be analyzed</span>
+    <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span> <span class="c1"># space partitioning algorithm (default: effector.space_partitioning.Best)</span>
 <span class="p">)</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
-<span class="n">regional_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 </details>
-</dd>
-<dt><code>.summary(feature)</code></dt>
-<dd>
-<p>Prints a summary of the partition tree that is found for <code>feature</code>. </p>
+</li>
+<li>
+<p><strong>Print the partition tree found for each feature in <code>features</code></strong>:</p>
+<p><code>.summary(features)</code></p>
 <details class="example">
 <summary>Usage</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:5"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><input id="__tabbed_3_4" name="__tabbed_3" type="radio" /><input id="__tabbed_3_5" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">PDP</label><label for="__tabbed_3_2">RHALE</label><label for="__tabbed_3_3">ShapDP</label><label for="__tabbed_3_4">ALE</label><label for="__tabbed_3_5">DerPDP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span> <span class="c1"># list of features to be analyzed</span>
+<span class="n">r_method</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 </details>
 <details class="example">
-<summary>Output</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:5"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><input id="__tabbed_4_4" name="__tabbed_4" type="radio" /><input id="__tabbed_4_5" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">PDP</label><label for="__tabbed_4_2">RHALE</label><label for="__tabbed_4_3">ShapDP</label><label for="__tabbed_4_4">ALE</label><label for="__tabbed_4_5">DerPDP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
- <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">34.79</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.09</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.09</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
- <span class="o">--------------------------------------------------</span>
- <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
- <span class="n">Level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">34.79</span>
-    <span class="n">Level</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.18</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">34.61</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">99.48</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
- <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">93.45</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
- <span class="o">--------------------------------------------------</span>
- <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
- <span class="n">Level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">93.45</span>
-         <span class="n">Level</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">93.45</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">100.00</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
-<span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">8.33</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-        <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-        <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
+<summary>Example Output</summary>
+<div class="highlight"><pre><span></span><code><span class="n">Feature</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
+<span class="err">🌳</span> <span class="n">Full</span> <span class="n">Tree</span> <span class="n">Structure</span><span class="p">:</span>
+<span class="err">───────────────────────</span>
+
+<span class="n">hr</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.43</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">3476</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">]</span>
+    <span class="n">workingday</span> <span class="o">=</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.36</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">1129</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.32</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="err">≤</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.17</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">568</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.16</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="o">&gt;</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">4</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.21</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">561</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.16</span><span class="p">]</span>
+    <span class="n">workingday</span> <span class="err">≠</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.28</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">2347</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.68</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="err">≤</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">5</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.19</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">953</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.27</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="o">&gt;</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">6</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.20</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">1394</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.40</span><span class="p">]</span>
 <span class="o">--------------------------------------------------</span>
-<span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
-<span class="n">Level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">8.33</span>
-        <span class="n">Level</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">8.33</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">99.94</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
+<span class="n">Feature</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
+<span class="err">🌳</span> <span class="n">Tree</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="err">─────────────────</span>
+<span class="n">Level</span> <span class="mi">0</span><span class="err">🔹</span><span class="n">heter</span><span class="p">:</span> <span class="mf">0.43</span>
+    <span class="n">Level</span> <span class="mi">1</span><span class="err">🔹</span><span class="n">heter</span><span class="p">:</span> <span class="mf">0.31</span> <span class="o">|</span> <span class="err">🔻</span><span class="mf">0.12</span> <span class="p">(</span><span class="mf">28.15</span><span class="o">%</span><span class="p">)</span>
+        <span class="n">Level</span> <span class="mi">2</span><span class="err">🔹</span><span class="n">heter</span><span class="p">:</span> <span class="mf">0.19</span> <span class="o">|</span> <span class="err">🔻</span><span class="mf">0.11</span> <span class="p">(</span><span class="mf">37.10</span><span class="o">%</span><span class="p">)</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
- <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">114.57</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">16.48</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">17.41</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
- <span class="o">--------------------------------------------------</span>
- <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
- <span class="n">Level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">114.57</span>
-         <span class="n">Level</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">33.89</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">80.68</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">70.42</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code> <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
- <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">100.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-         <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
- <span class="o">--------------------------------------------------</span>
- <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
- <span class="n">Level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">100.00</span>
-         <span class="n">Level</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">100.00</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">100.00</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 </details>
-</dd>
-<dt><code>.plot(feature, node_idx)</code></dt>
-<dd>
-<p>Plots the regional effect of the feature <code>feature</code> at the node <code>node_idx</code>.</p>
+</li>
+<li>
+<p><strong>Plot the regional effect of a feature at a specific node</strong>:</p>
+<p><code>.plot(feature, node_idx)</code></p>
 <details class="example">
 <summary>Usage</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="5:5"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><input id="__tabbed_5_4" name="__tabbed_5" type="radio" /><input id="__tabbed_5_5" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDP</label><label for="__tabbed_5_2">RHALE</label><label for="__tabbed_5_3">ShapDP</label><label for="__tabbed_5_4">ALE</label><label for="__tabbed_5_5">DerPDP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="p">[</span><span class="n">regional_effect</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+<div class="highlight"><pre><span></span><code><span class="n">feature</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">node_idx</span> <span class="o">=</span> <span class="o">...</span>
+<span class="n">r_method</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="o">**</span><span class="n">plot_specific_args</span><span class="p">)</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
-<span class="p">[</span><span class="n">regional_effect</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="p">[</span><span class="n">regional_effect</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="p">[</span><span class="n">regional_effect</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
-<span class="p">[</span><span class="n">regional_effect</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">)</span> <span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 </details>
 <details class="example">
 <summary>Output</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="6:5"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><input id="__tabbed_6_4" name="__tabbed_6" type="radio" /><input id="__tabbed_6_5" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">PDP</label><label for="__tabbed_6_2">RHALE</label><label for="__tabbed_6_3">ShapDP</label><label for="__tabbed_6_4">ALE</label><label for="__tabbed_6_5">derPDP</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:5"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><input id="__tabbed_2_4" name="__tabbed_2" type="radio" /><input id="__tabbed_2_5" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">PDP</label><label for="__tabbed_2_2">RHALE</label><label for="__tabbed_2_3">ShapDP</label><label for="__tabbed_2_4">ALE</label><label for="__tabbed_2_5">derPDP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
@@ -860,8 +751,12 @@ Check some examples below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_20_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_20_3.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_20_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_20_5.png" /></a></td>
+<td style="text-align: center;"><code>r_method.plot(0, 1)</code></td>
+<td style="text-align: center;"><code>r_method.plot(0, 2)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_20_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_20_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_20_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_20_1.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -876,8 +771,12 @@ Check some examples below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_26_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_26_3.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_26_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_26_5.png" /></a></td>
+<td style="text-align: center;"><code>r_method.plot(0, 1)</code></td>
+<td style="text-align: center;"><code>r_method.plot(0, 2)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_23_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_23_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_23_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_23_1.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -892,8 +791,12 @@ Check some examples below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_33_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_33_1.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_33_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_33_2.png" /></a></td>
+<td style="text-align: center;"><code>r_method.plot(0, 1)</code></td>
+<td style="text-align: center;"><code>r_method.plot(0, 2)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_26_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_26_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_26_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_26_1.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -908,8 +811,12 @@ Check some examples below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_29_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_29_3.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_29_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_29_5.png" /></a></td>
+<td style="text-align: center;"><code>r_method.plot(0, 1)</code></td>
+<td style="text-align: center;"><code>r_method.plot(0, 2)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_29_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_29_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_29_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_29_1.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -924,8 +831,12 @@ Check some examples below:</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_23_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_23_3.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="./static/homepage_example_23_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="./static/homepage_example_23_5.png" /></a></td>
+<td style="text-align: center;"><code>r_method.plot(0, 1)</code></td>
+<td style="text-align: center;"><code>r_method.plot(0, 2)</code></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_32_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_32_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/simple_api_files/simple_api_32_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_32_1.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -933,49 +844,22 @@ Check some examples below:</p>
 </div>
 </div>
 </details>
-</dd>
-<dt><code>.eval(feature, node_idx, xs)</code></dt>
-<dd>
-<p>Evaluate the regional effect at a specific grid of points.</p>
+</li>
+<li>
+<p><strong>Evaluate the regional effect of a feature at a specific node at a specific grid of points</strong>:</p>
+<p><code>.eval(feature, node_idx, xs)</code></p>
 <details class="example">
 <summary>Usage</summary>
 <div class="highlight"><pre><span></span><code><span class="c1"># Example input</span>
-<span class="n">feature</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="n">node_idx</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">feature</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># feature to be analyzed</span>
+<span class="n">node_idx</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># node index</span>
+<span class="n">xs</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># grid of points to evaluate the regional effect, e.g., np.linspace(0, 1, 100)</span>
 </code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="7:5"><input checked="checked" id="__tabbed_7_1" name="__tabbed_7" type="radio" /><input id="__tabbed_7_2" name="__tabbed_7" type="radio" /><input id="__tabbed_7_3" name="__tabbed_7" type="radio" /><input id="__tabbed_7_4" name="__tabbed_7" type="radio" /><input id="__tabbed_7_5" name="__tabbed_7" type="radio" /><div class="tabbed-labels"><label for="__tabbed_7_1">PDP</label><label for="__tabbed_7_2">RHALE</label><label for="__tabbed_7_3">ShapDP</label><label for="__tabbed_7_4">ALE</label><label for="__tabbed_7_5">DerPDP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="n">y</span><span class="p">,</span> <span class="n">het</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">y</span><span class="p">,</span> <span class="n">het</span> <span class="o">=</span> <span class="n">r_method</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
-<span class="n">y</span><span class="p">,</span> <span class="n">het</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="n">y</span><span class="p">,</span> <span class="n">het</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
-<span class="n">y</span><span class="p">,</span> <span class="n">het</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">regional_effect</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
-<span class="n">y</span><span class="p">,</span> <span class="n">het</span> <span class="o">=</span> <span class="n">regional_effect</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">node_idx</span><span class="p">,</span> <span class="n">xs</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
 </details>
-</dd>
-</dl>
+</li>
+</ol>
 <h2 id="api">API</h2>
 
 
@@ -1018,7 +902,7 @@ Check some examples below:</p>
               <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect.RegionalEffectBase.summary" href="#effector.regional_effect.RegionalEffectBase.summary">summary</a></code></td>
               <td>
                 <div class="doc-md-description">
-                  <p>Summarize the partition tree for the selected features.</p>
+                  <p><img alt="👉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f449.svg" title=":point_right:" /> Summarize the partition tree for the selected features.</p>
                 </div>
               </td>
             </tr>
@@ -1219,36 +1103,6 @@ Check some examples below:</p>
     <div class="doc doc-contents ">
 
         <p><img alt="👉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f449.svg" title=":point_right:" /> Evaluate the regional effect for a given feature and node.</p>
-<details class="example">
-<summary>Example usage</summary>
-<div class="highlight"><pre><span></span><code><span class="n">axis_limits</span> <span class="o">=</span> <span class="o">...</span> <span class="c1"># define the axis limits</span>
-<span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">axis_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">axis_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
-</code></pre></div>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_1" name="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_2" name="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_3" name="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_4" name="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_5" name="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_1">PDP</label><label for="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_2">RHALE</label><label for="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_3">ALE</label><label for="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_4">ShapDP</label><label for="effector.regional_effect.RegionalEffectBase.eval--__tabbed_1_5">DerPDP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</details>
 <div class="admonition note">
 <p class="admonition-title">This is a common method for all regional effect methods, so use the arguments carefully.</p>
 <ul>
@@ -1285,7 +1139,7 @@ Check some examples below:</p>
                 <code>feature</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1301,7 +1155,7 @@ Check some examples below:</p>
                 <code>node_idx</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1333,7 +1187,7 @@ Check some examples below:</p>
                 <code>heterogeneity</code>
             </td>
             <td>
-                  <code>bool</code>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1353,7 +1207,7 @@ Check some examples below:</p>
                 <code>centering</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[bool, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1448,45 +1302,7 @@ Check some examples below:</p>
 <span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
-<span class="normal">280</span>
-<span class="normal">281</span>
-<span class="normal">282</span>
-<span class="normal">283</span>
-<span class="normal">284</span>
-<span class="normal">285</span>
-<span class="normal">286</span>
-<span class="normal">287</span>
-<span class="normal">288</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">250</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -1496,44 +1312,6 @@ Check some examples below:</p>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Union</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]]:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    :point_right: Evaluate the regional effect for a given feature and node.</span>
-
-<span class="sd">    ??? Example &quot;Example usage&quot;</span>
-
-<span class="sd">        ```python</span>
-<span class="sd">        axis_limits = ... # define the axis limits</span>
-<span class="sd">        xs = np.linspace(axis_limits[0], axis_limits[1], 100)</span>
-<span class="sd">        ```</span>
-
-<span class="sd">        === &quot;PDP&quot;</span>
-
-<span class="sd">            ```python</span>
-<span class="sd">            effector.RegionalPDP(data=X, model=predict).eval(0, 0, xs, centering=True)</span>
-<span class="sd">            ```</span>
-
-<span class="sd">        === &quot;RHALE&quot;</span>
-
-<span class="sd">            ```python</span>
-<span class="sd">            effector.RegionalRHALE(data=X, model=predict, model_jac=jacobian).eval(0, 0, xs, centering=True)</span>
-<span class="sd">            ```</span>
-
-<span class="sd">        === &quot;ALE&quot;</span>
-
-<span class="sd">            ```python</span>
-<span class="sd">            effector.RegionalALE(data=X, model=predict).eval(0, 0, xs, centering=True)</span>
-<span class="sd">            ```</span>
-
-<span class="sd">        === &quot;ShapDP&quot;</span>
-
-<span class="sd">             ```python</span>
-<span class="sd">                effector.RegionalShapDP(data=X, model=predict).eval(0, 0, xs, centering=True)</span>
-<span class="sd">             ```</span>
-
-<span class="sd">        === &quot;DerPDP&quot;</span>
-
-<span class="sd">             ```python</span>
-<span class="sd">                effector.DerPDP(data=X, model=predict, model_jac=jacobian).eval(0, 0, xs, centering=False)</span>
-<span class="sd">             ```</span>
-
 
 <span class="sd">    !!! note &quot;This is a common method for all regional effect methods, so use the arguments carefully.&quot;</span>
 
@@ -1593,44 +1371,26 @@ Check some examples below:</p>
 
     <div class="doc doc-contents ">
 
-        <p>Summarize the partition tree for the selected features.</p>
-<details class="example" open="open">
-<summary>Example usage</summary>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_1" name="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_2" name="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_3" name="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_4" name="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1" type="radio" /><input id="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_5" name="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_1">PDP</label><label for="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_2">RHALE</label><label for="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_3">ALE</label><label for="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_4">ShapDP</label><label for="effector.regional_effect.RegionalEffectBase.summary--__tabbed_1_5">DerPDP</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<div class="highlight"><pre><span></span><code>   <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-</code></pre></div>
-</div>
-</div>
-</div>
-</details>
+        <p><img alt="👉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f449.svg" title=":point_right:" /> Summarize the partition tree for the selected features.</p>
 <details class="example" open="open">
 <summary>Example output</summary>
-<div class="highlight"><pre><span></span><code><span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
-     <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">34.79</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-             <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.09</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-             <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.09</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>  <span class="mi">1000</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-     <span class="o">--------------------------------------------------</span>
-     <span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
-     <span class="n">Level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">34.79</span>
-        <span class="n">Level</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.18</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">34.61</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">99.48</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">Feature</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
+<span class="err">🌳</span> <span class="n">Full</span> <span class="n">Tree</span> <span class="n">Structure</span><span class="p">:</span>
+<span class="err">───────────────────────</span>
+<span class="n">hr</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.43</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">3476</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">]</span>
+    <span class="n">workingday</span> <span class="o">=</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.36</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">1129</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.32</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="err">≤</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.17</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">568</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.16</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="o">&gt;</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">4</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.21</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">561</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.16</span><span class="p">]</span>
+    <span class="n">workingday</span> <span class="err">≠</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.28</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">2347</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.68</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="err">≤</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">5</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.19</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">953</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.27</span><span class="p">]</span>
+        <span class="n">temp</span> <span class="o">&gt;</span> <span class="mf">6.50</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">6</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.20</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">1394</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.40</span><span class="p">]</span>
+<span class="o">--------------------------------------------------</span>
+<span class="n">Feature</span> <span class="mi">3</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
+<span class="err">🌳</span> <span class="n">Tree</span> <span class="n">Summary</span><span class="p">:</span>
+<span class="err">─────────────────</span>
+<span class="n">Level</span> <span class="mi">0</span><span class="err">🔹</span><span class="n">heter</span><span class="p">:</span> <span class="mf">0.43</span>
+    <span class="n">Level</span> <span class="mi">1</span><span class="err">🔹</span><span class="n">heter</span><span class="p">:</span> <span class="mf">0.31</span> <span class="o">|</span> <span class="err">🔻</span><span class="mf">0.12</span> <span class="p">(</span><span class="mf">28.15</span><span class="o">%</span><span class="p">)</span>
+        <span class="n">Level</span> <span class="mi">2</span><span class="err">🔹</span><span class="n">heter</span><span class="p">:</span> <span class="mf">0.19</span> <span class="o">|</span> <span class="err">🔻</span><span class="mf">0.11</span> <span class="p">(</span><span class="mf">37.10</span><span class="o">%</span><span class="p">)</span>
 </code></pre></div>
 </details>
 
@@ -1651,7 +1411,7 @@ Check some examples below:</p>
                 <code>features</code>
             </td>
             <td>
-                  <code><span title="typing.List">List</span>[int]</code>
+                  <code><span title="typing.List">List</span>[<span title="int">int</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1687,7 +1447,45 @@ Check some examples below:</p>
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">313</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
 <span class="normal">314</span>
 <span class="normal">315</span>
 <span class="normal">316</span>
@@ -1705,113 +1503,29 @@ Check some examples below:</p>
 <span class="normal">328</span>
 <span class="normal">329</span>
 <span class="normal">330</span>
-<span class="normal">331</span>
-<span class="normal">332</span>
-<span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
-<span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span>
-<span class="normal">347</span>
-<span class="normal">348</span>
-<span class="normal">349</span>
-<span class="normal">350</span>
-<span class="normal">351</span>
-<span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span>
-<span class="normal">366</span>
-<span class="normal">367</span>
-<span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span>
-<span class="normal">377</span>
-<span class="normal">378</span>
-<span class="normal">379</span>
-<span class="normal">380</span>
-<span class="normal">381</span>
-<span class="normal">382</span>
-<span class="normal">383</span>
-<span class="normal">384</span>
-<span class="normal">385</span>
-<span class="normal">386</span>
-<span class="normal">387</span>
-<span class="normal">388</span>
-<span class="normal">389</span>
-<span class="normal">390</span>
-<span class="normal">391</span>
-<span class="normal">392</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">scale_x_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Summarize the partition tree for the selected features.</span>
-
-<span class="sd">    ???+ Example &quot;Example usage&quot;</span>
-
-<span class="sd">        === &quot;PDP&quot;</span>
-
-<span class="sd">            ```python</span>
-<span class="sd">            effector.RegionalPDP(data=X, model=predict).summary(0)</span>
-<span class="sd">            ```</span>
-
-<span class="sd">        === &quot;RHALE&quot;</span>
-
-<span class="sd">            ```python</span>
-<span class="sd">            effector.RegionalRHALE(data=X, model=predict, model_jac=jacobian).summary(0)</span>
-<span class="sd">            ```</span>
-
-<span class="sd">        === &quot;ALE&quot;</span>
-
-<span class="sd">            ```python</span>
-<span class="sd">            effector.RegionalALE(data=X, model=predict).summary(0)</span>
-<span class="sd">            ```</span>
-
-<span class="sd">        === &quot;ShapDP&quot;</span>
-
-<span class="sd">             ```python</span>
-<span class="sd">                effector.RegionalShapDP(data=X, model=predict).summary(0)</span>
-<span class="sd">             ```</span>
-
-<span class="sd">        === &quot;DerPDP&quot;</span>
-
-<span class="sd">             ```python</span>
-<span class="sd">                effector.DerPDP(data=X, model=predict, model_jac=jacobian).summary(0)</span>
-<span class="sd">             ```</span>
+<span class="normal">331</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">scale_x_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;:point_right: Summarize the partition tree for the selected features.</span>
 
 <span class="sd">    ???+ Example &quot;Example output&quot;</span>
 
 <span class="sd">        ```python</span>
-<span class="sd">        Feature 0 - Full partition tree:</span>
-<span class="sd">             Node id: 0, name: x_0, heter: 34.79 || nof_instances:  1000 || weight: 1.00</span>
-<span class="sd">                     Node id: 1, name: x_0 | x_1 &lt;= 0.0, heter: 0.09 || nof_instances:  1000 || weight: 1.00</span>
-<span class="sd">                     Node id: 2, name: x_0 | x_1  &gt; 0.0, heter: 0.09 || nof_instances:  1000 || weight: 1.00</span>
-<span class="sd">             --------------------------------------------------</span>
-<span class="sd">             Feature 0 - Statistics per tree level:</span>
-<span class="sd">             Level 0, heter: 34.79</span>
-<span class="sd">                Level 1, heter: 0.18 || heter drop : 34.61 (units), 99.48% (pcg)</span>
+<span class="sd">        Feature 3 - Full partition tree:</span>
+<span class="sd">        🌳 Full Tree Structure:</span>
+<span class="sd">        ───────────────────────</span>
+<span class="sd">        hr 🔹 [id: 0 | heter: 0.43 | inst: 3476 | w: 1.00]</span>
+<span class="sd">            workingday = 0.00 🔹 [id: 1 | heter: 0.36 | inst: 1129 | w: 0.32]</span>
+<span class="sd">                temp ≤ 6.50 🔹 [id: 3 | heter: 0.17 | inst: 568 | w: 0.16]</span>
+<span class="sd">                temp &gt; 6.50 🔹 [id: 4 | heter: 0.21 | inst: 561 | w: 0.16]</span>
+<span class="sd">            workingday ≠ 0.00 🔹 [id: 2 | heter: 0.28 | inst: 2347 | w: 0.68]</span>
+<span class="sd">                temp ≤ 6.50 🔹 [id: 5 | heter: 0.19 | inst: 953 | w: 0.27]</span>
+<span class="sd">                temp &gt; 6.50 🔹 [id: 6 | heter: 0.20 | inst: 1394 | w: 0.40]</span>
+<span class="sd">        --------------------------------------------------</span>
+<span class="sd">        Feature 3 - Statistics per tree level:</span>
+<span class="sd">        🌳 Tree Summary:</span>
+<span class="sd">        ─────────────────</span>
+<span class="sd">        Level 0🔹heter: 0.43</span>
+<span class="sd">            Level 1🔹heter: 0.31 | 🔻0.12 (28.15%)</span>
+<span class="sd">                Level 2🔹heter: 0.19 | 🔻0.11 (37.10%)</span>
 <span class="sd">        ```</span>
 
 <span class="sd">    Args:</span>
@@ -1910,7 +1624,7 @@ Check some examples below:</p>
                 <code>model</code>
             </td>
             <td>
-                  <code>callable</code>
+                  <code><span title="callable">callable</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1962,7 +1676,7 @@ Check some examples below:</p>
                 <code>nof_instances</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -1985,7 +1699,7 @@ Check some examples below:</p>
                 <code>feature_types</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[list, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="list">list</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2005,7 +1719,7 @@ Check some examples below:</p>
                 <code>cat_limit</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2024,7 +1738,7 @@ Check some examples below:</p>
                 <code>feature_names</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[list, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="list">list</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2044,7 +1758,7 @@ Check some examples below:</p>
                 <code>target_name</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2304,7 +2018,7 @@ Check some examples below:</p>
                 <code>features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2325,7 +2039,7 @@ Check some examples below:</p>
                 <code>candidate_conditioning_features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2341,7 +2055,7 @@ Check some examples below:</p>
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="effector.space_partitioning.Best">Best</span>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2357,7 +2071,7 @@ Check some examples below:</p>
                 <code>binning_method</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed" href="../api_axis_paritioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2380,7 +2094,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
                 <code>points_for_mean_heterogeneity</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2726,7 +2440,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>nof_instances</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2769,7 +2483,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>cat_limit</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[int]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2808,7 +2522,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>target_name</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3098,7 +2812,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3119,7 +2833,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>candidate_conditioning_features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3135,7 +2849,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="effector.space_partitioning.Best">Best</span>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3151,7 +2865,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>binning_method</code>
             </td>
             <td>
-                  <code>str</code>
+                  <code><span title="str">str</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3175,7 +2889,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>points_for_mean_heterogeneity</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3422,7 +3136,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>model</code>
             </td>
             <td>
-                  <code>callable</code>
+                  <code><span title="callable">callable</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3474,7 +3188,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>nof_instances</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3497,7 +3211,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>feature_types</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[list, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="list">list</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3517,7 +3231,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>cat_limit</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3536,7 +3250,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>feature_names</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[list, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="list">list</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3556,7 +3270,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>target_name</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3810,7 +3524,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3831,7 +3545,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>candidate_conditioning_features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3853,7 +3567,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3869,7 +3583,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>centering</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[bool, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3890,7 +3604,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>points_for_centering</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3906,7 +3620,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>points_for_mean_heterogeneity</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -3922,7 +3636,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>use_vectorized</code>
             </td>
             <td>
-                  <code>bool</code>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4235,7 +3949,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>model</code>
             </td>
             <td>
-                  <code>callable</code>
+                  <code><span title="callable">callable</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4255,7 +3969,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>model_jac</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[callable]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="callable">callable</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4307,7 +4021,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>nof_instances</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4330,7 +4044,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>feature_types</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[list, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="list">list</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4350,7 +4064,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>cat_limit</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4369,7 +4083,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>feature_names</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[list, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="list">list</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4389,7 +4103,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>target_name</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4655,7 +4369,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4676,7 +4390,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>candidate_conditioning_features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4698,7 +4412,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, None]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, None]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4714,7 +4428,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>centering</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[bool, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4735,7 +4449,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>points_for_centering</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4751,7 +4465,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>points_for_mean_heterogeneity</code>
             </td>
             <td>
-                  <code>int</code>
+                  <code><span title="int">int</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -4767,7 +4481,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>use_vectorized</code>
             </td>
             <td>
-                  <code>bool</code>
+                  <code><span title="bool">bool</span></code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5132,7 +4846,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>nof_instances</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5155,7 +4869,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>feature_types</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="str">str</span>]]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5175,7 +4889,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>cat_limit</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[int]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5194,7 +4908,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>feature_names</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[str]]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="str">str</span>]]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5214,7 +4928,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>target_name</code>
             </td>
             <td>
-                  <code><span title="typing.Optional">Optional</span>[str]</code>
+                  <code><span title="typing.Optional">Optional</span>[<span title="str">str</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5470,7 +5184,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[int, str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5487,7 +5201,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>candidate_conditioning_features</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, list]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="list">list</span>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5504,7 +5218,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <span title="effector.space_partitioning.Best">Best</span>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5521,7 +5235,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>binning_method</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[str, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Greedy" href="../api_axis_paritioning/#effector.axis_partitioning.Greedy">Greedy</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed" href="../api_axis_paritioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Greedy" href="../api_axis_partitioning/#effector.axis_partitioning.Greedy">Greedy</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
