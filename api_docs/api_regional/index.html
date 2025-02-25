@@ -5158,7 +5158,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_shap.RegionalShapDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">shap_explainer_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shap_explanation_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -5246,6 +5246,88 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                   <code>&#39;greedy&#39;</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>shap_explainer_kwargs</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the keyword arguments to be passed to the <code>shap.Explainer</code> class.</p>
+<details class="note" open="open">
+<summary>Code behind the scene</summary>
+<div class="highlight"><pre><span></span><code><span class="n">shap_explainer_kwargs</span> <span class="o">=</span> <span class="n">shap_explainer_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
+<span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
+<span class="n">masker</span> <span class="o">=</span> <span class="n">shap_explainer_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;masker&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">masker</span><span class="p">,</span> <span class="o">**</span><span class="n">shap_explainer_kwargs</span><span class="p">)</span>
+</code></pre></div>
+<p>So:</p>
+<pre><code>- the `masker` is set to `self.data` by default. If you want to change it, you can pass it as a keyword argument.
+- if you want to pass any other keyword argument to the `shap.Explainer` class, you can pass it as a dictionary. For example: `shap_explainer_kwargs={"algorithm": "linear"}`
+</code></pre>
+</details>
+<details class="warning" open="open">
+<summary>Be careful with custom arguments</summary>
+<p>Use shap_explainer_kwargs with caution. The <code>shap.Explainer</code> class has many arguments that can change the behavior of the SHAP values.
+Check the <a href="https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html#shap.Explainer">official documentation</a> for more details.</p>
+</details>
+<details class="note" open="open">
+<summary>Most important arguments</summary>
+<ul>
+<li><code>masker</code>: the data used for masking the input data. By default, it is set to <code>self.data</code>.
+If you want a faster computation, you can pass a subset of the data, e.g. <code>masker=self.data[:100]</code>.</li>
+<li><code>algorithm</code>: the algorithm used for computing the SHAP values. By default, it is set to <code>"auto"</code>.
+If you know that your model belongs to a specific class, you can set it to the corresponding algorithm, e.g. <code>algorithm="linear"</code>.</li>
+</ul>
+</details>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>shap_explanation_kwargs</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the keyword arguments to be passed to compute the SHAP values.a</p>
+<details class="note" open="open">
+<summary>Code behind the scene</summary>
+<div class="highlight"><pre><span></span><code><span class="n">explainer</span> <span class="o">=</span> <span class="o">...</span> <span class="p">(</span><span class="n">check</span> <span class="n">the</span> <span class="n">code</span> <span class="n">above</span><span class="p">)</span>
+<span class="n">shap_explanation_kwargs</span> <span class="o">=</span> <span class="n">shap_explanation_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
+<span class="n">explainer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">shap_explanation_kwargs</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<details class="note" open="open">
+<summary>Most important arguments</summary>
+<ul>
+<li><code>max_evals</code>: the maximum number of evaluations for the SHAP values. (default: <code>500</code>)</li>
+</ul>
+</details>
+<details class="note" open="open">
+<summary>All arguments</summary>
+<ul>
+<li><code>max_evals</code>: the maximum number of evaluations for the SHAP values. (default: <code>500</code>)</li>
+<li><code>main_effects</code>: whether to compute the main effects. (default: <code>False</code>)</li>
+<li><code>error_bounds</code>: whether to compute the error bounds. (default: <code>False</code>)</li>
+<li><code>batch_size</code>: the batch size for computing the SHAP values. (default: <code>auto</code>)</li>
+<li><code>output_names</code>: the names of the outputs. (default: <code>None</code>)</li>
+<li><code>silent</code>: whether to print the progress. (default: <code>False</code>)</li>
+</ul>
+</details>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -5303,12 +5385,78 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">175</span>
 <span class="normal">176</span>
 <span class="normal">177</span>
-<span class="normal">178</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+    <span class="n">shap_explainer_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">shap_explanation_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Fit the regional SHAP.</span>
@@ -5324,6 +5472,58 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="sd">            - If set to &quot;greedy&quot;, the greedy space partitioner will be used.</span>
 
 <span class="sd">        binning_method: the binning method to use</span>
+
+<span class="sd">        shap_explainer_kwargs: the keyword arguments to be passed to the `shap.Explainer` class.</span>
+
+<span class="sd">            ???+ note &quot;Code behind the scene&quot;</span>
+
+<span class="sd">                ```python</span>
+<span class="sd">                shap_explainer_kwargs = shap_explainer_kwargs or {}</span>
+<span class="sd">                model = self.model</span>
+<span class="sd">                masker = shap_explainer_kwargs.pop(&quot;masker&quot;, self.data)</span>
+<span class="sd">                explainer = shap.Explainer(model, masker, **shap_explainer_kwargs)</span>
+<span class="sd">                ```</span>
+
+<span class="sd">                So:</span>
+
+<span class="sd">                    - the `masker` is set to `self.data` by default. If you want to change it, you can pass it as a keyword argument.</span>
+<span class="sd">                    - if you want to pass any other keyword argument to the `shap.Explainer` class, you can pass it as a dictionary. For example: `shap_explainer_kwargs={&quot;algorithm&quot;: &quot;linear&quot;}`</span>
+
+<span class="sd">            ???+ warning &quot;Be careful with custom arguments&quot;</span>
+
+<span class="sd">                Use shap_explainer_kwargs with caution. The `shap.Explainer` class has many arguments that can change the behavior of the SHAP values.</span>
+<span class="sd">                Check the [official documentation](https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html#shap.Explainer) for more details.</span>
+
+<span class="sd">            ???+ note &quot;Most important arguments&quot;</span>
+
+<span class="sd">                - `masker`: the data used for masking the input data. By default, it is set to `self.data`.</span>
+<span class="sd">                If you want a faster computation, you can pass a subset of the data, e.g. `masker=self.data[:100]`.</span>
+<span class="sd">                - `algorithm`: the algorithm used for computing the SHAP values. By default, it is set to `&quot;auto&quot;`.</span>
+<span class="sd">                If you know that your model belongs to a specific class, you can set it to the corresponding algorithm, e.g. `algorithm=&quot;linear&quot;`.</span>
+
+<span class="sd">        shap_explanation_kwargs: the keyword arguments to be passed to compute the SHAP values.a</span>
+
+<span class="sd">            ???+ note &quot;Code behind the scene&quot;</span>
+
+<span class="sd">                ```python</span>
+<span class="sd">                explainer = ... (check the code above)</span>
+<span class="sd">                shap_explanation_kwargs = shap_explanation_kwargs or {}</span>
+<span class="sd">                explainer(self.data, **shap_explanation_kwargs)</span>
+<span class="sd">                ```</span>
+
+<span class="sd">            ???+ note &quot;Most important arguments&quot;</span>
+<span class="sd">                - `max_evals`: the maximum number of evaluations for the SHAP values. (default: `500`)</span>
+
+
+<span class="sd">            ???+ note &quot;All arguments&quot;</span>
+
+<span class="sd">                - `max_evals`: the maximum number of evaluations for the SHAP values. (default: `500`)</span>
+<span class="sd">                - `main_effects`: whether to compute the main effects. (default: `False`)</span>
+<span class="sd">                - `error_bounds`: whether to compute the error bounds. (default: `False`)</span>
+<span class="sd">                - `batch_size`: the batch size for computing the SHAP values. (default: `auto`)</span>
+<span class="sd">                - `output_names`: the names of the outputs. (default: `None`)</span>
+<span class="sd">                - `silent`: whether to print the progress. (default: `False`)</span>
+
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
@@ -5336,7 +5536,13 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
         <span class="c1"># assert global SHAP values are available</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_shap_values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
             <span class="n">global_shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span>
-            <span class="n">global_shap_dp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">feat</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">)</span>
+            <span class="n">global_shap_dp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+                <span class="n">feat</span><span class="p">,</span>
+                <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+                <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span>
+                <span class="n">shap_explainer_kwargs</span><span class="o">=</span><span class="n">shap_explainer_kwargs</span><span class="p">,</span>
+                <span class="n">shap_explanation_kwargs</span><span class="o">=</span><span class="n">shap_explanation_kwargs</span>
+            <span class="p">)</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">global_shap_values</span> <span class="o">=</span> <span class="n">global_shap_dp</span><span class="o">.</span><span class="n">shap_values</span>
 
         <span class="n">heter</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_create_heterogeneity_function</span><span class="p">(</span><span class="n">feat</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">.</span><span class="n">min_points_per_subregion</span><span class="p">,</span> <span class="n">binning_method</span><span class="p">)</span>
@@ -5351,11 +5557,15 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="n">all_arguments</span> <span class="o">=</span> <span class="nb">locals</span><span class="p">()</span>
     <span class="n">all_arguments</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;self&quot;</span><span class="p">)</span>
 
-    <span class="c1"># region splitting arguments are the first 8 arguments</span>
+    <span class="c1"># region splitting arguments are the first 3 arguments</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_subregion_detection</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span> <span class="n">all_arguments</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">all_arguments</span><span class="o">.</span><span class="n">keys</span><span class="p">())[:</span><span class="mi">3</span><span class="p">]}</span>
 
     <span class="c1"># fit kwargs</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_fitting</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;binning_method&quot;</span><span class="p">:</span> <span class="n">binning_method</span><span class="p">}</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_fitting</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;binning_method&quot;</span><span class="p">:</span> <span class="n">binning_method</span><span class="p">,</span>
+        <span class="s2">&quot;shap_explainer_kwargs&quot;</span><span class="p">:</span> <span class="n">shap_explainer_kwargs</span><span class="p">,</span>
+        <span class="s2">&quot;shap_explanation_kwargs&quot;</span><span class="p">:</span> <span class="n">shap_explanation_kwargs</span>
+    <span class="p">}</span>
 </code></pre></div></td></tr></table></div>
             </details>
     </div>
@@ -5557,38 +5767,38 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
          <span class="n">feature</span><span class="p">,</span>
          <span class="n">node_idx</span><span class="p">,</span>
          <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span>
