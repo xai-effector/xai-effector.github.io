@@ -577,7 +577,7 @@ Each global effect method has a different formula for qunatifying such heterogen
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Heterogeneity of x_</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">y_var</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">heter_per_feat</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">y_var</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 </code></pre></div>
-<pre><code>Heterogeneity of x_0: 0.092
+<pre><code>Heterogeneity of x_0: 0.093
 Heterogeneity of x_1: 0.088
 Heterogeneity of x_2: 0.000
 </code></pre>
@@ -697,15 +697,8 @@ h(x_2)  &amp;= \frac{1}{N} \sum_i^N \left ( f^{ICE,i}_c(x_2) - f^{PDP}_c(x_2) \r
          0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
          0.        ,  0.        ,  0.        ,  0.        ,  0.        ,
          0.        ]),
- 'bin_estimator_variance': array([0.        , 0.        , 0.        , 0.        , 0.        ,
-        0.        , 0.        , 0.        , 0.        , 0.        ,
-        0.        , 0.        , 0.        , 0.        , 0.        ,
-        0.25947461, 0.        , 0.        , 0.        , 0.        ,
-        0.        , 0.        , 0.        , 0.        , 0.        ,
-        0.        , 0.        , 0.        , 0.        , 0.        ,
-        0.        ]),
  'alg_params': 'fixed',
- 'norm_const': np.float64(0.32060777402612833)}
+ 'norm_const': np.float64(0.3206077740261283)}
 </code></pre>
 <h3 id="derivations_1">Derivations</h3>
 <p>For x_1:</p>

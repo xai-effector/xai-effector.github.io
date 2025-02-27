@@ -872,19 +872,18 @@
 <p>The PDP is simply the average over the underlying ICE curves (local effects). The ICE curves show how the feature of interest influences the prediction of the ML model <em>for each single instance</em>. The ICE curves show the heterogeneity of the local effects.</p>
 <h3 id="uncorrelated-setting">Uncorrelated setting</h3>
 <h4 id="global-pdp">Global PDP</h4>
-<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
-                                      <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">()</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 65.91it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 33.58it/s]
 
 
 
 
 
-&lt;effector.axis_partitioning.DynamicProgramming at 0x7f70d9518a90&gt;
+&lt;effector.axis_partitioning.DynamicProgramming at 0x7e77dd18fdf0&gt;
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -896,23 +895,26 @@
 <p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_10_2.png" /></a></p>
 <h4 id="regional-pdp">Regional PDP</h4>
 <p>Regional PDP will search for explanations that minimize the interaction-related heterogeneity.</p>
-<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
-                                    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 51.58it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 37.25it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 3.54 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= 0.0, heter: 0.08 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x1 | x3  &gt; 0.0, heter: 0.08 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x1 🔹 [id: 0 | heter: 3.55 | inst: 1000 | w: 1.00]
+    x3 ≤ 0.00 🔹 [id: 1 | heter: 0.09 | inst: 504 | w: 0.50]
+    x3 &gt; 0.00 🔹 [id: 2 | heter: 0.08 | inst: 496 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 3.54
-        Level 1, heter: 0.17 || heter drop : 3.37 (units), 95.29% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 3.55
+    Level 1🔹heter: 0.08 | 🔻3.46 (97.66%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -922,21 +924,29 @@ Level 0, heter: 3.54
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 3.43 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x2 🔹 [id: 0 | heter: 3.48 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 3.43
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 3.48
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 3.07 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.76 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.71 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x3 🔹 [id: 0 | heter: 3.10 | inst: 1000 | w: 1.00]
+    x1 ≤ 0.00 🔹 [id: 1 | heter: 0.75 | inst: 485 | w: 0.48]
+    x1 &gt; 0.00 🔹 [id: 2 | heter: 0.70 | inst: 515 | w: 0.52]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 3.07
-        Level 1, heter: 1.47 || heter drop : 1.60 (units), 52.09% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 3.10
+    Level 1🔹heter: 0.73 | 🔻2.38 (76.57%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -974,23 +984,26 @@ Due to this face, we expect the explanations to be identical with the uncorrelat
 <p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_1.png" /></a></p>
 <p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_21_2.png" /></a></p>
 <h4 id="regional-pdp_1">Regional-PDP</h4>
-<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
-                                    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span><span class="s1">&#39;x2&#39;</span><span class="p">,</span><span class="s1">&#39;x3&#39;</span><span class="p">],</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">],[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 50.92it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 37.75it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 3.55 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= 0.0, heter: 0.08 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x1 | x3  &gt; 0.0, heter: 0.09 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x1 🔹 [id: 0 | heter: 3.53 | inst: 1000 | w: 1.00]
+    x3 ≤ 0.00 🔹 [id: 1 | heter: 0.08 | inst: 495 | w: 0.49]
+    x3 &gt; 0.00 🔹 [id: 2 | heter: 0.08 | inst: 505 | w: 0.51]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 3.55
-        Level 1, heter: 0.17 || heter drop : 3.38 (units), 95.20% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 3.53
+    Level 1🔹heter: 0.08 | 🔻3.45 (97.78%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1000,24 +1013,32 @@ Level 0, heter: 3.55
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 1.11 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x2 | x1 &lt;= 0.6, heter: 0.39 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x2 | x1  &gt; 0.6, heter: 0.21 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x2 🔹 [id: 0 | heter: 1.05 | inst: 1000 | w: 1.00]
+    x1 ≤ 0.40 🔹 [id: 1 | heter: 0.28 | inst: 694 | w: 0.69]
+    x1 &gt; 0.40 🔹 [id: 2 | heter: 0.43 | inst: 306 | w: 0.31]
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 1.11
-        Level 1, heter: 0.60 || heter drop : 0.51 (units), 45.92% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 1.05
+    Level 1🔹heter: 0.32 | 🔻0.73 (69.16%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 3.08 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.74 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.79 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x3 🔹 [id: 0 | heter: 2.90 | inst: 1000 | w: 1.00]
+    x1 ≤ 0.00 🔹 [id: 1 | heter: 0.69 | inst: 495 | w: 0.49]
+    x1 &gt; 0.00 🔹 [id: 2 | heter: 0.72 | inst: 505 | w: 0.51]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 3.08
-        Level 1, heter: 1.53 || heter drop : 1.55 (units), 50.30% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 2.90
+    Level 1🔹heter: 0.70 | 🔻2.20 (75.73%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;ice&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1052,35 +1073,38 @@ Level 0, heter: 3.08
 <h4 id="regional-rhale">Regional RHALE</h4>
 <p>The disadvantage of RHALE plot is that it does not reveal the type of heterogeneity. Therefore, Regional (RH)ALE plots are very helpful to identify the type of heterogeneity. Let's see that in practice:</p>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-    <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
+    <span class="n">model_jac</span><span class="o">=</span> <span class="n">model_jac</span><span class="p">,</span> 
     <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
-    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
 
 <span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">space_partitioner</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
+    <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">),</span>
     <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>  Cell In[21], line 12
-    space_partitioner = effector.space_partitioning.Regions(heter_pcg_drop_thres=0.3, nof_candidate_splits_for_numerical=10)
-                        ^
-SyntaxError: invalid syntax. Perhaps you forgot a comma?
+<pre><code>  0%|          | 0/3 [00:00&lt;?, ?it/s]/home/givasile/github/packages/effector/effector/space_partitioning.py:281: RuntimeWarning: invalid value encountered in divide
+  heter_drop = (heter[:-1] - heter[1:]) / heter[:-1]
+100%|██████████| 3/3 [00:00&lt;00:00, 13.96it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 8.87 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= 0.0, heter: 0.00 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x1 | x3  &gt; 0.0, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x1 🔹 [id: 0 | heter: 8.97 | inst: 1000 | w: 1.00]
+    x3 ≤ 0.00 🔹 [id: 1 | heter: 0.00 | inst: 504 | w: 0.50]
+    x3 &gt; 0.00 🔹 [id: 2 | heter: 0.00 | inst: 496 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 8.87
-        Level 1, heter: 0.00 || heter drop : 8.87 (units), 100.00% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 8.97
+    Level 1🔹heter: 0.00 | 🔻8.97 (100.00%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1090,18 +1114,26 @@ Level 0, heter: 8.87
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x2 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x3 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <h4 id="conclusion_2">Conclusion</h4>
 <p>The explanations are similar to the ones obtained with the PDP plots. The average effect of <span class="arithmatex">\(x_1\)</span> is <span class="arithmatex">\(0\)</span> with some heterogeneity due to the interaction with <span class="arithmatex">\(x_1\)</span>. The heterogeneity is shown with the red vertical bars. The average effect of <span class="arithmatex">\(x_2\)</span> is <span class="arithmatex">\(0\)</span> without heterogeneity. The average effect of <span class="arithmatex">\(x_3\)</span> is <span class="arithmatex">\(x_3\)</span>, but in contrast with the PDP plots, there is no heterogeneity. The regional RHALE plots explain the type of the heterogeneity for <span class="arithmatex">\(x_1\)</span>.</p>
@@ -1126,45 +1158,57 @@ Level 0, heter: 0.00
 <p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_42_2.png" /></a></p>
 <h4 id="regional-rhale_1">Regional RHALE</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
-    <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
+    <span class="n">model_jac</span><span class="o">=</span> <span class="n">model_jac</span><span class="p">,</span> 
     <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
-    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
 
 <span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span><span class="p">,</span>
+    <span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">space_partitioner</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 18.65it/s]
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00, 14.10it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x1 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x2 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x3 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <h4 id="conclusion_3">Conclusion</h4>
 <p>The global RHALE plots follow the formula obtained after setting <span class="arithmatex">\(x_1=x_3\)</span> while the Regional (RH)ALE plot do not find any subregions in the correlated case.</p>
@@ -1179,61 +1223,42 @@ Level 0, heter: 0.00
 <span class="n">shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
 <p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_0.png" /></a></p>
-<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_1.png" /></a></p>
+<pre><code>/home/givasile/github/packages/effector/effector/global_effect_shap.py:402: RuntimeWarning: invalid value encountered in sqrt
+  np.sqrt(self.feature_effect["feature_" + str(feature)]["spline_std"](x))
+</code></pre>
 <p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_2.png" /></a></p>
+<p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_51_3.png" /></a></p>
 <h4 id="regional-shap-dp">Regional SHAP-DP</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_uncor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
     <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
-    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
 
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">regional_shap</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
-    <span class="n">binning_method</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+    <span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
     <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>---------------------------------------------------------------------------
-
-AttributeError                            Traceback (most recent call last)
-
-Cell In[38], line 9
-      1 regional_shap = effector.RegionalShapDP(
-      2     data=X_uncor_train, 
-      3     model=model, 
-      4     feature_names=['x1', 'x2', 'x3'],
-      5     axis_limits=np.array([[-1, 1], [-1, 1], [-1, 1]]).T) 
-      8 space_partitioner = effector.space_partitioning.Regions(heter_pcg_drop_thres=0.6, nof_candidate_splits_for_numerical=10),
-----&gt; 9 regional_shap.fit(
-     10     features="all",
-     11     binning_method = effector.axis_partitioning.Fixed(nof_bins=5, min_points_per_bin=0),
-     12     space_partitioner=space_partitioner
-     13 )
-
-
-File ~/github/packages/effector/effector/regional_effect_shap.py:140, in RegionalShapDP.fit(self, features, candidate_conditioning_features, space_partitioner, binning_method)
-    137 if isinstance(space_partitioner, str):
-    138     space_partitioner = effector.space_partitioning.return_default(space_partitioner)
---&gt; 140 assert space_partitioner.min_points_per_subregion &gt;= 2, "min_points_per_subregion must be &gt;= 2"
-    141 features = helpers.prep_features(features, self.dim)
-    143 for feat in tqdm(features):
-    144     # assert global SHAP values are available
-
-
-AttributeError: 'tuple' object has no attribute 'min_points_per_subregion'
+<pre><code>100%|██████████| 3/3 [00:00&lt;00:00,  5.10it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 0.85 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x1 | x3 &lt;= 0.0, heter: 0.03 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x1 | x3  &gt; 0.0, heter: 0.03 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x1 🔹 [id: 0 | heter: 0.85 | inst: 1000 | w: 1.00]
+    x3 ≤ 0.00 🔹 [id: 1 | heter: 0.02 | inst: 504 | w: 0.50]
+    x3 &gt; 0.00 🔹 [id: 2 | heter: 0.04 | inst: 496 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 0.85
-        Level 1, heter: 0.06 || heter drop : 0.79 (units), 93.06% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.85
+    Level 1🔹heter: 0.03 | 🔻0.82 (96.32%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">regional_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;std&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
@@ -1243,21 +1268,29 @@ Level 0, heter: 0.85
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x2 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 0.77 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x3 | x1 &lt;= 0.0, heter: 0.26 || nof_instances:  1000 || weight: 1.00
-        Node id: 2, name: x3 | x1  &gt; 0.0, heter: 0.35 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x3 🔹 [id: 0 | heter: 0.81 | inst: 1000 | w: 1.00]
+    x1 ≤ 0.00 🔹 [id: 1 | heter: 0.24 | inst: 485 | w: 0.48]
+    x1 &gt; 0.00 🔹 [id: 2 | heter: 0.38 | inst: 515 | w: 0.52]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 0.77
-        Level 1, heter: 0.61 || heter drop : 0.16 (units), 20.89% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.81
+    Level 1🔹heter: 0.31 | 🔻0.50 (61.34%)
 </code></pre>
 <h4 id="conclusion_4">Conclusion</h4>
 <p>Global SHAP-DP:</p>
@@ -1280,48 +1313,54 @@ Level 0, heter: 0.77
 <p><a class="glightbox" href="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_regional_effects_synthetic_f_files/03_regional_effects_synthetic_f_60_2.png" /></a></p>
 <h4 id="regional-shap">Regional SHAP</h4>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span>
-    <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span>
-    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_cor_train</span><span class="p">,</span> 
+    <span class="n">model</span><span class="o">=</span><span class="n">model</span><span class="p">,</span> 
     <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;x1&#39;</span><span class="p">,</span> <span class="s1">&#39;x2&#39;</span><span class="p">,</span> <span class="s1">&#39;x3&#39;</span><span class="p">],</span>
-    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">axis_limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">)</span> 
 
-<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">heter_pcg_drop_thres</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">nof_candidate_splits_for_numerical</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">space_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">min_heterogeneity_decrease_pcg</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">numerical_features_grid_size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="n">regional_shap</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">space_partitioner</span><span class="o">=</span><span class="n">space_partitioner</span>
 <span class="p">)</span>
 </code></pre></div>
-<pre><code>  0%|                                                                                                                                                                                 | 0/3 [00:00&lt;?, ?it/s]/home/givasile/miniconda3/envs/effector-dev/lib/python3.10/site-packages/numpy/_core/fromnumeric.py:4008: RuntimeWarning: Degrees of freedom &lt;= 0 for slice
-  return _methods._var(a, axis=axis, dtype=dtype, out=out, ddof=ddof,
-/home/givasile/miniconda3/envs/effector-dev/lib/python3.10/site-packages/numpy/_core/_methods.py:175: RuntimeWarning: invalid value encountered in divide
-  arrmean = um.true_divide(arrmean, div, out=arrmean,
-/home/givasile/miniconda3/envs/effector-dev/lib/python3.10/site-packages/numpy/_core/_methods.py:210: RuntimeWarning: invalid value encountered in scalar divide
-  ret = ret.dtype.type(ret / rcount)
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 3/3 [00:01&lt;00:00,  2.96it/s]
+<pre><code>100%|██████████| 3/3 [00:01&lt;00:00,  2.95it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 0 - Full partition tree:
-Node id: 0, name: x1, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x1 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 1 - Full partition tree:
-Node id: 0, name: x2, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x2 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 1 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">regional_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>Feature 2 - Full partition tree:
-Node id: 0, name: x3, heter: 0.00 || nof_instances:  1000 || weight: 1.00
+🌳 Full Tree Structure:
+───────────────────────
+x3 🔹 [id: 0 | heter: 0.00 | inst: 1000 | w: 1.00]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
-Level 0, heter: 0.00
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.00
 </code></pre>
 <h4 id="conclusion_5">Conclusion</h4>
 

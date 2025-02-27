@@ -449,11 +449,7 @@
 
 <span class="n">california_housing</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>2025-02-10 22:30:23.277232: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:477] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
-WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-E0000 00:00:1739223023.299610  721882 cuda_dnn.cc:8310] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
-E0000 00:00:1739223023.306366  721882 cuda_blas.cc:1418] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
-2025-02-10 22:30:23.328406: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+<pre><code>2025-02-26 11:16:45.248689: I tensorflow/core/platform/cpu_feature_guard.cc:210] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
@@ -1021,7 +1017,7 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
   return torch._C._cuda_getDeviceCount() &gt; 0
 
 
-258.1667549610138
+256.08621978759766
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
@@ -1040,23 +1036,27 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <h2 id="latitude-south-to-north">Latitude (south to north)</h2>
 <div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:26&lt;00:00, 26.42s/it]
+<pre><code>100%|██████████| 1/1 [00:32&lt;00:00, 32.79s/it]
 
 
 
 Feature 6 - Full partition tree:
-Node id: 0, name: Latitude, heter: 0.57 || nof_instances:   500 || weight: 1.00
-        Node id: 1, name: Latitude | Longitude &lt;= -120.76, heter: 0.09 || nof_instances:   180 || weight: 0.36
-                Node id: 3, name: Latitude | Longitude &lt;= -120.76 and MedInc &lt;= 4.55, heter: 0.09 || nof_instances:   126 || weight: 0.25
-                Node id: 4, name: Latitude | Longitude &lt;= -120.76 and MedInc &gt; 4.55, heter: 0.10 || nof_instances:    54 || weight: 0.11
-        Node id: 2, name: Latitude | Longitude &gt; -120.76, heter: 0.48 || nof_instances:   320 || weight: 0.64
-                Node id: 5, name: Latitude | Longitude &gt; -120.76 and MedInc &lt;= 4.55, heter: 0.31 || nof_instances:   228 || weight: 0.46
-                Node id: 6, name: Latitude | Longitude &gt; -120.76 and MedInc &gt; 4.55, heter: 0.43 || nof_instances:    92 || weight: 0.18
+🌳 Full Tree Structure:
+───────────────────────
+Latitude 🔹 [id: 0 | heter: 0.57 | inst: 500 | w: 1.00]
+    Longitude ≤ -120.76 🔹 [id: 1 | heter: 0.09 | inst: 180 | w: 0.36]
+        MedInc ≤ 4.55 🔹 [id: 3 | heter: 0.09 | inst: 126 | w: 0.25]
+        MedInc &gt; 4.55 🔹 [id: 4 | heter: 0.10 | inst: 54 | w: 0.11]
+    Longitude &gt; -120.76 🔹 [id: 2 | heter: 0.48 | inst: 320 | w: 0.64]
+        MedInc ≤ 4.55 🔹 [id: 5 | heter: 0.31 | inst: 228 | w: 0.46]
+        MedInc &gt; 4.55 🔹 [id: 6 | heter: 0.43 | inst: 92 | w: 0.18]
 --------------------------------------------------
 Feature 6 - Statistics per tree level:
-Level 0, heter: 0.57
-        Level 1, heter: 0.34 || heter drop : 0.23 (units), 40.23% (pcg)
-                Level 2, heter: 0.25 || heter drop : 0.09 (units), 26.41% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.57
+    Level 1🔹heter: 0.34 | 🔻0.23 (40.23%)
+        Level 2🔹heter: 0.25 | 🔻0.09 (26.41%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
@@ -1072,7 +1072,7 @@ Level 0, heter: 0.57
 <h2 id="longitude-west-to-east">Longitude (west to east)</h2>
 <div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:26&lt;00:00, 26.83s/it]
+<pre><code>100%|██████████| 1/1 [00:31&lt;00:00, 31.17s/it]
 </code></pre>
 <p><a class="glightbox" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_26_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_26_1.png" /></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move east.  </p>
@@ -1085,6 +1085,8 @@ Level 0, heter: 0.57
 <p><strong>Regional Trends:</strong><br />
 - <strong>North (latitude &gt; 35.85):</strong> Prices drop more sharply in the first half from east to west.<br />
 - <strong>South (latitude &lt; 35.85):</strong> Prices drop more sharply in the second half from east to west.</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 

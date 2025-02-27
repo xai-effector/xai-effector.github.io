@@ -579,18 +579,22 @@
 <div class="highlight"><pre><span></span><code><span class="n">r_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 112.55it/s]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 105.23it/s]
 
 
 
 Feature 0 - Full partition tree:
-Node id: 0, name: x_0, heter: 35.72 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x_0 | x_1 &lt;= 0.0, heter: 0.09 || nof_instances:   501 || weight: 0.50
-        Node id: 2, name: x_0 | x_1  &gt; 0.0, heter: 0.09 || nof_instances:   499 || weight: 0.50
+🌳 Full Tree Structure:
+───────────────────────
+x_0 🔹 [id: 0 | heter: 35.72 | inst: 1000 | w: 1.00]
+    x_1 ≤ 0.00 🔹 [id: 1 | heter: 0.09 | inst: 501 | w: 0.50]
+    x_1 &gt; 0.00 🔹 [id: 2 | heter: 0.09 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 35.72
-        Level 1, heter: 0.09 || heter drop : 35.63 (units), 99.75% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 35.72
+    Level 1🔹heter: 0.09 | 🔻35.63 (99.75%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -602,18 +606,22 @@ Level 0, heter: 35.72
 <div class="highlight"><pre><span></span><code><span class="n">r_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 11.21it/s]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 11.33it/s]
 
 
 
 Feature 0 - Full partition tree:
-Node id: 0, name: x_0, heter: 97.38 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x_0 | x_1 &lt;= 0.0, heter: 0.00 || nof_instances:   501 || weight: 0.50
-        Node id: 2, name: x_0 | x_1  &gt; 0.0, heter: 0.00 || nof_instances:   499 || weight: 0.50
+🌳 Full Tree Structure:
+───────────────────────
+x_0 🔹 [id: 0 | heter: 97.38 | inst: 1000 | w: 1.00]
+    x_1 ≤ 0.00 🔹 [id: 1 | heter: 0.00 | inst: 501 | w: 0.50]
+    x_1 &gt; 0.00 🔹 [id: 2 | heter: 0.00 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 97.38
-        Level 1, heter: 0.00 || heter drop : 97.38 (units), 100.00% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 97.38
+    Level 1🔹heter: 0.00 | 🔻97.38 (100.00%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -625,18 +633,22 @@ Level 0, heter: 97.38
 <div class="highlight"><pre><span></span><code><span class="n">r_shapdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_shapdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.79it/s]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  2.15it/s]
 
 
 
 Feature 0 - Full partition tree:
-Node id: 0, name: x_0, heter: 8.82 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x_0 | x_1 &lt;= 0.0, heter: 0.02 || nof_instances:   501 || weight: 0.50
-        Node id: 2, name: x_0 | x_1  &gt; 0.0, heter: 0.02 || nof_instances:   499 || weight: 0.50
+🌳 Full Tree Structure:
+───────────────────────
+x_0 🔹 [id: 0 | heter: 8.82 | inst: 1000 | w: 1.00]
+    x_1 ≤ 0.00 🔹 [id: 1 | heter: 0.02 | inst: 501 | w: 0.50]
+    x_1 &gt; 0.00 🔹 [id: 2 | heter: 0.02 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 8.82
-        Level 1, heter: 0.02 || heter drop : 8.80 (units), 99.76% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 8.82
+    Level 1🔹heter: 0.02 | 🔻8.80 (99.76%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_shapdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -648,18 +660,22 @@ Level 0, heter: 8.82
 <div class="highlight"><pre><span></span><code><span class="n">r_ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_ale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 77.86it/s]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 70.31it/s]
 
 
 
 Feature 0 - Full partition tree:
-Node id: 0, name: x_0, heter: 120.05 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x_0 | x_1 &lt;= 0.0, heter: 18.88 || nof_instances:   501 || weight: 0.50
-        Node id: 2, name: x_0 | x_1  &gt; 0.0, heter: 17.65 || nof_instances:   499 || weight: 0.50
+🌳 Full Tree Structure:
+───────────────────────
+x_0 🔹 [id: 0 | heter: 120.05 | inst: 1000 | w: 1.00]
+    x_1 ≤ 0.00 🔹 [id: 1 | heter: 18.88 | inst: 501 | w: 0.50]
+    x_1 &gt; 0.00 🔹 [id: 2 | heter: 17.65 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 120.05
-        Level 1, heter: 18.26 || heter drop : 101.78 (units), 84.79% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 120.05
+    Level 1🔹heter: 18.26 | 🔻101.78 (84.79%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -671,18 +687,22 @@ Level 0, heter: 120.05
 <div class="highlight"><pre><span></span><code><span class="n">r_dpdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalDerPDP</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_dpdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 96.80it/s]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 100.47it/s]
 
 
 
 Feature 0 - Full partition tree:
-Node id: 0, name: x_0, heter: 100.00 || nof_instances:  1000 || weight: 1.00
-        Node id: 1, name: x_0 | x_1 &lt;= 0.0, heter: 0.00 || nof_instances:   501 || weight: 0.50
-        Node id: 2, name: x_0 | x_1  &gt; 0.0, heter: 0.00 || nof_instances:   499 || weight: 0.50
+🌳 Full Tree Structure:
+───────────────────────
+x_0 🔹 [id: 0 | heter: 100.00 | inst: 1000 | w: 1.00]
+    x_1 ≤ 0.00 🔹 [id: 1 | heter: 0.00 | inst: 501 | w: 0.50]
+    x_1 &gt; 0.00 🔹 [id: 2 | heter: 0.00 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
-Level 0, heter: 100.00
-        Level 1, heter: 0.00 || heter drop : 100.00 (units), 100.00% (pcg)
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 100.00
+    Level 1🔹heter: 0.00 | 🔻100.00 (100.00%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_dpdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -690,6 +710,8 @@ Level 0, heter: 100.00
 <p><a class="glightbox" href="../simple_api_files/simple_api_32_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../simple_api_files/simple_api_32_1.png" /></a></p>
 <pre><code>[None, None]
 </code></pre>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 
 
 

@@ -717,15 +717,15 @@
 <hr />
 <p><code>effector</code> an eXplainable AI package for <strong>tabular data</strong>. It:</p>
 <ul>
-<li>creates <a href="https://xai-effector.github.io/quickstart/global_and_regional_effects/">global and regional</a> effect plots</li>
-<li>has a <a href="https://xai-effector.github.io/quickstart/simple_api/">simple API</a> with smart defaults, but can become <a href="https://xai-effector.github.io/quickstart/flexible_api/">flexible</a> if needed</li>
-<li>is model agnostic; can explain <a href="https://xai-effector.github.io/">any underlying ML model</a></li>
-<li>integrates easily with popular ML libraries, like <a href="https://xai-effector.github.io/quickstart/simple_api/#__tabbed_2_2">Scikit-Learn, Tensorflow and Pytorch</a></li>
-<li>is fast, for both <a href="https://xai-effector.github.io/notebooks/guides/efficiency_global/">global</a> and <a href="https://xai-effector.github.io/notebooks/guides/efficiency_global/">regional</a> methods</li>
-<li>provides a large collection of <a href="https://xai-effector.github.io/#supported-methods">global and regional effects methods</a></li>
+<li>creates <a href="./quickstart/global_and_regional_effects/">global and regional</a> effect plots</li>
+<li>has a <a href="./quickstart/simple_api/">simple API</a> with smart defaults, but can become <a href="./quickstart/flexible_api/">flexible</a> if needed</li>
+<li>is model agnostic; it provides methods that can explain <a href="./#method-selection-guide">any underlying ML model</a></li>
+<li>integrates easily with popular ML libraries, like <a href="./quickstart/simple_api/#__tabbed_2_2">Scikit-Learn</a>, <a href="./quickstart/simple_api/#__tabbed_2_3">Tensorflow</a>, <a href="./quickstart/simple_api/#__tabbed_2_4">Pytorch</a> or any other</li>
+<li>is fast, for both <a href="./notebooks/guides/efficiency_global/">global</a> and <a href="./notebooks/guides/efficiency_global/">regional</a> methods</li>
+<li>provides a large collection of <a href="./#supported-methods">global and regional effects methods</a></li>
 </ul>
 <hr />
-<p>📖 <a href="https://xai-effector.github.io/">Documentation</a> | 🔍 <a href="https://xai-effector.github.io/quickstart/global_and_regional_effects/">Intro to global and regional effects</a> | 🔧 <a href="https://xai-effector.github.io/api/">API</a> | 🏗 <a href="https://xai-effector.github.io/examples">Examples</a></p>
+<p>📖 <a href="./">Documentation</a> | 🔍 <a href="./quickstart/global_and_regional_effects/">Intro to global and regional effects</a> | 🔧 <a href="./api/">API</a> | 🏗 <a href="./examples">Examples</a></p>
 <hr />
 <h2 id="installation">Installation</h2>
 <p>Effector requires Python 3.10+:</p>
@@ -764,39 +764,42 @@
     <span class="k">return</span> <span class="n">model</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">squeeze</span><span class="p">()</span>
 </code></pre></div>
 <h3 id="explain-it-with-global-effect-plots">Explain it with global effect plots</h3>
-<div class="highlight"><pre><span></span><code><span class="c1"># define the global effect method</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Initialize the Partial Dependence Plot (PDP) object</span>
 <span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span>
-    <span class="n">X_test</span><span class="p">,</span>
-    <span class="n">predict</span><span class="p">,</span>
-    <span class="n">feature_names</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>
-    <span class="n">target_name</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">target_name</span>
+    <span class="n">X_test</span><span class="p">,</span>  <span class="c1"># Use the test set as background data</span>
+    <span class="n">predict</span><span class="p">,</span>  <span class="c1"># Prediction function</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>  <span class="c1"># (optional) Feature names</span>
+    <span class="n">target_name</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">target_name</span>  <span class="c1"># (optional) Target variable name</span>
 <span class="p">)</span>
 
-<span class="c1"># plot the effect of the 3rd feature (feature: temperature)</span>
+<span class="c1"># Plot the effect of a feature</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-    <span class="n">scale_x</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="mi">3</span><span class="p">]},</span>
-    <span class="n">scale_y</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_mu</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_std</span><span class="p">},</span>
-    <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-    <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+    <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Select the 3rd feature (feature: hour)</span>
+    <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>  <span class="c1"># (optional) Number of Individual Conditional Expectation (ICE) curves to plot</span>
+    <span class="n">scale_x</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="mi">3</span><span class="p">]},</span>  <span class="c1"># (optional) Scale x-axis</span>
+    <span class="n">scale_y</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_mu</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_std</span><span class="p">},</span>  <span class="c1"># (optional) Scale y-axis</span>
+    <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># (optional) Center PDP and ICE curves</span>
+    <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>  <span class="c1"># (optional) Display the average prediction</span>
+    <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>  <span class="c1"># (optional) Set y-axis limits</span>
 <span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="notebooks/quickstart/readme_example_files/readme_example_3_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="notebooks/quickstart/readme_example_files/readme_example_3_0.png" /></a></p>
 <h3 id="explain-it-with-regional-effect-plots">Explain it with regional effect plots</h3>
-<div class="highlight"><pre><span></span><code><span class="n">r_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span>
-    <span class="n">X_test</span><span class="p">,</span>
-    <span class="n">predict</span><span class="p">,</span>
-    <span class="n">feature_names</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>
-    <span class="n">target_name</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">target_name</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Initialize the Regional Partial Dependence Plot (RegionalPDP)</span>
+<span class="n">r_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span>
+    <span class="n">X_test</span><span class="p">,</span>  <span class="c1"># Test set data</span>
+    <span class="n">predict</span><span class="p">,</span>  <span class="c1"># Prediction function</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>  <span class="c1"># Feature names</span>
+    <span class="n">target_name</span><span class="o">=</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">target_name</span>  <span class="c1"># Target variable name</span>
 <span class="p">)</span>
 
-<span class="c1"># summarize the subregions of feature 3</span>
-<span class="n">scale_x_list</span> <span class="o">=</span> <span class="p">[{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">mu</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">std</span><span class="p">}</span> <span class="k">for</span> <span class="n">mu</span><span class="p">,</span> <span class="n">std</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">,</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">)]</span>
+<span class="c1"># Summarize the subregions of the 3rd feature (temperature)</span>
 <span class="n">r_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span>
-    <span class="n">features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-    <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span>
+    <span class="n">features</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Select the 3rd feature for the summary</span>
+    <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[</span>  <span class="c1"># scale each feature with mean and std</span>
+        <span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="n">i</span><span class="p">]}</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="p">]</span>
 <span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
@@ -813,9 +816,9 @@ hr 🔹 [id: 0 | heter: 0.43 | inst: 3476 | w: 1.00]
 Feature 3 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 0.43
-    Level 1🔹heter: 0.31 | 🔻0.12 (28.15%)
-        Level 2🔹heter: 0.19 | 🔻0.11 (37.10%)
+Level 0🔹heter: 0.41
+    Level 1🔹heter: 0.29 | 🔻0.12 (28.96%)
+        Level 2🔹heter: 0.18 | 🔻0.11 (36.75%)
 </code></pre></div>
 <p>The summary of feature <code>hr</code> (hour) says that its effect on the output is highly dependent on the value of features:</p>
 <ul>
@@ -825,15 +828,18 @@ Level 0🔹heter: 0.43
 <p>Let's see how the effect changes on these subregions!</p>
 <hr />
 <h4 id="is-it-workingday-or-not">Is it workingday or not?</h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># plot the regional effects after the first-level splits (workingday or non-workingday)</span>
-<span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]:</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Plot regional effects after the first-level split (workingday vs non-workingday)</span>
+<span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>  <span class="c1"># Iterate over the nodes of the first-level split</span>
     <span class="n">r_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span>
-        <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-        <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="n">i</span><span class="p">]}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
-        <span class="n">scale_y</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_mu</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_std</span><span class="p">},</span>
-        <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+        <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Feature 3 (temperature)</span>
+        <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span>  <span class="c1"># Node index (1: workingday, 2: non-workingday)</span>
+        <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>  <span class="c1"># Number of ICE curves</span>
+        <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[</span>  <span class="c1"># scale features by mean and std</span>
+            <span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="n">i</span><span class="p">]}</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">],</span>
+        <span class="n">scale_y</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_mu</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_std</span><span class="p">},</span>  <span class="c1"># Scale the target</span>
+        <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>  <span class="c1"># Set y-axis limits</span>
     <span class="p">)</span>
 </code></pre></div>
 <table>
@@ -845,15 +851,18 @@ Level 0🔹heter: 0.43
 
 <hr />
 <h4 id="is-it-hot-or-cold">Is it hot or cold?</h4>
-<div class="highlight"><pre><span></span><code><span class="c1"># plot the regional effects after the second-level splits (workingday or non-workingday and hot or cold temperature)</span>
-<span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]:</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Plot regional effects after second-level splits (workingday vs non-workingday and hot vs cold temperature)</span>
+<span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>  <span class="c1"># Iterate over the nodes of the second-level splits</span>
     <span class="n">r_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-        <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>
-        <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span>
-        <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
-        <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="n">i</span><span class="p">]}</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])],</span>
-        <span class="n">scale_y</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_mu</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_std</span><span class="p">},</span>
-        <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+        <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Feature 3 (temperature)</span>
+        <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span>  <span class="c1"># Node index (hot/cold temperature and workingday/non-workingday)</span>
+        <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>  <span class="c1"># Number of ICE curves</span>
+        <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[</span>  <span class="c1"># Scale features by mean and std</span>
+            <span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="n">i</span><span class="p">]}</span>
+            <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">X_test</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="p">],</span>
+        <span class="n">scale_y</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;mean&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_mu</span><span class="p">,</span> <span class="s2">&quot;std&quot;</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">y_test_std</span><span class="p">},</span>  <span class="c1"># Scale the target</span>
+        <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>  <span class="c1"># Set y-axis limits</span>
     <span class="p">)</span>
 </code></pre></div>
 <table>
