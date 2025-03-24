@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.9">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -881,6 +881,7 @@ Check the Usage section below and the method-specific documentation for more inf
 
 
 
+
 <p><span class="doc-section-title">Methods:</span></p>
     <table>
       <thead>
@@ -891,7 +892,7 @@ Check the Usage section below and the method-specific documentation for more inf
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect.RegionalEffectBase.eval" href="#effector.regional_effect.RegionalEffectBase.eval">eval</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="eval(feature, node_idx, xs, heterogeneity=False, centering=True) (effector.regional_effect.RegionalEffectBase.eval)" href="#effector.regional_effect.RegionalEffectBase.eval">eval</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p><img alt="👉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f449.svg" title=":point_right:" /> Evaluate the regional effect for a given feature and node.</p>
@@ -899,7 +900,7 @@ Check the Usage section below and the method-specific documentation for more inf
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect.RegionalEffectBase.summary" href="#effector.regional_effect.RegionalEffectBase.summary">summary</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="summary(features, scale_x_list=None) (effector.regional_effect.RegionalEffectBase.summary)" href="#effector.regional_effect.RegionalEffectBase.summary">summary</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p><img alt="👉" class="twemoji" src="https://cdn.jsdelivr.net/gh/jdecked/twemoji@15.1.0/assets/svg/1f449.svg" title=":point_right:" /> Summarize the partition tree for the selected features.</p>
@@ -1249,13 +1250,10 @@ Check the Usage section below and the method-specific documentation for more inf
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">203</span>
 <span class="normal">204</span>
 <span class="normal">205</span>
 <span class="normal">206</span>
@@ -1302,7 +1300,11 @@ Check the Usage section below and the method-specific documentation for more inf
 <span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
-<span class="normal">250</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
         <span class="bp">self</span><span class="p">,</span>
         <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
         <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -1445,13 +1447,10 @@ Check the Usage section below and the method-specific documentation for more inf
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
-<span class="normal">278</span>
-<span class="normal">279</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">279</span>
 <span class="normal">280</span>
 <span class="normal">281</span>
 <span class="normal">282</span>
@@ -1503,7 +1502,11 @@ Check the Usage section below and the method-specific documentation for more inf
 <span class="normal">328</span>
 <span class="normal">329</span>
 <span class="normal">330</span>
-<span class="normal">331</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">scale_x_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">summary</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">features</span><span class="p">:</span> <span class="n">List</span><span class="p">[</span><span class="nb">int</span><span class="p">],</span> <span class="n">scale_x_list</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;:point_right: Summarize the partition tree for the selected features.</span>
 
 <span class="sd">    ???+ Example &quot;Example output&quot;</span>
@@ -1784,6 +1787,7 @@ Check the Usage section below and the method-specific documentation for more inf
 
 
 
+
 <p><span class="doc-section-title">Methods:</span></p>
     <table>
       <thead>
@@ -1794,7 +1798,7 @@ Check the Usage section below and the method-specific documentation for more inf
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_ale.RegionalALE.fit" href="#effector.regional_effect_ale.RegionalALE.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features, candidate_conditioning_features='all', space_partitioner='best', binning_method='fixed', points_for_mean_heterogeneity=30) (effector.regional_effect_ale.RegionalALE.fit)" href="#effector.regional_effect_ale.RegionalALE.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Find subregions by minimizing the ALE-based heterogeneity.</p>
@@ -1802,7 +1806,7 @@ Check the Usage section below and the method-specific documentation for more inf
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_ale.RegionalALE.plot" href="#effector.regional_effect_ale.RegionalALE.plot">plot</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="plot(feature, node_idx, heterogeneity=True, centering=True, scale_x_list=None, scale_y=None, y_limits=None, dy_limits=None) (effector.regional_effect_ale.RegionalALE.plot)" href="#effector.regional_effect_ale.RegionalALE.plot">plot</a></code></td>
               <td>
                 <div class="doc-md-description">
                   
@@ -2055,7 +2059,7 @@ Check the Usage section below and the method-specific documentation for more inf
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best(min_heterogeneity_decrease_pcg=0.1, heter_small_enough=0.001, max_depth=2, min_samples_leaf=10, numerical_features_grid_size=20, search_partitions_when_categorical=False) (effector.space_partitioning.Best)" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2071,7 +2075,7 @@ Check the Usage section below and the method-specific documentation for more inf
                 <code>binning_method</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed(nof_bins=20, min_points_per_bin=0.0, cat_limit=10) (effector.axis_partitioning.Fixed)" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2107,6 +2111,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
@@ -2249,6 +2254,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
 
     <div class="doc doc-contents ">
+
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
@@ -2548,6 +2554,7 @@ If you have the jacobian already computed, provide it directly to the constructo
 
 
 
+
 <p><span class="doc-section-title">Methods:</span></p>
     <table>
       <thead>
@@ -2558,7 +2565,7 @@ If you have the jacobian already computed, provide it directly to the constructo
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_ale.RegionalRHALE.fit" href="#effector.regional_effect_ale.RegionalRHALE.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', candidate_conditioning_features='all', space_partitioner='best', binning_method='greedy', points_for_mean_heterogeneity=30) (effector.regional_effect_ale.RegionalRHALE.fit)" href="#effector.regional_effect_ale.RegionalRHALE.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Find subregions by minimizing the RHALE-based heterogeneity.</p>
@@ -2566,7 +2573,7 @@ If you have the jacobian already computed, provide it directly to the constructo
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_ale.RegionalRHALE.plot" href="#effector.regional_effect_ale.RegionalRHALE.plot">plot</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="plot(feature, node_idx, heterogeneity=True, centering=True, scale_x_list=None, scale_y=None, y_limits=None, dy_limits=None) (effector.regional_effect_ale.RegionalRHALE.plot)" href="#effector.regional_effect_ale.RegionalRHALE.plot">plot</a></code></td>
               <td>
                 <div class="doc-md-description">
                   
@@ -2849,7 +2856,7 @@ If you have the jacobian already computed, provide it directly to the constructo
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best(min_heterogeneity_decrease_pcg=0.1, heter_small_enough=0.001, max_depth=2, min_samples_leaf=10, numerical_features_grid_size=20, search_partitions_when_categorical=False) (effector.space_partitioning.Best)" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -2902,6 +2909,7 @@ If you have the jacobian already computed, provide it directly to the constructo
           </tr>
       </tbody>
     </table>
+
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
@@ -3040,6 +3048,7 @@ If you have the jacobian already computed, provide it directly to the constructo
 
 
     <div class="doc doc-contents ">
+
 
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
@@ -3296,6 +3305,7 @@ If you have the jacobian already computed, provide it directly to the constructo
 
 
 
+
 <p><span class="doc-section-title">Methods:</span></p>
     <table>
       <thead>
@@ -3306,7 +3316,7 @@ If you have the jacobian already computed, provide it directly to the constructo
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_pdp.RegionalPDP.fit" href="#effector.regional_effect_pdp.RegionalPDP.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', candidate_conditioning_features='all', space_partitioner='best', points_for_centering=30, points_for_mean_heterogeneity=30, use_vectorized=True) (effector.regional_effect_pdp.RegionalPDP.fit)" href="#effector.regional_effect_pdp.RegionalPDP.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Find subregions by minimizing the PDP-based heterogeneity.</p>
@@ -3314,7 +3324,7 @@ If you have the jacobian already computed, provide it directly to the constructo
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_pdp.RegionalPDP.plot" href="#effector.regional_effect_pdp.RegionalPDP.plot">plot</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="plot(feature, node_idx, heterogeneity='ice', centering=False, nof_points=30, scale_x_list=None, scale_y=None, nof_ice=100, show_avg_output=False, y_limits=None, use_vectorized=True) (effector.regional_effect_pdp.RegionalPDP.plot)" href="#effector.regional_effect_pdp.RegionalPDP.plot">plot</a></code></td>
               <td>
                 <div class="doc-md-description">
                   
@@ -3328,82 +3338,82 @@ If you have the jacobian already computed, provide it directly to the constructo
 
                   <details class="quote">
                     <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span>
-<span class="normal">178</span>
-<span class="normal">179</span>
-<span class="normal">180</span>
-<span class="normal">181</span>
-<span class="normal">182</span>
-<span class="normal">183</span>
-<span class="normal">184</span>
-<span class="normal">185</span>
-<span class="normal">186</span>
-<span class="normal">187</span>
-<span class="normal">188</span>
-<span class="normal">189</span>
-<span class="normal">190</span>
-<span class="normal">191</span>
-<span class="normal">192</span>
-<span class="normal">193</span>
-<span class="normal">194</span>
-<span class="normal">195</span>
-<span class="normal">196</span>
-<span class="normal">197</span>
-<span class="normal">198</span>
-<span class="normal">199</span>
-<span class="normal">200</span>
-<span class="normal">201</span>
-<span class="normal">202</span>
-<span class="normal">203</span>
-<span class="normal">204</span>
-<span class="normal">205</span>
-<span class="normal">206</span>
-<span class="normal">207</span>
-<span class="normal">208</span>
-<span class="normal">209</span>
-<span class="normal">210</span>
-<span class="normal">211</span>
-<span class="normal">212</span>
-<span class="normal">213</span>
-<span class="normal">214</span>
-<span class="normal">215</span>
-<span class="normal">216</span>
-<span class="normal">217</span>
-<span class="normal">218</span>
-<span class="normal">219</span>
-<span class="normal">220</span>
-<span class="normal">221</span>
-<span class="normal">222</span>
-<span class="normal">223</span>
-<span class="normal">224</span>
-<span class="normal">225</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -3498,7 +3508,7 @@ If you have the jacobian already computed, provide it directly to the constructo
 
 
 <h4 id="effector.regional_effect_pdp.RegionalPDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3580,27 +3590,6 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>centering</code>
-            </td>
-            <td>
-                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>whether to center the PDP and ICE curves, before computing the heterogeneity</p>
-<ul>
-<li>If <code>centering</code> is <code>False</code>, the PDP not centered</li>
-<li>If <code>centering</code> is <code>True</code> or <code>zero_integral</code>, the PDP is centered around the <code>y</code> axis.</li>
-<li>If <code>centering</code> is <code>zero_start</code>, the PDP starts from <code>y=0</code>.</li>
-</ul>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
                 <code>points_for_centering</code>
             </td>
             <td>
@@ -3650,90 +3639,10 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">136</span>
 <span class="normal">137</span>
 <span class="normal">138</span>
 <span class="normal">139</span>
@@ -3742,12 +3651,83 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">142</span>
 <span class="normal">143</span>
 <span class="normal">144</span>
-<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span>
+<span class="normal">185</span>
+<span class="normal">186</span>
+<span class="normal">187</span>
+<span class="normal">188</span>
+<span class="normal">189</span>
+<span class="normal">190</span>
+<span class="normal">191</span>
+<span class="normal">192</span>
+<span class="normal">193</span>
+<span class="normal">194</span>
+<span class="normal">195</span>
+<span class="normal">196</span>
+<span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
     <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">use_vectorized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
@@ -3770,12 +3750,6 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="sd">            conditioned on each feature in the `candidate_conditioning_features` list</span>
 
 <span class="sd">        space_partitioner: the method to use for partitioning the space</span>
-<span class="sd">        centering: whether to center the PDP and ICE curves, before computing the heterogeneity</span>
-
-<span class="sd">            - If `centering` is `False`, the PDP not centered</span>
-<span class="sd">            - If `centering` is `True` or `zero_integral`, the PDP is centered around the `y` axis.</span>
-<span class="sd">            - If `centering` is `zero_start`, the PDP starts from `y=0`.</span>
-
 <span class="sd">        points_for_centering: number of equidistant points along the feature axis used for centering ICE plots</span>
 <span class="sd">        points_for_mean_heterogeneity: number of equidistant points along the feature axis used for computing the mean heterogeneity</span>
 <span class="sd">        use_vectorized: whether to use vectorized operations for the PDP and ICE curves</span>
@@ -3790,14 +3764,11 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
         <span class="c1"># define the global method</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method_name</span> <span class="o">==</span> <span class="s2">&quot;pdp&quot;</span><span class="p">:</span>
-            <span class="n">pdp</span> <span class="o">=</span> <span class="n">PDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">pdp</span> <span class="o">=</span> <span class="n">DerPDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_jac</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+        <span class="n">pdp</span> <span class="o">=</span> <span class="n">PDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 
         <span class="n">pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
             <span class="n">features</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span>
-            <span class="n">centering</span><span class="o">=</span><span class="n">centering</span><span class="p">,</span>
+            <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
             <span class="n">points_for_centering</span><span class="o">=</span><span class="n">points_for_centering</span><span class="p">,</span>
             <span class="n">use_vectorized</span><span class="o">=</span><span class="n">use_vectorized</span><span class="p">,</span>
         <span class="p">)</span>
@@ -3807,6 +3778,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span>
                 <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span>
                 <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
                 <span class="n">use_vectorized</span><span class="o">=</span><span class="n">use_vectorized</span><span class="p">,</span>
                 <span class="n">return_all</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">)</span>
@@ -3850,9 +3822,18 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
     <div class="doc doc-contents ">
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">227</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
 <span class="normal">228</span>
 <span class="normal">229</span>
 <span class="normal">230</span>
@@ -3860,15 +3841,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">232</span>
 <span class="normal">233</span>
 <span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
-<span class="normal">237</span>
-<span class="normal">238</span>
-<span class="normal">239</span>
-<span class="normal">240</span>
-<span class="normal">241</span>
-<span class="normal">242</span>
-<span class="normal">243</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">235</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -4129,6 +4102,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 
+
 <p><span class="doc-section-title">Methods:</span></p>
     <table>
       <thead>
@@ -4139,7 +4113,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_pdp.RegionalDerPDP.fit" href="#effector.regional_effect_pdp.RegionalDerPDP.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', candidate_conditioning_features='all', space_partitioner='best', points_for_mean_heterogeneity=30, use_vectorized=True) (effector.regional_effect_pdp.RegionalDerPDP.fit)" href="#effector.regional_effect_pdp.RegionalDerPDP.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Find subregions by minimizing the PDP-based heterogeneity.</p>
@@ -4147,7 +4121,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_pdp.RegionalDerPDP.plot" href="#effector.regional_effect_pdp.RegionalDerPDP.plot">plot</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="plot(feature, node_idx=0, heterogeneity='ice', centering=False, nof_points=30, scale_x_list=None, scale_y=None, nof_ice=100, show_avg_output=False, dy_limits=None, use_vectorized=True) (effector.regional_effect_pdp.RegionalDerPDP.plot)" href="#effector.regional_effect_pdp.RegionalDerPDP.plot">plot</a></code></td>
               <td>
                 <div class="doc-md-description">
                   
@@ -4161,7 +4135,15 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
                   <details class="quote">
                     <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">247</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
@@ -4234,15 +4216,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">317</span>
 <span class="normal">318</span>
 <span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
-<span class="normal">325</span>
-<span class="normal">326</span>
-<span class="normal">327</span>
-<span class="normal">328</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">320</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -4343,7 +4317,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_pdp.RegionalDerPDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">points_for_mean_heterogeneity</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">use_vectorized</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
 
 </h4>
 
@@ -4425,43 +4399,6 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
           </tr>
           <tr class="doc-section-item">
             <td>
-                <code>centering</code>
-            </td>
-            <td>
-                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>whether to center the PDP and ICE curves, before computing the heterogeneity</p>
-<ul>
-<li>If <code>centering</code> is <code>False</code>, the PDP not centered</li>
-<li>If <code>centering</code> is <code>True</code> or <code>zero_integral</code>, the PDP is centered around the <code>y</code> axis.</li>
-<li>If <code>centering</code> is <code>zero_start</code>, the PDP starts from <code>y=0</code>.</li>
-</ul>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>points_for_centering</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>number of equidistant points along the feature axis used for centering ICE plots</p>
-              </div>
-            </td>
-            <td>
-                  <code>30</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
                 <code>points_for_mean_heterogeneity</code>
             </td>
             <td>
@@ -4495,105 +4432,92 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 55</span>
-<span class="normal"> 56</span>
-<span class="normal"> 57</span>
-<span class="normal"> 58</span>
-<span class="normal"> 59</span>
-<span class="normal"> 60</span>
-<span class="normal"> 61</span>
-<span class="normal"> 62</span>
-<span class="normal"> 63</span>
-<span class="normal"> 64</span>
-<span class="normal"> 65</span>
-<span class="normal"> 66</span>
-<span class="normal"> 67</span>
-<span class="normal"> 68</span>
-<span class="normal"> 69</span>
-<span class="normal"> 70</span>
-<span class="normal"> 71</span>
-<span class="normal"> 72</span>
-<span class="normal"> 73</span>
-<span class="normal"> 74</span>
-<span class="normal"> 75</span>
-<span class="normal"> 76</span>
-<span class="normal"> 77</span>
-<span class="normal"> 78</span>
-<span class="normal"> 79</span>
-<span class="normal"> 80</span>
-<span class="normal"> 81</span>
-<span class="normal"> 82</span>
-<span class="normal"> 83</span>
-<span class="normal"> 84</span>
-<span class="normal"> 85</span>
-<span class="normal"> 86</span>
-<span class="normal"> 87</span>
-<span class="normal"> 88</span>
-<span class="normal"> 89</span>
-<span class="normal"> 90</span>
-<span class="normal"> 91</span>
-<span class="normal"> 92</span>
-<span class="normal"> 93</span>
-<span class="normal"> 94</span>
-<span class="normal"> 95</span>
-<span class="normal"> 96</span>
-<span class="normal"> 97</span>
-<span class="normal"> 98</span>
-<span class="normal"> 99</span>
-<span class="normal">100</span>
-<span class="normal">101</span>
-<span class="normal">102</span>
-<span class="normal">103</span>
-<span class="normal">104</span>
-<span class="normal">105</span>
-<span class="normal">106</span>
-<span class="normal">107</span>
-<span class="normal">108</span>
-<span class="normal">109</span>
-<span class="normal">110</span>
-<span class="normal">111</span>
-<span class="normal">112</span>
-<span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span>
+<span class="normal">365</span>
+<span class="normal">366</span>
+<span class="normal">367</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="kc">None</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
-    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
-    <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">points_for_mean_heterogeneity</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">30</span><span class="p">,</span>
     <span class="n">use_vectorized</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
 <span class="p">):</span>
@@ -4615,13 +4539,6 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="sd">            conditioned on each feature in the `candidate_conditioning_features` list</span>
 
 <span class="sd">        space_partitioner: the method to use for partitioning the space</span>
-<span class="sd">        centering: whether to center the PDP and ICE curves, before computing the heterogeneity</span>
-
-<span class="sd">            - If `centering` is `False`, the PDP not centered</span>
-<span class="sd">            - If `centering` is `True` or `zero_integral`, the PDP is centered around the `y` axis.</span>
-<span class="sd">            - If `centering` is `zero_start`, the PDP starts from `y=0`.</span>
-
-<span class="sd">        points_for_centering: number of equidistant points along the feature axis used for centering ICE plots</span>
 <span class="sd">        points_for_mean_heterogeneity: number of equidistant points along the feature axis used for computing the mean heterogeneity</span>
 <span class="sd">        use_vectorized: whether to use vectorized operations for the PDP and ICE curves</span>
 
@@ -4635,15 +4552,11 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="n">features</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_features</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">dim</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
         <span class="c1"># define the global method</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">method_name</span> <span class="o">==</span> <span class="s2">&quot;pdp&quot;</span><span class="p">:</span>
-            <span class="n">pdp</span> <span class="o">=</span> <span class="n">PDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">pdp</span> <span class="o">=</span> <span class="n">DerPDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_jac</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
+        <span class="n">pdp</span> <span class="o">=</span> <span class="n">DerPDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model_jac</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 
         <span class="n">pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
             <span class="n">features</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span>
-            <span class="n">centering</span><span class="o">=</span><span class="n">centering</span><span class="p">,</span>
-            <span class="n">points_for_centering</span><span class="o">=</span><span class="n">points_for_centering</span><span class="p">,</span>
+            <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
             <span class="n">use_vectorized</span><span class="o">=</span><span class="n">use_vectorized</span><span class="p">,</span>
         <span class="p">)</span>
 
@@ -4652,6 +4565,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span>
                 <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span>
                 <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+                <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">use_vectorized</span><span class="o">=</span><span class="n">use_vectorized</span><span class="p">,</span>
                 <span class="n">return_all</span><span class="o">=</span><span class="kc">True</span>
             <span class="p">)</span>
@@ -4695,25 +4609,26 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
     <div class="doc doc-contents ">
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">330</span>
-<span class="normal">331</span>
-<span class="normal">332</span>
-<span class="normal">333</span>
-<span class="normal">334</span>
-<span class="normal">335</span>
-<span class="normal">336</span>
-<span class="normal">337</span>
-<span class="normal">338</span>
-<span class="normal">339</span>
-<span class="normal">340</span>
-<span class="normal">341</span>
-<span class="normal">342</span>
-<span class="normal">343</span>
-<span class="normal">344</span>
-<span class="normal">345</span>
-<span class="normal">346</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span>
@@ -4749,7 +4664,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h3 id="effector.regional_effect_shap.RegionalShapDP" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">regional_effect_shap</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">feature_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">regional_effect_shap</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">feature_types</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="s1">&#39;shap&#39;</span><span class="p">)</span></code>
 
 </h3>
 
@@ -4943,8 +4858,29 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                   <code>None</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>backend</code>
+            </td>
+            <td>
+                  <code><span title="str">str</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Package to compute SHAP values</p>
+<ul>
+<li>use <code>"shap"</code> for the <code>shap</code> package (default)</li>
+<li>use <code>"shapiq"</code> for the <code>shapiq</code> package</li>
+</ul>
+              </div>
+            </td>
+            <td>
+                  <code>&#39;shap&#39;</code>
+            </td>
+          </tr>
       </tbody>
     </table>
+
 
 
 
@@ -4964,7 +4900,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_shap.RegionalShapDP.fit" href="#effector.regional_effect_shap.RegionalShapDP.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features, candidate_conditioning_features='all', space_partitioner='best', binning_method='greedy', budget=512, shap_explainer_kwargs=None, shap_explanation_kwargs=None) (effector.regional_effect_shap.RegionalShapDP.fit)" href="#effector.regional_effect_shap.RegionalShapDP.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Fit the regional SHAP.</p>
@@ -4972,7 +4908,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="effector.regional_effect_shap.RegionalShapDP.plot" href="#effector.regional_effect_shap.RegionalShapDP.plot">plot</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="plot(feature, node_idx, heterogeneity='shap_values', centering=True, nof_points=30, scale_x_list=None, scale_y=None, nof_shap_values='all', show_avg_output=False, y_limits=None, only_shap_values=False) (effector.regional_effect_shap.RegionalShapDP.plot)" href="#effector.regional_effect_shap.RegionalShapDP.plot">plot</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Plot the regional SHAP.</p>
@@ -4986,83 +4922,90 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
                   <details class="quote">
                     <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span>
-<span class="normal">58</span>
-<span class="normal">59</span>
-<span class="normal">60</span>
-<span class="normal">61</span>
-<span class="normal">62</span>
-<span class="normal">63</span>
-<span class="normal">64</span>
-<span class="normal">65</span>
-<span class="normal">66</span>
-<span class="normal">67</span>
-<span class="normal">68</span>
-<span class="normal">69</span>
-<span class="normal">70</span>
-<span class="normal">71</span>
-<span class="normal">72</span>
-<span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span>
-<span class="normal">77</span>
-<span class="normal">78</span>
-<span class="normal">79</span>
-<span class="normal">80</span>
-<span class="normal">81</span>
-<span class="normal">82</span>
-<span class="normal">83</span>
-<span class="normal">84</span>
-<span class="normal">85</span>
-<span class="normal">86</span>
-<span class="normal">87</span>
-<span class="normal">88</span>
-<span class="normal">89</span>
-<span class="normal">90</span>
-<span class="normal">91</span>
-<span class="normal">92</span>
-<span class="normal">93</span>
-<span class="normal">94</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+                    <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -5072,6 +5015,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
     <span class="n">cat_limit</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
     <span class="n">feature_names</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">target_name</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">backend</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;shap&quot;</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    Initialize the Regional Effect method.</span>
@@ -5124,8 +5068,14 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 <span class="sd">            - `None`, to keep the default name: `&quot;y&quot;`</span>
 <span class="sd">            - `&quot;price&quot;`, to manually specify the name of the target variable</span>
+
+<span class="sd">        backend: Package to compute SHAP values</span>
+
+<span class="sd">            - use `&quot;shap&quot;` for the `shap` package (default)</span>
+<span class="sd">            - use `&quot;shapiq&quot;` for the `shapiq` package</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">global_shap_values</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">=</span> <span class="n">backend</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">RegionalShapDP</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
         <span class="s2">&quot;shap&quot;</span><span class="p">,</span>
         <span class="n">data</span><span class="p">,</span>
@@ -5158,7 +5108,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
 
 <h4 id="effector.regional_effect_shap.RegionalShapDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">shap_explainer_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shap_explanation_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">&#39;all&#39;</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">&#39;greedy&#39;</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">shap_explainer_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">shap_explanation_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -5218,7 +5168,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>space_partitioner</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.space_partitioning.Best(min_heterogeneity_decrease_pcg=0.1, heter_small_enough=0.001, max_depth=2, min_samples_leaf=10, numerical_features_grid_size=20, search_partitions_when_categorical=False) (effector.space_partitioning.Best)" href="../api_space_partitioning/#effector.space_partitioning.Best">Best</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5235,7 +5185,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
                 <code>binning_method</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Greedy" href="../api_axis_partitioning/#effector.axis_partitioning.Greedy">Greedy</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Greedy(init_nof_bins=20, min_points_per_bin=2, discount=0.3, cat_limit=10) (effector.axis_partitioning.Greedy)" href="../api_axis_partitioning/#effector.axis_partitioning.Greedy">Greedy</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed(nof_bins=20, min_points_per_bin=0.0, cat_limit=10) (effector.axis_partitioning.Fixed)" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5248,6 +5198,24 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
           </tr>
           <tr class="doc-section-item">
             <td>
+                <code>budget</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Budget to use for the approximation. Defaults to 512.
+- Increasing the budget improves the approximation at the cost of slower computation.
+- Decrease the budget for faster computation at the cost of approximation error.</p>
+              </div>
+            </td>
+            <td>
+                  <code>512</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
                 <code>shap_explainer_kwargs</code>
             </td>
             <td>
@@ -5255,32 +5223,45 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
             </td>
             <td>
               <div class="doc-md-description">
-                <p>the keyword arguments to be passed to the <code>shap.Explainer</code> class.</p>
-<details class="note" open="open">
+                <p>the keyword arguments to be passed to the <code>shap.Explainer</code> or <code>shapiq.Explainer</code> class, depending on the backend.</p>
+<details class="note">
 <summary>Code behind the scene</summary>
-<div class="highlight"><pre><span></span><code><span class="n">shap_explainer_kwargs</span> <span class="o">=</span> <span class="n">shap_explainer_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
-<span class="n">model</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span>
-<span class="n">masker</span> <span class="o">=</span> <span class="n">shap_explainer_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;masker&quot;</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
-<span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">masker</span><span class="p">,</span> <span class="o">**</span><span class="n">shap_explainer_kwargs</span><span class="p">)</span>
+<p>Check the code that is running behind the scene before customizing <code>shap_explainer_kwargs</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">explainer_kwargs</span> <span class="o">=</span> <span class="n">explainer_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">explainer_kwargs</span> <span class="k">else</span> <span class="p">{}</span>
+<span class="n">explanation_kwargs</span> <span class="o">=</span> <span class="n">explanation_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">explanation_kwargs</span> <span class="k">else</span> <span class="p">{}</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shap&quot;</span><span class="p">:</span>
+    <span class="n">explainer_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;masker&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span>
+    <span class="n">explanation_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;max_evals&quot;</span><span class="p">:</span> <span class="n">budget</span><span class="p">}</span>
+<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shapiq&quot;</span><span class="p">:</span>
+    <span class="n">explainer_defaults</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span>
+        <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;SV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;max_order&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;approximator&quot;</span><span class="p">:</span> <span class="s2">&quot;permutation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imputer&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">explanation_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;budget&quot;</span><span class="p">:</span> <span class="n">budget</span><span class="p">}</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;</span><span class="p">)</span>
+<span class="n">explainer_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">explainer_defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_kwargs</span><span class="p">}</span>  <span class="c1"># User args override defaults</span>
+<span class="n">explanation_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">explanation_defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">explanation_kwargs</span><span class="p">}</span>  <span class="c1"># User args override defaults</span>
+
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shap&quot;</span><span class="p">:</span>
+    <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_kwargs</span><span class="p">)</span>
+    <span class="n">explanation</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">explanation_kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">shap_values</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">values</span>
+<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shapiq&quot;</span><span class="p">:</span>
+    <span class="n">explainer</span> <span class="o">=</span> <span class="n">shapiq</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_kwargs</span><span class="p">)</span>
+    <span class="n">explanations</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">explain_X</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">explanation_kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">shap_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">ex</span><span class="o">.</span><span class="n">get_n_order_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">explanations</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;</span><span class="p">)</span>
 </code></pre></div>
-<p>So:</p>
-<pre><code>- the `masker` is set to `self.data` by default. If you want to change it, you can pass it as a keyword argument.
-- if you want to pass any other keyword argument to the `shap.Explainer` class, you can pass it as a dictionary. For example: `shap_explainer_kwargs={"algorithm": "linear"}`
-</code></pre>
 </details>
-<details class="warning" open="open">
+<details class="warning">
 <summary>Be careful with custom arguments</summary>
-<p>Use shap_explainer_kwargs with caution. The <code>shap.Explainer</code> class has many arguments that can change the behavior of the SHAP values.
-Check the <a href="https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html#shap.Explainer">official documentation</a> for more details.</p>
-</details>
-<details class="note" open="open">
-<summary>Most important arguments</summary>
-<ul>
-<li><code>masker</code>: the data used for masking the input data. By default, it is set to <code>self.data</code>.
-If you want a faster computation, you can pass a subset of the data, e.g. <code>masker=self.data[:100]</code>.</li>
-<li><code>algorithm</code>: the algorithm used for computing the SHAP values. By default, it is set to <code>"auto"</code>.
-If you know that your model belongs to a specific class, you can set it to the corresponding algorithm, e.g. <code>algorithm="linear"</code>.</li>
-</ul>
+<p>For customizing <code>shap_explainer_kwargs</code> and <code>shap_explanation_kwargs</code> args,
+check the official documentation of <a href="https://shap.readthedocs.io/en/latest/"><code>shap</code></a> and <a href="https://shapiq.readthedocs.io/en/latest/"><code>shapiq</code></a> packages.</p>
 </details>
               </div>
             </td>
@@ -5297,30 +5278,45 @@ If you know that your model belongs to a specific class, you can set it to the c
             </td>
             <td>
               <div class="doc-md-description">
-                <p>the keyword arguments to be passed to compute the SHAP values.a</p>
-<details class="note" open="open">
+                <p>the keyword arguments to be passed to the <code>shap</code> or <code>shapiq</code> Explainer to compute the SHAP values.</p>
+<details class="note">
 <summary>Code behind the scene</summary>
-<div class="highlight"><pre><span></span><code><span class="n">explainer</span> <span class="o">=</span> <span class="o">...</span> <span class="p">(</span><span class="n">check</span> <span class="n">the</span> <span class="n">code</span> <span class="n">above</span><span class="p">)</span>
-<span class="n">shap_explanation_kwargs</span> <span class="o">=</span> <span class="n">shap_explanation_kwargs</span> <span class="ow">or</span> <span class="p">{}</span>
-<span class="n">explainer</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">shap_explanation_kwargs</span><span class="p">)</span>
+<p>Check the code that is running behind the scene before customizing <code>shap_explanation_kwargs</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">explainer_kwargs</span> <span class="o">=</span> <span class="n">explainer_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">explainer_kwargs</span> <span class="k">else</span> <span class="p">{}</span>
+<span class="n">explanation_kwargs</span> <span class="o">=</span> <span class="n">explanation_kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span> <span class="k">if</span> <span class="n">explanation_kwargs</span> <span class="k">else</span> <span class="p">{}</span>
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shap&quot;</span><span class="p">:</span>
+    <span class="n">explainer_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;masker&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span>
+    <span class="n">explanation_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;max_evals&quot;</span><span class="p">:</span> <span class="n">budget</span><span class="p">}</span>
+<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shapiq&quot;</span><span class="p">:</span>
+    <span class="n">explainer_defaults</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">,</span>
+        <span class="s2">&quot;index&quot;</span><span class="p">:</span> <span class="s2">&quot;SV&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;max_order&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;approximator&quot;</span><span class="p">:</span> <span class="s2">&quot;permutation&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;imputer&quot;</span><span class="p">:</span> <span class="s2">&quot;marginal&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">explanation_defaults</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;budget&quot;</span><span class="p">:</span> <span class="n">budget</span><span class="p">}</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;</span><span class="p">)</span>
+<span class="n">explainer_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">explainer_defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_kwargs</span><span class="p">}</span>  <span class="c1"># User args override defaults</span>
+<span class="n">explanation_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="o">**</span><span class="n">explanation_defaults</span><span class="p">,</span> <span class="o">**</span><span class="n">explanation_kwargs</span><span class="p">}</span>  <span class="c1"># User args override defaults</span>
+
+<span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shap&quot;</span><span class="p">:</span>
+    <span class="n">explainer</span> <span class="o">=</span> <span class="n">shap</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_kwargs</span><span class="p">)</span>
+    <span class="n">explanation</span> <span class="o">=</span> <span class="n">explainer</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">explanation_kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">shap_values</span> <span class="o">=</span> <span class="n">explanation</span><span class="o">.</span><span class="n">values</span>
+<span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">backend</span> <span class="o">==</span> <span class="s2">&quot;shapiq&quot;</span><span class="p">:</span>
+    <span class="n">explainer</span> <span class="o">=</span> <span class="n">shapiq</span><span class="o">.</span><span class="n">Explainer</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">**</span><span class="n">explainer_kwargs</span><span class="p">)</span>
+    <span class="n">explanations</span> <span class="o">=</span> <span class="n">explainer</span><span class="o">.</span><span class="n">explain_X</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">explanation_kwargs</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">shap_values</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">ex</span><span class="o">.</span><span class="n">get_n_order_values</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="k">for</span> <span class="n">ex</span> <span class="ow">in</span> <span class="n">explanations</span><span class="p">])</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;</span><span class="p">)</span>
 </code></pre></div>
 </details>
-<details class="note" open="open">
-<summary>Most important arguments</summary>
-<ul>
-<li><code>max_evals</code>: the maximum number of evaluations for the SHAP values. (default: <code>500</code>)</li>
-</ul>
-</details>
-<details class="note" open="open">
-<summary>All arguments</summary>
-<ul>
-<li><code>max_evals</code>: the maximum number of evaluations for the SHAP values. (default: <code>500</code>)</li>
-<li><code>main_effects</code>: whether to compute the main effects. (default: <code>False</code>)</li>
-<li><code>error_bounds</code>: whether to compute the error bounds. (default: <code>False</code>)</li>
-<li><code>batch_size</code>: the batch size for computing the SHAP values. (default: <code>auto</code>)</li>
-<li><code>output_names</code>: the names of the outputs. (default: <code>None</code>)</li>
-<li><code>silent</code>: whether to print the progress. (default: <code>False</code>)</li>
-</ul>
+<details class="warning">
+<summary>Be careful with custom arguments</summary>
+<p>For customizing <code>shap_explainer_kwargs</code> and <code>shap_explanation_kwargs</code> args,
+check the official documentation of <a href="https://shap.readthedocs.io/en/latest/"><code>shap</code></a> and <a href="https://shapiq.readthedocs.io/en/latest/"><code>shapiq</code></a> packages.</p>
 </details>
               </div>
             </td>
@@ -5331,16 +5327,10 @@ If you know that your model belongs to a specific class, you can set it to the c
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">133</span>
 <span class="normal">134</span>
 <span class="normal">135</span>
 <span class="normal">136</span>
@@ -5449,12 +5439,61 @@ If you know that your model belongs to a specific class, you can set it to the c
 <span class="normal">239</span>
 <span class="normal">240</span>
 <span class="normal">241</span>
-<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">],</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span>
     <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;best&quot;</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;greedy&quot;</span><span class="p">,</span>
+    <span class="n">budget</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">512</span><span class="p">,</span>
     <span class="n">shap_explainer_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">shap_explanation_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
@@ -5473,56 +5512,94 @@ If you know that your model belongs to a specific class, you can set it to the c
 
 <span class="sd">        binning_method: the binning method to use</span>
 
-<span class="sd">        shap_explainer_kwargs: the keyword arguments to be passed to the `shap.Explainer` class.</span>
+<span class="sd">        budget: Budget to use for the approximation. Defaults to 512.</span>
+<span class="sd">            - Increasing the budget improves the approximation at the cost of slower computation.</span>
+<span class="sd">            - Decrease the budget for faster computation at the cost of approximation error.</span>
 
-<span class="sd">            ???+ note &quot;Code behind the scene&quot;</span>
+<span class="sd">        shap_explainer_kwargs: the keyword arguments to be passed to the `shap.Explainer` or `shapiq.Explainer` class, depending on the backend.</span>
 
-<span class="sd">                ```python</span>
-<span class="sd">                shap_explainer_kwargs = shap_explainer_kwargs or {}</span>
-<span class="sd">                model = self.model</span>
-<span class="sd">                masker = shap_explainer_kwargs.pop(&quot;masker&quot;, self.data)</span>
-<span class="sd">                explainer = shap.Explainer(model, masker, **shap_explainer_kwargs)</span>
-<span class="sd">                ```</span>
-
-<span class="sd">                So:</span>
-
-<span class="sd">                    - the `masker` is set to `self.data` by default. If you want to change it, you can pass it as a keyword argument.</span>
-<span class="sd">                    - if you want to pass any other keyword argument to the `shap.Explainer` class, you can pass it as a dictionary. For example: `shap_explainer_kwargs={&quot;algorithm&quot;: &quot;linear&quot;}`</span>
-
-<span class="sd">            ???+ warning &quot;Be careful with custom arguments&quot;</span>
-
-<span class="sd">                Use shap_explainer_kwargs with caution. The `shap.Explainer` class has many arguments that can change the behavior of the SHAP values.</span>
-<span class="sd">                Check the [official documentation](https://shap.readthedocs.io/en/latest/generated/shap.Explainer.html#shap.Explainer) for more details.</span>
-
-<span class="sd">            ???+ note &quot;Most important arguments&quot;</span>
-
-<span class="sd">                - `masker`: the data used for masking the input data. By default, it is set to `self.data`.</span>
-<span class="sd">                If you want a faster computation, you can pass a subset of the data, e.g. `masker=self.data[:100]`.</span>
-<span class="sd">                - `algorithm`: the algorithm used for computing the SHAP values. By default, it is set to `&quot;auto&quot;`.</span>
-<span class="sd">                If you know that your model belongs to a specific class, you can set it to the corresponding algorithm, e.g. `algorithm=&quot;linear&quot;`.</span>
-
-<span class="sd">        shap_explanation_kwargs: the keyword arguments to be passed to compute the SHAP values.a</span>
-
-<span class="sd">            ???+ note &quot;Code behind the scene&quot;</span>
+<span class="sd">            ??? note &quot;Code behind the scene&quot;</span>
+<span class="sd">                Check the code that is running behind the scene before customizing `shap_explainer_kwargs`.</span>
 
 <span class="sd">                ```python</span>
-<span class="sd">                explainer = ... (check the code above)</span>
-<span class="sd">                shap_explanation_kwargs = shap_explanation_kwargs or {}</span>
-<span class="sd">                explainer(self.data, **shap_explanation_kwargs)</span>
+<span class="sd">                explainer_kwargs = explainer_kwargs.copy() if explainer_kwargs else {}</span>
+<span class="sd">                explanation_kwargs = explanation_kwargs.copy() if explanation_kwargs else {}</span>
+<span class="sd">                if self.backend == &quot;shap&quot;:</span>
+<span class="sd">                    explainer_defaults = {&quot;masker&quot;: data}</span>
+<span class="sd">                    explanation_defaults = {&quot;max_evals&quot;: budget}</span>
+<span class="sd">                elif self.backend == &quot;shapiq&quot;:</span>
+<span class="sd">                    explainer_defaults = {</span>
+<span class="sd">                        &quot;data&quot;: data,</span>
+<span class="sd">                        &quot;index&quot;: &quot;SV&quot;,</span>
+<span class="sd">                        &quot;max_order&quot;: 1,</span>
+<span class="sd">                        &quot;approximator&quot;: &quot;permutation&quot;,</span>
+<span class="sd">                        &quot;imputer&quot;: &quot;marginal&quot;,</span>
+<span class="sd">                    }</span>
+<span class="sd">                    explanation_defaults = {&quot;budget&quot;: budget}</span>
+<span class="sd">                else:</span>
+<span class="sd">                    raise ValueError(&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;)</span>
+<span class="sd">                explainer_kwargs = {**explainer_defaults, **explainer_kwargs}  # User args override defaults</span>
+<span class="sd">                explanation_kwargs = {**explanation_defaults, **explanation_kwargs}  # User args override defaults</span>
+
+<span class="sd">                if self.backend == &quot;shap&quot;:</span>
+<span class="sd">                    explainer = shap.Explainer(model, **explainer_kwargs)</span>
+<span class="sd">                    explanation = explainer(data, **explanation_kwargs)</span>
+<span class="sd">                    self.shap_values = explanation.values</span>
+<span class="sd">                elif self.backend == &quot;shapiq&quot;:</span>
+<span class="sd">                    explainer = shapiq.Explainer(model, **explainer_kwargs)</span>
+<span class="sd">                    explanations = explainer.explain_X(data, **explanation_kwargs)</span>
+<span class="sd">                    self.shap_values = np.stack([ex.get_n_order_values(1) for ex in explanations])</span>
+<span class="sd">                else:</span>
+<span class="sd">                    raise ValueError(&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;)</span>
 <span class="sd">                ```</span>
 
-<span class="sd">            ???+ note &quot;Most important arguments&quot;</span>
-<span class="sd">                - `max_evals`: the maximum number of evaluations for the SHAP values. (default: `500`)</span>
+<span class="sd">            ??? warning &quot;Be careful with custom arguments&quot;</span>
 
+<span class="sd">                For customizing `shap_explainer_kwargs` and `shap_explanation_kwargs` args,</span>
+<span class="sd">                check the official documentation of [`shap`](https://shap.readthedocs.io/en/latest/) and [`shapiq`](https://shapiq.readthedocs.io/en/latest/) packages.</span>
 
-<span class="sd">            ???+ note &quot;All arguments&quot;</span>
+<span class="sd">        shap_explanation_kwargs: the keyword arguments to be passed to the `shap` or `shapiq` Explainer to compute the SHAP values.</span>
 
-<span class="sd">                - `max_evals`: the maximum number of evaluations for the SHAP values. (default: `500`)</span>
-<span class="sd">                - `main_effects`: whether to compute the main effects. (default: `False`)</span>
-<span class="sd">                - `error_bounds`: whether to compute the error bounds. (default: `False`)</span>
-<span class="sd">                - `batch_size`: the batch size for computing the SHAP values. (default: `auto`)</span>
-<span class="sd">                - `output_names`: the names of the outputs. (default: `None`)</span>
-<span class="sd">                - `silent`: whether to print the progress. (default: `False`)</span>
+<span class="sd">            ??? note &quot;Code behind the scene&quot;</span>
+
+<span class="sd">                Check the code that is running behind the scene before customizing `shap_explanation_kwargs`.</span>
+
+<span class="sd">                ```python</span>
+<span class="sd">                explainer_kwargs = explainer_kwargs.copy() if explainer_kwargs else {}</span>
+<span class="sd">                explanation_kwargs = explanation_kwargs.copy() if explanation_kwargs else {}</span>
+<span class="sd">                if self.backend == &quot;shap&quot;:</span>
+<span class="sd">                    explainer_defaults = {&quot;masker&quot;: data}</span>
+<span class="sd">                    explanation_defaults = {&quot;max_evals&quot;: budget}</span>
+<span class="sd">                elif self.backend == &quot;shapiq&quot;:</span>
+<span class="sd">                    explainer_defaults = {</span>
+<span class="sd">                        &quot;data&quot;: data,</span>
+<span class="sd">                        &quot;index&quot;: &quot;SV&quot;,</span>
+<span class="sd">                        &quot;max_order&quot;: 1,</span>
+<span class="sd">                        &quot;approximator&quot;: &quot;permutation&quot;,</span>
+<span class="sd">                        &quot;imputer&quot;: &quot;marginal&quot;,</span>
+<span class="sd">                    }</span>
+<span class="sd">                    explanation_defaults = {&quot;budget&quot;: budget}</span>
+<span class="sd">                else:</span>
+<span class="sd">                    raise ValueError(&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;)</span>
+<span class="sd">                explainer_kwargs = {**explainer_defaults, **explainer_kwargs}  # User args override defaults</span>
+<span class="sd">                explanation_kwargs = {**explanation_defaults, **explanation_kwargs}  # User args override defaults</span>
+
+<span class="sd">                if self.backend == &quot;shap&quot;:</span>
+<span class="sd">                    explainer = shap.Explainer(model, **explainer_kwargs)</span>
+<span class="sd">                    explanation = explainer(data, **explanation_kwargs)</span>
+<span class="sd">                    self.shap_values = explanation.values</span>
+<span class="sd">                elif self.backend == &quot;shapiq&quot;:</span>
+<span class="sd">                    explainer = shapiq.Explainer(model, **explainer_kwargs)</span>
+<span class="sd">                    explanations = explainer.explain_X(data, **explanation_kwargs)</span>
+<span class="sd">                    self.shap_values = np.stack([ex.get_n_order_values(1) for ex in explanations])</span>
+<span class="sd">                else:</span>
+<span class="sd">                    raise ValueError(&quot;`backend` should be either &#39;shap&#39; or &#39;shapiq&#39;&quot;)</span>
+<span class="sd">                ```</span>
+
+<span class="sd">            ??? warning &quot;Be careful with custom arguments&quot;</span>
+
+<span class="sd">                For customizing `shap_explainer_kwargs` and `shap_explanation_kwargs` args,</span>
+<span class="sd">                check the official documentation of [`shap`](https://shap.readthedocs.io/en/latest/) and [`shapiq`](https://shapiq.readthedocs.io/en/latest/) packages.</span>
 
 <span class="sd">    &quot;&quot;&quot;</span>
 
@@ -5535,11 +5612,12 @@ If you know that your model belongs to a specific class, you can set it to the c
     <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">features</span><span class="p">):</span>
         <span class="c1"># assert global SHAP values are available</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">global_shap_values</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-            <span class="n">global_shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">)</span>
+            <span class="n">global_shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">backend</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">backend</span><span class="p">)</span>
             <span class="n">global_shap_dp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
                 <span class="n">feat</span><span class="p">,</span>
                 <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
                 <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span>
+                <span class="n">budget</span><span class="o">=</span><span class="n">budget</span><span class="p">,</span>
                 <span class="n">shap_explainer_kwargs</span><span class="o">=</span><span class="n">shap_explainer_kwargs</span><span class="p">,</span>
                 <span class="n">shap_explanation_kwargs</span><span class="o">=</span><span class="n">shap_explanation_kwargs</span>
             <span class="p">)</span>
@@ -5563,6 +5641,7 @@ If you know that your model belongs to a specific class, you can set it to the c
     <span class="c1"># fit kwargs</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">kwargs_fitting</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;binning_method&quot;</span><span class="p">:</span> <span class="n">binning_method</span><span class="p">,</span>
+        <span class="s2">&quot;budget&quot;</span><span class="p">:</span> <span class="n">budget</span><span class="p">,</span>
         <span class="s2">&quot;shap_explainer_kwargs&quot;</span><span class="p">:</span> <span class="n">shap_explainer_kwargs</span><span class="p">,</span>
         <span class="s2">&quot;shap_explanation_kwargs&quot;</span><span class="p">:</span> <span class="n">shap_explanation_kwargs</span>
     <span class="p">}</span>
@@ -5765,40 +5844,41 @@ If you know that your model belongs to a specific class, you can set it to the c
       </tbody>
     </table>
 
+
             <details class="quote">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span>
-<span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
+              <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span>
          <span class="n">feature</span><span class="p">,</span>
          <span class="n">node_idx</span><span class="p">,</span>
          <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">&quot;shap_values&quot;</span><span class="p">,</span>
@@ -5911,7 +5991,7 @@ If you know that your model belongs to a specific class, you can set it to the c
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       
