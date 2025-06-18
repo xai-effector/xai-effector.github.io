@@ -14,7 +14,7 @@
       
       
       <link rel="icon" href="static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -22,7 +22,7 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
@@ -476,6 +476,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#powered-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      Powered by:
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -800,6 +809,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#powered-by" class="md-nav__link">
+    <span class="md-ellipsis">
+      Powered by:
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -837,7 +855,7 @@
 <li>provides a large collection of <a href="./#supported-methods">global and regional effects methods</a></li>
 </ul>
 <hr />
-<p>📖 <a href="./">Documentation</a> | 🔍 <a href="./quickstart/global_and_regional_effects/">Intro to global and regional effects</a> | 🔧 <a href="./api/">API</a> | 🏗 <a href="./examples">Examples</a></p>
+<p>📖 <a href="./">Documentation</a> | 🔍 <a href="./quickstart/global_and_regional_effects/">Intro to global and regional effects</a> | 🔧 <a href="./api_docs/">API</a> | 🏗 <a href="./examples">Examples</a></p>
 <hr />
 <h2 id="installation">Installation</h2>
 <p>Effector requires Python 3.10+:</p>
@@ -917,20 +935,20 @@
 <div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-hr 🔹 [id: 0 | heter: 0.43 | inst: 3476 | w: 1.00]
-    workingday = 0.00 🔹 [id: 1 | heter: 0.36 | inst: 1129 | w: 0.32]
-        temp ≤ 6.50 🔹 [id: 3 | heter: 0.17 | inst: 568 | w: 0.16]
-        temp &gt; 6.50 🔹 [id: 4 | heter: 0.21 | inst: 561 | w: 0.16]
-    workingday ≠ 0.00 🔹 [id: 2 | heter: 0.28 | inst: 2347 | w: 0.68]
-        temp ≤ 6.50 🔹 [id: 5 | heter: 0.19 | inst: 953 | w: 0.27]
-        temp &gt; 6.50 🔹 [id: 6 | heter: 0.20 | inst: 1394 | w: 0.40]
+hr 🔹 [id: 0 | heter: 0.24 | inst: 3476 | w: 1.00]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.12 | inst: 1129 | w: 0.32]
+        temp ≤ 6.50 🔹 [id: 2 | heter: 0.06 | inst: 568 | w: 0.16]
+        temp &gt; 6.50 🔹 [id: 3 | heter: 0.08 | inst: 561 | w: 0.16]
+    workingday ≠ 0.00 🔹 [id: 4 | heter: 0.12 | inst: 2347 | w: 0.68]
+        temp ≤ 8.76 🔹 [id: 5 | heter: 0.08 | inst: 1083 | w: 0.31]
+        temp &gt; 8.76 🔹 [id: 6 | heter: 0.09 | inst: 1264 | w: 0.36]
 --------------------------------------------------
 Feature 3 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 0.41
-    Level 1🔹heter: 0.29 | 🔻0.12 (28.96%)
-        Level 2🔹heter: 0.18 | 🔻0.11 (36.75%)
+Level 0🔹heter: 0.24
+    Level 1🔹heter: 0.12 | 🔻0.12 (48.89%)
+        Level 2🔹heter: 0.08 | 🔻0.04 (31.11%)
 </code></pre></div>
 <p>The summary of feature <code>hr</code> (hour) says that its effect on the output is highly dependent on the value of features:</p>
 <ul>
@@ -1148,8 +1166,19 @@ Level 0🔹heter: 0.41
 </ul>
 <hr />
 <h2 id="license">License</h2>
-<p><code>effector</code> is released under the <a href="https://github.com/givasile/effector/blob/main/LICENSE">MIT License</a>.
-\</p>
+<p><code>effector</code> is released under the <a href="https://github.com/givasile/effector/blob/main/LICENSE">MIT License</a>.</p>
+<hr />
+<h2 id="powered-by">Powered by:</h2>
+<ul>
+<li>
+<p><strong><a href="https://www.ai-dapt.eu/">AIDAPT</a></strong><br />
+  <a class="glightbox" href="https://raw.githubusercontent.com/givasile/effector/main/docs/docs/static/aidapt_logo.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://raw.githubusercontent.com/givasile/effector/main/docs/docs/static/aidapt_logo.png" width="130"/></a></p>
+</li>
+<li>
+<p><strong>XMANAI</strong><br />
+<a class="glightbox" href="https://raw.githubusercontent.com/givasile/effector/main/docs/docs/static/xmanai_logo.jpg" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img src="https://raw.githubusercontent.com/givasile/effector/main/docs/docs/static/xmanai_logo.jpg" width="70"/></a></p>
+</li>
+</ul>
 
 
 
@@ -1239,10 +1268,10 @@ Level 0🔹heter: 0.41
     
     
       
-      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": ".", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="javascripts/mathjax.js"></script>
       

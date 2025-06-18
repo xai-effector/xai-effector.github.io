@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -449,7 +449,7 @@
 <li>📌 You can find the full notebook <a href="./../../notebooks/real-examples/01_bike_sharing_dataset/">here</a>.</li>
 </ol>
 <p>🚀 The model performs well, with an average prediction error of about 43 bikes. Now, you want to understand how it makes predictions.</p>
-<p>📊 Feature effect plots provide a visual way to see how each feature influences the model's output</p>
+<p>📊 Feature effect plots provide a visual way to see how each feature influences the model's output.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><code>month</code></label><label for="__tabbed_1_2"><code>hour</code></label><label for="__tabbed_1_3"><code>temperature</code></label><label for="__tabbed_1_4"><code>humidity</code></label><label for="__tabbed_1_5"><code>windspeed</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -462,10 +462,10 @@
 <p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_3.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_34.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_34.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_4.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_45.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_45.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_5.png" /></a></p>
 </div>
 </div>
 </div>
@@ -496,7 +496,7 @@
 </div>
 </div>
 </div>
-<p>All methods agree on the general trend;
+<p>All methods agree on the general trend:
 there is an abrupt increase in the number of bike rentals at about 8:00 AM (beginning of the workday)
 and at about 5:00 PM (end of the workday). 
 The following table provides a more detailed interpretation of the plot: </p>
@@ -540,7 +540,7 @@ The following table provides a more detailed interpretation of the plot: </p>
 <hr />
 <p>Global feature effect plots provide an immediate <em>interpretation</em> of the model's inner workings.</p>
 <details class="question" open="open">
-<summary>Criticism 1: Does it makes sense?</summary>
+<summary>Criticism 1: Does it make sense?</summary>
 <p>It seems reasonable. On a typical workday, people commute between 6:00–8:30 AM and return between 3:00–5:00 PM. But a city transportation expert might have a better perspective.</p>
 </details>
 <details class="question" open="open">
@@ -560,7 +560,7 @@ A simple way to check this is to look at the heterogeneity of the global effect:
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">PDP</label><label for="__tabbed_3_2">RHALE</label><label for="__tabbed_3_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a class="glightbox" href="../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_xbt0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_xbt0.png" /></a>}</p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" /></a>}</p>
 </div>
 <div class="tabbed-block">
 <p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" /></a></p>
@@ -592,9 +592,9 @@ Hopefully, there is the <code>workingday</code> feature, so if our guess is corr
 </details>
 <details class="note" open="open">
 <summary>The global effect is sometimes a weak explanation</summary>
-<p>Whn global effect has a high heterogeneity, it is useful to analyze the regional effect.
+<p>When global effect has a high heterogeneity, it is useful to analyze the regional effect.
 When many instances behave differently from the average pattern,
-it means that global effect may hide some important information behind average values. 
+it means that the global effect may hide some important information behind average values. 
 In these cases, regional effect analysis can provide a more detailed explanation.</p>
 </details>
 <details class="note" open="open">
@@ -818,10 +818,10 @@ They reveal another key factor: <strong>temperature</strong>. The impact of <cod
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       

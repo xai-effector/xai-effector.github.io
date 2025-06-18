@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.11">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
     
     
       
@@ -20,7 +20,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.4af4bdda.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.342714a4.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -588,22 +588,22 @@
 <div class="highlight"><pre><span></span><code><span class="n">r_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 105.23it/s]
+<pre><code>100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 36.79it/s]
 
 
 
 Feature 0 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-x_0 🔹 [id: 0 | heter: 35.72 | inst: 1000 | w: 1.00]
+x_0 🔹 [id: 0 | heter: 35.71 | inst: 1000 | w: 1.00]
     x_1 ≤ 0.00 🔹 [id: 1 | heter: 0.09 | inst: 501 | w: 0.50]
     x_1 &gt; 0.00 🔹 [id: 2 | heter: 0.09 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 35.72
-    Level 1🔹heter: 0.09 | 🔻35.63 (99.75%)
+Level 0🔹heter: 35.71
+    Level 1🔹heter: 0.09 | 🔻35.62 (99.74%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -615,7 +615,7 @@ Level 0🔹heter: 35.72
 <div class="highlight"><pre><span></span><code><span class="n">r_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 11.33it/s]
+<pre><code>100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  7.60it/s]
 
 
 
@@ -642,22 +642,22 @@ Level 0🔹heter: 97.38
 <div class="highlight"><pre><span></span><code><span class="n">r_shapdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_shapdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  2.15it/s]
+<pre><code>100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.36it/s]
 
 
 
 Feature 0 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-x_0 🔹 [id: 0 | heter: 8.82 | inst: 1000 | w: 1.00]
+x_0 🔹 [id: 0 | heter: 8.83 | inst: 1000 | w: 1.00]
     x_1 ≤ 0.00 🔹 [id: 1 | heter: 0.02 | inst: 501 | w: 0.50]
     x_1 &gt; 0.00 🔹 [id: 2 | heter: 0.02 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 8.82
-    Level 1🔹heter: 0.02 | 🔻8.80 (99.76%)
+Level 0🔹heter: 8.83
+    Level 1🔹heter: 0.02 | 🔻8.81 (99.76%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_shapdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -669,22 +669,25 @@ Level 0🔹heter: 8.82
 <div class="highlight"><pre><span></span><code><span class="n">r_ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_ale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 70.31it/s]
+<pre><code>100%|███████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 33.36it/s]
 
 
 
 Feature 0 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-x_0 🔹 [id: 0 | heter: 120.05 | inst: 1000 | w: 1.00]
-    x_1 ≤ 0.00 🔹 [id: 1 | heter: 18.88 | inst: 501 | w: 0.50]
-    x_1 &gt; 0.00 🔹 [id: 2 | heter: 17.65 | inst: 499 | w: 0.50]
+x_0 🔹 [id: 0 | heter: 113.77 | inst: 1000 | w: 1.00]
+    x_1 ≤ 0.00 🔹 [id: 1 | heter: 15.71 | inst: 501 | w: 0.50]
+        x_1 ≤ -0.50 🔹 [id: 2 | heter: 12.91 | inst: 259 | w: 0.26]
+        x_1 &gt; -0.50 🔹 [id: 3 | heter: 15.36 | inst: 242 | w: 0.24]
+    x_1 &gt; 0.00 🔹 [id: 4 | heter: 17.01 | inst: 499 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 120.05
-    Level 1🔹heter: 18.26 | 🔻101.78 (84.79%)
+Level 0🔹heter: 113.77
+    Level 1🔹heter: 16.36 | 🔻97.42 (85.62%)
+        Level 2🔹heter: 7.06 | 🔻9.29 (56.82%)
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="p">[</span><span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)]</span>
 </code></pre></div>
@@ -696,7 +699,7 @@ Level 0🔹heter: 120.05
 <div class="highlight"><pre><span></span><code><span class="n">r_dpdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalDerPDP</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
 <span class="n">r_dpdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00, 100.47it/s]
+<pre><code>100%|██████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00, 103.09it/s]
 
 
 
@@ -788,10 +791,10 @@ Level 0🔹heter: 100.00
     
     
       
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
