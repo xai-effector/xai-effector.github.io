@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -419,6 +419,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Regional effects">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#depth-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Depth = 1
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#depth-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Depth = 2
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -439,60 +463,81 @@
 
   <h1>What are global and regional effects</h1>
 
+<details class="success" open="open">
+<summary>Overview</summary>
+<p>This tutorial is the best place for understanding what global and regional effects are, 
+why the are a very good choice for interpreting a machine learning model trained on tabular data,
+and how to use <code>effector</code> to compute them.</p>
+</details>
+<details class="note" open="open">
+<summary>Glossary</summary>
+<ul>
+<li><strong>Feature effect</strong> or <strong>feature effect plot</strong>: A visual representation of how a feature influences the model's output. 
+  Refers to both global and regional effects.</li>
+<li><strong>Global effect or global effect plot</strong>: A 1D plot <span class="arithmatex">\(x_i \rightarrow y\)</span> that shows how a feature <span class="arithmatex">\(x_i\)</span> influences the model's output <span class="arithmatex">\(y\)</span> across the entire dataset.</li>
+<li><strong>Regional effect or regional effect plot</strong>: A 1D plot <span class="arithmatex">\(x_i \rightarrow y\)</span> that shows how a feature <span class="arithmatex">\(x_i\)</span> influences the model's output <span class="arithmatex">\(y\)</span> across a subset of the dataset, defined by a condition on another feature.
+  To fully understand the effect of a feature, you need to inspect all regional effects for the particular feature.</li>
+</ul>
+</details>
 <h2 id="global-effects">Global effects</h2>
 <details class="question" open="open">
 <summary>Why do we care about global effects?</summary>
 <p>Because they are super simple.</p>
 </details>
-<p class="annotate">✅ You trained a neural network (1) to predict hourly bike rentals using historical data. The dataset includes features like <code>hour</code>, <code>weekday</code>, <code>workingday</code>, <code>temperature</code>, <code>humidity</code>, and, of course, the <code>bike-rentals</code>.</p>
+<p class="annotate">✅ Suppose that you have trained a neural network (1) to predict hourly bike rentals using historical data. 
+  The dataset includes features like <code>hour</code>, <code>weekday</code>, <code>workingday</code>, <code>temperature</code>, <code>humidity</code>, and, of course, \
+  the target variable: <code>bike-rentals</code>. </p>
 <ol>
 <li>📌 You can find the full notebook <a href="./../../notebooks/real-examples/01_bike_sharing_dataset/">here</a>.</li>
 </ol>
-<p>🚀 The model performs well, with an average prediction error of about 43 bikes. Now, you want to understand how it makes predictions.</p>
-<p>📊 Feature effect plots provide a visual way to see how each feature influences the model's output.</p>
+<p>🚀 The model has an average prediction error of about <span class="arithmatex">\(\pm43\)</span> bikes.
+    This means that the model is quite accurate, as the target variable 
+    has an average value of about <span class="arithmatex">\(189\)</span> bikes per hour and a standard deviation of about <span class="arithmatex">\(181\)</span> bikes per hour.</p>
+<p>📊 After training, you want to understand how the model makes predictions.
+   Feature effect plots provide a visual way to see how each feature influences the model's output.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><input id="__tabbed_1_5" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1"><code>month</code></label><label for="__tabbed_1_2"><code>hour</code></label><label for="__tabbed_1_3"><code>temperature</code></label><label for="__tabbed_1_4"><code>humidity</code></label><label for="__tabbed_1_5"><code>windspeed</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_1.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_0.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_2.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_1.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_3.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_2.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_4.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_3.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_18_5.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_16_4.png" /></a></p>
 </div>
 </div>
 </div>
-<p>Interesting! The model has a meaningful behavior:</p>
+<p>Interesting! The model has "learned" that:</p>
 <ul>
-<li>🔍 month, humidity, and windspeed have little impact </li>
-<li>🌡️ Temperature has a stronger positive effect</li>
+<li>🔍 month, humidity, and windspeed have little impact on bike rentals.</li>
+<li>🌡️ Temperature has a stronger positive effect on bike rentals, with a peak at around 20°C.</li>
 <li>⏰ hour is the most important feature; let's focus on that!</li>
 </ul>
 <hr />
-<p>Let's focus on feature <code>hour</code>:</p>
+<p>Let's focus on feature <code>hour</code>. We will compute the global effect of the <code>hour</code> feature using three different methods provided by <code>effector</code>:</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:3"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><input id="__tabbed_2_3" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">PDP</label><label for="__tabbed_2_2">RHALE</label><label for="__tabbed_2_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" /></a></p>
+<a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" /></a></p>
+<a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" /></a></p>
+<a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" /></a></p>
 </div>
 </div>
 </div>
@@ -560,13 +605,13 @@ A simple way to check this is to look at the heterogeneity of the global effect:
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><input id="__tabbed_3_3" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">PDP</label><label for="__tabbed_3_2">RHALE</label><label for="__tabbed_3_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_0.png" /></a>}</p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png" /></a>}</p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" /></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" /></a></p>
+<p><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" /></a></p>
 </div>
 </div>
 </div>
@@ -598,6 +643,12 @@ it means that the global effect may hide some important information behind avera
 In these cases, regional effect analysis can provide a more detailed explanation.</p>
 </details>
 <details class="note" open="open">
+<summary>Regional effects build a partition tree per feature</summary>
+<p>Regional effects build a partition tree for each feature.
+In each node of the partition tree, the instances are separated based on a condition on another feature.
+In each node, the instances are clustered into subregions where the instances behave similarly.</p>
+</details>
+<details class="note" open="open">
 <summary>When regional effect can provide a good solution</summary>
 <p>Unfortunatelly, it does not mean we will always find regional effects that provide a better explanation.
 That depends on whether conditioning on a feature can separate the instances into subregions where the instances behave similarly.
@@ -605,8 +656,7 @@ If such a feature exists, regional effect analysis will provide a better explana
 If not, the regional effect analysis will not manage to do something better than the global effect analysis.</p>
 </details>
 <p>So let's apply regional effect analysis to the <span class="arithmatex">\(\mathtt{hour}\)</span> feature.
-<code>Effector</code> provides a simple API for that, similar to the global effect API:</p>
-<p>We first summarize the regional effect analysis for the <code>hour</code> using:</p>
+To print the partition tree, we will use <code>.summary()</code> method of the regional effect analysis classes.</p>
 <div class="tabbed-set tabbed-alternate" data-tabs="4:3"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><input id="__tabbed_4_3" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">PDP</label><label for="__tabbed_4_2">RHALE</label><label for="__tabbed_4_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
@@ -614,84 +664,72 @@ If not, the regional effect analysis will not manage to do something better than
 <span class="n">r_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
-Node id: 0, name: hr, heter: 0.44 || nof_instances:  5000 || weight: 1.00
-        Node id: 1, name: hr | workingday == 0.00, heter: 0.38 || nof_instances:  1588 || weight: 0.32
-                Node id: 3, name: hr | workingday == 0.00 and temp &lt;= 6.81, heter: 0.19 || nof_instances:   785 || weight: 0.16
-                Node id: 4, name: hr | workingday == 0.00 and temp &gt; 6.81, heter: 0.22 || nof_instances:   803 || weight: 0.16
-        Node id: 2, name: hr | workingday != 0.00, heter: 0.30 || nof_instances:  3412 || weight: 0.68
-                Node id: 5, name: hr | workingday != 0.00 and temp &lt;= 6.81, heter: 0.21 || nof_instances:  1467 || weight: 0.29
-                Node id: 6, name: hr | workingday != 0.00 and temp &gt; 6.81, heter: 0.21 || nof_instances:  1945 || weight: 0.39
---------------------------------------------------
-Feature 3 - Statistics per tree level:
-Level 0, heter: 0.44
-        Level 1, heter: 0.32 || heter drop : 0.12 (units), 27.28% (pcg)
-                Level 2, heter: 0.21 || heter drop : 0.12 (units), 35.73% (pcg)
+🌳 Full Tree Structure:
+───────────────────────
+hr 🔹 [id: 0 | heter: 0.24 | inst: 5000 | w: 1.00]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.13 | inst: 1548 | w: 0.31]
+        temp ≤ 4.50 🔹 [id: 2 | heter: 0.06 | inst: 618 | w: 0.12]
+        temp &gt; 4.50 🔹 [id: 3 | heter: 0.10 | inst: 930 | w: 0.19]
+    workingday ≠ 0.00 🔹 [id: 4 | heter: 0.12 | inst: 3452 | w: 0.69]
+        yr = 0.00 🔹 [id: 5 | heter: 0.06 | inst: 1719 | w: 0.34]
+        yr ≠ 0.00 🔹 [id: 6 | heter: 0.11 | inst: 1733 | w: 0.35]
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<p><div class="highlight"><pre><span></span><code><span class="n">r_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">r_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">)</span>
 <span class="n">r_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
-Node id: 0, name: hr, heter: 5.68 || nof_instances: 13903 || weight: 1.00
-        Node id: 1, name: hr | workingday == 0.00, heter: 0.75 || nof_instances:  4385 || weight: 0.32
-        Node id: 2, name: hr | workingday != 0.00, heter: 5.44 || nof_instances:  9518 || weight: 0.68
---------------------------------------------------
-Feature 3 - Statistics per tree level:
-Level 0, heter: 5.68
-        Level 1, heter: 3.96 || heter drop : 1.71 (units), 30.22% (pcg)
-</code></pre></div></p>
+🌳 Full Tree Structure:
+───────────────────────
+hr 🔹 [id: 0 | heter: 5.68 | inst: 13903 | w: 1.00]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.75 | inst: 4385 | w: 0.32]
+        temp ≤ 6.81 🔹 [id: 2 | heter: 0.44 | inst: 2187 | w: 0.16]
+        temp &gt; 6.81 🔹 [id: 3 | heter: 0.60 | inst: 2198 | w: 0.16]
+    workingday ≠ 0.00 🔹 [id: 4 | heter: 5.44 | inst: 9518 | w: 0.68]
+</code></pre></div>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">r_shap</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
 <span class="n">r_shap</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
-Node id: 0, name: hr, heter: 0.06 || nof_instances:   500 || weight: 1.00
-        Node id: 1, name: hr | workingday == 0.00, heter: 0.02 || nof_instances:   155 || weight: 0.31
-                Node id: 3, name: hr | workingday == 0.00 and temp &lt;= 6.81, heter: 0.01 || nof_instances:    83 || weight: 0.17
-                Node id: 4, name: hr | workingday == 0.00 and temp &gt; 6.81, heter: 0.03 || nof_instances:    72 || weight: 0.14
-        Node id: 2, name: hr | workingday != 0.00, heter: 0.03 || nof_instances:   345 || weight: 0.69
-                Node id: 5, name: hr | workingday != 0.00 and temp &lt;= 6.81, heter: 0.02 || nof_instances:   156 || weight: 0.31
-                Node id: 6, name: hr | workingday != 0.00 and temp &gt; 6.81, heter: 0.02 || nof_instances:   189 || weight: 0.38
---------------------------------------------------
-Feature 3 - Statistics per tree level:
-Level 0, heter: 0.06
-        Level 1, heter: 0.03 || heter drop : 0.03 (units), 56.04% (pcg)
-                Level 2, heter: 0.02 || heter drop : 0.01 (units), 20.57% (pcg)
-</code></pre></div>
+<p>```
+Feature 3 - Full partition tree:
+🌳 Full Tree Structure:
+───────────────────────
+hr 🔹 [id: 0 | heter: 0.06 | inst: 500 | w: 1.00]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.02 | inst: 148 | w: 0.30]
+        temp ≤ 4.50 🔹 [id: 2 | heter: 0.01 | inst: 50 | w: 0.10]
+        temp &gt; 4.50 🔹 [id: 3 | heter: 0.02 | inst: 98 | w: 0.20]
+    workingday ≠ 0.00 🔹 [id: 4 | heter: 0.03 | inst: 352 | w: 0.70]
+        temp ≤ 6.81 🔹 [id: 5 | heter: 0.02 | inst: 145 | w: 0.29]
+        temp &gt; 6.81 🔹 [id: 6 | heter: 0.02 | inst: 207 | w: 0.41]</p>
 </div>
 </div>
 </div>
+<p>```</p>
 <details class="question" open="open">
 <summary>That' is quite interesting</summary>
 <p>All methods confirm our intuition: there are two meaninful subregions based on the <code>workingday</code> feature. 
 This is the first split in the partition tree and the most important one, for all methods.
-However PDP and SHAP-DP also provide a second split based on the <code>temperature</code> feature.</p>
+Beyond that, methods differ in the next splits. 
+Let's focus on the first-level splits first.</p>
 </details>
-<p>Let's visualize the regional effects!</p>
+<h3 id="depth-1">Depth = 1</h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="5:3"><input checked="checked" id="__tabbed_5_1" name="__tabbed_5" type="radio" /><input id="__tabbed_5_2" name="__tabbed_5" type="radio" /><input id="__tabbed_5_3" name="__tabbed_5" type="radio" /><div class="tabbed-labels"><label for="__tabbed_5_1">PDP</label><label for="__tabbed_5_2">RHALE</label><label for="__tabbed_5_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
 <thead>
 <tr>
-<th style="text-align: center;">non-working day and cold</th>
-<th style="text-align: center;">non-workingday and hot</th>
+<th style="text-align: center;">non-working day</th>
+<th style="text-align: center;">workingday</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" /></a></td>
-</tr>
-<tr>
-<td style="text-align: center;">working day and cold</td>
-<td style="text-align: center;">workingday and hot</td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_2.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_3.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -706,8 +744,79 @@ However PDP and SHAP-DP also provide a second split based on the <code>temperatu
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_0.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">non-working day</th>
+<th style="text-align: center;">workingday</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_1.png" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<details class="success" open="open">
+<summary>Let's reach some conclusions"</summary>
+<p>The regional effect analysis confirms our intuition: the data shows two distinct patterns.  </p>
+<p>📅 <strong>Workdays:</strong> Rentals rise at <strong>8:30 AM</strong> and <strong>5:00 PM</strong>, matching commute times.<br />
+🌴 <strong>Weekends &amp; Holidays:</strong> Rentals increase at <strong>9:00 AM</strong>, peak at <strong>12:00 PM</strong>, and decline around <strong>4:00 PM</strong>—a typical leisure pattern.  </p>
+<p>✔️ This makes sense—temperature matters for sightseeing, but not for commuting.</p>
+</details>
+<hr />
+<h3 id="depth-2">Depth = 2</h3>
+<div class="tabbed-set tabbed-alternate" data-tabs="6:3"><input checked="checked" id="__tabbed_6_1" name="__tabbed_6" type="radio" /><input id="__tabbed_6_2" name="__tabbed_6" type="radio" /><input id="__tabbed_6_3" name="__tabbed_6" type="radio" /><div class="tabbed-labels"><label for="__tabbed_6_1">PDP</label><label for="__tabbed_6_2">RHALE</label><label for="__tabbed_6_3">SHAP-DP</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">non-working day and cold</th>
+<th style="text-align: center;">non-workingday and hot</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_1.png" /></a></td>
+</tr>
+<tr>
+<td style="text-align: center;"><strong>working day and cold</strong></td>
+<td style="text-align: center;"><strong>workingday and hot</strong></td>
+</tr>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_2.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_3.png" /></a></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="tabbed-block">
+<table>
+<thead>
+<tr>
+<th style="text-align: center;">non-working day and cold</th>
+<th style="text-align: center;">non-workingday and hot</th>
+<th style="text-align: center;">working day</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_0.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_1.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -722,16 +831,16 @@ However PDP and SHAP-DP also provide a second split based on the <code>temperatu
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_0.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_1.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_1.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_2.png" /></a></td>
 </tr>
 <tr>
-<td style="text-align: center;">working day and cold</td>
-<td style="text-align: center;">workingday and hot</td>
+<td style="text-align: center;"><strong>working day and first year</strong></td>
+<td style="text-align: center;"><strong>workingday and second year</strong></td>
 </tr>
 <tr>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_2.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_3.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_3.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_4.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -747,7 +856,6 @@ However PDP and SHAP-DP also provide a second split based on the <code>temperatu
 They reveal another key factor: <strong>temperature</strong>. The impact of <code>hour</code> on bike rentals differs on non-working days depending on whether it’s hot or cold.  </p>
 <p>✔️ This makes sense—temperature matters for sightseeing, but not for commuting.</p>
 </details>
-<hr />
 
 
 
@@ -821,7 +929,7 @@ They reveal another key factor: <strong>temperature</strong>. The impact of <cod
       <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       

@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -519,7 +519,7 @@
 <li><strong>Preparing the permuted/augmented dataset</strong>: This step depends only on <span class="arithmatex">\(N\)</span> and is repeated independently for each feature, so it contributes <span class="arithmatex">\(D T_1(N)\)</span> to the total runtime.  </li>
 <li><strong>Predicting on the permuted dataset</strong>: We here make the hypothesis, that <span class="arithmatex">\(f(X)\)</span> runs in <span class="arithmatex">\(t_f\)</span> independently of the number of instances. This is not generally true, however, it is a reasonable assumption as long as <span class="arithmatex">\(f(X)\)</span> can be computed in a single pass or some batches. Additionally, the prediction must be repeated independently for each feature, contributing <span class="arithmatex">\(D T_2(t_f)\)</span>, except for RHALE, where all gradients are computed in a single pass, resulting in <span class="arithmatex">\(T_2(t_f)\)</span>.  </li>
 </ol>
-<p>Therefore, the runtime of each methods is: <span class="arithmatex">\(<span class="arithmatex">\(T(t_f, N, D) \approx D T_1(N) + T_2(t_f, D)\)</span>\)</span>.</p>
+<p>Therefore, the runtime of each methods is: <span class="arithmatex">\(T(t_f, N, D) \approx D T_1(N) + T_2(t_f, D)\)</span>.</p>
 <p>Now, let's see all these effects in practice!</p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
@@ -528,6 +528,9 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
 </code></pre></div>
+<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -542,7 +545,7 @@
         <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">jacobian</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="kc">None</span><span class="p">,):</span>
     <span class="n">fit_time_list</span><span class="p">,</span> <span class="n">eval_time_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
     <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
@@ -628,7 +631,7 @@
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span> <span class="c1"># [&quot;fit&quot;, &quot;eval&quot;, &quot;total&quot;]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
@@ -656,7 +659,7 @@
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span> <span class="c1"># [&quot;fit&quot;, &quot;eval&quot;, &quot;total&quot;]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
@@ -731,7 +734,7 @@
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span> <span class="c1"># [&quot;fit&quot;, &quot;eval&quot;, &quot;total&quot;]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
@@ -766,7 +769,7 @@
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span> <span class="c1">#[&quot;fit&quot;, &quot;eval&quot;, &quot;total&quot;]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
@@ -848,12 +851,6 @@
 </tr>
 </tbody>
 </table>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 
 
 
@@ -924,7 +921,7 @@
       <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

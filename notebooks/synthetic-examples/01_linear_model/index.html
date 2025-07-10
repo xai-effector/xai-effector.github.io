@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -630,7 +630,7 @@
 <li><strong>Description</strong>: Apply global effect on a linear model</li>
 </ul>
 <p><a href="https://colab.research.google.com/github/givasile/effector/blob/main/synthetic-examples/01_linear_model.ipynb"><img alt="Open In Colab" src="https://colab.research.google.com/assets/colab-badge.svg" /></a> 
-<a href="https://github.com/givasile/effector/blob/main/synthetic-examples/01_linear_model.ipynb"><img alt="Show in Github" src="https://xai-effector.github.io/static/github-mark.png" /></a></p>
+<a href="https://github.com/givasile/effector/blob/main/notebooks/synthetic-examples/01_linear_model.ipynb"><img alt="Open in Github" src="https://img.shields.io/badge/Open%20in-GitHub-black?logo=github" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
 </code></pre></div>
@@ -641,47 +641,113 @@
 However, when the interaction terms are very strong then the feature effect methods may provide an over-simplistic explanation.
 Hopefully, there is a quantity called <strong>heterogeneity</strong> that can be used to check whether the feature effect methods are a good explanation for the features.</p>
 <p><code>Effector</code> provides five different feature effect methods, which are summarized in the table below. In all methods, setting <code>heterogeneity=True</code> the methods show the level of heterogeneity, along with the average effect.</p>
-<center>
-
-| Method                                  | Description                        | API in `Effector`                                                            | Paper                                                             |
-|-----------------------------------------|------------------------------------|------------------------------------------------------------------------------|-------------------------------------------------------------------|
-| [PDP](#partial-dependence-plot-pdp)     | Partial Dependence Plot            | [PDP]((./../../reference/#effector.pdp.DerivativePDP))                       | [Friedman, 2001](https://statweb.stanford.edu/~jhf/ftp/trebst.pdf) |     |
-| [d-PDP](#derivative-pdp-d-pdp)          | Derivative PDP                     | [DerivativePDP](./../../reference/#effector.pdp.DerivativePDP)               | [Goldstein et. al, 2013](https://arxiv.org/pdf/1309.6392.pdf)     ||
-| [ALE](#accumulated-local-effects-ale)   | Accumulated Local Effect           | [ALE](./../../reference/#effector.ale.ALE)                                   | [Apley et. al, 2016](https://arxiv.org/pdf/1612.08468)            |
-| [RHALE](#robust-and-heterogeneity-aware-ale-rhale) | Robust and Heterogeneity-aware ALE | [RHALE](./../../reference/#effector.ale.RHALE)                               | [Gkolemis et al, 2023](https://arxiv.org/abs/2309.11193)          | 
-| [SHAP](#shap-dependence-plot)           | SHAP Dependence Plot               | [SHAPDependence](./../../reference/#effector.shap_dependence.SHAPDependence) | [Lundberg et. al, 2017](https://arxiv.org/pdf/1705.07874.pdf)     |
-
-
-</center>
-
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+<th>API in <code>Effector</code></th>
+<th>Paper</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="#partial-dependence-plot-pdp">PDP</a></td>
+<td>Partial Dependence Plot</td>
+<td><a href="(./../../reference/#effector.pdp.DerivativePDP)">PDP</a></td>
+<td><a href="https://statweb.stanford.edu/~jhf/ftp/trebst.pdf">Friedman, 2001</a></td>
+</tr>
+<tr>
+<td><a href="#derivative-pdp-d-pdp">d-PDP</a></td>
+<td>Derivative PDP</td>
+<td><a href="./../../reference/#effector.pdp.DerivativePDP">DerivativePDP</a></td>
+<td><a href="https://arxiv.org/pdf/1309.6392.pdf">Goldstein et. al, 2013</a></td>
+</tr>
+<tr>
+<td><a href="#accumulated-local-effects-ale">ALE</a></td>
+<td>Accumulated Local Effect</td>
+<td><a href="./../../reference/#effector.ale.ALE">ALE</a></td>
+<td><a href="https://arxiv.org/pdf/1612.08468">Apley et. al, 2016</a></td>
+</tr>
+<tr>
+<td><a href="#robust-and-heterogeneity-aware-ale-rhale">RHALE</a></td>
+<td>Robust and Heterogeneity-aware ALE</td>
+<td><a href="./../../reference/#effector.ale.RHALE">RHALE</a></td>
+<td><a href="https://arxiv.org/abs/2309.11193">Gkolemis et al, 2023</a></td>
+</tr>
+<tr>
+<td><a href="#shap-dependence-plot">SHAP</a></td>
+<td>SHAP Dependence Plot</td>
+<td><a href="./../../reference/#effector.shap_dependence.SHAPDependence">SHAPDependence</a></td>
+<td><a href="https://arxiv.org/pdf/1705.07874.pdf">Lundberg et. al, 2017</a></td>
+</tr>
+</tbody>
+</table>
 <p>For the rest of the tutorial, we will use the following notation:</p>
-<center>
-
-| Symbol                                                     | Description                                             |
-|------------------------------------------------------------|---------------------------------------------------------|
-| $f(\mathbf{x})$                                            | The black box model                                     |
-| $\mathcal{H}$                                              | The heterogeneity                                       |
-| $x_s$                                                      | The feature of interest                                 |
-| $x_c$                                                      | The remaining features, i.e., $\mathbf{x} = (x_s, x_c)$ |
-| $\mathbf{x} = (x_s, x_c) = (x_1, x_2, ..., x_s, ..., x_D)$ | The input features                                      |
-| $\mathbf{x}^{(i)} = (x_s^{(i)}, x_c^{(i)})$                | The $i$-th instance of the dataset                      |
-
-</center>
-
+<table>
+<thead>
+<tr>
+<th>Symbol</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(f(\mathbf{x})\)</span></td>
+<td>The black box model</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathcal{H}\)</span></td>
+<td>The heterogeneity</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_s\)</span></td>
+<td>The feature of interest</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_c\)</span></td>
+<td>The remaining features, i.e., <span class="arithmatex">\(\mathbf{x} = (x_s, x_c)\)</span></td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbf{x} = (x_s, x_c) = (x_1, x_2, ..., x_s, ..., x_D)\)</span></td>
+<td>The input features</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(\mathbf{x}^{(i)} = (x_s^{(i)}, x_c^{(i)})\)</span></td>
+<td>The <span class="arithmatex">\(i\)</span>-th instance of the dataset</td>
+</tr>
+</tbody>
+</table>
 <hr />
 <h2 id="dataset-and-model">Dataset and Model</h2>
 <p>In this example, we will use as black-box function, a simple linear model <span class="arithmatex">\(y = 7x_1 - 3x_2 + 4x_3\)</span>. Since there are no interactions 
 terms we expect <strong>all</strong> methods to provide the following feature effects and zero heterogeneity:</p>
-<center>
-
-| Feature | Feature Effect | Heterogeneity |
-| --- | --- | --- |
-| $x_1$ | $7x_1$ | 0 |
-| $x_2$ | $-3x_2$ | 0 |
-| $x_3$ | $4x_3$ | 0 |
-
-</center>
-
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Feature Effect</th>
+<th>Heterogeneity</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="arithmatex">\(x_1\)</span></td>
+<td><span class="arithmatex">\(7x_1\)</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_2\)</span></td>
+<td><span class="arithmatex">\(-3x_2\)</span></td>
+<td>0</td>
+</tr>
+<tr>
+<td><span class="arithmatex">\(x_3\)</span></td>
+<td><span class="arithmatex">\(4x_3\)</span></td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
 <p>As dataset, we will generate <span class="arithmatex">\(N=1000\)</span> examples comming from the following distribution:</p>
 <table>
 <thead>
@@ -872,14 +938,27 @@ If the heterogeneity is only present on the latter, then it is due to different 
 The upper subfigure shows how much the feature of interest <em>contributes</em> to the prediction (like PDP) while the bottom subplot shows how much a change in the feature of interest <em>changes</em> the prediction (like d-PDP). 
 For example, for <span class="arithmatex">\(x_1\)</span> the upper subplot shows a linear effect and the lower subplot confirms that the gradient is constantly <span class="arithmatex">\(7\)</span>.
 <code>Effector</code> offers two alternatives for centering the ALE plot.</p>
-<center>
-
-| `centering`               | Description                            | Formula                                                               |
-|---------------------------|----------------------------------------|-----------------------------------------------------------------------|
-| `False` or `zero_start`   | Don't enforce any additional centering | c=0                                                                   |
-| `True` or `zero_integral` | Center around the $y$ axis             | c=$\mathbb{E}_{x_s \sim \mathcal{U(x_{s,min},x_{s, max})}}[ALE(x_s)]$ |
-
-</center>
+<table>
+<thead>
+<tr>
+<th><code>centering</code></th>
+<th>Description</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>False</code> or <code>zero_start</code></td>
+<td>Don't enforce any additional centering</td>
+<td>c=0</td>
+</tr>
+<tr>
+<td><code>True</code> or <code>zero_integral</code></td>
+<td>Center around the <span class="arithmatex">\(y\)</span> axis</td>
+<td>c=<span class="arithmatex">\(\mathbb{E}_{x_s \sim \mathcal{U(x_{s,min},x_{s, max})}}[ALE(x_s)]\)</span></td>
+</tr>
+</tbody>
+</table>
 <p>Let's see how centering works for <span class="arithmatex">\(x_1\)</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
@@ -922,15 +1001,27 @@ For example, for <span class="arithmatex">\(x_1\)</span> the upper subplot shows
 The crucial difference, is that the automatic bin-splitting approach <em>optimally</em> creates a single bin that covers the whole area between <span class="arithmatex">\(x=0\)</span> and <span class="arithmatex">\(x=1\)</span>. As we saw above, the gradient of the feature effect is constant and equal to <span class="arithmatex">\(7\)</span> for all <span class="arithmatex">\(x_1\)</span> values. Therefore, merging all bins into one, reduces the variance of the estimation; the estimation is based on more instances, so the variance is lower. </p>
 <p>In our example, this advantage is not evident; Since there are no interaction terms (linear model) the effect of all instances is always the same; so the variance of the estimation is zero. However, in more complex models, the variance of the estimation is not zero and the automatic bin-splitting approach reduces the variance of the estimation (check tutorial <a href="./ale.ipynb">ALE</a> for more details).</p>
 <p>As with the ALE, there are two alternatives for centering the ALE plot.</p>
-<center>
-
-| `centering`               | Description                            | Formula                                                               |
-|---------------------------|----------------------------------------|-----------------------------------------------------------------------|
-| `False` or `zero_start`   | Don't enforce any additional centering | c=0                                                                   |
-| `True` or `zero-integral` | Center around the $y$ axis             | c=$\mathbb{E}_{x_s \sim \mathcal{U(x_{s,min},x_{s, max})}}[ALE(x_s)]$ |
-
-</center>
-
+<table>
+<thead>
+<tr>
+<th><code>centering</code></th>
+<th>Description</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>False</code> or <code>zero_start</code></td>
+<td>Don't enforce any additional centering</td>
+<td>c=0</td>
+</tr>
+<tr>
+<td><code>True</code> or <code>zero-integral</code></td>
+<td>Center around the <span class="arithmatex">\(y\)</span> axis</td>
+<td>c=<span class="arithmatex">\(\mathbb{E}_{x_s \sim \mathcal{U(x_{s,min},x_{s, max})}}[ALE(x_s)]\)</span></td>
+</tr>
+</tbody>
+</table>
 <p>Let's see how this works for <span class="arithmatex">\(x_1\)</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">predict_grad</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
@@ -958,15 +1049,27 @@ For more details about that, you can check the in-depth <a href="./ale.ipynb">AL
 <p><a class="glightbox" href="../01_linear_model_files/01_linear_model_37_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../01_linear_model_files/01_linear_model_37_0.png" /></a></p>
 <h3 id="fearure-effect-interpretation_2">Fearure effect interpretation</h3>
 <p>TODO add content </p>
-<center>
-
-| `centering`               | Description                            | Formula                                                               |
-|---------------------------|----------------------------------------|-----------------------------------------------------------------------|
-| `False` or `zero_start`   | Don't enforce any additional centering | c=0                                                                   |
-| `True` or `zero-integral` | Center around the $y$ axis             | c=$\mathbb{E}_{x_s \sim \mathcal{U(x_{s,min},x_{s, max})}}[ALE(x_s)]$ |
-
-</center>
-
+<table>
+<thead>
+<tr>
+<th><code>centering</code></th>
+<th>Description</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>False</code> or <code>zero_start</code></td>
+<td>Don't enforce any additional centering</td>
+<td>c=0</td>
+</tr>
+<tr>
+<td><code>True</code> or <code>zero-integral</code></td>
+<td>Center around the <span class="arithmatex">\(y\)</span> axis</td>
+<td>c=<span class="arithmatex">\(\mathbb{E}_{x_s \sim \mathcal{U(x_{s,min},x_{s, max})}}[ALE(x_s)]\)</span></td>
+</tr>
+</tbody>
+</table>
 <p>Let's see how this works for <span class="arithmatex">\(x_1\)</span>:</p>
 <div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
@@ -985,17 +1088,32 @@ The plot below correctly informs shows that the heterogeneity is zero.</p>
 <p>In summary, given a dataset <code>X: (N, D)</code> and a black-box model <code>model: (N, D) -&gt; (N)</code>,
 the feature effect plot of the <span class="arithmatex">\(s\)</span>-th feature <code>feature=s</code> is given with the table below.
 The argument <code>confidence_interval=True|False</code> indicates whether to plot the standard deviation of the instance-level effects as <span class="arithmatex">\(\pm\)</span> interval around the feature effect plot. Some methods also require the gradient of the model <code>model_jac: (N, D) -&gt; (N, D)</code>.</p>
-<center>
-
-| Method        | How to use                                                                                                                                   |
-|---------------|----------------------------------------------------------------------------------------------------------------------------------------------|
-| PDP           | [`effector.PDP(X, model).plot(feature, centering, confidence_interval)`]((./../../reference/#effector.pdp.PDP))                    |
-| d-PDP         | [`effector.DerivativePDP(X, model, model_jac).plot(feature, centering, confidence_interval)`](./../../reference/#effector.pdp.DerivativePDP) |
-| ALE           | [`effector.ALE(X, model).plot(feature, centering, confidence_interval)`](./../../reference/#effector.ale.ALE)                                |
-| RHALE         | [`effector.RHALE(X, model, model_jac).plot(feature, centering, confidence_interval)`](./../../reference/#effector.ale.RHALE)                 |
-
-</center>
-
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>How to use</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PDP</td>
+<td><a href="../../../api_docs/api_global/#effector.global_effect_pdp.PDP"><code>effector.PDP(X, model).plot(feature, centering, confidence_interval)</code></a></td>
+</tr>
+<tr>
+<td>d-PDP</td>
+<td><a href="../../../api_docs/api_global/#effector.global_effect_pdp.DerPDP"><code>effector.DerivativePDP(X, model, model_jac).plot(feature, centering, confidence_interval)</code></a></td>
+</tr>
+<tr>
+<td>ALE</td>
+<td><a href="../../../api_docs/api_global/#effector.global_effect_ale.ALE"><code>effector.ALE(X, model).plot(feature, centering, confidence_interval)</code></a></td>
+</tr>
+<tr>
+<td>RHALE</td>
+<td><a href="../../../api_docs/api_global/#effector.global_effect_ale.RHALE"><code>effector.RHALE(X, model, model_jac).plot(feature, centering, confidence_interval)</code></a></td>
+</tr>
+</tbody>
+</table>
 <div class="highlight"><pre><span></span><code>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code>
@@ -1070,7 +1188,7 @@ The argument <code>confidence_interval=True|False</code> indicates whether to pl
       <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

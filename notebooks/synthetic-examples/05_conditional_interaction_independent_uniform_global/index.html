@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -527,6 +527,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#tests_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#conclusions_2" class="md-nav__link">
     <span class="md-ellipsis">
       Conclusions
@@ -586,13 +595,16 @@ Below we will see how PDP, ALE, and RHALE handle this interaction.</p>
 <span class="n">dataset</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">IndependentUniform</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generate_data</span><span class="p">(</span><span class="mi">1_000</span><span class="p">)</span>
 </code></pre></div>
+<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</code></pre>
 <h2 id="pdp">PDP</h2>
 <h3 id="effector">Effector</h3>
 <p>Let's see below the PDP effects for each feature, using <code>effector</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">)</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
-    <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_0.png" /></a></p>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_5_1.png" /></a></p>
@@ -654,17 +666,20 @@ PDP(x_3) &amp;\propto \frac{1}{N} \sum_{i=1}^{n} f(x_3, x_{/3}^i) \\
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;PDP effects (ground truth)&quot;</span><span class="p">)</span>
 <span class="n">color_pallette</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+<span class="n">feature_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Feature x1&quot;</span><span class="p">,</span> <span class="s2">&quot;Feature x2&quot;</span><span class="p">,</span> <span class="s2">&quot;Feature x3&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">xx</span><span class="p">,</span> 
         <span class="n">y_pdp</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> 
         <span class="n">color</span><span class="o">=</span><span class="n">color_pallette</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> 
         <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;feature </span><span class="si">{</span><span class="n">feature</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">feature_labels</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span>
     <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;PDP Effect&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_13_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_13_0.png" /></a></p>
@@ -689,7 +704,7 @@ PDP(x_3) &amp;\propto \frac{1}{N} \sum_{i=1}^{n} f(x_3, x_{/3}^i) \\
 <span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">31</span><span class="p">))</span>
 
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
-    <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_0.png" /></a></p>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_18_1.png" /></a></p>
@@ -715,10 +730,11 @@ For central bin, i.e., the one from <span class="arithmatex">\(-\frac{2}{K}\)</s
 Therefore, the ALE effect is:</p>
 <div class="arithmatex">\[\begin{equation}
 ALE(x_2) \approx
-\cases{
+\begin{cases}
 -\frac{1}{3} \text{ if } x_2 &lt; -\frac{2}{K} \\
 \frac{1}{3} \text{ if } x_2 &gt; \frac{2}{K} \\
-\text{a linear segment from $-\frac{1}{3}$ to $\frac{1}{3}$ in between}}
+\text{a linear segment from $-\frac{1}{3}$ to $\frac{1}{3}$ in between}
+\end{cases} \\
 \end{equation}\]</div>
 <div class="arithmatex">\[\begin{align}
 ALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} \sum_{i: x^{(i)} \in \mathcal{S}_k} \left [  f(x^i_1, x^i_2, z_k) - f(x^i_1, x^i_2, z_{k-1}) \right ] \\
@@ -749,22 +765,25 @@ ALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} \sum_{i: 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;ALE effects (ground truth)&quot;</span><span class="p">)</span>
 <span class="n">color_pallette</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+<span class="n">feature_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Feature x1&quot;</span><span class="p">,</span> <span class="s2">&quot;Feature x2&quot;</span><span class="p">,</span> <span class="s2">&quot;Feature x3&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">xx</span><span class="p">,</span> 
         <span class="n">y_ale</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> 
         <span class="n">color</span><span class="o">=</span><span class="n">color_pallette</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> 
         <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;feature </span><span class="si">{</span><span class="n">feature</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">feature_labels</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
     <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;ALE Effect&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_26_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_26_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">]:</span><span class="c1"># [0, 1, 2]:</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">y_ale</span> <span class="o">=</span> <span class="n">ale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">y_gt</span> <span class="o">=</span> <span class="n">ale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xx</span><span class="p">)</span>
 
@@ -787,7 +806,7 @@ ALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} \sum_{i: 
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
-    <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_0.png" /></a></p>
 <p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_30_1.png" /></a></p>
@@ -806,7 +825,11 @@ RHALE(x_1) &amp;\propto \sum_{k=1}^{k_{x_1}} \frac{1}{| \mathcal{S}_k |} (z_k - 
 \end{align}\]</div>
 <div class="arithmatex">\[\begin{align}
 RHALE(x_2) &amp;\propto \sum_{k=1}^{k_{x_2}} \frac{1}{| \mathcal{S}_k |} (z_k - z_{k-1}) \sum_{i: x^i \in \mathcal{S}_k} \left [  \frac{\partial f}{\partial x_2}(\mathbf{x}^i) \right ] \\
-&amp;\propto \sum_{k=1}^{k_{x_2}} \frac{1}{| \mathcal{S}_k |} (z_k - z_{k-1}) \sum_{i: x^i \in \mathcal{S}_k} \cases{0 \text{ if $x_2 &lt;0$} \\ 0 \text{ if $x_2 \geq 0$}}  \\
+&amp;\propto \sum_{k=1}^{k_{x_2}} \frac{1}{| \mathcal{S}_k |} (z_k - z_{k-1}) \sum_{i: x^i \in \mathcal{S}_k} 
+\begin{cases}
+0 &amp; \text{if } x_2 &lt; 0 \\
+0 &amp; \text{if } x_2 \geq 0
+\end{cases} \\
 &amp;\propto 0
 \end{align}\]</div>
 <div class="arithmatex">\[\begin{align}
@@ -814,6 +837,7 @@ RHALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} (z_k - 
 &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} (z_k - z_{k-1}) \sum_{i: x^i \in \mathcal{S}_k} \left [ e^{x_3} \right ] \\
 &amp;\approx e^{x_3}
 \end{align}\]</div>
+<h3 id="tests_2">Tests</h3>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rhale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -837,20 +861,23 @@ RHALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} (z_k - 
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;RHALE effects (ground truth)&quot;</span><span class="p">)</span>
 <span class="n">color_pallette</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;blue&quot;</span><span class="p">,</span> <span class="s2">&quot;red&quot;</span><span class="p">,</span> <span class="s2">&quot;green&quot;</span><span class="p">]</span>
+<span class="n">feature_labels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Feature x1&quot;</span><span class="p">,</span> <span class="s2">&quot;Feature x2&quot;</span><span class="p">,</span> <span class="s2">&quot;Feature x3&quot;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">xx</span><span class="p">,</span> 
         <span class="n">y_rhale</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> 
         <span class="n">color</span><span class="o">=</span><span class="n">color_pallette</span><span class="p">[</span><span class="n">feature</span><span class="p">],</span> 
         <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;-&quot;</span> <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="s2">&quot;--&quot;</span><span class="p">,</span>
-        <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;feature </span><span class="si">{</span><span class="n">feature</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">feature_labels</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span>
     <span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">([</span><span class="o">-</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Value&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;RHALE Effect&quot;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_37_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_37_0.png" /></a></p>
+<p><a class="glightbox" href="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_38_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../05_conditional_interaction_independent_uniform_global_files/05_conditional_interaction_independent_uniform_global_38_0.png" /></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>
     <span class="n">y_ale</span> <span class="o">=</span> <span class="n">rhale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
     <span class="n">y_gt</span> <span class="o">=</span> <span class="n">rhale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xx</span><span class="p">)</span>
@@ -860,14 +887,6 @@ RHALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} (z_k - 
 <p>Are the RHALE effects intuitive?</p>
 <p>RHALE does not add something new, compared to ALE and PDP, for features <span class="arithmatex">\(x_1\)</span> and <span class="arithmatex">\(x_3\)</span>. 
 For <span class="arithmatex">\(x_2\)</span>, however, it does not capture the abrupt increase by <span class="arithmatex">\(+\frac{2}{3}\)</span> units when moving from <span class="arithmatex">\(x_2^-\)</span> to <span class="arithmatex">\(x_2^+\)</span>, which can be considered as an error mode of RHALE. In fact, RHALE requires a differentiable black box model, and since <span class="arithmatex">\(f\)</span> is not differentiable with respect to <span class="arithmatex">\(x_2\)</span>, that is why we get a slightly misleading result.</p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
 
 
 
@@ -938,7 +957,7 @@ For <span class="arithmatex">\(x_2\)</span>, however, it does not capture the ab
       <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       

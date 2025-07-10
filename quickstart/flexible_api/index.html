@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -479,19 +479,34 @@
 
 
 <h1 id="customize-fit">Customize <code>.fit()</code></h1>
+<p><code>Effector</code> is designed to work well with its default settings, 
+but it also allows for customization if the user needs more control over the processing steps.
+This flexibility is achieved through the use of the <code>.fit()</code> routine, 
+which offers a range of options for customizing each global or regional effect method</p>
 <h2 id="dataset">Dataset</h2>
+<p>Create a dataset with 3 features, uniformly distributed in the range [-1, 1].</p>
 <div class="highlight"><pre><span></span><code><span class="n">dist</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">IndependentUniform</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">X_test</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">generate_data</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 <span class="n">axis_limits</span> <span class="o">=</span> <span class="n">dist</span><span class="o">.</span><span class="n">axis_limits</span>
 </code></pre></div>
 <h2 id="black-box-model-and-jacobian">Black-box model and Jacobian</h2>
+<p>Construct a black-box model with a double conditional interaction: <span class="arithmatex">\(x_1\)</span> effect interacts with <span class="arithmatex">\(x_2\)</span> and <span class="arithmatex">\(x_3\)</span>.</p>
+<div class="arithmatex">\[
+f(x_1, x_2, x_3) = -3x_1^2\mathbb{1}_{x_2 &lt; 0}\mathbb{1}_{x_3 &lt; 0} \
+                   +x_1^2\mathbb{1}_{x_2 &lt; 0}\mathbb{1}_{x_3 \geq 0} \
+                   -e^{x_1}\mathbb{1}_{x_2 \geq 0}\mathbb{1}_{x_3 &lt; 0} \
+                   +e^{3x_1}\mathbb{1}_{x_2 \geq 0}\mathbb{1}_{x_3 \geq 0}
+\]</div>
 <div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DoubleConditionalInteraction</span><span class="p">()</span>
 <span class="n">predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span>
 <span class="n">jacobian</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span>
 </code></pre></div>
 <h2 id="global-effect">Global Effect</h2>
+<p>We will compute the global effect of the first feature using the <code>RHALE</code> method.
+First, we will use the default settings of the <code>.fit()</code> routine, which automatically partitions the feature space into bins.
+Then, we will customize the <code>.fit()</code> routine to use a number of 5 equal-width bins.</p>
 <h3 id="rhale">RHALE</h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Simple API</label><label for="__tabbed_1_2">Flexible API</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Default settings</label><label for="__tabbed_1_2">Customized <code>.fit()</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p><div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
@@ -509,9 +524,13 @@
 </div>
 </div>
 <h2 id="regional-effect">Regional Effect</h2>
+<p>Similarly, we will compute the regional effect of the first feature using the <code>RHALE</code> method.
+We will first use the default settings of the <code>.fit()</code> routine, which automatically partitions the feature space into bins
+and goes until <code>depth=2</code> of the partition tree.
+Then, we will customize the <code>.fit()</code> routine to use a number of 5 equal-width bins and go until <code>depth=1</code> of the partition tree.</p>
 <h3 id="rhale_1">RHALE</h3>
 <p><code>init()</code></p>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Simple API</label><label for="__tabbed_2_2">Flexible API</label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Default settings</label><label for="__tabbed_2_2">Customized <code>.fit()</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">r_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">)</span>
@@ -527,22 +546,19 @@
 </div>
 </div>
 <p><code>.summary()</code> output</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Simple API</label><label for="__tabbed_3_2">Flexible API </label></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:2"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio" /><input id="__tabbed_3_2" name="__tabbed_3" type="radio" /><div class="tabbed-labels"><label for="__tabbed_3_1">Default settings</label><label for="__tabbed_3_2">Customized <code>.fit()</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Full</span> <span class="n">partition</span> <span class="n">tree</span><span class="p">:</span>
-<span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">60.47</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>   <span class="mi">200</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">1.00</span>
-        <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_2</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">2.36</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>   <span class="mi">105</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">0.53</span>
-                <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_2</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.06</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>    <span class="mi">45</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">0.23</span>
-                <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_2</span> <span class="o">&lt;=</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>    <span class="mi">60</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">0.30</span>
-        <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_2</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">70.28</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>    <span class="mi">95</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">0.47</span>
-                <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_2</span>  <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">x_1</span> <span class="o">&lt;=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>    <span class="mi">45</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">0.23</span>
-                <span class="n">Node</span> <span class="nb">id</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="n">name</span><span class="p">:</span> <span class="n">x_0</span> <span class="o">|</span> <span class="n">x_2</span>  <span class="o">&gt;</span> <span class="mf">0.0</span> <span class="ow">and</span> <span class="n">x_1</span>  <span class="o">&gt;</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">8.08</span> <span class="o">||</span> <span class="n">nof_instances</span><span class="p">:</span>    <span class="mi">50</span> <span class="o">||</span> <span class="n">weight</span><span class="p">:</span> <span class="mf">0.25</span>
-<span class="o">--------------------------------------------------</span>
-<span class="n">Feature</span> <span class="mi">0</span> <span class="o">-</span> <span class="n">Statistics</span> <span class="n">per</span> <span class="n">tree</span> <span class="n">level</span><span class="p">:</span>
-<span class="n">Level</span> <span class="mi">0</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">60.47</span>
-        <span class="n">Level</span> <span class="mi">1</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">34.62</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">25.85</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">42.75</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
-                <span class="n">Level</span> <span class="mi">2</span><span class="p">,</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">2.03</span> <span class="o">||</span> <span class="n">heter</span> <span class="n">drop</span> <span class="p">:</span> <span class="mf">32.59</span> <span class="p">(</span><span class="n">units</span><span class="p">),</span> <span class="mf">94.12</span><span class="o">%</span> <span class="p">(</span><span class="n">pcg</span><span class="p">)</span>
+<span class="err">🌳</span> <span class="n">Full</span> <span class="n">Tree</span> <span class="n">Structure</span><span class="p">:</span>
+<span class="err">───────────────────────</span>
+<span class="n">x_0</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">0</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">60.47</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">200</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">1.00</span><span class="p">]</span>
+    <span class="n">x_2</span> <span class="err">≤</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">1</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">2.36</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">105</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.53</span><span class="p">]</span>
+        <span class="n">x_1</span> <span class="err">≤</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">2</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.06</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">45</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.23</span><span class="p">]</span>
+        <span class="n">x_1</span> <span class="o">&gt;</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">3</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">60</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.30</span><span class="p">]</span>
+    <span class="n">x_2</span> <span class="o">&gt;</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">4</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">70.28</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">95</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.47</span><span class="p">]</span>
+        <span class="n">x_1</span> <span class="err">≤</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">5</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">0.00</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">45</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.23</span><span class="p">]</span>
+        <span class="n">x_1</span> <span class="o">&gt;</span> <span class="mf">0.00</span> <span class="err">🔹</span> <span class="p">[</span><span class="nb">id</span><span class="p">:</span> <span class="mi">6</span> <span class="o">|</span> <span class="n">heter</span><span class="p">:</span> <span class="mf">8.08</span> <span class="o">|</span> <span class="n">inst</span><span class="p">:</span> <span class="mi">50</span> <span class="o">|</span> <span class="n">w</span><span class="p">:</span> <span class="mf">0.25</span><span class="p">]</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -558,15 +574,15 @@
 </div>
 </div>
 </div>
-<p><code>.plot()</code> all</p>
-<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Simple API</label><label for="__tabbed_4_2">Flexible API</label></div>
+<p><code>.plot()</code></p>
+<div class="tabbed-set tabbed-alternate" data-tabs="4:2"><input checked="checked" id="__tabbed_4_1" name="__tabbed_4" type="radio" /><input id="__tabbed_4_2" name="__tabbed_4" type="radio" /><div class="tabbed-labels"><label for="__tabbed_4_1">Default settings</label><label for="__tabbed_4_2">Customized <code>.fit()</code></label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><code>node_idx=1</code>: <span class="arithmatex">\(x_1\)</span> when <span class="arithmatex">\(x_2 \leq 0\)</span></th>
-<th style="text-align: center;"><code>node_idx=2</code>: <span class="arithmatex">\(x_1\)</span> when <span class="arithmatex">\(x_2 &gt; 0\)</span></th>
+<th style="text-align: center;"><code>node_idx=3</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_1 \leq 0\)</span> and <span class="arithmatex">\(x_2 \leq 0\)</span></th>
+<th style="text-align: center;"><code>node_idx=4</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_1 &gt; 0\)</span> and <span class="arithmatex">\(x_2 \leq 0\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -575,16 +591,12 @@
 <td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/flexible_api_files/flexible_api_16_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_1.png" /></a></td>
 </tr>
 <tr>
-<td style="text-align: center;"><code>node_idx=1</code>: <span class="arithmatex">\(x_1\)</span> when <span class="arithmatex">\(x_2 \leq 0\)</span></td>
-<td style="text-align: center;"><code>node_idx=2</code>: <span class="arithmatex">\(x_1\)</span> when <span class="arithmatex">\(x_2 &gt; 0\)</span></td>
+<td style="text-align: center;"><code>node_idx=5</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_1 \leq 0\)</span> and <span class="arithmatex">\(x_2 &gt; 0\)</span></td>
+<td style="text-align: center;"><code>node_idx=6</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_1 &gt; 0\)</span> and <span class="arithmatex">\(x_2 &gt; 0\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;">:---------:</td>
-<td style="text-align: center;">:---------:</td>
-</tr>
-<tr>
-<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/flexible_api_files/flexible_api_16_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_0.png" /></a></td>
-<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/flexible_api_files/flexible_api_16_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_1.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/flexible_api_files/flexible_api_16_2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_2.png" /></a></td>
+<td style="text-align: center;"><a class="glightbox" href="../../static/quickstart/flexible_api_files/flexible_api_16_3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_3.png" /></a></td>
 </tr>
 </tbody>
 </table>
@@ -596,8 +608,8 @@
 <table>
 <thead>
 <tr>
-<th style="text-align: center;"><code>node_idx=1</code>: <span class="arithmatex">\(x_1\)</span> when <span class="arithmatex">\(x_2 \leq 0\)</span></th>
-<th style="text-align: center;"><code>node_idx=2</code>: <span class="arithmatex">\(x_1\)</span> when <span class="arithmatex">\(x_2 &gt; 0\)</span></th>
+<th style="text-align: center;"><code>node_idx=1</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_2 \leq 0\)</span></th>
+<th style="text-align: center;"><code>node_idx=2</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_2 &gt; 0\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -680,7 +692,7 @@
       <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../javascripts/mathjax.js"></script>
       

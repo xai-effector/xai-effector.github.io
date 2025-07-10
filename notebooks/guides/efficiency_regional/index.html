@@ -12,7 +12,7 @@
       
       
       <link rel="icon" href="../../../static/effector_favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -510,6 +510,9 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
 </code></pre></div>
+<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
+  from .autonotebook import tqdm as notebook_tqdm
+</code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -524,7 +527,7 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
         <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">jacobian</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">):</span>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="kc">None</span><span class="p">,):</span>
     <span class="n">fit_time_list</span><span class="p">,</span> <span class="n">eval_time_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
     <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
     <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
@@ -541,7 +544,7 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
     <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repetitions</span><span class="p">):</span>
         <span class="c1"># general kwargs</span>
         <span class="n">method_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span> <span class="s2">&quot;axis_limits&quot;</span><span class="p">:</span> <span class="n">axis_limits</span><span class="p">,</span> <span class="s2">&quot;nof_instances&quot;</span><span class="p">:</span><span class="s2">&quot;all&quot;</span><span class="p">}</span>
-        <span class="n">fit_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="n">features</span><span class="p">,</span> <span class="s2">&quot;centering&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;points_for_centering&quot;</span><span class="p">:</span> <span class="n">K</span><span class="p">,</span> <span class="s2">&quot;max_depth&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">}</span>
+        <span class="n">fit_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;features&quot;</span><span class="p">:</span> <span class="n">features</span><span class="p">,</span> <span class="s2">&quot;centering&quot;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">&quot;points_for_centering&quot;</span><span class="p">:</span> <span class="n">K</span><span class="p">,</span> <span class="s2">&quot;space_partitioner&quot;</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">)}</span>
 
         <span class="c1"># specialize kwargs per method</span>
         <span class="k">if</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;d_pdp&quot;</span><span class="p">,</span> <span class="s2">&quot;rhale&quot;</span><span class="p">]:</span>
@@ -549,6 +552,12 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
         <span class="k">if</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;rhale&quot;</span><span class="p">,</span> <span class="s2">&quot;ale&quot;</span><span class="p">]:</span>
             <span class="n">fit_kwargs</span><span class="p">[</span><span class="s2">&quot;binning_method&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mf">0.</span><span class="p">)</span>
             <span class="n">fit_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;centering&quot;</span><span class="p">)</span>
+            <span class="n">fit_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;points_for_centering&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;pdp&quot;</span><span class="p">,</span> <span class="s2">&quot;d_pdp&quot;</span><span class="p">]:</span>
+            <span class="n">fit_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;centering&quot;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">method_name</span> <span class="o">==</span> <span class="s2">&quot;d_pdp&quot;</span><span class="p">:</span>
             <span class="n">fit_kwargs</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="s2">&quot;points_for_centering&quot;</span><span class="p">)</span>
 
         <span class="c1"># init</span>
@@ -610,32 +619,32 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.13it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.17it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.17it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.55it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.33it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.23it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.22s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.26s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.28s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.35s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.44it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.47it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.55s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.52s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:02&lt;00:00,  2.05s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:02&lt;00:00,  2.07s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:02&lt;00:00,  2.26s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:02&lt;00:00,  2.27s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.44it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.47it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:02&lt;00:00,  2.52s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:02&lt;00:00,  2.54s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:03&lt;00:00,  3.05s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:03&lt;00:00,  3.07s/it]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  2.60it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.57it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.75it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.90it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.06it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.13it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.67it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.71it/s]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.19s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.23s/it]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.89it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.90it/s]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.29s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.30s/it]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.30it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.29it/s]
+100%|██████████| 1/1 [00:02&lt;00:00,  2.19s/it]
+100%|██████████| 1/1 [00:02&lt;00:00,  2.20s/it]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.88it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.86it/s]
+100%|██████████| 1/1 [00:02&lt;00:00,  2.31s/it]
+100%|██████████| 1/1 [00:02&lt;00:00,  2.32s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.33s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.30s/it]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
@@ -654,6 +663,23 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
 <span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" href="../efficiency_regional_files/efficiency_regional_8_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_8_0.png" /></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Runtime: .&quot;</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">&quot;() -- single feature&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Runtime: .fit() + .eval() -- single feature&quot;</span>
+
+    <span class="n">bar_plot</span><span class="p">(</span>
+        <span class="n">vec</span><span class="p">,</span> 
+        <span class="n">time_dict</span><span class="p">,</span> 
+        <span class="n">method_names</span><span class="p">,</span>
+        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;time (sec) to execute f(dataset)&quot;</span><span class="p">,</span>
+        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><a class="glightbox" href="../efficiency_regional_files/efficiency_regional_9_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_9_0.png" /></a></p>
 <h2 id="runtime-vs-d">Runtime vs. D</h2>
 <div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.001</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10_000</span>
@@ -670,40 +696,40 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  7.50it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  7.69it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.14it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.15it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.61it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.69it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.11it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.23it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  5.43it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  5.39it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.13it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.18it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.88it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.62it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.40it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.46it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.10it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.00it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.49it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.59it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.11it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.81it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.08s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.04s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.39it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  3.36it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.23it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.23it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.76it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.83it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.26s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.30s/it]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  8.26it/s]
+100%|██████████| 1/1 [00:00&lt;00:00, 10.30it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.88it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.93it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  6.10it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  6.12it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  7.38it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  7.23it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  7.39it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  7.38it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.63it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.61it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.97it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  4.47it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  4.92it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  4.83it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  5.53it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  5.54it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.88it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.88it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.59it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.36it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.52it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.69it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  4.29it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.65it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.37it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.41it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.04it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.06it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.91it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.52it/s]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
@@ -721,7 +747,24 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../efficiency_regional_files/efficiency_regional_12_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_12_0.png" /></a></p>
+<p><a class="glightbox" href="../efficiency_regional_files/efficiency_regional_13_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_13_0.png" /></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span>
+    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Runtime: .&quot;</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">&quot;() -- single feature&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">title</span> <span class="o">=</span> <span class="s2">&quot;Runtime: .fit() + .eval() -- single feature&quot;</span>
+
+    <span class="n">bar_plot</span><span class="p">(</span>
+        <span class="n">vec</span><span class="p">,</span> 
+        <span class="n">time_dict</span><span class="p">,</span> 
+        <span class="n">method_names</span><span class="p">,</span>
+        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+        <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;D: number of features&quot;</span><span class="p">,</span>
+        <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
+<span class="p">)</span>
+</code></pre></div>
+<p><a class="glightbox" href="../efficiency_regional_files/efficiency_regional_14_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_14_0.png" /></a></p>
 <h2 id="time-vs-n-number-of-features">Time vs N (number of features)</h2>
 <div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.001</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100_000</span>
@@ -738,22 +781,32 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.29it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  4.77it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.84it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.82it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.95it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.78it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.05it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  1.03it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.61it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:00&lt;00:00,  2.53it/s]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.10s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.08s/it]
-100%|█████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████████| 1/1 [00:01&lt;00:00,  1.09s/it]
-  0%|                                                                                                                                                                                 | 0/1 [00:00&lt;?, ?it/s]
+<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  4.31it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  5.56it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.89it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.87it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.54it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.33it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.42it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  3.50it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.81it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  2.82it/s]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.12s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.04s/it]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.65it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.47it/s]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.17s/it]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.32it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.86it/s]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.81it/s]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.51s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.49s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.04s/it]
+100%|██████████| 1/1 [00:00&lt;00:00,  1.18it/s]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.44s/it]
+100%|██████████| 1/1 [00:01&lt;00:00,  1.80s/it]
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;fit&quot;</span><span class="p">,</span> <span class="s2">&quot;eval&quot;</span><span class="p">]:</span>
@@ -771,6 +824,7 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
+<p><a class="glightbox" href="../efficiency_regional_files/efficiency_regional_18_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_18_0.png" /></a></p>
 <h2 id="a-demanding-example">A demanding example</h2>
 <div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">50_000</span>
@@ -785,18 +839,24 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
 <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-    <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">))</span>
+    <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">time_dict</span>
-</code></pre></div>
+<pre><code>100%|██████████| 1/1 [00:03&lt;00:00,  3.58s/it]
+100%|██████████| 1/1 [00:03&lt;00:00,  3.55s/it]
+100%|██████████| 1/1 [00:12&lt;00:00, 12.18s/it]
+100%|██████████| 1/1 [00:12&lt;00:00, 12.08s/it]
+100%|██████████| 1/1 [00:05&lt;00:00,  5.46s/it]
+100%|██████████| 1/1 [00:05&lt;00:00,  5.44s/it]
+100%|██████████| 1/1 [00:08&lt;00:00,  8.99s/it]
+100%|██████████| 1/1 [00:08&lt;00:00,  8.92s/it]
+</code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">bar_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">time_dict</span><span class="p">,</span> <span class="n">method_names</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">&quot;total&quot;</span><span class="p">,</span> 
          <span class="n">title</span><span class="o">=</span><span class="s2">&quot;a&quot;</span><span class="p">,</span>
          <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;A difficult case&quot;</span><span class="p">,</span>
          <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span><span class="p">,</span>
         <span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<p><a class="glightbox" href="../efficiency_regional_files/efficiency_regional_22_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_22_0.png" /></a></p>
 
 
 
@@ -867,7 +927,7 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
       <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="../../../javascripts/mathjax.js"></script>
       
