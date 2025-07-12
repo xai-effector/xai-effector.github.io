@@ -16,7 +16,7 @@
     
     
       
-        <title>Measuring the Runtime of Global Effect Plots - effector</title>
+        <title>Efficiency global - effector</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#measuring-the-runtime-of-global-effect-plots" class="md-skip">
+        <a href="#t_1-runtime-vs-n" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Measuring the Runtime of Global Effect Plots
+              Efficiency global
             
           </span>
         </div>
@@ -387,8 +387,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -489,6 +487,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#shap-dp" class="md-nav__link">
+    <span class="md-ellipsis">
+      SHAP-DP
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -505,22 +512,8 @@
 
 
 
-<h1 id="measuring-the-runtime-of-global-effect-plots">Measuring the Runtime of Global Effect Plots</h1>
-<p>This notebook analyzes the runtime <span class="arithmatex">\(T(\cdot)\)</span> of Global Effect plots, which depends on:  </p>
-<ul>
-<li><strong><span class="arithmatex">\(t_f\)</span></strong>: The time required to evaluate the black-box function <span class="arithmatex">\(f\)</span> on the entire dataset.  </li>
-<li><strong><span class="arithmatex">\(N\)</span></strong>: The number of instances in <span class="arithmatex">\(X\)</span>.  </li>
-<li><strong><span class="arithmatex">\(D\)</span></strong>: The number of features in <span class="arithmatex">\(X\)</span>.  </li>
-<li><strong><span class="arithmatex">\(K\)</span></strong>: The number of points used for centering the feature effect plot.  </li>
-<li><strong><span class="arithmatex">\(M\)</span></strong>: The number of evaluation points.  </li>
-</ul>
-<p>The key factors affecting runtime are <span class="arithmatex">\(t_f\)</span>, <span class="arithmatex">\(N\)</span>, and <span class="arithmatex">\(D\)</span>. Each method involves:  </p>
-<ol>
-<li><strong>Preparing the permuted/augmented dataset</strong>: This step depends only on <span class="arithmatex">\(N\)</span> and is repeated independently for each feature, so it contributes <span class="arithmatex">\(D T_1(N)\)</span> to the total runtime.  </li>
-<li><strong>Predicting on the permuted dataset</strong>: We here make the hypothesis, that <span class="arithmatex">\(f(X)\)</span> runs in <span class="arithmatex">\(t_f\)</span> independently of the number of instances. This is not generally true, however, it is a reasonable assumption as long as <span class="arithmatex">\(f(X)\)</span> can be computed in a single pass or some batches. Additionally, the prediction must be repeated independently for each feature, contributing <span class="arithmatex">\(D T_2(t_f)\)</span>, except for RHALE, where all gradients are computed in a single pass, resulting in <span class="arithmatex">\(T_2(t_f)\)</span>.  </li>
-</ol>
-<p>Therefore, the runtime of each methods is: <span class="arithmatex">\(T(t_f, N, D) \approx D T_1(N) + T_2(t_f, D)\)</span>.</p>
-<p>Now, let's see all these effects in practice!</p>
+  <h1>Efficiency global</h1>
+
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
@@ -528,9 +521,6 @@
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-</code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -649,7 +639,7 @@
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_9_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_9_0.png" /></a></p>
+<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_8_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_8_0.png" /></a></p>
 <h3 id="for-all-features">For all features</h3>
 <div class="highlight"><pre><span></span><code><span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">)]</span>
 <span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;ale&quot;</span><span class="p">,</span> <span class="s2">&quot;rhale&quot;</span><span class="p">,</span> <span class="s2">&quot;pdp&quot;</span><span class="p">,</span> <span class="s2">&quot;d_pdp&quot;</span><span class="p">]</span>
@@ -677,7 +667,7 @@
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_12_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_12_0.png" /></a></p>
+<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_11_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_11_0.png" /></a></p>
 <h3 id="conclusion">Conclusion</h3>
 <table>
 <thead>
@@ -752,7 +742,7 @@
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_18_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_18_0.png" /></a></p>
+<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_17_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_17_0.png" /></a></p>
 <h3 id="for-all-features_1">For all features</h3>
 <div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10_000</span>
@@ -787,7 +777,7 @@
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;time (sec)&quot;</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_22_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_22_0.png" /></a></p>
+<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_21_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_21_0.png" /></a></p>
 <h3 id="conclusion_1">Conclusion</h3>
 <table>
 <thead>
@@ -851,6 +841,120 @@
 </tr>
 </tbody>
 </table>
+<h2 id="shap-dp">SHAP-DP</h2>
+<p>SHAP-DP is a much slower method, compared to the others. Let's see how it scales with <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(t_f\)</span>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">10_000</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;shap_dp&quot;</span><span class="p">]</span>
+<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
+<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
+</code></pre></div>
+<pre><code>ExactExplainer explainer: 101it [00:20,  2.49it/s]                         
+ExactExplainer explainer: 101it [00:20,  2.49it/s]                         
+ExactExplainer explainer: 201it [00:40,  3.73it/s]                         
+ExactExplainer explainer: 201it [00:40,  3.73it/s]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">vec</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">tt</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="n">time_dict</span><span class="p">[</span><span class="s2">&quot;shap_dp&quot;</span><span class="p">]],</span>
+    <span class="s2">&quot;o-&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Runtime: SHAP DP&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;N: number of instances&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;time (sec)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<pre><code>/tmp/ipykernel_831737/3543727158.py:11: UserWarning: No artists with labels found to put in legend.  Note that artists whose label start with an underscore are ignored when legend() is called with no argument.
+  plt.legend()
+</code></pre>
+<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_27_1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_27_1.png" /></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
+<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># compare with t_f</span>
+<span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;shap_dp&quot;</span><span class="p">]</span>
+<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.01</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
+<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
+        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+            <span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
+</code></pre></div>
+<pre><code>ExactExplainer explainer: 51it [00:49,  1.24s/it]                        
+ExactExplainer explainer: 51it [00:49,  1.24s/it]                        
+ExactExplainer explainer: 51it [01:39,  2.20s/it]                        
+ExactExplainer explainer: 51it [01:39,  2.20s/it]
+</code></pre>
+<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">vec</span><span class="p">,</span>
+    <span class="p">[</span><span class="n">tt</span><span class="p">[</span><span class="s2">&quot;total&quot;</span><span class="p">]</span> <span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="n">time_dict</span><span class="p">[</span><span class="s2">&quot;shap_dp&quot;</span><span class="p">]],</span>
+    <span class="s2">&quot;o-&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">&quot;Runtime: SHAP DP&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;time (sec) to execute f(dataset)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;time (sec)&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p><a class="glightbox" href="../efficiency_global_files/efficiency_global_30_0.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_30_0.png" /></a></p>
+<p>So if we add shap-DP to the table, we have:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th><span class="arithmatex">\(T = T_1 + T_2\)</span> (one feature)</th>
+<th><span class="arithmatex">\(T = T_1 + T_2\)</span> (all features)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>PDP / d-PDP</strong></td>
+<td><span class="arithmatex">\((c_{PDP}) N + 2 t_f\)</span></td>
+<td><span class="arithmatex">\(D c_{PDP} N + 2 D t_f\)</span></td>
+</tr>
+<tr>
+<td><strong>ALE</strong></td>
+<td><span class="arithmatex">\(2 t_f\)</span></td>
+<td><span class="arithmatex">\(2 D t_f\)</span></td>
+</tr>
+<tr>
+<td><strong>RHALE</strong></td>
+<td><span class="arithmatex">\(t_f\)</span></td>
+<td><span class="arithmatex">\(t_f\)</span></td>
+</tr>
+<tr>
+<td><strong>SHAP-DP</strong></td>
+<td><span class="arithmatex">\(c_{SHAP-DP} N t_f\)</span></td>
+<td><span class="arithmatex">\(c_{SHAP-DP} D N t_f\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>But <span class="arithmatex">\(c_{SHAP-DP}\)</span> is a large constant $c_{SHAP-DP} \approx 2 $.
+In contrast, <span class="arithmatex">\(c_{PDP} \approx 10^{-5}\)</span>.</p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 
 
 
