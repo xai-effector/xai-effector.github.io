@@ -6,8 +6,10 @@
       
       
       
-        <link rel="prev" href="../contributing/">
+        <link rel="prev" href="../examples/">
       
+      
+        <link rel="next" href="../changelog/">
       
       
         
@@ -18,7 +20,7 @@
     
     
       
-        <title>Changelog - effector</title>
+        <title>Contributing - effector</title>
       
     
     
@@ -81,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#changelog" class="md-skip">
+        <a href="#contributing-to-effector" class="md-skip">
           Skip to content
         </a>
       
@@ -116,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Changelog
+              Contributing
             
           </span>
         </div>
@@ -379,10 +381,37 @@
       
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../contributing/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -398,6 +427,114 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mental model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull Requests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-workflow-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The workflow, step by step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch names
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commits-the-changelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commits &amp; the changelog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-protection-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two protection layers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning &amp; releases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-things-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running things locally
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -406,19 +543,10 @@
       
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../changelog/" class="md-nav__link">
         
   
   
@@ -434,7 +562,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -459,6 +586,102 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#the-mental-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The mental model
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pull-requests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pull Requests
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-workflow-step-by-step" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The workflow, step by step
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#branch-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Branch names
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#commits-the-changelog" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Commits &amp; the changelog
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#two-protection-layers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two protection layers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#versioning-releases" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Versioning &amp; releases
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-things-locally" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Running things locally
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -474,129 +697,126 @@
 
 
 
-<h1 id="changelog">Changelog</h1>
-<h1 id="020-2025-07-21">[0.2.0] - 2025-07-21</h1>
-<h3 id="changed">Changed</h3>
+<h1 id="contributing-to-effector">Contributing to effector</h1>
+<p>Thanks for wanting to make <code>effector</code> better! 🎉</p>
+<p>Our workflow fits in two simple concept:</p>
+<blockquote>
+<p><strong><code>main</code> is always shippable. For a commit to be accepted in main, it must be reviewed and pass tests.</strong>
+by taging (<code>vX.Y.Z</code>) a commit on <code>main</code>, we automatically run another round of tests and, if they pass, publish to PyPI.</p>
+</blockquote>
+<hr>
+<h2 id="the-mental-model">The mental model</h2>
+<p><code>main</code> is the <strong>stable integration branch</strong>; we always keep it publishing-ready. 
+Therefore, we <strong>never</strong> commit to <code>main</code> directly. 
+All changes come through a PR, which is reviewed and tested before merging.</p>
+<p>Every change gets its own <strong>small branch</strong>: 
+you spin one up for a single idea, do the work, get it merged, and throw the branch away. 
+Next idea starts with a fresh new branch from an up-to-date <code>main</code>.
+The concept is one idea = one branch = one PR. 
+"one idea" is normally a change that you can describe in a single sentence without saying <em>"and"</em>.</p>
+<p>A <strong>release</strong> is a separate, deliberate step: we tag a commit on <code>main</code>, and that tag is what
+ships to PyPI and what people <code>pip install</code>. 
+The idea is <code>main</code> moves often, but releases happen less frequently.</p>
+<hr>
+<h2 id="pull-requests">Pull Requests</h2>
+<p>Use a <strong>Pull Request (PR)</strong> to join <code>main</code>. </p>
+<ol>
+<li><strong>The diff</strong>: shows exactly what you changed, for anyone to read.</li>
+<li><strong>The tests</strong>: runs the the full CI suite against your change automatically.</li>
+<li><strong>The review</strong>:a maintainer looks it over and approves or asks for tweaks.</li>
+</ol>
+<hr>
+<h2 id="the-workflow-step-by-step">The workflow, step by step</h2>
+<div class="highlight"><pre><span></span><code><span class="c1"># 1. Start fresh from main</span>
+git<span class="w"> </span>checkout<span class="w"> </span>main<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>git<span class="w"> </span>pull
+
+<span class="c1"># 2. Branch for your one idea</span>
+git<span class="w"> </span>checkout<span class="w"> </span>-b<span class="w"> </span>fix/short-description
+
+<span class="c1"># 3. Do the work, commit as you go</span>
+git<span class="w"> </span>commit<span class="w"> </span>-am<span class="w"> </span><span class="s2">"wip"</span><span class="w">        </span><span class="c1"># use as many commits as you like, they will be squashed later</span>
+
+<span class="c1"># 4. Push your branch</span>
+git<span class="w"> </span>push<span class="w"> </span>-u<span class="w"> </span>origin<span class="w"> </span>fix/short-description
+
+<span class="c1"># 5. Open the PR</span>
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--fill<span class="w">         </span><span class="c1"># or use the GitHub website</span>
+
+<span class="c1"># 6. Let CI run, address review, then it merges (squashed) and the branch is deleted</span>
+</code></pre></div>
+<hr>
+<h2 id="branch-names">Branch names</h2>
+<p>Name the branch after the <em>intent</em> of the change, in <code>kebab-case</code>:</p>
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Use it for</th>
+<th>Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feat/</code></td>
+<td>a new feature</td>
+<td><code>feat/regional-importance</code></td>
+</tr>
+<tr>
+<td><code>fix/</code></td>
+<td>a bug fix</td>
+<td><code>fix/centering-default</code></td>
+</tr>
+<tr>
+<td><code>chore/</code></td>
+<td>tooling / deps / CI</td>
+<td><code>chore/switch-to-uv</code></td>
+</tr>
+<tr>
+<td><code>docs/</code></td>
+<td>documentation</td>
+<td><code>docs/contributing</code></td>
+</tr>
+<tr>
+<td><code>refactor/</code></td>
+<td>internal change, no behavior change</td>
+<td><code>refactor/split-partitioning</code></td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2 id="commits-the-changelog">Commits &amp; the changelog</h2>
+<p>We <strong>squash-merge</strong>, so all the little commits on your branch collapse into a
+single commit on <code>main</code>; the <strong>PR title</strong> becomes that commit. 
+So, </p>
 <ul>
-<li>updated the guide that measures runtimes of regional methods</li>
+<li>make your PR title a good one, this is what goes into history.</li>
+<li>be more descriptive in <strong><code>CHANGELOG.md</code></strong>, that's where we keep the descriptive
+  record of what changed and why, not in commit messages.</li>
 </ul>
-<h1 id="0112-2025-07-13">[0.1.12] - 2025-07-13</h1>
-<h3 id="fixed">Fixed</h3>
+<hr>
+<h2 id="two-protection-layers">Two protection layers</h2>
+<p>They guard two different actions:</p>
 <ul>
-<li>fixed bug in <code>project.toml</code>, added dependency to <code>overrides</code></li>
+<li><strong>Merging to <code>main</code>.</strong> A PR can't merge until CI is green <strong>and</strong> a maintainer approved it.</li>
+<li><strong>Releasing to PyPI.</strong> You can't publish to PyPI without a tag. If you add a tag, the publish workflow runs tests again on that commit. If they pass, it publishes to PyPI.</li>
 </ul>
-<h2 id="0111-2025-07-10">[0.1.11] - 2025-07-10</h2>
-<h3 id="added">Added</h3>
+<hr>
+<h2 id="versioning-releases">Versioning &amp; releases</h2>
+<p>We follow <a href="https://semver.org/">Semantic Versioning</a> and release <strong>early and often</strong>:</p>
 <ul>
-<li>added codecov to the project</li>
+<li>Bug fixes / docs / cleanups → a <strong>patch</strong> (<code>0.2.1</code>, <code>0.2.2</code>, …)</li>
+<li>New backward-compatible features → a <strong>minor</strong> (<code>0.3.0</code>, …)</li>
 </ul>
-<h3 id="fixed_1">Fixed</h3>
-<ul>
-<li>fixed all notebooks to work with the latest version of Effector</li>
-<li>fixed bug in <code>RegionalPDP</code> plots, where <code>centering</code> was not working properly, it was set to <code>False</code> and the user defined argument was not being passed.</li>
-</ul>
-<h2 id="0110-2025-06-18">[0.1.10] - 2025-06-18</h2>
-<h3 id="fixed_2">Fixed</h3>
-<ul>
-<li>bug in <code>project.toml</code></li>
-</ul>
-<h2 id="019-2025-06-18">[0.1.9] - 2025-06-18</h2>
-<h3 id="fixed_3">Fixed</h3>
-<ul>
-<li>bug in github actions</li>
-</ul>
-<h2 id="018-2025-06-18">[0.1.8] - 2025-06-18</h2>
-<h3 id="added_1">Added</h3>
-<ul>
-<li>NO2 real example</li>
-</ul>
-<h3 id="fix">Fix</h3>
-<ul>
-<li>fixed documentation errors, fixed node indexes</li>
-</ul>
-<h3 id="changed_1">Changed</h3>
-<ul>
-<li>added dependecies to <code>requirement-dev.txt</code></li>
-</ul>
-<h2 id="017-2025-05-08">[0.1.7] - 2025-05-08</h2>
-<h3 id="added_2">Added</h3>
-<ul>
-<li>added organizations the that support the project</li>
-</ul>
-<h2 id="016-2025-04-14">[0.1.6] - 2025-04-14</h2>
-<h3 id="fix_1">Fix</h3>
-<ul>
-<li>fixed bug in <code>project.toml</code>, added dependency to <code>shapiq</code></li>
-</ul>
-<h3 id="changed_2">Changed</h3>
-<ul>
-<li>REAME.md and index.md: added refereces to effector</li>
-</ul>
-<h2 id="015-2025-03-24">[0.1.5] - 2025-03-24</h2>
-<h3 id="added_3">Added</h3>
-<ul>
-<li>added <code>ucimlrepo</code> to the dependencies</li>
-<li><code>space_partitioning</code> module with <code>Best</code> and <code>BestDepthWise</code> classes for space partitioning.</li>
-<li><code>space_partitioning.Best</code> (default) is a node-wise partitioning, i.e., it splits each node based on the split that maximizes the heterogeneity drop.</li>
-<li><code>space_partitioning.BestDepthWise</code> is a depth-wise partitioning, i.e., all nodes of a certain level are split based on the same condition.</li>
-</ul>
-<h3 id="fixed_4">Fixed</h3>
-<ul>
-<li>fixed bug in <code>space_partitioning.Best()</code>; partitioning now checks that the absolute heterogeneity should be over a threshold to be considered a valuable split</li>
-<li>fixed bug in RegionalPDP plots, where <code>centering</code> was not working properly, it was set to <code>False</code> and the user defined argument was not being passed.</li>
-</ul>
-<h3 id="changed_3">Changed</h3>
-<ul>
-<li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
-<li>added support for shapiq backend in <code>shap_dp</code> and <code>shap_regional_dp</code> (added as alternative to <code>shap</code>)</li>
-<li>set the default value of <code>heter_small_enough</code> to 0.001 (from 0.00)</li>
-<li>set the default value of <code>centering</code> to <code>True</code> for <code>RegionalPDP</code> plots (from <code>False</code>)</li>
-<li>set the default value of <code>centering</code> to <code>False</code> for <code>RegionalDerPDP</code> plots (from <code>True</code>)</li>
-</ul>
-<h2 id="014-2025-02-26">[0.1.4] - 2025-02-26</h2>
-<h3 id="changed_4">Changed</h3>
-<ul>
-<li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
-<li>update all notebooks with new names</li>
-</ul>
-<h2 id="013-2025-02-25">[0.1.3] - 2025-02-25</h2>
-<h3 id="changed_5">Changed</h3>
-<ul>
-<li>shap_dp (both global and regional) can now take custom arguments for the SHAP explainer</li>
-</ul>
-<h2 id="012-2025-02-22">[0.1.2] - 2025-02-22</h2>
-<h3 id="changed_6">Changed</h3>
-<ul>
-<li>all plots return a <code>fig, ax</code> tuple, if the user wants to modify the plot further.</li>
-<li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
-<li>changed README.md to reflect the new changes.</li>
-</ul>
-<h3 id="added_4">Added</h3>
-<ul>
-<li>license</li>
-<li>documentation for space partitioning methods</li>
-</ul>
-<h2 id="011-2025-02-17">[0.1.1] - 2025-02-17</h2>
-<h3 id="changed_7">Changed</h3>
-<ul>
-<li>
-<p>Updated GitHub Actions workflows:</p>
-</li>
-<li>
-<p>Modified <code>pulish_to_pypi.yml</code> to be triggered only on major or minor version changes.</p>
-</li>
-<li>
-<p>Modified <code>publish_documenation.yml</code> to be triggered only on major or minor version changes.</p>
-</li>
-<li>
-<p>add changelog.md to the documentation</p>
-</li>
-</ul>
-<h2 id="010-2025-02-17">[0.1.0] - 2025-02-17</h2>
-<h3 id="added_5">Added</h3>
-<ul>
-<li>Initialized changelog file and added basic versioning structure.</li>
-</ul>
+<p>A release is just a normal PR merged to <code>main</code>, followed by a <code>vX.Y.Z</code> tag.
+The tag triggers the publish to PyPI automatically. </p>
+<hr>
+<h2 id="running-things-locally">Running things locally</h2>
+<div class="highlight"><pre><span></span><code>make<span class="w"> </span><span class="nb">test</span><span class="w">      </span><span class="c1"># run the test suite</span>
+make<span class="w"> </span>format<span class="w">    </span><span class="c1"># format the code (black)</span>
+</code></pre></div>
+<hr>
+<p>Questions? Open an <a href="https://github.com/givasile/effector/issues">issue</a> or start a
+draft PR and ask there.</p>
 
 
 
@@ -628,7 +848,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../contributing/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Contributing">
+          <a href="../examples/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Examples">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -638,11 +858,27 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Contributing
+                Examples
               </div>
             </div>
           </a>
         
+        
+          
+          <a href="../changelog/" class="md-footer__link md-footer__link--next" aria-label="Next: Changelog">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Changelog
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"></path></svg>
+            </div>
+          </a>
         
       </nav>
     
