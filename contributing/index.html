@@ -816,7 +816,8 @@ The tag triggers the publish to PyPI automatically. </p>
 <div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync<span class="w">          </span><span class="c1"># create .venv and install all dev dependencies</span>
 make<span class="w"> </span><span class="nb">test</span><span class="w">        </span><span class="c1"># run the fast test suite (the merge gate)</span>
 make<span class="w"> </span>test-all<span class="w">    </span><span class="c1"># run the full suite, including slow tests</span>
-make<span class="w"> </span>format<span class="w">      </span><span class="c1"># format the code (black)</span>
+make<span class="w"> </span>format<span class="w">      </span><span class="c1"># format the code (ruff)</span>
+make<span class="w"> </span>lint<span class="w">        </span><span class="c1"># lint the code (ruff)</span>
 make<span class="w"> </span>docs-serve<span class="w">  </span><span class="c1"># preview the docs locally</span>
 </code></pre></div>
 <hr>
