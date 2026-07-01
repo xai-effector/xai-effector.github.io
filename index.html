@@ -1000,7 +1000,10 @@
 <p>Effector requires Python 3.10+:</p>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>effector
 </code></pre></div>
-<p>Dependencies: <code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>tqdm</code>, <code>shap</code>.</p>
+<p>This installs a lightweight core (<code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>tqdm</code>) that covers PDP, ALE, RHALE and their regional variants.</p>
+<p><code>ShapDP</code> and <code>RegionalShapDP</code> need the heavier <code>shap</code>/<code>shapiq</code> backends (which pull in <code>numba</code>, <code>scikit-learn</code>, <code>pandas</code>, ...). Install them only if you use those methods:</p>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>effector<span class="o">[</span>shap<span class="o">]</span>
+</code></pre></div>
 <hr>
 <h2 id="quickstart">Quickstart</h2>
 <h3 id="train-an-ml-model">Train an ML model</h3>

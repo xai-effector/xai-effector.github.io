@@ -479,6 +479,12 @@
 <h3 id="changed">Changed</h3>
 <ul>
 <li>updated the guide that measures runtimes of regional methods</li>
+<li>moved <code>shap</code>/<code>shapiq</code> to an optional <code>effector[shap]</code> extra, so the core install stays lightweight (<code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>tqdm</code>); <code>ShapDP</code>/<code>RegionalShapDP</code> now raise a clear <code>ImportError</code> pointing to <code>pip install effector[shap]</code> if used without it</li>
+<li>moved <code>ucimlrepo</code> to the <code>tutorials</code> extra</li>
+</ul>
+<h3 id="removed">Removed</h3>
+<ul>
+<li>dropped the unused <code>overrides</code> dependency</li>
 </ul>
 <h1 id="0112-2025-07-13">[0.1.12] - 2025-07-13</h1>
 <h3 id="fixed">Fixed</h3>
