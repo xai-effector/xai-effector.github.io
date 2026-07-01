@@ -811,8 +811,13 @@ So, </p>
 The tag triggers the publish to PyPI automatically. </p>
 <hr>
 <h2 id="running-things-locally">Running things locally</h2>
-<div class="highlight"><pre><span></span><code>make<span class="w"> </span><span class="nb">test</span><span class="w">      </span><span class="c1"># run the test suite</span>
-make<span class="w"> </span>format<span class="w">    </span><span class="c1"># format the code (black)</span>
+<p>We use <a href="https://docs.astral.sh/uv/">uv</a> to manage the environment. Install it once
+(<a href="https://docs.astral.sh/uv/getting-started/installation/">instructions</a>), then:</p>
+<div class="highlight"><pre><span></span><code>uv<span class="w"> </span>sync<span class="w">          </span><span class="c1"># create .venv and install all dev dependencies</span>
+make<span class="w"> </span><span class="nb">test</span><span class="w">        </span><span class="c1"># run the fast test suite (the merge gate)</span>
+make<span class="w"> </span>test-all<span class="w">    </span><span class="c1"># run the full suite, including slow tests</span>
+make<span class="w"> </span>format<span class="w">      </span><span class="c1"># format the code (black)</span>
+make<span class="w"> </span>docs-serve<span class="w">  </span><span class="c1"># preview the docs locally</span>
 </code></pre></div>
 <hr>
 <p>Questions? Open an <a href="https://github.com/givasile/effector/issues">issue</a> or start a
