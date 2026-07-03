@@ -679,13 +679,11 @@ Below we will see how PDP, ALE, and RHALE handle this interaction.</p>
 
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
 
-<span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">ConditionalInteraction</span><span class="p">()</span>
-<span class="n">dataset</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">IndependentUniform</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">low</span><span class="o">=-</span><span class="mi">1</span><span class="p">,</span> <span class="n">high</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">dataset</span><span class="o">.</span><span class="n">generate_data</span><span class="p">(</span><span class="mi">1_000</span><span class="p">)</span>
+<span class="n">bench</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">benchmarks</span><span class="o">.</span><span class="n">ConditionalInteractionUniform</span><span class="p">()</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">model</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">dataset</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">generate_data</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-</code></pre>
 <h2 id="pdp">PDP</h2>
 <h3 id="effector">Effector</h3>
 <p>Let's see below the PDP effects for each feature, using <code>effector</code>.</p>
@@ -726,25 +724,10 @@ PDP(x_3) &amp;\propto \frac{1}{N} \sum_{i=1}^{n} f(x_3, x_{/3}^i) \\
 &amp;\propto e^{x_3} + c\\
 \end{align}\]</div>
 <h3 id="tests">Tests</h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compute_centering_constant</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">nof_points</span><span class="p">):</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">start</span><span class="p">,</span> <span class="n">stop</span><span class="p">,</span> <span class="n">nof_points</span><span class="p">)</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-
-
-<span class="k">def</span><span class="w"> </span><span class="nf">pdp_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
-    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
-    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># The closed form below lives in `effector.benchmarks` — the SAME function the</span>
+<span class="c1"># test suite asserts against (tests/test_functional_conditional_interaction.py),</span>
+<span class="c1"># so this notebook and the tests can never disagree about the right answer.</span>
+<span class="n">pdp_ground_truth</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">pdp_gt</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">y_pdp</span> <span class="o">=</span> <span class="p">[]</span>
@@ -830,20 +813,10 @@ ALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} \sum_{i: 
 &amp;\approx e^{x_3}
 \end{align}\]</div>
 <h3 id="tests_1">Tests</h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
-    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">K</span> <span class="o">=</span> <span class="mi">51</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
-    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># The closed form below lives in `effector.benchmarks` — the SAME function the</span>
+<span class="c1"># test suite asserts against (tests/test_functional_conditional_interaction.py),</span>
+<span class="c1"># so this notebook and the tests can never disagree about the right answer.</span>
+<span class="n">ale_ground_truth</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">ale_gt</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">y_ale</span> <span class="o">=</span> <span class="p">[]</span>
@@ -926,20 +899,10 @@ RHALE(x_3) &amp;\propto \sum_{k=1}^{k_{x_3}} \frac{1}{| \mathcal{S}_k |} (z_k - 
 &amp;\approx e^{x_3}
 \end{align}\]</div>
 <h3 id="tests_2">Tests</h3>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rhale_ground_truth</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
-    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">K</span> <span class="o">=</span> <span class="mi">31</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
-    <span class="k">elif</span> <span class="n">feature</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">ff</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">z</span> <span class="o">=</span> <span class="n">compute_centering_constant</span><span class="p">(</span><span class="n">ff</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">ff</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">z</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># The closed form below lives in `effector.benchmarks` — the SAME function the</span>
+<span class="c1"># test suite asserts against (tests/test_functional_conditional_interaction.py),</span>
+<span class="c1"># so this notebook and the tests can never disagree about the right answer.</span>
+<span class="n">rhale_ground_truth</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">rhale_gt</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">y_rhale</span> <span class="o">=</span> <span class="p">[]</span>

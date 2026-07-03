@@ -614,6 +614,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tests
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -632,61 +643,33 @@
 
 
 <h1 id="global-effect-an-in-depth-tutorial">Global Effect - An in-depth tutorial</h1>
-<p>In this tutorial, we will compare all the global effect methods implemented in <code>Effector</code>, namely: ALE, RHALE, PDP-ICE, d-PDP-ICE and SHAP Dependence Plots. 
-The synthetic example that we will used, was introduced by <a href="https://arxiv.org/abs/2309.11193">(Gkolemis et. al, 2023)</a>.</p>
+<p>In this tutorial, we use the synthetic example from <a href="https://arxiv.org/abs/2309.11193">(Gkolemis et al., 2023)</a> and apply various global effect methods (ALE, RHALE, PDP-ICE, d-PDP-ICE, and SHAP Dependence Plots) to reproduce its results.  </p>
+<p>This example serves two main purposes:<br>
+- <strong>Demonstrate that ALE and RHALE are preferable when input features are correlated.</strong><br>
+- <strong>Show that RHALE improves ALE by automatically adjusting bin splitting for greater robustness.</strong>  </p>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 </code></pre></div>
 <h2 id="problem-setup">Problem setup</h2>
-<p>We will generate <span class="arithmatex">\(N=60\)</span> examples with <span class="arithmatex">\(D=3\)</span> features, as described in the following table. Observe that <span class="arithmatex">\(x_3\)</span> is highly-dependent on <span class="arithmatex">\(x_1\)</span>, i.e., <span class="arithmatex">\(x_3 \approx x_1\)</span>.; this will later help us to compute the ground truth ALE effect.</p>
-<table>
-<thead>
-<tr>
-<th>Feature</th>
-<th>Description</th>
-<th>Distribution</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><span class="arithmatex">\(x_1\)</span></td>
-<td><span class="arithmatex">\(x_1\)</span> lies in <span class="arithmatex">\([-0.5, 0.5]\)</span> with most samples in <span class="arithmatex">\([-0.5, 0]\)</span></td>
-<td><span class="arithmatex">\(x_1 \sim p(x_1) = \frac{5}{6} \mathcal{U}(x_1; -0.5, 0) + \frac{1}{6} \mathcal{U}(x_1; 0, 0.5)\)</span></td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(x_2\)</span></td>
-<td>Normally distributed with <span class="arithmatex">\(\mu = 0\)</span>, <span class="arithmatex">\(\sigma = 2\)</span></td>
-<td><span class="arithmatex">\(x_2 \sim p(x_2) = \mathcal{N}(x_2; \mu=0, \sigma = 2)\)</span></td>
-</tr>
-<tr>
-<td><span class="arithmatex">\(x_3\)</span></td>
-<td><span class="arithmatex">\(x_3 = x_1 + \delta\)</span>, where <span class="arithmatex">\(\delta \sim \mathcal{N}(0, \sigma=0.01)\)</span></td>
-<td><span class="arithmatex">\(x_3 = x_1 + \delta\)</span></td>
-</tr>
-</tbody>
-</table>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">generate_samples</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">sigma_2</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">sigma_3</span><span class="o">=</span><span class="mf">.01</span><span class="p">):</span>
-    <span class="n">N</span> <span class="o">=</span> <span class="n">N1</span> <span class="o">+</span> <span class="n">N2</span>
-    <span class="n">x1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">]),</span>
-                         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">N1</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)),</span>
-                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="o">-</span><span class="mf">0.00001</span><span class="p">]),</span>
-                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">]),</span>
-                         <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">N2</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)),</span>
-                         <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">])))</span>
-    <span class="n">x2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma_2</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-    <span class="n">x3</span> <span class="o">=</span> <span class="n">x1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">sigma_3</span><span class="p">,</span> <span class="n">N</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">stack</span><span class="p">([</span><span class="n">x1</span><span class="p">,</span> <span class="n">x2</span><span class="p">,</span> <span class="n">x3</span><span class="p">],</span> <span class="o">-</span><span class="mi">1</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">x</span>
+<p>We will generate <span class="arithmatex">\(N=170\)</span> examples with <span class="arithmatex">\(D=3\)</span> features. The setup — data
+distribution, black-box function and all closed-form effects — lives in
+<code>effector.benchmarks.CorrelatedInteraction</code>: the SAME object the test suite
+asserts against (<code>tests/test_functional_correlated_features.py</code>), so this
+notebook and the tests can never disagree about the right answer.</p>
+<p>The features:</p>
+<ul>
+<li><span class="arithmatex">\(x_1\)</span>: mixture-uniform on <span class="arithmatex">\([-0.5, 0.5]\)</span> with <span class="arithmatex">\(5/6\)</span> of the mass below zero,</li>
+<li><span class="arithmatex">\(x_2 \sim \mathcal{N}(0, \sigma_2^2), \; \sigma_2 = 2\)</span>,</li>
+<li><span class="arithmatex">\(x_3 = x_1 + \epsilon, \; \epsilon \sim \mathcal{N}(0, \sigma_3^2), \; \sigma_3 = 0.01\)</span> —
+  <strong>strongly correlated</strong> with <span class="arithmatex">\(x_1\)</span>; this correlation is what makes the
+  methods provably differ.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="n">bench</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">benchmarks</span><span class="o">.</span><span class="n">CorrelatedInteraction</span><span class="p">()</span>
+<span class="n">axis_limits</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">axis_limits</span>
+<span class="n">sigma_2</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">sigma_2</span>
 
-
-<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">seed</span><span class="o">=</span><span class="mi">2121</span><span class="p">)</span>
-<span class="n">axis_limits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
-<span class="n">sigma_2</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">sigma_3</span> <span class="o">=</span> <span class="mf">.01</span>
-<span class="n">N1</span> <span class="o">=</span> <span class="mi">150</span>
-<span class="n">N2</span> <span class="o">=</span> <span class="mi">20</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">generate_samples</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">sigma_2</span><span class="o">=</span><span class="n">sigma_2</span><span class="p">,</span> <span class="n">sigma_3</span><span class="o">=</span><span class="n">sigma_3</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">generate_data</span><span class="p">(</span><span class="mi">170</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span>
 </code></pre></div>
 <p>The <em>black-box</em> function is:</p>
 <div class="arithmatex">\[
@@ -696,43 +679,13 @@ f(x) = \sin(2\pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3&lt;0}) + x_1 x_
 <div class="arithmatex">\[
 \frac{\partial f}{\partial x} = \begin{bmatrix} \frac{\partial f}{\partial x_1} \\ \frac{\partial f}{\partial x_2} \\ \frac{\partial f}{\partial x_3} \end{bmatrix} = \begin{bmatrix} 2\pi x_1 \cos(2\pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3&lt;0}) + x_2 \\ x_1 + 1 \\ 0 \end{bmatrix}
 \]</div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Evaluate function:</span>
-<span class="sd">    y = sin(2*pi*x1)*(if x1&lt;0) - 2*sin(2*pi*x1)*(if x3&lt;0) + x1*x2 + x2</span>
-
-<span class="sd">    """</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">])</span>
-
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">-=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-
-    <span class="n">y</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">y</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># f(x) = sin(2*pi*x1) * (1{x1&lt;0} - 2 * 1{x3&lt;0}) + x1*x2 + x2</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">predict</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dfdx</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Evaluate jacobian of:</span>
-<span class="sd">    y = sin(2*pi*x1)*(if x1&lt;0) - 2*sin(2*pi*x1)*(if x3&lt;0) + x1*x2 + x2</span>
-
-<span class="sd">    dy/dx1 = 2*pi*x1*cos(2*pi*x1)*(if x1&lt;0) - 4*pi*x1*cos(2*pi*x1)*(if x3&lt;0) + x2</span>
-<span class="sd">    dy/dx2 = x1 + 1</span>
-<span class="sd">    dy/dx3 = 0</span>
-<span class="sd">    """</span>
-
-    <span class="n">dydx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">dydx</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">)</span>
-    <span class="n">dydx</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
-
-    <span class="n">dydx</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span>
-
-    <span class="n">dydx</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">dydx</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># df/dx1 = 2*pi*cos(2*pi*x1) * (1{x1&lt;0} - 2 * 1{x3&lt;0}) + x2</span>
+<span class="c1"># df/dx2 = x1 + 1</span>
+<span class="c1"># df/dx3 = 0</span>
+<span class="n">dfdx</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">jacobian</span>
 </code></pre></div>
 <h2 id="ale-based-methods">ALE-based methods</h2>
 <h3 id="ale-definition">ALE Definition</h3>
@@ -746,18 +699,7 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 <p>and therefore the ALE and RHALE effect is defined as:</p>
 <div class="arithmatex">\[\text{ALE}(x_1) = \int_{z=0}^{x_1} \mathbb{E}_{x_2, x_3|x_1=z} \left [ \frac{\partial f}{\partial x_1} (z, x_2, x_3) \right ] \partial z
 \approx - \sin(2\pi x_1) \mathbb{1}_{x_1&lt;0} + c\]</div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">ale_gt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span>
-    <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="mf">0.31</span>
-    <span class="k">return</span> <span class="n">y</span> <span class="o">-</span> <span class="n">c</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">ale_gt_derivative_effect</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">dydx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span>
-    <span class="n">dydx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
-    <span class="k">return</span> <span class="n">dydx</span><span class="p">,</span> <span class="n">sigma_2</span>
+<div class="highlight"><pre><span></span><code><span class="n">ale_gt</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">ale_gt</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
@@ -781,23 +723,23 @@ In the example, given that <span class="arithmatex">\(x_3 \approx x_1\)</span>, 
 \sigma(x_1) = \sigma_{x_2, x_3|x_1=z} \left [ \frac{\partial f}{\partial x_1} (z, x_2, x_3) \right ] = \sigma_2
 \]</div>
 <p>The heterogeneity informs that the instance-level effects are deviating from the average effect by <span class="arithmatex">\(\pm \sigma_2\)</span>.</p>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">rhale_gt</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="n">ind</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span>
-    <span class="n">y</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="mf">0.31</span>
-    <span class="k">return</span> <span class="n">y</span> <span class="o">-</span> <span class="n">c</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span> <span class="o">+</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">sigma_2</span>
+<div class="highlight"><pre><span></span><code><span class="n">rhale_gt</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">rhale_gt</span>              <span class="c1"># mean effect (identical to ALE)</span>
+<span class="n">rhale_heter_gt</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">rhale_heter_gt</span>  <span class="c1"># effect-space heterogeneity band</span>
+
 
 <span class="k">def</span><span class="w"> </span><span class="nf">rhale_gt_derivative_effect</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="c1"># derivative-space view, used only for the illustration below</span>
     <span class="n">dydx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">ind</span> <span class="o">=</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span>
-    <span class="n">dydx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
+    <span class="n">dydx</span><span class="p">[</span><span class="n">ind</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">[</span><span class="n">ind</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">dydx</span><span class="p">,</span> <span class="n">sigma_2</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span> <span class="s2">"b--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"average effect"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="s2">"b--"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"average effect"</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="o">-</span> <span class="n">rhale_heter_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">)</span> <span class="o">+</span> <span class="n">rhale_heter_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span>
+                 <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">"red"</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"$\pm$ heterogeneity"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"RHALE and ALE: ground truth main effect"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"$x_1$"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"y"</span><span class="p">)</span>
@@ -905,9 +847,7 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <p>In our example, the PDP and ICE plots are:</p>
 <div class="arithmatex">\[\text{PDP}(x_1) = \mathbb{E}_{x_2, x_3}[f(x_1, x_2, x_3)] = \sin(2\pi x_1) \mathbb{1}_{x_1&lt;0} - \frac{5}{3} \sin(2\pi x_1)\]</div>
 <div class="arithmatex">\[\text{ICE}^{(i)}(x_1, x^{(i)}_2, x^{(i)}_3) = f(x_1, x^{(i)}_2, x^{(i)}_3) = \sin(2\pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3^{(i)}} &lt; 0) + x_1 x_2^{(i)}\]</div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gt_pdp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">5</span><span class="o">/</span><span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">y</span>
+<div class="highlight"><pre><span></span><code><span class="n">gt_pdp</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">pdp_gt</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">gt_ice</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
     <span class="n">K</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -942,9 +882,9 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <p>In our example, the d-PDP and d-ICE plots are:</p>
 <div class="arithmatex">\[\text{d-PDP}(x_1) = \frac{\partial}{\partial x_1} \mathbb{E}_{x_2, x_3}[f(x_1, x_2, x_3)] = - 2 \pi \cos(2 \pi x_1) \mathbb{1}_{x_1&lt;0} - \frac{10 \pi}{3} \cos(2 \pi x_1)\]</div>
 <div class="arithmatex">\[\text{d-ICE}^{(i)}(x_1, x^{(i)}_2, x^{(i)}_3) = \frac{\partial}{\partial x_1} f(x_1, x^{(i)}_2, x^{(i)}_3) = 2 \pi \cos(2 \pi x_1) (\mathbb{1}_{x_1&lt;0} - 2 \mathbb{1}_{x_3^{(i)}} &lt; 0) + x_2^{(i)}\]</div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gt_d_pdp</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">-</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="mi">1</span>
-    <span class="k">return</span> <span class="n">y</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># (the earlier version of this notebook carried a spurious `+1` here —</span>
+<span class="c1">#  a slip of dy/dx2 = x1 + 1; the corrected closed form lives in benchmarks)</span>
+<span class="n">gt_d_pdp</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">d_pdp_gt</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">gt_d_ice</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">N</span><span class="p">):</span>
     <span class="n">K</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -974,14 +914,21 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_38_0.png" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_38_0.png"></a></p>
 <h2 id="shap-dependence-plots">SHAP Dependence Plots</h2>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">gt_shape</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span><span class="o">/</span><span class="mi">6</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">y</span>
+<blockquote>
+<p><strong>Note (2026-07):</strong> the closed form below (<span class="arithmatex">\(-\frac{5}{6}\sin(2\pi x_1)\)</span>), as
+derived in the paper's era, does <strong>not</strong> match what interventional Shapley
+values (the quantity the <code>shap</code> package computes) converge to: an exact
+brute-force coalition computation and <code>shap</code> agree with each other and both
+sit <span class="arithmatex">\(\approx 0.3\)</span> away from this curve, independent of the sample size. The
+derivation is being revisited; until then the curve is shown for reference
+and is <em>not</em> asserted (the corresponding test is skipped).</p>
+</blockquote>
+<div class="highlight"><pre><span></span><code><span class="n">gt_shape</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">shap_gt</span>  <span class="c1"># DISPUTED — see the note above</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">gt_shap_values</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="n">N1</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">N</span><span class="o">/</span><span class="mi">6</span><span class="p">)</span>
     <span class="n">N2</span> <span class="o">=</span> <span class="n">N</span> <span class="o">-</span> <span class="n">N1</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">generate_samples</span><span class="p">(</span><span class="n">N1</span><span class="p">,</span> <span class="n">N2</span><span class="p">,</span> <span class="n">sigma_2</span><span class="o">=</span><span class="n">sigma_2</span><span class="p">,</span> <span class="n">sigma_3</span><span class="o">=</span><span class="n">sigma_3</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">bench</span><span class="o">.</span><span class="n">generate_data</span><span class="p">(</span><span class="n">N1</span> <span class="o">+</span> <span class="n">N2</span><span class="p">,</span> <span class="n">seed</span><span class="o">=</span><span class="mi">7</span><span class="p">)</span>
 
     <span class="c1"># drop when x_1 &lt; 0.5 or &gt; 0.5</span>
     <span class="n">x</span> <span class="o">=</span> <span class="n">x</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="mf">0.5</span><span class="p">),</span> <span class="p">:]</span>
@@ -1010,8 +957,41 @@ Before we delve into the details, intutivelly, a wide bin does not (a) sacrifice
 <span class="n">shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"shap_values"</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_0.png" data-desc-position="bottom"><img alt="png" src="../02_global_effect_methods_comparison_files/02_global_effect_methods_comparison_42_0.png"></a></p>
-<div class="highlight"><pre><span></span><code>
+<h2 id="tests">Tests</h2>
+<p>The asserts below mirror <code>tests/test_functional_correlated_features.py</code> — the
+tolerances are per-half because only <span class="arithmatex">\(1/6\)</span> of the <span class="arithmatex">\(x_1\)</span> mass lies above zero,
+so estimates there are intrinsically noisier.</p>
+<div class="highlight"><pre><span></span><code><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">dense</span> <span class="o">=</span> <span class="n">xx</span> <span class="o">&lt;=</span> <span class="mi">0</span>  <span class="c1"># 5/6 of the x1 mass</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">assert_per_half</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">gt</span><span class="p">,</span> <span class="n">atol_dense</span><span class="p">,</span> <span class="n">atol_sparse</span><span class="p">):</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">dense</span><span class="p">],</span> <span class="n">gt</span><span class="p">[</span><span class="n">dense</span><span class="p">],</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol_dense</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">dense</span><span class="p">],</span> <span class="n">gt</span><span class="p">[</span><span class="o">~</span><span class="n">dense</span><span class="p">],</span> <span class="n">atol</span><span class="o">=</span><span class="n">atol_sparse</span><span class="p">)</span>
+
+
+<span class="c1"># PDP</span>
+<span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">gt_pdp</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="n">atol</span><span class="o">=</span><span class="mf">1e-1</span><span class="p">)</span>
+
+<span class="c1"># d-PDP</span>
+<span class="n">dpdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">testing</span><span class="o">.</span><span class="n">assert_allclose</span><span class="p">(</span><span class="n">dpdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">gt_d_pdp</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="n">atol</span><span class="o">=</span><span class="mf">5e-1</span><span class="p">)</span>
+
+<span class="c1"># ALE</span>
+<span class="n">ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span>
+<span class="n">ale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">31</span><span class="p">))</span>
+<span class="n">assert_per_half</span><span class="p">(</span><span class="n">ale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">ale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="mf">1.5e-1</span><span class="p">,</span> <span class="mf">3e-1</span><span class="p">)</span>
+
+<span class="c1"># RHALE</span>
+<span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">assert_per_half</span><span class="p">(</span><span class="n">rhale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="mf">2e-1</span><span class="p">,</span> <span class="mf">4e-1</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"all closed-form checks passed"</span><span class="p">)</span>
 </code></pre></div>
+<pre><code>all closed-form checks passed
+</code></pre>
 
 
 

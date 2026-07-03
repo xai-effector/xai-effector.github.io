@@ -1155,12 +1155,12 @@
 
 
 
-        <p>$f(x_1, x_2, x_3) =
+        <p>$f(x_1, x_2, x_3, x_4) =
 egin{cases}
--x_1^2 + e^{x_3}, &amp;     ext{if } x_2 &lt; 0        ext{ and } x_3 &lt; 0 \
-x_1^2 + e^{x_3}, &amp;      ext{if } x_2 &lt; 0        ext{ and } x_3 \geq 0 \
--x_1^4 + e^{x_3}, &amp;     ext{if } x_2 \geq 0     ext{ and } x_3 &lt; 0 \
-x_1^4 + e^{x_3}, &amp;      ext{if } x_2 \geq 0     ext{ and } x_3 \geq 0
+-x_1^2 + e^{x_4}, &amp;     ext{if } x_2 &lt; 0        ext{ and } x_3 &lt; 0 \
+x_1^2 + e^{x_4}, &amp;      ext{if } x_2 &lt; 0        ext{ and } x_3 \geq 0 \
+-x_1^4 + e^{x_4}, &amp;     ext{if } x_2 \geq 0     ext{ and } x_3 &lt; 0 \
+x_1^4 + e^{x_4}, &amp;      ext{if } x_2 \geq 0     ext{ and } x_3 \geq 0
 \end{cases}</p>
 
 
@@ -1218,12 +1218,12 @@ x_1^4 + e^{x_3}, &amp;      ext{if } x_2 \geq 0     ext{ and } x_3 \geq 0
 <span class="normal">119</span>
 <span class="normal">120</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
-<span class="sd">    $f(x_1, x_2, x_3) =</span>
+<span class="sd">    $f(x_1, x_2, x_3, x_4) =</span>
 <span class="sd">    \begin{cases}</span>
-<span class="sd">    -x_1^2 + e^{x_3}, &amp; \text{if } x_2 &lt; 0 \text{ and } x_3 &lt; 0 \\</span>
-<span class="sd">    x_1^2 + e^{x_3}, &amp; \text{if } x_2 &lt; 0 \text{ and } x_3 \\geq 0 \\</span>
-<span class="sd">    -x_1^4 + e^{x_3}, &amp; \text{if } x_2 \\geq 0 \text{ and } x_3 &lt; 0 \\</span>
-<span class="sd">    x_1^4 + e^{x_3}, &amp; \text{if } x_2 \\geq 0 \text{ and } x_3 \\geq 0</span>
+<span class="sd">    -x_1^2 + e^{x_4}, &amp; \text{if } x_2 &lt; 0 \text{ and } x_3 &lt; 0 \\</span>
+<span class="sd">    x_1^2 + e^{x_4}, &amp; \text{if } x_2 &lt; 0 \text{ and } x_3 \\geq 0 \\</span>
+<span class="sd">    -x_1^4 + e^{x_4}, &amp; \text{if } x_2 \\geq 0 \text{ and } x_3 &lt; 0 \\</span>
+<span class="sd">    x_1^4 + e^{x_4}, &amp; \text{if } x_2 \\geq 0 \text{ and } x_3 \\geq 0</span>
 <span class="sd">    \\end{cases}</span>
 <span class="sd">    """</span>
     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="o">.</span><span class="vm">__name__</span><span class="p">)</span>
@@ -1346,7 +1346,7 @@ x_1^4 + e^{x_3}, &amp;      ext{if } x_2 \geq 0     ext{ and } x_3 \geq 0
 <span class="sd">    """</span>
     <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 
-    <span class="n">y</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">y</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])</span>
 
     <span class="n">mask1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">mask2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
@@ -1464,7 +1464,7 @@ x_1^4 + e^{x_3}, &amp;      ext{if } x_2 \geq 0     ext{ and } x_3 \geq 0
 <span class="sd">    Returns:</span>
 <span class="sd">        Output of the model, shape (N,)</span>
 <span class="sd">    """</span>
-    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">3</span><span class="p">])</span>
 
     <span class="n">mask1</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">mask2</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span>
