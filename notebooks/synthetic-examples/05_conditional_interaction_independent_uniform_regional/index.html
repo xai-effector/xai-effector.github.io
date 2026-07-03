@@ -610,6 +610,13 @@
 
 
 <h1 id="model-with-conditional-interaction">Model with conditional interaction</h1>
+<ul>
+<li>Author: <a href="https://givasile.github.io/">givasile</a></li>
+<li>Runtime: ~10 s</li>
+<li>Description: Regional effects (PDP, ALE, RHALE) on a model with a
+  conditional interaction: every method must find the split on <span class="arithmatex">\(x_2\)</span> at 0 and
+  recover the per-region closed forms, tested against <code>effector.benchmarks</code>.</li>
+</ul>
 <p>In this example, we show regional effects of a model with conditional interactions using PDP, ALE, and RHALE.
 In particular, we:</p>
 <ol>
@@ -664,7 +671,7 @@ feature (<span class="arithmatex">\(x_2\)</span>), the split position (<span cla
 <span class="n">r_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00, 80.38it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00, 76.71it/s]</p>
 <pre><code>Feature 0 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
@@ -713,7 +720,7 @@ Level 0🔹heter: 0.10
 <span class="n">r_ale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00, 54.05it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00, 48.38it/s]</p>
 <pre><code>Feature 0 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
@@ -742,8 +749,8 @@ Level 0🔹heter: 1.39
 <span class="n">r_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
 <p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  3.21it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  3.20it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  2.80it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  2.79it/s]</p>
 <pre><code>Feature 0 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────

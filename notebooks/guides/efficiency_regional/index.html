@@ -498,10 +498,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#time-vs-n-number-of-features" class="md-nav__link">
+  <a href="#time-vs-n-number-of-instances" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Time vs N (number of features)
+        Time vs N (number of instances)
       
     </span>
   </a>
@@ -537,6 +537,14 @@
 
 
 <h1 id="measuring-runtime-of-regional-effect-plots">Measuring Runtime of Regional Effect Plots</h1>
+<ul>
+<li>Author: <a href="https://givasile.github.io/">givasile</a></li>
+<li>Runtime: ~6 min (deliberate benchmark)</li>
+<li>Description: Benchmarks how the runtime of each regional method
+  (RegionalPDP, d-PDP, ALE, RHALE) scales with the model-call cost <span class="arithmatex">\(t_f\)</span>,
+  the number of features <span class="arithmatex">\(D\)</span> and the number of instances <span class="arithmatex">\(N\)</span>, closing with
+  a demanding large-scale example.</li>
+</ul>
 <p>This notebook analyzes the runtime <span class="arithmatex">\(T(\cdot)\)</span> of Regional Effect plots, which depends on:  </p>
 <ul>
 <li><strong><span class="arithmatex">\(t_f\)</span></strong>: Time to evaluate the black-box function <span class="arithmatex">\(f\)</span>.  </li>
@@ -580,9 +588,6 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
 <span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-</code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
     <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
         <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -691,31 +696,78 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
         <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  2.60it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.57it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.75it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.90it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.06it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.13it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.67it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.71it/s]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.19s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.23s/it]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.89it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.90it/s]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.29s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.30s/it]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.30it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.29it/s]
-100%|██████████| 1/1 [00:02&lt;00:00,  2.19s/it]
-100%|██████████| 1/1 [00:02&lt;00:00,  2.20s/it]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.88it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.86it/s]
-100%|██████████| 1/1 [00:02&lt;00:00,  2.31s/it]
-100%|██████████| 1/1 [00:02&lt;00:00,  2.32s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.33s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.30s/it]
-</code></pre>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  2.31it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  2.30it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  2.36it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  2.35it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.61it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.61it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.64it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.63it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.70it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.70it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.76it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.75it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.44it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.43it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.63it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.62it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.23s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.23s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.25s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.25s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.62it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.62it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.55it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.55it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.36s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.37s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.38s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.38s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.02it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.01it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.01it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.01it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.25s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.26s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.61it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.60it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.56it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.54it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.39s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.39s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.40s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.41s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.55s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.55s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.52s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.52s/it]</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
@@ -733,34 +785,17 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
 <span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_8_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_8_0.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: .fit() + .eval() -- single feature"</span>
-
-    <span class="n">bar_plot</span><span class="p">(</span>
-        <span class="n">vec</span><span class="p">,</span> 
-        <span class="n">time_dict</span><span class="p">,</span> 
-        <span class="n">method_names</span><span class="p">,</span>
-        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">"time (sec) to execute f(dataset)"</span><span class="p">,</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
-<span class="p">)</span>
-</code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_9_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_9_0.png"></a></p>
 <h2 id="runtime-vs-d">Runtime vs. D</h2>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.001</span>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">1.</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">10_000</span>
 <span class="n">D</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"d_pdp"</span><span class="p">]</span>
-<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 <span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
 <span class="k">for</span> <span class="n">D</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
     <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
@@ -768,39 +803,42 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
         <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  8.26it/s]
-100%|██████████| 1/1 [00:00&lt;00:00, 10.30it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.88it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.93it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  6.10it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  6.12it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  7.38it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  7.23it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  7.39it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  7.38it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.63it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.61it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.97it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  4.47it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  4.92it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  4.83it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  5.53it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  5.54it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.88it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.88it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.59it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.36it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.52it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.69it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  4.29it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.65it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.37it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.41it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.04it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.06it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.91it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.52it/s]
-</code></pre>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.63it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.63it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.38s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.38s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.51s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.51s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.40s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.40s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.21s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.21s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.60s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.60s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.01s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.02s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.50s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.50s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.65s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.65s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.75s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.76s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.37s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.37s/it]</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
@@ -817,26 +855,9 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_13_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_13_0.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span>
-    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: .fit() + .eval() -- single feature"</span>
-
-    <span class="n">bar_plot</span><span class="p">(</span>
-        <span class="n">vec</span><span class="p">,</span> 
-        <span class="n">time_dict</span><span class="p">,</span> 
-        <span class="n">method_names</span><span class="p">,</span>
-        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">"D: number of features"</span><span class="p">,</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
-<span class="p">)</span>
-</code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_14_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_14_0.png"></a></p>
-<h2 id="time-vs-n-number-of-features">Time vs N (number of features)</h2>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.001</span>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_12_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_12_0.png"></a></p>
+<h2 id="time-vs-n-number-of-instances">Time vs N (number of instances)</h2>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">1.0</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">100_000</span>
 <span class="n">D</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>
@@ -853,31 +874,78 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
     <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
         <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:00&lt;00:00,  4.31it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  5.56it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.89it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.87it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.54it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.33it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.42it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  3.50it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.81it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  2.82it/s]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.12s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.04s/it]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.65it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.47it/s]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.17s/it]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.32it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.86it/s]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.81it/s]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.51s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.49s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.04s/it]
-100%|██████████| 1/1 [00:00&lt;00:00,  1.18it/s]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.44s/it]
-100%|██████████| 1/1 [00:01&lt;00:00,  1.80s/it]
-</code></pre>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.23s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.55it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.54it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.60it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.60it/s]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.38s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.38s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.36s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.37s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.49s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.49s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.50s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.50s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.37s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.38s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.39s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.39s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.07s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.07s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.04s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.04s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.80s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.80s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.80s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.81s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.05s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.05s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.10s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.10s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.52s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.52s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.53s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.53s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.50s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.50s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.47s/it]</p>
+<p>100%|██████████| 1/1 [00:01&lt;00:00,  1.47s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:03&lt;00:00,  3.34s/it]</p>
+<p>100%|██████████| 1/1 [00:03&lt;00:00,  3.34s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:03&lt;00:00,  3.26s/it]</p>
+<p>100%|██████████| 1/1 [00:03&lt;00:00,  3.26s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.59s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.59s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.75s/it]</p>
+<p>100%|██████████| 1/1 [00:02&lt;00:00,  2.75s/it]</p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span>
     <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
         <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
@@ -894,9 +962,9 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
         <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_18_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_18_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_16_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_16_0.png"></a></p>
 <h2 id="a-demanding-example">A demanding example</h2>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
+<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">3.0</span>
 <span class="n">N</span> <span class="o">=</span> <span class="mi">50_000</span>
 <span class="n">D</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="n">T</span> <span class="o">=</span> <span class="mi">100</span>
@@ -911,22 +979,41 @@ T(t_f, N, D) \approx T_{global} + T_{cart} \approx \mathcal{O}(N) + \mathcal{O}(
 <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
     <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">T</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:03&lt;00:00,  3.58s/it]
-100%|██████████| 1/1 [00:03&lt;00:00,  3.55s/it]
-100%|██████████| 1/1 [00:12&lt;00:00, 12.18s/it]
-100%|██████████| 1/1 [00:12&lt;00:00, 12.08s/it]
-100%|██████████| 1/1 [00:05&lt;00:00,  5.46s/it]
-100%|██████████| 1/1 [00:05&lt;00:00,  5.44s/it]
-100%|██████████| 1/1 [00:08&lt;00:00,  8.99s/it]
-100%|██████████| 1/1 [00:08&lt;00:00,  8.92s/it]
-</code></pre>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:09&lt;00:00,  9.33s/it]</p>
+<p>100%|██████████| 1/1 [00:09&lt;00:00,  9.33s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:09&lt;00:00,  9.31s/it]</p>
+<p>100%|██████████| 1/1 [00:09&lt;00:00,  9.31s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:12&lt;00:00, 12.92s/it]</p>
+<p>100%|██████████| 1/1 [00:12&lt;00:00, 12.92s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:13&lt;00:00, 13.82s/it]</p>
+<p>100%|██████████| 1/1 [00:13&lt;00:00, 13.82s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:13&lt;00:00, 13.31s/it]</p>
+<p>100%|██████████| 1/1 [00:13&lt;00:00, 13.31s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:13&lt;00:00, 13.25s/it]</p>
+<p>100%|██████████| 1/1 [00:13&lt;00:00, 13.25s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:15&lt;00:00, 15.56s/it]</p>
+<p>100%|██████████| 1/1 [00:15&lt;00:00, 15.56s/it]</p>
+<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
+<p>100%|██████████| 1/1 [00:15&lt;00:00, 15.87s/it]</p>
+<p>100%|██████████| 1/1 [00:15&lt;00:00, 15.87s/it]</p>
 <div class="highlight"><pre><span></span><code><span class="n">bar_plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]),</span> <span class="n">time_dict</span><span class="p">,</span> <span class="n">method_names</span><span class="p">,</span> <span class="n">metric</span><span class="o">=</span><span class="s2">"total"</span><span class="p">,</span> 
          <span class="n">title</span><span class="o">=</span><span class="s2">"a"</span><span class="p">,</span>
          <span class="n">xlabel</span><span class="o">=</span><span class="s2">"A difficult case"</span><span class="p">,</span>
          <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span><span class="p">,</span>
         <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_22_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_22_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_regional_files/efficiency_regional_20_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_regional_files/efficiency_regional_20_0.png"></a></p>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>
+</code></pre></div>
 
 
 

@@ -615,6 +615,12 @@
 
 
 <h1 id="an-overview-of-effectors-api">An overview of <code>effector</code>'s API</h1>
+<ul>
+<li>Author: <a href="https://givasile.github.io/">givasile</a></li>
+<li>Description: The simple entry point to <code>effector</code>: what inputs it needs
+  (data, model, optionally the jacobian) and how to get a global or regional
+  effect plot in a single line with <code>.plot()</code> and <code>.summary()</code>.</li>
+</ul>
 <p><code>effector</code> requires:</p>
 <ul>
 <li>a dataset, normally the test set</li>
@@ -791,31 +797,31 @@ For example, to plot the effect of the first feature of the synthetic dataset, u
 <p></p><div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_8_0.png" data-desc-position="bottom"><img align="center" alt="Global-PDP" src="../../static/quickstart/simple_api_files/simple_api_8_0.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_9_0.png" data-desc-position="bottom"><img align="center" alt="Global-PDP" src="../../static/quickstart/simple_api_files/simple_api_9_0.png"></a><p></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_10_0.png" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/simple_api_files/simple_api_10_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_11_0.png" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/simple_api_files/simple_api_11_0.png"></a></p>
 </div>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="n">shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
 <span class="n">shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_12_0.png" data-desc-position="bottom"><img align="center" alt="Global-ShapDP" src="../../static/quickstart/simple_api_files/simple_api_12_0.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_13_0.png" data-desc-position="bottom"><img align="center" alt="Global-ShapDP" src="../../static/quickstart/simple_api_files/simple_api_13_0.png"></a><p></p>
 </div>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="n">ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">)</span>
 <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_14_0.png" data-desc-position="bottom"><img align="center" alt="Global-ALE" src="../../static/quickstart/simple_api_files/simple_api_14_0.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_15_0.png" data-desc-position="bottom"><img align="center" alt="Global-ALE" src="../../static/quickstart/simple_api_files/simple_api_15_0.png"></a><p></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">d_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">predict</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jacobian</span><span class="p">)</span>
 <span class="n">d_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_16_0.png" data-desc-position="bottom"><img align="center" alt="Global-DerPDP" src="../../static/quickstart/simple_api_files/simple_api_16_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_17_0.png" data-desc-position="bottom"><img align="center" alt="Global-DerPDP" src="../../static/quickstart/simple_api_files/simple_api_17_0.png"></a></p>
 </div>
 </div>
 </div>
@@ -1006,8 +1012,8 @@ Apart from the added <code>node_idx</code> argument, the API is the same as the 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_20_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_20_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_20_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_20_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_21_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_21_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_21_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_21_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -1025,8 +1031,8 @@ Apart from the added <code>node_idx</code> argument, the API is the same as the 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_23_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_23_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_23_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_23_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_24_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_24_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_24_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_24_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -1044,8 +1050,8 @@ Apart from the added <code>node_idx</code> argument, the API is the same as the 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_26_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_26_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_26_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_26_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_27_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_27_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_27_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_27_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -1063,8 +1069,8 @@ Apart from the added <code>node_idx</code> argument, the API is the same as the 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_29_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_29_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_29_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_29_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_30_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_30_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_30_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_30_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -1082,8 +1088,8 @@ Apart from the added <code>node_idx</code> argument, the API is the same as the 
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_32_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_32_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_32_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_32_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_33_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_33_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/simple_api_files/simple_api_33_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/simple_api_files/simple_api_33_1.png"></a></td>
 </tr>
 </tbody>
 </table>

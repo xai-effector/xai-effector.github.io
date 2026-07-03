@@ -1055,7 +1055,7 @@
     <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">200</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>  <span class="c1"># (optional) Set y-axis limits</span>
 <span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="notebooks/quickstart/readme_example_files/readme_example_3_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="notebooks/quickstart/readme_example_files/readme_example_3_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="static/quickstart/readme_example_files/readme_example_4_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="static/quickstart/readme_example_files/readme_example_4_0.png"></a></p>
 <h3 id="explain-it-with-regional-effect-plots">Explain it with regional effect plots</h3>
 <div class="highlight"><pre><span></span><code><span class="c1"># Initialize the Regional Partial Dependence Plot (RegionalPDP)</span>
 <span class="n">r_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span>
@@ -1078,7 +1078,7 @@
 🌳 Full Tree Structure:
 ───────────────────────
 hr 🔹 [id: 0 | heter: 0.24 | inst: 3476 | w: 1.00]
-    workingday = 0.00 🔹 [id: 1 | heter: 0.12 | inst: 1129 | w: 0.32]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.13 | inst: 1129 | w: 0.32]
         temp ≤ 6.50 🔹 [id: 2 | heter: 0.06 | inst: 568 | w: 0.16]
         temp &gt; 6.50 🔹 [id: 3 | heter: 0.08 | inst: 561 | w: 0.16]
     workingday ≠ 0.00 🔹 [id: 4 | heter: 0.12 | inst: 2347 | w: 0.68]
@@ -1089,8 +1089,8 @@ Feature 3 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
 Level 0🔹heter: 0.24
-    Level 1🔹heter: 0.12 | 🔻0.12 (48.89%)
-        Level 2🔹heter: 0.08 | 🔻0.04 (31.11%)
+    Level 1🔹heter: 0.12 | 🔻0.12 (49.88%)
+        Level 2🔹heter: 0.08 | 🔻0.04 (32.25%)
 </code></pre></div>
 <p>The summary of feature <code>hr</code> (hour) says that its effect on the output is highly dependent on the value of features:</p>
 <ul>
@@ -1101,10 +1101,12 @@ Level 0🔹heter: 0.24
 <hr>
 <h4 id="is-it-workingday-or-not">Is it workingday or not?</h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Plot regional effects after the first-level split (workingday vs non-workingday)</span>
-<span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]:</span>  <span class="c1"># Iterate over the nodes of the first-level split</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">r_pdp</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="s2">"feature_3"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>  <span class="c1"># Node ids depend on the fitted tree</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>  <span class="c1"># Keep only the nodes of the first-level split</span>
+        <span class="k">continue</span>
     <span class="n">r_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Feature 3 (temperature)</span>
-        <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span>  <span class="c1"># Node index (1: workingday, 2: non-workingday)</span>
+        <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span>  <span class="c1"># Node index (workingday / non-workingday)</span>
         <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>  <span class="c1"># Number of ICE curves</span>
         <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[</span>  <span class="c1"># scale features by mean and std</span>
             <span class="p">{</span><span class="s2">"mean"</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">"std"</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="n">i</span><span class="p">]}</span>
@@ -1116,18 +1118,20 @@ Level 0🔹heter: 0.24
 </code></pre></div>
 <table>
   <tbody><tr>
-    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./notebooks/quickstart/readme_example_files/readme_example_5_0.png" data-desc-position="bottom"><img src="./notebooks/quickstart/readme_example_files/readme_example_5_0.png" alt="Feature effect plot"></a></td>
-    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./notebooks/quickstart/readme_example_files/readme_example_5_1.png" data-desc-position="bottom"><img src="./notebooks/quickstart/readme_example_files/readme_example_5_1.png" alt="Feature effect plot"></a></td>
+    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./static/quickstart/readme_example_files/readme_example_6_0.png" data-desc-position="bottom"><img src="./static/quickstart/readme_example_files/readme_example_6_0.png" alt="Feature effect plot"></a></td>
+    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./static/quickstart/readme_example_files/readme_example_6_1.png" data-desc-position="bottom"><img src="./static/quickstart/readme_example_files/readme_example_6_1.png" alt="Feature effect plot"></a></td>
   </tr>
 </tbody></table>
 
 <hr>
 <h4 id="is-it-hot-or-cold">Is it hot or cold?</h4>
 <div class="highlight"><pre><span></span><code><span class="c1"># Plot regional effects after second-level splits (workingday vs non-workingday and hot vs cold temperature)</span>
-<span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>  <span class="c1"># Iterate over the nodes of the second-level splits</span>
+<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">r_pdp</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="s2">"feature_3"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">2</span><span class="p">:</span>  <span class="c1"># Keep only the nodes of the second-level splits</span>
+        <span class="k">continue</span>
     <span class="n">r_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
         <span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span>  <span class="c1"># Feature 3 (temperature)</span>
-        <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span>  <span class="c1"># Node index (hot/cold temperature and workingday/non-workingday)</span>
+        <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span>  <span class="c1"># Node index (hot/cold temperature and workingday/non-workingday)</span>
         <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>  <span class="c1"># Number of ICE curves</span>
         <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[</span>  <span class="c1"># Scale features by mean and std</span>
             <span class="p">{</span><span class="s2">"mean"</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_mu</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s2">"std"</span><span class="p">:</span> <span class="n">bike_sharing</span><span class="o">.</span><span class="n">x_test_std</span><span class="p">[</span><span class="n">i</span><span class="p">]}</span>
@@ -1139,12 +1143,12 @@ Level 0🔹heter: 0.24
 </code></pre></div>
 <table>
   <tbody><tr>
-    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./notebooks/quickstart/readme_example_files/readme_example_6_0.png" data-desc-position="bottom"><img src="./notebooks/quickstart/readme_example_files/readme_example_6_0.png" alt="Feature effect plot"></a></td>
-    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./notebooks/quickstart/readme_example_files/readme_example_6_1.png" data-desc-position="bottom"><img src="./notebooks/quickstart/readme_example_files/readme_example_6_1.png" alt="Feature effect plot"></a></td>
+    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./static/quickstart/readme_example_files/readme_example_7_0.png" data-desc-position="bottom"><img src="./static/quickstart/readme_example_files/readme_example_7_0.png" alt="Feature effect plot"></a></td>
+    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./static/quickstart/readme_example_files/readme_example_7_1.png" data-desc-position="bottom"><img src="./static/quickstart/readme_example_files/readme_example_7_1.png" alt="Feature effect plot"></a></td>
   </tr>
   <tr>
-    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./notebooks/quickstart/readme_example_files/readme_example_6_2.png" data-desc-position="bottom"><img src="./notebooks/quickstart/readme_example_files/readme_example_6_2.png" alt="Feature effect plot"></a></td>
-    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./notebooks/quickstart/readme_example_files/readme_example_6_3.png" data-desc-position="bottom"><img src="./notebooks/quickstart/readme_example_files/readme_example_6_3.png" alt="Feature effect plot"></a></td>
+    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./static/quickstart/readme_example_files/readme_example_7_2.png" data-desc-position="bottom"><img src="./static/quickstart/readme_example_files/readme_example_7_2.png" alt="Feature effect plot"></a></td>
+    <td><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="./static/quickstart/readme_example_files/readme_example_7_3.png" data-desc-position="bottom"><img src="./static/quickstart/readme_example_files/readme_example_7_3.png" alt="Feature effect plot"></a></td>
   </tr>
 </tbody></table>
 

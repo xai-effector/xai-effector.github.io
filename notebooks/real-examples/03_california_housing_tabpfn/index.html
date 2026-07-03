@@ -16,7 +16,7 @@
     
     
       
-        <title>03 california housing tabpfn - effector</title>
+        <title>California Housing with TabPFN - effector</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#global-effects" class="md-skip">
+        <a href="#california-housing-with-tabpfn" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              03 california housing tabpfn
+              California Housing with TabPFN
             
           </span>
         </div>
@@ -444,6 +444,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -512,8 +514,14 @@
 
 
 
-  <h1>03 california housing tabpfn</h1>
-
+<h1 id="california-housing-with-tabpfn">California Housing with TabPFN</h1>
+<ul>
+<li>Author: <a href="https://givasile.github.io/">givasile</a></li>
+<li>Runtime: ~8 min (TabPFN on CPU)</li>
+<li>Description: Global and regional ALE effects on the California-housing
+  dataset, using a TabPFN foundation model as the black box — a showcase of
+  <code>effector</code> explaining a model that is expensive to query.</li>
+</ul>
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">keras</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
@@ -1110,14 +1118,14 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_3.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_4.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_4.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_5.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_5.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_6.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_6.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_7.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_16_7.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_3.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_4.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_4.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_5.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_5.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_6.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_6.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_7.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_7.png"></a></p>
 <h2 id="regional-effects">Regional Effects</h2>
 <div class="highlight"><pre><span></span><code><span class="n">r_ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="n">target_name</span><span class="p">)</span>
 </code></pre></div>
@@ -1148,20 +1156,20 @@ Level 0🔹heter: 0.58
 </code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_21_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_21_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_22_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_22_0.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move north.  </p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>
     <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_23_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_23_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_23_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_23_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_1.png"></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]:</span>
     <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_3.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_3.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move north.  </p>
 <p><strong>Regional Trends:</strong> Moreorless the same, with minor different curves.</p>
 <h2 id="longitude-west-to-east">Longitude (west to east)</h2>
@@ -1189,20 +1197,20 @@ Level 0🔹heter: 0.77
 </code></pre></div>
 <pre><code>100%|██████████| 1/1 [00:50&lt;00:00, 50.61s/it]
 </code></pre>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_28_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_28_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_29_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_29_1.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move east.  </p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>
     <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_30_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_30_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_30_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_30_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_1.png"></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
     <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_3.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_3.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move eastward.  </p>
 <p><strong>Regional Trends:</strong><br>
 - <strong>South (latitude &lt;= 35.85):</strong> Prices drop more sharply in the second half from west to east.

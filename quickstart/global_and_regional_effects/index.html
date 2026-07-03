@@ -531,6 +531,12 @@
 
   <h1>What are global and regional effects</h1>
 
+<ul>
+<li>Author: <a href="https://givasile.github.io/">givasile</a></li>
+<li>Description: A conceptual introduction to global and regional effects —
+  what they are, why they are a good choice for interpreting models trained
+  on tabular data, and how to compute them with <code>effector</code>.</li>
+</ul>
 <details class="success" open="open">
 <summary>Overview</summary>
 <p>This tutorial is the best place for understanding what global and regional effects are, 
@@ -595,17 +601,17 @@ and how to use <code>effector</code> to compute them.</p>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png"></a><p></p>
 </div>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_28_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_28_0.png"></a><p></p>
 </div>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png"></a><p></p>
 </div>
 </div>
 </div>
@@ -673,13 +679,13 @@ A simple way to check this is to look at the heterogeneity of the global effect:
 <div class="tabbed-set tabbed-alternate" data-tabs="3:3"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">PDP</label><label for="__tabbed_3_2">RHALE</label><label for="__tabbed_3_3">SHAP-DP</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_20_1.png"></a>}</p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_22_0.png"></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_28_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_28_0.png"></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png"></a></p>
 </div>
 </div>
 </div>
@@ -796,8 +802,8 @@ Let's focus on the first-level splits first.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_23_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_25_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_25_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_25_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_25_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -812,8 +818,8 @@ Let's focus on the first-level splits first.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_31_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_31_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_31_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_31_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -828,8 +834,8 @@ Let's focus on the first-level splits first.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_35_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_37_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -857,16 +863,16 @@ Let's focus on the first-level splits first.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_1.png"></a></td>
 </tr>
 <tr>
-<td style="text-align: center;"><strong>working day and cold</strong></td>
-<td style="text-align: center;"><strong>workingday and hot</strong></td>
+<td style="text-align: center;"><strong>working day and first year</strong></td>
+<td style="text-align: center;"><strong>workingday and second year</strong></td>
 </tr>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_2.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_2.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_3.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_24_3.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_2.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_2.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_3.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_26_3.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -882,9 +888,9 @@ Let's focus on the first-level splits first.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_30_1.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_29_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_32_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_31_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_31_1.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -899,16 +905,16 @@ Let's focus on the first-level splits first.</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_1.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_2.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_2.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_1.png"></a></td>
 </tr>
 <tr>
-<td style="text-align: center;"><strong>working day and first year</strong></td>
-<td style="text-align: center;"><strong>workingday and second year</strong></td>
+<td style="text-align: center;"><strong>working day and cold</strong></td>
+<td style="text-align: center;"><strong>workingday and hot</strong></td>
 </tr>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_3.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_3.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_4.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_36_4.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_2.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_2.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_3.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_38_3.png"></a></td>
 </tr>
 </tbody>
 </table>

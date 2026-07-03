@@ -549,6 +549,12 @@
 
 
 <h1 id="customize-fit">Customize <code>.fit()</code></h1>
+<ul>
+<li>Author: <a href="https://givasile.github.io/">givasile</a></li>
+<li>Description: The flexible side of <code>effector</code>: how to use <code>.fit()</code> to control
+  the processing steps of each global or regional effect method — centering,
+  binning, space partitioning — when the defaults are not enough.</li>
+</ul>
 <p><code>Effector</code> is designed to work well with its default settings, 
 but it also allows for customization if the user needs more control over the processing steps.
 This flexibility is achieved through the use of the <code>.fit()</code> routine, 
@@ -582,14 +588,14 @@ Then, we will customize the <code>.fit()</code> routine to use a number of 5 equ
 <p></p><div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_7_0.png" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/flexible_api_files/flexible_api_7_0.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_8_0.png" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/flexible_api_files/flexible_api_8_0.png"></a><p></p>
 </div>
 <div class="tabbed-block">
 <div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">predict</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_8_0.png" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/flexible_api_files/flexible_api_8_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_9_0.png" data-desc-position="bottom"><img align="center" alt="Global-RHALE" src="../../static/quickstart/flexible_api_files/flexible_api_9_0.png"></a></p>
 </div>
 </div>
 </div>
@@ -657,16 +663,16 @@ Then, we will customize the <code>.fit()</code> routine to use a number of 5 equ
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_16_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_16_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_17_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_17_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_17_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_17_1.png"></a></td>
 </tr>
 <tr>
 <td style="text-align: center;"><code>node_idx=5</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_1 \leq 0\)</span> and <span class="arithmatex">\(x_2 &gt; 0\)</span></td>
 <td style="text-align: center;"><code>node_idx=6</code>: <span class="arithmatex">\(x_0\)</span> when <span class="arithmatex">\(x_1 &gt; 0\)</span> and <span class="arithmatex">\(x_2 &gt; 0\)</span></td>
 </tr>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_16_2.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_2.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_16_3.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_16_3.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_17_2.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_17_2.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_17_3.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_17_3.png"></a></td>
 </tr>
 </tbody>
 </table>
@@ -684,8 +690,8 @@ Then, we will customize the <code>.fit()</code> routine to use a number of 5 equ
 </thead>
 <tbody>
 <tr>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_20_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_20_0.png"></a></td>
-<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_20_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_20_1.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_21_0.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_21_0.png"></a></td>
+<td style="text-align: center;"><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/quickstart/flexible_api_files/flexible_api_21_1.png" data-desc-position="bottom"><img alt="Alt text" src="../../static/quickstart/flexible_api_files/flexible_api_21_1.png"></a></td>
 </tr>
 </tbody>
 </table>
