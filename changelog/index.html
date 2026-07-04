@@ -476,6 +476,7 @@
 
 <h1 id="changelog">Changelog</h1>
 <h1 id="unreleased">[Unreleased]</h1>
+<h1 id="030-2026-07-04">[0.3.0] - 2026-07-04</h1>
 <h3 id="added">Added</h3>
 <ul>
 <li><code>random_state</code> on every public effect-class constructor (<code>PDP</code>, <code>DerPDP</code>, <code>ALE</code>, <code>RHALE</code>, <code>ShapDP</code>, the 5 regional variants, and <code>FeatureEffect</code>); default <code>21</code>, so two identical constructions give identical <code>eval</code>/<code>fit</code>/<code>plot</code> output out of the box, <code>None</code> opts into fresh randomness. The seed also drives plot-time ICE/SHAP-scatter subsampling and is passed to the shap/shapiq explainer (<code>seed=</code>/<code>random_state=</code>) unless overridden via <code>shap_explainer_kwargs</code>. No effector code touches the global <code>np.random</code> state anymore.</li>
