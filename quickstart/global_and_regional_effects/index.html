@@ -611,7 +611,7 @@ and how to use <code>effector</code> to compute them.</p>
 <div class="tabbed-block">
 <p></p><div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </code></pre></div>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png"></a><p></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_489.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_489.png"></a><p></p>
 </div>
 </div>
 </div>
@@ -685,7 +685,7 @@ A simple way to check this is to look at the heterogeneity of the global effect:
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_28_0.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_28_0.png"></a></p>
 </div>
 <div class="tabbed-block">
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_494.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_489.png" data-desc-position="bottom"><img alt="Feature effect plot" src="../../static/real-examples/01_bike_sharing_dataset_files/01_bike_sharing_dataset_34_489.png"></a></p>
 </div>
 </div>
 </div>
@@ -741,12 +741,12 @@ To print the partition tree, we will use <code>.summary()</code> method of the r
 🌳 Full Tree Structure:
 ───────────────────────
 hr 🔹 [id: 0 | heter: 0.24 | inst: 5000 | w: 1.00]
-    workingday = 0.00 🔹 [id: 1 | heter: 0.13 | inst: 1548 | w: 0.31]
-        temp ≤ 4.50 🔹 [id: 2 | heter: 0.06 | inst: 618 | w: 0.12]
-        temp &gt; 4.50 🔹 [id: 3 | heter: 0.10 | inst: 930 | w: 0.19]
-    workingday ≠ 0.00 🔹 [id: 4 | heter: 0.12 | inst: 3452 | w: 0.69]
-        yr = 0.00 🔹 [id: 5 | heter: 0.06 | inst: 1719 | w: 0.34]
-        yr ≠ 0.00 🔹 [id: 6 | heter: 0.11 | inst: 1733 | w: 0.35]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.13 | inst: 1578 | w: 0.32]
+        temp ≤ 6.81 🔹 [id: 2 | heter: 0.07 | inst: 787 | w: 0.16]
+        temp &gt; 6.81 🔹 [id: 3 | heter: 0.09 | inst: 791 | w: 0.16]
+    workingday ≠ 0.00 🔹 [id: 4 | heter: 0.12 | inst: 3422 | w: 0.68]
+        yr = 0.00 🔹 [id: 5 | heter: 0.06 | inst: 1681 | w: 0.34]
+        yr ≠ 0.00 🔹 [id: 6 | heter: 0.10 | inst: 1741 | w: 0.35]
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -756,11 +756,11 @@ hr 🔹 [id: 0 | heter: 0.24 | inst: 5000 | w: 1.00]
 <div class="highlight"><pre><span></span><code>Feature 3 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-hr 🔹 [id: 0 | heter: 5.68 | inst: 13903 | w: 1.00]
-    workingday = 0.00 🔹 [id: 1 | heter: 0.75 | inst: 4385 | w: 0.32]
-        temp ≤ 6.81 🔹 [id: 2 | heter: 0.44 | inst: 2187 | w: 0.16]
-        temp &gt; 6.81 🔹 [id: 3 | heter: 0.60 | inst: 2198 | w: 0.16]
-    workingday ≠ 0.00 🔹 [id: 4 | heter: 5.44 | inst: 9518 | w: 0.68]
+hr 🔹 [id: 0 | heter: 6.58 | inst: 13903 | w: 1.00]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.72 | inst: 4385 | w: 0.32]
+        temp ≤ 6.81 🔹 [id: 2 | heter: 0.41 | inst: 2187 | w: 0.16]
+        temp &gt; 6.81 🔹 [id: 3 | heter: 0.58 | inst: 2198 | w: 0.16]
+    workingday ≠ 0.00 🔹 [id: 4 | heter: 6.91 | inst: 9518 | w: 0.68]
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -771,13 +771,13 @@ hr 🔹 [id: 0 | heter: 5.68 | inst: 13903 | w: 1.00]
 Feature 3 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-hr 🔹 [id: 0 | heter: 0.06 | inst: 500 | w: 1.00]
-    workingday = 0.00 🔹 [id: 1 | heter: 0.02 | inst: 148 | w: 0.30]
-        temp ≤ 4.50 🔹 [id: 2 | heter: 0.01 | inst: 50 | w: 0.10]
-        temp &gt; 4.50 🔹 [id: 3 | heter: 0.02 | inst: 98 | w: 0.20]
-    workingday ≠ 0.00 🔹 [id: 4 | heter: 0.03 | inst: 352 | w: 0.70]
-        temp ≤ 6.81 🔹 [id: 5 | heter: 0.02 | inst: 145 | w: 0.29]
-        temp &gt; 6.81 🔹 [id: 6 | heter: 0.02 | inst: 207 | w: 0.41]</p>
+hr 🔹 [id: 0 | heter: 0.05 | inst: 500 | w: 1.00]
+    workingday = 0.00 🔹 [id: 1 | heter: 0.02 | inst: 138 | w: 0.28]
+        temp ≤ 6.81 🔹 [id: 2 | heter: 0.01 | inst: 67 | w: 0.13]
+        temp &gt; 6.81 🔹 [id: 3 | heter: 0.01 | inst: 71 | w: 0.14]
+    workingday ≠ 0.00 🔹 [id: 4 | heter: 0.03 | inst: 362 | w: 0.72]
+        temp ≤ 9.11 🔹 [id: 5 | heter: 0.02 | inst: 185 | w: 0.37]
+        temp &gt; 9.11 🔹 [id: 6 | heter: 0.02 | inst: 177 | w: 0.35]</p>
 </div>
 </div>
 </div>

@@ -500,158 +500,8 @@
 
 
 
-        <p>Choose the algorithm <code>Cart</code>.
-The algorithm is a greedy algorithm that finds the best split for each level in a greedy fashion.</p>
-
-
-<p><span class="doc-section-title">Parameters:</span></p>
-    <table>
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Type</th>
-          <th>Description</th>
-          <th>Default</th>
-        </tr>
-      </thead>
-      <tbody>
-          <tr class="doc-section-item">
-            <td>
-                <code>min_heterogeneity_decrease_pcg</code>
-            </td>
-            <td>
-                  <code><span title="float">float</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Minimum percentage of heterogeneity decrease to accept a split.</p>
-<details class="example">
-<summary>Example</summary>
-<ul>
-<li><code>0.1</code>: if the heterogeneity before any split is 1, the heterogeneity after the first split must be at most 0.9 to be accepted. Otherwise, no split will be accepted.</li>
-</ul>
-</details>
-              </div>
-            </td>
-            <td>
-                  <code>0.1</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>heter_small_enough</code>
-            </td>
-            <td>
-                  <code><span title="float">float</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>When heterogeneity is smaller than this value, no more splits are performed.</p>
-<details class="note">
-<summary>Default is <code>0.001</code></summary>
-<p>Value 0.001 is small enough for most cases.
-It is advisable to set this value to a small number to avoid unnecessary splits.</p>
-</details>
-<details class="note">
-<summary>Custom value</summary>
-<p>If you know a priori that a specific heterogeneity value is small enough,
-you can set this parameter to a higher value than the default.</p>
-</details>
-              </div>
-            </td>
-            <td>
-                  <code>0.001</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>max_depth</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Maximum number of splits to perform</p>
-<details class="note">
-<summary>Default is <code>2</code></summary>
-<p>2 splits already create 4 subregions, i.e. 4 regional plots per feature, which are already enough.
-Setting this value to a higher number will increase the number of subregions and plots, which may be too much for the user to analyze.</p>
-</details>
-              </div>
-            </td>
-            <td>
-                  <code>2</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>min_samples_leaf</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Minimum number of instances per subregion</p>
-<details class="note">
-<summary>Default is <code>10</code></summary>
-<p>If a subregion has less than 10 instances, it may not be representative enough to be analyzed.</p>
-</details>
-              </div>
-            </td>
-            <td>
-                  <code>10</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>numerical_features_grid_size</code>
-            </td>
-            <td>
-                  <code><span title="int">int</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Number of candidate split positions for numerical features</p>
-<details class="note">
-<summary>Default is <code>20</code></summary>
-<p>For numerical features, the algorithm will create a grid of 20 equally spaced values between the minimum and maximum values of the feature.</p>
-</details>
-              </div>
-            </td>
-            <td>
-                  <code>20</code>
-            </td>
-          </tr>
-          <tr class="doc-section-item">
-            <td>
-                <code>search_partitions_when_categorical</code>
-            </td>
-            <td>
-                  <code><span title="bool">bool</span></code>
-            </td>
-            <td>
-              <div class="doc-md-description">
-                <p>Whether to search for partitions when the feature is categorical</p>
-<details class="warning">
-<summary>refers to a categorical feature of interest</summary>
-<p>This argument asks whether to search for partitions when the feature of interest is categorical.
-If the feature of interest is numerical, the algorithm will always search for partitions and will consider
-categorical features for conditioning.</p>
-</details>
-<details class="note">
-<summary>Default is <code>False</code></summary>
-<p>It is difficult to compute the heterogeneity for categorical features, so by default, the algorithm will not search for partitions when the feature of interest is categorical.</p>
-</details>
-              </div>
-            </td>
-            <td>
-                  <code>False</code>
-            </td>
-          </tr>
-      </tbody>
-    </table>
+        <p>Node-wise recursive partitioning: find the best split for each node,
+recurse into the children (see <code>Base.__init__</code> for the parameters).</p>
 
 
 
@@ -667,71 +517,24 @@ categorical features for conditioning.</p>
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/space_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">113</span>
-<span class="normal">114</span>
-<span class="normal">115</span>
-<span class="normal">116</span>
-<span class="normal">117</span>
-<span class="normal">118</span>
-<span class="normal">119</span>
-<span class="normal">120</span>
-<span class="normal">121</span>
-<span class="normal">122</span>
-<span class="normal">123</span>
-<span class="normal">124</span>
-<span class="normal">125</span>
-<span class="normal">126</span>
-<span class="normal">127</span>
-<span class="normal">128</span>
-<span class="normal">129</span>
-<span class="normal">130</span>
-<span class="normal">131</span>
-<span class="normal">132</span>
-<span class="normal">133</span>
-<span class="normal">134</span>
-<span class="normal">135</span>
-<span class="normal">136</span>
-<span class="normal">137</span>
-<span class="normal">138</span>
-<span class="normal">139</span>
-<span class="normal">140</span>
-<span class="normal">141</span>
-<span class="normal">142</span>
-<span class="normal">143</span>
-<span class="normal">144</span>
-<span class="normal">145</span>
-<span class="normal">146</span>
-<span class="normal">147</span>
-<span class="normal">148</span>
-<span class="normal">149</span>
-<span class="normal">150</span>
-<span class="normal">151</span>
-<span class="normal">152</span>
-<span class="normal">153</span>
-<span class="normal">154</span>
-<span class="normal">155</span>
-<span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span>
-<span class="normal">171</span>
-<span class="normal">172</span>
-<span class="normal">173</span>
-<span class="normal">174</span>
-<span class="normal">175</span>
-<span class="normal">176</span>
-<span class="normal">177</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">min_heterogeneity_decrease_pcg</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.1</span><span class="p">,</span>
     <span class="n">heter_small_enough</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.001</span><span class="p">,</span>
@@ -740,62 +543,15 @@ categorical features for conditioning.</p>
     <span class="n">numerical_features_grid_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
     <span class="n">search_partitions_when_categorical</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
 <span class="p">):</span>
-<span class="w">    </span><span class="sd">"""Choose the algorithm `Cart`.</span>
-<span class="sd">    The algorithm is a greedy algorithm that finds the best split for each level in a greedy fashion.</span>
-
-
-<span class="sd">    Args:</span>
-<span class="sd">        min_heterogeneity_decrease_pcg: Minimum percentage of heterogeneity decrease to accept a split.</span>
-
-<span class="sd">            ??? Example "Example"</span>
-<span class="sd">                - `0.1`: if the heterogeneity before any split is 1, the heterogeneity after the first split must be at most 0.9 to be accepted. Otherwise, no split will be accepted.</span>
-
-<span class="sd">        heter_small_enough: When heterogeneity is smaller than this value, no more splits are performed.</span>
-
-<span class="sd">            ??? Note "Default is `0.001`"</span>
-<span class="sd">                Value 0.001 is small enough for most cases.</span>
-<span class="sd">                It is advisable to set this value to a small number to avoid unnecessary splits.</span>
-
-<span class="sd">            ??? Note "Custom value"</span>
-<span class="sd">                If you know a priori that a specific heterogeneity value is small enough,</span>
-<span class="sd">                you can set this parameter to a higher value than the default.</span>
-
-<span class="sd">        max_depth: Maximum number of splits to perform</span>
-
-<span class="sd">            ??? Note "Default is `2`"</span>
-<span class="sd">                2 splits already create 4 subregions, i.e. 4 regional plots per feature, which are already enough.</span>
-<span class="sd">                Setting this value to a higher number will increase the number of subregions and plots, which may be too much for the user to analyze.</span>
-
-<span class="sd">        min_samples_leaf: Minimum number of instances per subregion</span>
-
-<span class="sd">            ??? Note "Default is `10`"</span>
-<span class="sd">                If a subregion has less than 10 instances, it may not be representative enough to be analyzed.</span>
-
-<span class="sd">        numerical_features_grid_size: Number of candidate split positions for numerical features</span>
-
-<span class="sd">            ??? Note "Default is `20`"</span>
-<span class="sd">                For numerical features, the algorithm will create a grid of 20 equally spaced values between the minimum and maximum values of the feature.</span>
-
-<span class="sd">        search_partitions_when_categorical: Whether to search for partitions when the feature is categorical</span>
-
-<span class="sd">            ??? warning "refers to a categorical feature of interest"</span>
-<span class="sd">                This argument asks whether to search for partitions when the feature of interest is categorical.</span>
-<span class="sd">                If the feature of interest is numerical, the algorithm will always search for partitions and will consider</span>
-<span class="sd">                categorical features for conditioning.</span>
-
-<span class="sd">            ??? Note "Default is `False`"</span>
-<span class="sd">                It is difficult to compute the heterogeneity for categorical features, so by default, the algorithm will not search for partitions when the feature of interest is categorical.</span>
-
-<span class="sd">    """</span>
-    <span class="c1"># setters</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">min_points_per_subregion</span> <span class="o">=</span> <span class="n">min_samples_leaf</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">nof_candidate_splits_for_numerical</span> <span class="o">=</span> <span class="n">numerical_features_grid_size</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">max_split_levels</span> <span class="o">=</span> <span class="n">max_depth</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">heter_pcg_drop_thres</span> <span class="o">=</span> <span class="n">min_heterogeneity_decrease_pcg</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">heter_small_enough</span> <span class="o">=</span> <span class="n">heter_small_enough</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">split_categorical_features</span> <span class="o">=</span> <span class="n">search_partitions_when_categorical</span>
-
-    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"Cart"</span><span class="p">)</span>
+    <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="s2">"Best"</span><span class="p">,</span>
+        <span class="n">min_heterogeneity_decrease_pcg</span><span class="p">,</span>
+        <span class="n">heter_small_enough</span><span class="p">,</span>
+        <span class="n">max_depth</span><span class="p">,</span>
+        <span class="n">min_samples_leaf</span><span class="p">,</span>
+        <span class="n">numerical_features_grid_size</span><span class="p">,</span>
+        <span class="n">search_partitions_when_categorical</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
                   </details>
 

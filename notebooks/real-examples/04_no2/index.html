@@ -617,7 +617,7 @@
 <h1 id="no2">NO2</h1>
 <ul>
 <li>Author: <a href="https://givasile.github.io/">givasile</a></li>
-<li>Runtime: ~2 min</li>
+<li>Runtime: ~1.5 min</li>
 <li>Description: Global and regional effects (PDP, RHALE, SHAP-DP) of wind
   speed on NO₂ concentration in Oslo, explaining a neural network and
   revealing interactions with wind direction and traffic volume.</li>
@@ -635,7 +635,7 @@
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1783081131.554632   51761 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+I0000 00:00:1783103302.470326   43357 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </code></pre>
 <h2 id="preprocess-the-data">Preprocess the data</h2>
@@ -724,72 +724,72 @@ The model achieves a root mean squared error on the test of about <span class="a
 </code></pre></div>
 <pre><code>Epoch 1/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 1s/step - loss: 0.9584 - mae: 0.7906 - root_mean_squared_error: 0.9790</p>
-<pre><code>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 869ms/step - loss: 0.9584 - mae: 0.7906 - root_mean_squared_error: 0.9790</p>
+<pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 1s/step - loss: 0.9584 - mae: 0.7906 - root_mean_squared_error: 0.9790</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 883ms/step - loss: 0.9584 - mae: 0.7906 - root_mean_squared_error: 0.9790</p>
 <pre><code>Epoch 2/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 30ms/step - loss: 0.6712 - mae: 0.6472 - root_mean_squared_error: 0.8192</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 26ms/step - loss: 0.6712 - mae: 0.6472 - root_mean_squared_error: 0.8192</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 44ms/step - loss: 0.6712 - mae: 0.6472 - root_mean_squared_error: 0.8192</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 39ms/step - loss: 0.6712 - mae: 0.6472 - root_mean_squared_error: 0.8192</p>
 <pre><code>Epoch 3/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 28ms/step - loss: 0.5145 - mae: 0.5716 - root_mean_squared_error: 0.7173</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 26ms/step - loss: 0.5145 - mae: 0.5716 - root_mean_squared_error: 0.7173</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 42ms/step - loss: 0.5145 - mae: 0.5716 - root_mean_squared_error: 0.7173</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 38ms/step - loss: 0.5145 - mae: 0.5716 - root_mean_squared_error: 0.7173</p>
 <pre><code>Epoch 4/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 28ms/step - loss: 0.4573 - mae: 0.5309 - root_mean_squared_error: 0.6763</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 25ms/step - loss: 0.4573 - mae: 0.5309 - root_mean_squared_error: 0.6763</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 42ms/step - loss: 0.4573 - mae: 0.5309 - root_mean_squared_error: 0.6763</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 38ms/step - loss: 0.4573 - mae: 0.5309 - root_mean_squared_error: 0.6763</p>
 <pre><code>Epoch 5/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 28ms/step - loss: 0.4320 - mae: 0.5061 - root_mean_squared_error: 0.6572</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 25ms/step - loss: 0.4320 - mae: 0.5061 - root_mean_squared_error: 0.6572</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 43ms/step - loss: 0.4320 - mae: 0.5061 - root_mean_squared_error: 0.6572</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 38ms/step - loss: 0.4320 - mae: 0.5061 - root_mean_squared_error: 0.6572</p>
 <pre><code>Epoch 6/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 27ms/step - loss: 0.4075 - mae: 0.4871 - root_mean_squared_error: 0.6384</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 25ms/step - loss: 0.4075 - mae: 0.4871 - root_mean_squared_error: 0.6384</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 43ms/step - loss: 0.4075 - mae: 0.4871 - root_mean_squared_error: 0.6384</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 37ms/step - loss: 0.4075 - mae: 0.4871 - root_mean_squared_error: 0.6384</p>
 <pre><code>Epoch 7/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 30ms/step - loss: 0.3981 - mae: 0.4815 - root_mean_squared_error: 0.6309</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 23ms/step - loss: 0.3981 - mae: 0.4815 - root_mean_squared_error: 0.6309</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 45ms/step - loss: 0.3981 - mae: 0.4815 - root_mean_squared_error: 0.6309</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 35ms/step - loss: 0.3981 - mae: 0.4815 - root_mean_squared_error: 0.6309</p>
 <pre><code>Epoch 8/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 30ms/step - loss: 0.3882 - mae: 0.4777 - root_mean_squared_error: 0.6231</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 26ms/step - loss: 0.3882 - mae: 0.4777 - root_mean_squared_error: 0.6231</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 45ms/step - loss: 0.3882 - mae: 0.4777 - root_mean_squared_error: 0.6231</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 39ms/step - loss: 0.3882 - mae: 0.4777 - root_mean_squared_error: 0.6231</p>
 <pre><code>Epoch 9/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 31ms/step - loss: 0.3707 - mae: 0.4679 - root_mean_squared_error: 0.6089</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 27ms/step - loss: 0.3707 - mae: 0.4679 - root_mean_squared_error: 0.6089</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 45ms/step - loss: 0.3707 - mae: 0.4679 - root_mean_squared_error: 0.6089</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - loss: 0.3707 - mae: 0.4679 - root_mean_squared_error: 0.6089</p>
 <pre><code>Epoch 10/10
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 29ms/step - loss: 0.3507 - mae: 0.4533 - root_mean_squared_error: 0.5922</p>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 25ms/step - loss: 0.3507 - mae: 0.4533 - root_mean_squared_error: 0.5922</p>
 <pre><code>
 </code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 45ms/step - loss: 0.3507 - mae: 0.4533 - root_mean_squared_error: 0.5922</p>
-<p>[1m 1/13[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 117ms/step - loss: 0.4061 - mae: 0.4523 - root_mean_squared_error: 0.6372</p>
-<pre><code>
+<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 37ms/step - loss: 0.3507 - mae: 0.4533 - root_mean_squared_error: 0.5922</p>
+<p>[1m 1/13[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 97ms/step - loss: 0.4061 - mae: 0.4523 - root_mean_squared_error: 0.6372</p>
+<pre><code>
 </code></pre>
-<p>[1m13/13[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - loss: 0.3362 - mae: 0.4484 - root_mean_squared_error: 0.5798  </p>
-<p>[1m1/4[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m0s[0m 17ms/step - loss: 0.6244 - mae: 0.6522 - root_mean_squared_error: 0.7902</p>
+<p>[1m13/13[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - loss: 0.3362 - mae: 0.4484 - root_mean_squared_error: 0.5798 </p>
+<p>[1m1/4[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m0s[0m 15ms/step - loss: 0.6244 - mae: 0.6522 - root_mean_squared_error: 0.7902</p>
 <pre><code>
 </code></pre>
-<p>[1m4/4[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 7ms/step - loss: 0.4984 - mae: 0.5615 - root_mean_squared_error: 0.7060 </p>
+<p>[1m4/4[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 6ms/step - loss: 0.4984 - mae: 0.5615 - root_mean_squared_error: 0.7060 </p>
 <pre><code>[0.4984276592731476, 0.5615400075912476, 0.7059940695762634]
 </code></pre>
 <h2 id="explain">Explain</h2>
@@ -842,190 +842,180 @@ The model achieves a root mean squared error on the test of about <span class="a
 <div class="highlight"><pre><span></span><code><span class="n">shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">target_name</span><span class="o">=</span><span class="n">target_name</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">foi</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p>ExactExplainer explainer:  11%|█▏        | 45/400 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  12%|█▏        | 48/400 [00:10&lt;00:19, 18.52it/s]</p>
-<p>ExactExplainer explainer:  12%|█▎        | 50/400 [00:10&lt;00:23, 14.80it/s]</p>
-<p>ExactExplainer explainer:  13%|█▎        | 52/400 [00:10&lt;00:25, 13.71it/s]</p>
-<p>ExactExplainer explainer:  14%|█▎        | 54/400 [00:10&lt;00:26, 12.93it/s]</p>
-<p>ExactExplainer explainer:  14%|█▍        | 56/400 [00:10&lt;00:27, 12.64it/s]</p>
-<p>ExactExplainer explainer:  14%|█▍        | 58/400 [00:11&lt;00:27, 12.60it/s]</p>
-<p>ExactExplainer explainer:  15%|█▌        | 60/400 [00:11&lt;00:27, 12.53it/s]</p>
-<p>ExactExplainer explainer:  16%|█▌        | 62/400 [00:11&lt;00:27, 12.51it/s]</p>
-<p>ExactExplainer explainer:  16%|█▌        | 64/400 [00:11&lt;00:26, 12.45it/s]</p>
-<p>ExactExplainer explainer:  16%|█▋        | 66/400 [00:11&lt;00:27, 12.18it/s]</p>
-<p>ExactExplainer explainer:  17%|█▋        | 68/400 [00:11&lt;00:27, 12.19it/s]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 70/400 [00:11&lt;00:26, 12.25it/s]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 72/400 [00:12&lt;00:26, 12.19it/s]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 74/400 [00:12&lt;00:26, 12.14it/s]</p>
-<p>ExactExplainer explainer:  19%|█▉        | 76/400 [00:12&lt;00:26, 12.15it/s]</p>
-<p>ExactExplainer explainer:  20%|█▉        | 78/400 [00:12&lt;00:26, 12.14it/s]</p>
-<p>ExactExplainer explainer:  20%|██        | 80/400 [00:12&lt;00:26, 11.94it/s]</p>
-<p>ExactExplainer explainer:  20%|██        | 82/400 [00:12&lt;00:26, 11.89it/s]</p>
-<p>ExactExplainer explainer:  21%|██        | 84/400 [00:13&lt;00:26, 11.94it/s]</p>
-<p>ExactExplainer explainer:  22%|██▏       | 86/400 [00:13&lt;00:26, 12.01it/s]</p>
-<p>ExactExplainer explainer:  22%|██▏       | 88/400 [00:13&lt;00:25, 12.02it/s]</p>
-<p>ExactExplainer explainer:  22%|██▎       | 90/400 [00:13&lt;00:25, 12.07it/s]</p>
-<p>ExactExplainer explainer:  23%|██▎       | 92/400 [00:13&lt;00:26, 11.84it/s]</p>
-<p>ExactExplainer explainer:  24%|██▎       | 94/400 [00:13&lt;00:25, 11.86it/s]</p>
-<p>ExactExplainer explainer:  24%|██▍       | 96/400 [00:14&lt;00:25, 11.95it/s]</p>
-<p>ExactExplainer explainer:  24%|██▍       | 98/400 [00:14&lt;00:25, 11.85it/s]</p>
-<p>ExactExplainer explainer:  25%|██▌       | 100/400 [00:14&lt;00:25, 11.69it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 102/400 [00:14&lt;00:25, 11.70it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 104/400 [00:14&lt;00:25, 11.61it/s]</p>
-<p>ExactExplainer explainer:  26%|██▋       | 106/400 [00:15&lt;00:25, 11.60it/s]</p>
-<p>ExactExplainer explainer:  27%|██▋       | 108/400 [00:15&lt;00:24, 11.73it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 110/400 [00:15&lt;00:24, 11.82it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 112/400 [00:15&lt;00:24, 11.85it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 114/400 [00:15&lt;00:24, 11.90it/s]</p>
-<p>ExactExplainer explainer:  29%|██▉       | 116/400 [00:15&lt;00:23, 11.87it/s]</p>
-<p>ExactExplainer explainer:  30%|██▉       | 118/400 [00:16&lt;00:23, 11.79it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 120/400 [00:16&lt;00:23, 11.91it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 122/400 [00:16&lt;00:23, 11.77it/s]</p>
-<p>ExactExplainer explainer:  31%|███       | 124/400 [00:16&lt;00:23, 11.72it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 126/400 [00:16&lt;00:23, 11.89it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 128/400 [00:16&lt;00:23, 11.82it/s]</p>
-<p>ExactExplainer explainer:  32%|███▎      | 130/400 [00:17&lt;00:23, 11.68it/s]</p>
-<p>ExactExplainer explainer:  33%|███▎      | 132/400 [00:17&lt;00:22, 11.76it/s]</p>
-<p>ExactExplainer explainer:  34%|███▎      | 134/400 [00:17&lt;00:22, 11.91it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 136/400 [00:17&lt;00:22, 11.94it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 138/400 [00:17&lt;00:22, 11.88it/s]</p>
-<p>ExactExplainer explainer:  35%|███▌      | 140/400 [00:17&lt;00:22, 11.76it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 142/400 [00:18&lt;00:22, 11.71it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 144/400 [00:18&lt;00:21, 11.72it/s]</p>
-<p>ExactExplainer explainer:  36%|███▋      | 146/400 [00:18&lt;00:21, 11.78it/s]</p>
-<p>ExactExplainer explainer:  37%|███▋      | 148/400 [00:18&lt;00:21, 11.89it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 150/400 [00:18&lt;00:21, 11.89it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 152/400 [00:18&lt;00:21, 11.67it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 154/400 [00:19&lt;00:21, 11.68it/s]</p>
-<p>ExactExplainer explainer:  39%|███▉      | 156/400 [00:19&lt;00:20, 11.80it/s]</p>
-<p>ExactExplainer explainer:  40%|███▉      | 158/400 [00:19&lt;00:20, 11.84it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 160/400 [00:19&lt;00:20, 11.94it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 162/400 [00:19&lt;00:19, 11.99it/s]</p>
-<p>ExactExplainer explainer:  41%|████      | 164/400 [00:19&lt;00:19, 12.03it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 166/400 [00:20&lt;00:19, 11.91it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 168/400 [00:20&lt;00:19, 11.73it/s]</p>
-<p>ExactExplainer explainer:  42%|████▎     | 170/400 [00:20&lt;00:19, 11.66it/s]</p>
-<p>ExactExplainer explainer:  43%|████▎     | 172/400 [00:20&lt;00:19, 11.67it/s]</p>
-<p>ExactExplainer explainer:  44%|████▎     | 174/400 [00:20&lt;00:19, 11.62it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 176/400 [00:20&lt;00:19, 11.40it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 178/400 [00:21&lt;00:19, 11.44it/s]</p>
-<p>ExactExplainer explainer:  45%|████▌     | 180/400 [00:21&lt;00:19, 11.30it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 182/400 [00:21&lt;00:19, 11.31it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 184/400 [00:21&lt;00:19, 11.30it/s]</p>
-<p>ExactExplainer explainer:  46%|████▋     | 186/400 [00:21&lt;00:19, 11.17it/s]</p>
-<p>ExactExplainer explainer:  47%|████▋     | 188/400 [00:22&lt;00:18, 11.26it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 190/400 [00:22&lt;00:18, 11.33it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 192/400 [00:22&lt;00:18, 11.24it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 194/400 [00:22&lt;00:18, 11.30it/s]</p>
-<p>ExactExplainer explainer:  49%|████▉     | 196/400 [00:22&lt;00:18, 11.22it/s]</p>
-<p>ExactExplainer explainer:  50%|████▉     | 198/400 [00:22&lt;00:18, 11.04it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 200/400 [00:23&lt;00:18, 10.97it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 202/400 [00:23&lt;00:18, 10.99it/s]</p>
-<p>ExactExplainer explainer:  51%|█████     | 204/400 [00:23&lt;00:17, 11.04it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 206/400 [00:23&lt;00:17, 11.09it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 208/400 [00:23&lt;00:17, 11.11it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▎    | 210/400 [00:24&lt;00:17, 11.01it/s]</p>
-<p>ExactExplainer explainer:  53%|█████▎    | 212/400 [00:24&lt;00:17, 11.04it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▎    | 214/400 [00:24&lt;00:16, 10.97it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 216/400 [00:24&lt;00:16, 11.01it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▍    | 218/400 [00:24&lt;00:16, 11.12it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▌    | 220/400 [00:24&lt;00:16, 11.10it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 222/400 [00:25&lt;00:15, 11.14it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 224/400 [00:25&lt;00:15, 11.21it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▋    | 226/400 [00:25&lt;00:15, 11.13it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▋    | 228/400 [00:25&lt;00:15, 11.21it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▊    | 230/400 [00:25&lt;00:15, 11.10it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 232/400 [00:25&lt;00:15, 11.13it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 234/400 [00:26&lt;00:14, 11.14it/s]</p>
-<p>ExactExplainer explainer:  59%|█████▉    | 236/400 [00:26&lt;00:14, 11.13it/s]</p>
-<p>ExactExplainer explainer:  60%|█████▉    | 238/400 [00:26&lt;00:14, 10.90it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 240/400 [00:26&lt;00:14, 10.95it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 242/400 [00:26&lt;00:14, 10.95it/s]</p>
-<p>ExactExplainer explainer:  61%|██████    | 244/400 [00:27&lt;00:14, 10.99it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 246/400 [00:27&lt;00:13, 11.07it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 248/400 [00:27&lt;00:13, 11.11it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▎   | 250/400 [00:27&lt;00:13, 11.01it/s]</p>
-<p>ExactExplainer explainer:  63%|██████▎   | 252/400 [00:27&lt;00:13, 11.06it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▎   | 254/400 [00:27&lt;00:13, 11.06it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 256/400 [00:28&lt;00:12, 11.10it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 258/400 [00:28&lt;00:12, 11.18it/s]</p>
-<p>ExactExplainer explainer:  65%|██████▌   | 260/400 [00:28&lt;00:12, 11.19it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 262/400 [00:28&lt;00:12, 11.12it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 264/400 [00:28&lt;00:12, 11.10it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▋   | 266/400 [00:29&lt;00:12, 11.13it/s]</p>
-<p>ExactExplainer explainer:  67%|██████▋   | 268/400 [00:29&lt;00:11, 11.18it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 270/400 [00:29&lt;00:11, 11.25it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 272/400 [00:29&lt;00:11, 11.23it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 274/400 [00:29&lt;00:11, 11.07it/s]</p>
-<p>ExactExplainer explainer:  69%|██████▉   | 276/400 [00:29&lt;00:11, 11.05it/s]</p>
-<p>ExactExplainer explainer:  70%|██████▉   | 278/400 [00:30&lt;00:10, 11.19it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 280/400 [00:30&lt;00:10, 11.24it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 282/400 [00:30&lt;00:10, 11.13it/s]</p>
-<p>ExactExplainer explainer:  71%|███████   | 284/400 [00:30&lt;00:10, 11.18it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 286/400 [00:30&lt;00:10, 10.95it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 288/400 [00:31&lt;00:10, 10.98it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▎  | 290/400 [00:31&lt;00:09, 11.02it/s]</p>
-<p>ExactExplainer explainer:  73%|███████▎  | 292/400 [00:31&lt;00:09, 10.97it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▎  | 294/400 [00:31&lt;00:10,  9.83it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 296/400 [00:31&lt;00:11,  9.35it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 297/400 [00:32&lt;00:11,  8.98it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 298/400 [00:32&lt;00:11,  9.04it/s]</p>
-<p>ExactExplainer explainer:  75%|███████▌  | 300/400 [00:32&lt;00:10,  9.62it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 302/400 [00:32&lt;00:09,  9.99it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 304/400 [00:32&lt;00:09, 10.31it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▋  | 306/400 [00:32&lt;00:09, 10.44it/s]</p>
-<p>ExactExplainer explainer:  77%|███████▋  | 308/400 [00:33&lt;00:09,  9.91it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 310/400 [00:33&lt;00:08, 10.21it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 312/400 [00:33&lt;00:08, 10.49it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 314/400 [00:33&lt;00:08, 10.67it/s]</p>
-<p>ExactExplainer explainer:  79%|███████▉  | 316/400 [00:33&lt;00:07, 10.77it/s]</p>
-<p>ExactExplainer explainer:  80%|███████▉  | 318/400 [00:34&lt;00:07, 10.78it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 320/400 [00:34&lt;00:07, 10.90it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 322/400 [00:34&lt;00:07, 10.93it/s]</p>
-<p>ExactExplainer explainer:  81%|████████  | 324/400 [00:34&lt;00:07, 10.81it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 326/400 [00:34&lt;00:06, 10.85it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 328/400 [00:34&lt;00:06, 10.84it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▎ | 330/400 [00:35&lt;00:06, 10.76it/s]</p>
-<p>ExactExplainer explainer:  83%|████████▎ | 332/400 [00:35&lt;00:06, 10.83it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▎ | 334/400 [00:35&lt;00:06, 10.64it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 336/400 [00:35&lt;00:05, 10.68it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 338/400 [00:35&lt;00:05, 10.75it/s]</p>
-<p>ExactExplainer explainer:  85%|████████▌ | 340/400 [00:36&lt;00:05, 10.81it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 342/400 [00:36&lt;00:05, 10.71it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 344/400 [00:36&lt;00:05, 10.82it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▋ | 346/400 [00:36&lt;00:05, 10.73it/s]</p>
-<p>ExactExplainer explainer:  87%|████████▋ | 348/400 [00:36&lt;00:04, 10.67it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 350/400 [00:37&lt;00:04, 10.42it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 352/400 [00:37&lt;00:04, 10.46it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 354/400 [00:37&lt;00:04, 10.55it/s]</p>
-<p>ExactExplainer explainer:  89%|████████▉ | 356/400 [00:37&lt;00:04, 10.68it/s]</p>
-<p>ExactExplainer explainer:  90%|████████▉ | 358/400 [00:37&lt;00:03, 10.81it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 360/400 [00:37&lt;00:03, 10.85it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 362/400 [00:38&lt;00:03, 10.93it/s]</p>
-<p>ExactExplainer explainer:  91%|█████████ | 364/400 [00:38&lt;00:03, 10.86it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 366/400 [00:38&lt;00:03, 10.56it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 368/400 [00:38&lt;00:02, 10.68it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▎| 370/400 [00:38&lt;00:02, 10.68it/s]</p>
-<p>ExactExplainer explainer:  93%|█████████▎| 372/400 [00:39&lt;00:02, 10.70it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▎| 374/400 [00:39&lt;00:02, 10.82it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 376/400 [00:39&lt;00:02, 10.81it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 378/400 [00:39&lt;00:02, 10.81it/s]</p>
-<p>ExactExplainer explainer:  95%|█████████▌| 380/400 [00:39&lt;00:01, 10.77it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 382/400 [00:40&lt;00:01, 10.25it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 384/400 [00:40&lt;00:01,  9.96it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▋| 386/400 [00:40&lt;00:01, 10.10it/s]</p>
-<p>ExactExplainer explainer:  97%|█████████▋| 388/400 [00:40&lt;00:01, 10.23it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 390/400 [00:40&lt;00:00, 10.14it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 392/400 [00:40&lt;00:00, 10.13it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 394/400 [00:41&lt;00:00, 10.23it/s]</p>
-<p>ExactExplainer explainer:  99%|█████████▉| 396/400 [00:41&lt;00:00, 10.29it/s]</p>
-<p>ExactExplainer explainer: 100%|█████████▉| 398/400 [00:41&lt;00:00, 10.31it/s]</p>
-<p>ExactExplainer explainer: 100%|██████████| 400/400 [00:41&lt;00:00, 10.27it/s]</p>
-<p>ExactExplainer explainer: 401it [00:41,  8.50it/s]                         </p>
-<pre><code>/home/givasile/github/packages/effector/effector/global_effect_shap.py:516: RuntimeWarning: invalid value encountered in sqrt
-  np.sqrt(self.feature_effect["feature_" + str(feature)]["spline_std"](x))
-</code></pre>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_20_181.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_20_181.png"></a></p>
+<p>ExactExplainer explainer:  14%|█▍        | 57/400 [00:00&lt;?, ?it/s]</p>
+<p>ExactExplainer explainer:  15%|█▌        | 60/400 [00:10&lt;00:17, 19.35it/s]</p>
+<p>ExactExplainer explainer:  16%|█▌        | 62/400 [00:10&lt;00:21, 15.53it/s]</p>
+<p>ExactExplainer explainer:  16%|█▌        | 64/400 [00:10&lt;00:23, 14.37it/s]</p>
+<p>ExactExplainer explainer:  16%|█▋        | 66/400 [00:10&lt;00:24, 13.59it/s]</p>
+<p>ExactExplainer explainer:  17%|█▋        | 68/400 [00:10&lt;00:24, 13.41it/s]</p>
+<p>ExactExplainer explainer:  18%|█▊        | 70/400 [00:10&lt;00:24, 13.46it/s]</p>
+<p>ExactExplainer explainer:  18%|█▊        | 72/400 [00:11&lt;00:24, 13.35it/s]</p>
+<p>ExactExplainer explainer:  18%|█▊        | 74/400 [00:11&lt;00:24, 13.10it/s]</p>
+<p>ExactExplainer explainer:  19%|█▉        | 76/400 [00:11&lt;00:24, 13.16it/s]</p>
+<p>ExactExplainer explainer:  20%|█▉        | 78/400 [00:11&lt;00:24, 13.17it/s]</p>
+<p>ExactExplainer explainer:  20%|██        | 80/400 [00:11&lt;00:24, 13.26it/s]</p>
+<p>ExactExplainer explainer:  20%|██        | 82/400 [00:11&lt;00:24, 13.15it/s]</p>
+<p>ExactExplainer explainer:  21%|██        | 84/400 [00:12&lt;00:24, 13.16it/s]</p>
+<p>ExactExplainer explainer:  22%|██▏       | 86/400 [00:12&lt;00:24, 13.08it/s]</p>
+<p>ExactExplainer explainer:  22%|██▏       | 88/400 [00:12&lt;00:23, 13.13it/s]</p>
+<p>ExactExplainer explainer:  22%|██▎       | 90/400 [00:12&lt;00:23, 13.09it/s]</p>
+<p>ExactExplainer explainer:  23%|██▎       | 92/400 [00:12&lt;00:23, 13.17it/s]</p>
+<p>ExactExplainer explainer:  24%|██▎       | 94/400 [00:12&lt;00:23, 13.28it/s]</p>
+<p>ExactExplainer explainer:  24%|██▍       | 96/400 [00:12&lt;00:22, 13.28it/s]</p>
+<p>ExactExplainer explainer:  24%|██▍       | 98/400 [00:13&lt;00:22, 13.22it/s]</p>
+<p>ExactExplainer explainer:  25%|██▌       | 100/400 [00:13&lt;00:22, 13.12it/s]</p>
+<p>ExactExplainer explainer:  26%|██▌       | 102/400 [00:13&lt;00:22, 13.19it/s]</p>
+<p>ExactExplainer explainer:  26%|██▌       | 104/400 [00:13&lt;00:22, 13.26it/s]</p>
+<p>ExactExplainer explainer:  26%|██▋       | 106/400 [00:13&lt;00:22, 13.17it/s]</p>
+<p>ExactExplainer explainer:  27%|██▋       | 108/400 [00:13&lt;00:22, 12.84it/s]</p>
+<p>ExactExplainer explainer:  28%|██▊       | 110/400 [00:14&lt;00:22, 12.96it/s]</p>
+<p>ExactExplainer explainer:  28%|██▊       | 112/400 [00:14&lt;00:21, 13.10it/s]</p>
+<p>ExactExplainer explainer:  28%|██▊       | 114/400 [00:14&lt;00:22, 12.91it/s]</p>
+<p>ExactExplainer explainer:  29%|██▉       | 116/400 [00:14&lt;00:21, 13.08it/s]</p>
+<p>ExactExplainer explainer:  30%|██▉       | 118/400 [00:14&lt;00:21, 13.15it/s]</p>
+<p>ExactExplainer explainer:  30%|███       | 120/400 [00:14&lt;00:21, 13.16it/s]</p>
+<p>ExactExplainer explainer:  30%|███       | 122/400 [00:14&lt;00:21, 13.07it/s]</p>
+<p>ExactExplainer explainer:  31%|███       | 124/400 [00:15&lt;00:21, 13.08it/s]</p>
+<p>ExactExplainer explainer:  32%|███▏      | 126/400 [00:15&lt;00:20, 13.09it/s]</p>
+<p>ExactExplainer explainer:  32%|███▏      | 128/400 [00:15&lt;00:20, 12.99it/s]</p>
+<p>ExactExplainer explainer:  32%|███▎      | 130/400 [00:15&lt;00:20, 12.92it/s]</p>
+<p>ExactExplainer explainer:  33%|███▎      | 132/400 [00:15&lt;00:20, 13.04it/s]</p>
+<p>ExactExplainer explainer:  34%|███▎      | 134/400 [00:15&lt;00:20, 13.14it/s]</p>
+<p>ExactExplainer explainer:  34%|███▍      | 136/400 [00:16&lt;00:20, 13.05it/s]</p>
+<p>ExactExplainer explainer:  34%|███▍      | 138/400 [00:16&lt;00:20, 13.07it/s]</p>
+<p>ExactExplainer explainer:  35%|███▌      | 140/400 [00:16&lt;00:19, 13.16it/s]</p>
+<p>ExactExplainer explainer:  36%|███▌      | 142/400 [00:16&lt;00:19, 13.09it/s]</p>
+<p>ExactExplainer explainer:  36%|███▌      | 144/400 [00:16&lt;00:19, 13.09it/s]</p>
+<p>ExactExplainer explainer:  36%|███▋      | 146/400 [00:16&lt;00:19, 13.10it/s]</p>
+<p>ExactExplainer explainer:  37%|███▋      | 148/400 [00:16&lt;00:19, 13.13it/s]</p>
+<p>ExactExplainer explainer:  38%|███▊      | 150/400 [00:17&lt;00:19, 13.07it/s]</p>
+<p>ExactExplainer explainer:  38%|███▊      | 152/400 [00:17&lt;00:18, 13.08it/s]</p>
+<p>ExactExplainer explainer:  38%|███▊      | 154/400 [00:17&lt;00:18, 13.11it/s]</p>
+<p>ExactExplainer explainer:  39%|███▉      | 156/400 [00:17&lt;00:18, 13.02it/s]</p>
+<p>ExactExplainer explainer:  40%|███▉      | 158/400 [00:17&lt;00:18, 13.10it/s]</p>
+<p>ExactExplainer explainer:  40%|████      | 160/400 [00:17&lt;00:18, 13.18it/s]</p>
+<p>ExactExplainer explainer:  40%|████      | 162/400 [00:17&lt;00:18, 12.99it/s]</p>
+<p>ExactExplainer explainer:  41%|████      | 164/400 [00:18&lt;00:18, 12.97it/s]</p>
+<p>ExactExplainer explainer:  42%|████▏     | 166/400 [00:18&lt;00:18, 13.00it/s]</p>
+<p>ExactExplainer explainer:  42%|████▏     | 168/400 [00:18&lt;00:17, 13.03it/s]</p>
+<p>ExactExplainer explainer:  42%|████▎     | 170/400 [00:18&lt;00:17, 12.94it/s]</p>
+<p>ExactExplainer explainer:  43%|████▎     | 172/400 [00:18&lt;00:17, 13.03it/s]</p>
+<p>ExactExplainer explainer:  44%|████▎     | 174/400 [00:18&lt;00:17, 13.03it/s]</p>
+<p>ExactExplainer explainer:  44%|████▍     | 176/400 [00:19&lt;00:17, 12.98it/s]</p>
+<p>ExactExplainer explainer:  44%|████▍     | 178/400 [00:19&lt;00:17, 12.75it/s]</p>
+<p>ExactExplainer explainer:  45%|████▌     | 180/400 [00:19&lt;00:17, 12.60it/s]</p>
+<p>ExactExplainer explainer:  46%|████▌     | 182/400 [00:19&lt;00:17, 12.61it/s]</p>
+<p>ExactExplainer explainer:  46%|████▌     | 184/400 [00:19&lt;00:17, 12.57it/s]</p>
+<p>ExactExplainer explainer:  46%|████▋     | 186/400 [00:19&lt;00:16, 12.60it/s]</p>
+<p>ExactExplainer explainer:  47%|████▋     | 188/400 [00:20&lt;00:16, 12.61it/s]</p>
+<p>ExactExplainer explainer:  48%|████▊     | 190/400 [00:20&lt;00:16, 12.69it/s]</p>
+<p>ExactExplainer explainer:  48%|████▊     | 192/400 [00:20&lt;00:16, 12.75it/s]</p>
+<p>ExactExplainer explainer:  48%|████▊     | 194/400 [00:20&lt;00:16, 12.77it/s]</p>
+<p>ExactExplainer explainer:  49%|████▉     | 196/400 [00:20&lt;00:16, 12.69it/s]</p>
+<p>ExactExplainer explainer:  50%|████▉     | 198/400 [00:20&lt;00:16, 12.39it/s]</p>
+<p>ExactExplainer explainer:  50%|█████     | 200/400 [00:20&lt;00:16, 12.35it/s]</p>
+<p>ExactExplainer explainer:  50%|█████     | 202/400 [00:21&lt;00:16, 12.37it/s]</p>
+<p>ExactExplainer explainer:  51%|█████     | 204/400 [00:21&lt;00:15, 12.35it/s]</p>
+<p>ExactExplainer explainer:  52%|█████▏    | 206/400 [00:21&lt;00:15, 12.46it/s]</p>
+<p>ExactExplainer explainer:  52%|█████▏    | 208/400 [00:21&lt;00:15, 12.51it/s]</p>
+<p>ExactExplainer explainer:  52%|█████▎    | 210/400 [00:21&lt;00:15, 12.46it/s]</p>
+<p>ExactExplainer explainer:  53%|█████▎    | 212/400 [00:21&lt;00:14, 12.58it/s]</p>
+<p>ExactExplainer explainer:  54%|█████▎    | 214/400 [00:22&lt;00:14, 12.63it/s]</p>
+<p>ExactExplainer explainer:  54%|█████▍    | 216/400 [00:22&lt;00:14, 12.69it/s]</p>
+<p>ExactExplainer explainer:  55%|█████▍    | 218/400 [00:22&lt;00:14, 12.72it/s]</p>
+<p>ExactExplainer explainer:  55%|█████▌    | 220/400 [00:22&lt;00:14, 12.66it/s]</p>
+<p>ExactExplainer explainer:  56%|█████▌    | 222/400 [00:22&lt;00:14, 12.38it/s]</p>
+<p>ExactExplainer explainer:  56%|█████▌    | 224/400 [00:22&lt;00:14, 12.21it/s]</p>
+<p>ExactExplainer explainer:  56%|█████▋    | 226/400 [00:23&lt;00:14, 12.32it/s]</p>
+<p>ExactExplainer explainer:  57%|█████▋    | 228/400 [00:23&lt;00:13, 12.42it/s]</p>
+<p>ExactExplainer explainer:  57%|█████▊    | 230/400 [00:23&lt;00:13, 12.63it/s]</p>
+<p>ExactExplainer explainer:  58%|█████▊    | 232/400 [00:23&lt;00:13, 12.78it/s]</p>
+<p>ExactExplainer explainer:  58%|█████▊    | 234/400 [00:23&lt;00:13, 12.73it/s]</p>
+<p>ExactExplainer explainer:  59%|█████▉    | 236/400 [00:23&lt;00:12, 12.68it/s]</p>
+<p>ExactExplainer explainer:  60%|█████▉    | 238/400 [00:24&lt;00:12, 12.55it/s]</p>
+<p>ExactExplainer explainer:  60%|██████    | 240/400 [00:24&lt;00:12, 12.59it/s]</p>
+<p>ExactExplainer explainer:  60%|██████    | 242/400 [00:24&lt;00:12, 12.60it/s]</p>
+<p>ExactExplainer explainer:  61%|██████    | 244/400 [00:24&lt;00:12, 12.59it/s]</p>
+<p>ExactExplainer explainer:  62%|██████▏   | 246/400 [00:24&lt;00:12, 12.51it/s]</p>
+<p>ExactExplainer explainer:  62%|██████▏   | 248/400 [00:24&lt;00:12, 12.55it/s]</p>
+<p>ExactExplainer explainer:  62%|██████▎   | 250/400 [00:24&lt;00:12, 12.41it/s]</p>
+<p>ExactExplainer explainer:  63%|██████▎   | 252/400 [00:25&lt;00:11, 12.64it/s]</p>
+<p>ExactExplainer explainer:  64%|██████▎   | 254/400 [00:25&lt;00:11, 12.67it/s]</p>
+<p>ExactExplainer explainer:  64%|██████▍   | 256/400 [00:25&lt;00:11, 12.71it/s]</p>
+<p>ExactExplainer explainer:  64%|██████▍   | 258/400 [00:25&lt;00:11, 12.64it/s]</p>
+<p>ExactExplainer explainer:  65%|██████▌   | 260/400 [00:25&lt;00:11, 12.63it/s]</p>
+<p>ExactExplainer explainer:  66%|██████▌   | 262/400 [00:25&lt;00:11, 11.96it/s]</p>
+<p>ExactExplainer explainer:  66%|██████▌   | 264/400 [00:26&lt;00:11, 11.76it/s]</p>
+<p>ExactExplainer explainer:  66%|██████▋   | 266/400 [00:26&lt;00:11, 11.77it/s]</p>
+<p>ExactExplainer explainer:  67%|██████▋   | 268/400 [00:26&lt;00:11, 11.93it/s]</p>
+<p>ExactExplainer explainer:  68%|██████▊   | 270/400 [00:26&lt;00:10, 12.13it/s]</p>
+<p>ExactExplainer explainer:  68%|██████▊   | 272/400 [00:26&lt;00:10, 12.34it/s]</p>
+<p>ExactExplainer explainer:  68%|██████▊   | 274/400 [00:26&lt;00:10, 12.46it/s]</p>
+<p>ExactExplainer explainer:  69%|██████▉   | 276/400 [00:27&lt;00:10, 12.23it/s]</p>
+<p>ExactExplainer explainer:  70%|██████▉   | 278/400 [00:27&lt;00:09, 12.24it/s]</p>
+<p>ExactExplainer explainer:  70%|███████   | 280/400 [00:27&lt;00:09, 12.37it/s]</p>
+<p>ExactExplainer explainer:  70%|███████   | 282/400 [00:27&lt;00:09, 12.39it/s]</p>
+<p>ExactExplainer explainer:  71%|███████   | 284/400 [00:27&lt;00:09, 12.44it/s]</p>
+<p>ExactExplainer explainer:  72%|███████▏  | 286/400 [00:27&lt;00:09, 12.34it/s]</p>
+<p>ExactExplainer explainer:  72%|███████▏  | 288/400 [00:28&lt;00:09, 12.39it/s]</p>
+<p>ExactExplainer explainer:  72%|███████▎  | 290/400 [00:28&lt;00:08, 12.37it/s]</p>
+<p>ExactExplainer explainer:  73%|███████▎  | 292/400 [00:28&lt;00:08, 12.51it/s]</p>
+<p>ExactExplainer explainer:  74%|███████▎  | 294/400 [00:28&lt;00:08, 12.61it/s]</p>
+<p>ExactExplainer explainer:  74%|███████▍  | 296/400 [00:28&lt;00:08, 12.66it/s]</p>
+<p>ExactExplainer explainer:  74%|███████▍  | 298/400 [00:28&lt;00:08, 12.43it/s]</p>
+<p>ExactExplainer explainer:  75%|███████▌  | 300/400 [00:29&lt;00:08, 12.38it/s]</p>
+<p>ExactExplainer explainer:  76%|███████▌  | 302/400 [00:29&lt;00:07, 12.33it/s]</p>
+<p>ExactExplainer explainer:  76%|███████▌  | 304/400 [00:29&lt;00:07, 12.41it/s]</p>
+<p>ExactExplainer explainer:  76%|███████▋  | 306/400 [00:29&lt;00:07, 12.57it/s]</p>
+<p>ExactExplainer explainer:  77%|███████▋  | 308/400 [00:29&lt;00:07, 12.41it/s]</p>
+<p>ExactExplainer explainer:  78%|███████▊  | 310/400 [00:29&lt;00:07, 12.50it/s]</p>
+<p>ExactExplainer explainer:  78%|███████▊  | 312/400 [00:29&lt;00:06, 12.63it/s]</p>
+<p>ExactExplainer explainer:  78%|███████▊  | 314/400 [00:30&lt;00:06, 12.39it/s]</p>
+<p>ExactExplainer explainer:  79%|███████▉  | 316/400 [00:30&lt;00:06, 12.32it/s]</p>
+<p>ExactExplainer explainer:  80%|███████▉  | 318/400 [00:30&lt;00:06, 12.41it/s]</p>
+<p>ExactExplainer explainer:  80%|████████  | 320/400 [00:30&lt;00:06, 12.46it/s]</p>
+<p>ExactExplainer explainer:  80%|████████  | 322/400 [00:30&lt;00:06, 12.43it/s]</p>
+<p>ExactExplainer explainer:  81%|████████  | 324/400 [00:30&lt;00:06, 12.53it/s]</p>
+<p>ExactExplainer explainer:  82%|████████▏ | 326/400 [00:31&lt;00:06, 12.23it/s]</p>
+<p>ExactExplainer explainer:  82%|████████▏ | 328/400 [00:31&lt;00:06, 11.76it/s]</p>
+<p>ExactExplainer explainer:  82%|████████▎ | 330/400 [00:31&lt;00:06, 11.56it/s]</p>
+<p>ExactExplainer explainer:  83%|████████▎ | 332/400 [00:31&lt;00:05, 11.75it/s]</p>
+<p>ExactExplainer explainer:  84%|████████▎ | 334/400 [00:31&lt;00:05, 11.92it/s]</p>
+<p>ExactExplainer explainer:  84%|████████▍ | 336/400 [00:31&lt;00:05, 12.05it/s]</p>
+<p>ExactExplainer explainer:  84%|████████▍ | 338/400 [00:32&lt;00:05, 12.11it/s]</p>
+<p>ExactExplainer explainer:  85%|████████▌ | 340/400 [00:32&lt;00:04, 12.20it/s]</p>
+<p>ExactExplainer explainer:  86%|████████▌ | 342/400 [00:32&lt;00:04, 12.16it/s]</p>
+<p>ExactExplainer explainer:  86%|████████▌ | 344/400 [00:32&lt;00:04, 12.31it/s]</p>
+<p>ExactExplainer explainer:  86%|████████▋ | 346/400 [00:32&lt;00:04, 12.32it/s]</p>
+<p>ExactExplainer explainer:  87%|████████▋ | 348/400 [00:32&lt;00:04, 12.41it/s]</p>
+<p>ExactExplainer explainer:  88%|████████▊ | 350/400 [00:33&lt;00:04, 12.43it/s]</p>
+<p>ExactExplainer explainer:  88%|████████▊ | 352/400 [00:33&lt;00:03, 12.27it/s]</p>
+<p>ExactExplainer explainer:  88%|████████▊ | 354/400 [00:33&lt;00:03, 12.16it/s]</p>
+<p>ExactExplainer explainer:  89%|████████▉ | 356/400 [00:33&lt;00:03, 12.26it/s]</p>
+<p>ExactExplainer explainer:  90%|████████▉ | 358/400 [00:33&lt;00:03, 12.39it/s]</p>
+<p>ExactExplainer explainer:  90%|█████████ | 360/400 [00:33&lt;00:03, 12.51it/s]</p>
+<p>ExactExplainer explainer:  90%|█████████ | 362/400 [00:34&lt;00:03, 12.58it/s]</p>
+<p>ExactExplainer explainer:  91%|█████████ | 364/400 [00:34&lt;00:02, 12.44it/s]</p>
+<p>ExactExplainer explainer:  92%|█████████▏| 366/400 [00:34&lt;00:02, 12.41it/s]</p>
+<p>ExactExplainer explainer:  92%|█████████▏| 368/400 [00:34&lt;00:02, 12.28it/s]</p>
+<p>ExactExplainer explainer:  92%|█████████▎| 370/400 [00:34&lt;00:02, 12.31it/s]</p>
+<p>ExactExplainer explainer:  93%|█████████▎| 372/400 [00:34&lt;00:02, 12.32it/s]</p>
+<p>ExactExplainer explainer:  94%|█████████▎| 374/400 [00:35&lt;00:02, 12.34it/s]</p>
+<p>ExactExplainer explainer:  94%|█████████▍| 376/400 [00:35&lt;00:01, 12.31it/s]</p>
+<p>ExactExplainer explainer:  94%|█████████▍| 378/400 [00:35&lt;00:01, 12.34it/s]</p>
+<p>ExactExplainer explainer:  95%|█████████▌| 380/400 [00:35&lt;00:01, 12.31it/s]</p>
+<p>ExactExplainer explainer:  96%|█████████▌| 382/400 [00:35&lt;00:01, 12.34it/s]</p>
+<p>ExactExplainer explainer:  96%|█████████▌| 384/400 [00:35&lt;00:01, 12.38it/s]</p>
+<p>ExactExplainer explainer:  96%|█████████▋| 386/400 [00:36&lt;00:01, 12.52it/s]</p>
+<p>ExactExplainer explainer:  97%|█████████▋| 388/400 [00:36&lt;00:00, 12.55it/s]</p>
+<p>ExactExplainer explainer:  98%|█████████▊| 390/400 [00:36&lt;00:00, 12.46it/s]</p>
+<p>ExactExplainer explainer:  98%|█████████▊| 392/400 [00:36&lt;00:00, 12.56it/s]</p>
+<p>ExactExplainer explainer:  98%|█████████▊| 394/400 [00:36&lt;00:00, 12.48it/s]</p>
+<p>ExactExplainer explainer:  99%|█████████▉| 396/400 [00:36&lt;00:00, 12.37it/s]</p>
+<p>ExactExplainer explainer: 100%|█████████▉| 398/400 [00:36&lt;00:00, 12.52it/s]</p>
+<p>ExactExplainer explainer: 100%|██████████| 400/400 [00:37&lt;00:00, 12.59it/s]</p>
+<p>ExactExplainer explainer: 401it [00:37,  9.25it/s]                         </p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_20_174.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_20_174.png"></a></p>
 <h3 id="conclusion">Conclusion</h3>
 <p>All methods consistently indicate that <code>NO₂</code> concentration decreases as <code>wind speed</code> increases. This aligns with physical intuition: higher wind speeds help disperse pollutants more effectively.</p>
 <p>The steepest drop occurs at low to moderate wind speeds, where even small increases in wind can significantly improve dispersion.</p>
@@ -1049,8 +1039,8 @@ The model achieves a root mean squared error on the test of about <span class="a
 <span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
 <p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  4.82it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  4.80it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  5.83it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  5.80it/s]</p>
 <pre><code>Feature 2 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
@@ -1089,8 +1079,8 @@ Level 0🔹heter: 0.04
 <span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
 <p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.14it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.14it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.16it/s]</p>
+<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.16it/s]</p>
 <pre><code>Feature 2 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
@@ -1128,783 +1118,420 @@ Level 0🔹heter: 0.01
 <span class="n">regional_shap_dp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
 <p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  25%|██▌       | 101/400 [00:00&lt;?, ?it/s]</p>
+<p>ExactExplainer explainer:  32%|███▏      | 128/400 [00:00&lt;?, ?it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  26%|██▌       | 103/400 [00:10&lt;00:15, 19.56it/s]</p>
+<p>ExactExplainer explainer:  33%|███▎      | 131/400 [00:10&lt;00:15, 17.03it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  26%|██▋       | 105/400 [00:10&lt;00:23, 12.31it/s]</p>
+<p>ExactExplainer explainer:  33%|███▎      | 133/400 [00:10&lt;00:19, 13.71it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  27%|██▋       | 107/400 [00:10&lt;00:25, 11.29it/s]</p>
+<p>ExactExplainer explainer:  34%|███▍      | 135/400 [00:10&lt;00:20, 13.00it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  27%|██▋       | 109/400 [00:10&lt;00:26, 10.87it/s]</p>
+<p>ExactExplainer explainer:  34%|███▍      | 137/400 [00:10&lt;00:20, 12.87it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  28%|██▊       | 111/400 [00:10&lt;00:27, 10.44it/s]</p>
+<p>ExactExplainer explainer:  35%|███▍      | 139/400 [00:10&lt;00:20, 12.74it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  28%|██▊       | 113/400 [00:11&lt;00:27, 10.46it/s]</p>
+<p>ExactExplainer explainer:  35%|███▌      | 141/400 [00:11&lt;00:20, 12.74it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  29%|██▉       | 115/400 [00:11&lt;00:27, 10.36it/s]</p>
+<p>ExactExplainer explainer:  36%|███▌      | 143/400 [00:11&lt;00:20, 12.58it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  29%|██▉       | 117/400 [00:11&lt;00:27, 10.23it/s]</p>
+<p>ExactExplainer explainer:  36%|███▋      | 145/400 [00:11&lt;00:20, 12.57it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  30%|██▉       | 119/400 [00:11&lt;00:27, 10.34it/s]</p>
+<p>ExactExplainer explainer:  37%|███▋      | 147/400 [00:11&lt;00:20, 12.60it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  30%|███       | 121/400 [00:11&lt;00:27, 10.06it/s]</p>
+<p>ExactExplainer explainer:  37%|███▋      | 149/400 [00:11&lt;00:19, 12.68it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  31%|███       | 123/400 [00:12&lt;00:27, 10.03it/s]</p>
+<p>ExactExplainer explainer:  38%|███▊      | 151/400 [00:11&lt;00:19, 12.70it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  31%|███▏      | 125/400 [00:12&lt;00:27,  9.86it/s]</p>
+<p>ExactExplainer explainer:  38%|███▊      | 153/400 [00:11&lt;00:19, 12.66it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  32%|███▏      | 127/400 [00:12&lt;00:27, 10.08it/s]</p>
+<p>ExactExplainer explainer:  39%|███▉      | 155/400 [00:12&lt;00:19, 12.70it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  32%|███▏      | 129/400 [00:12&lt;00:27, 10.04it/s]</p>
+<p>ExactExplainer explainer:  39%|███▉      | 157/400 [00:12&lt;00:19, 12.52it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  33%|███▎      | 131/400 [00:12&lt;00:27,  9.88it/s]</p>
+<p>ExactExplainer explainer:  40%|███▉      | 159/400 [00:12&lt;00:19, 12.62it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  33%|███▎      | 133/400 [00:13&lt;00:26, 10.04it/s]</p>
+<p>ExactExplainer explainer:  40%|████      | 161/400 [00:12&lt;00:18, 12.60it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  34%|███▍      | 135/400 [00:13&lt;00:26,  9.91it/s]</p>
+<p>ExactExplainer explainer:  41%|████      | 163/400 [00:12&lt;00:18, 12.58it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  34%|███▍      | 137/400 [00:13&lt;00:25, 10.15it/s]</p>
+<p>ExactExplainer explainer:  41%|████▏     | 165/400 [00:12&lt;00:18, 12.53it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  35%|███▍      | 139/400 [00:13&lt;00:25, 10.26it/s]</p>
+<p>ExactExplainer explainer:  42%|████▏     | 167/400 [00:13&lt;00:18, 12.55it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  35%|███▌      | 141/400 [00:13&lt;00:25,  9.98it/s]</p>
+<p>ExactExplainer explainer:  42%|████▏     | 169/400 [00:13&lt;00:18, 12.49it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  36%|███▌      | 143/400 [00:14&lt;00:25, 10.14it/s]</p>
+<p>ExactExplainer explainer:  43%|████▎     | 171/400 [00:13&lt;00:18, 12.43it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  36%|███▋      | 145/400 [00:14&lt;00:25, 10.06it/s]</p>
+<p>ExactExplainer explainer:  43%|████▎     | 173/400 [00:13&lt;00:18, 12.50it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  37%|███▋      | 147/400 [00:14&lt;00:25,  9.96it/s]</p>
+<p>ExactExplainer explainer:  44%|████▍     | 175/400 [00:13&lt;00:17, 12.62it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  37%|███▋      | 149/400 [00:14&lt;00:25,  9.86it/s]</p>
+<p>ExactExplainer explainer:  44%|████▍     | 177/400 [00:13&lt;00:17, 12.56it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  38%|███▊      | 150/400 [00:14&lt;00:25,  9.83it/s]</p>
+<p>ExactExplainer explainer:  45%|████▍     | 179/400 [00:14&lt;00:17, 12.61it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  38%|███▊      | 152/400 [00:15&lt;00:24,  9.96it/s]</p>
+<p>ExactExplainer explainer:  45%|████▌     | 181/400 [00:14&lt;00:17, 12.65it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  38%|███▊      | 153/400 [00:15&lt;00:24,  9.95it/s]</p>
+<p>ExactExplainer explainer:  46%|████▌     | 183/400 [00:14&lt;00:17, 12.40it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  38%|███▊      | 154/400 [00:15&lt;00:24,  9.90it/s]</p>
+<p>ExactExplainer explainer:  46%|████▋     | 185/400 [00:14&lt;00:17, 12.16it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  39%|███▉      | 156/400 [00:15&lt;00:23, 10.18it/s]</p>
+<p>ExactExplainer explainer:  47%|████▋     | 187/400 [00:14&lt;00:17, 12.06it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  40%|███▉      | 158/400 [00:15&lt;00:23, 10.10it/s]</p>
+<p>ExactExplainer explainer:  47%|████▋     | 189/400 [00:14&lt;00:17, 12.11it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  40%|████      | 160/400 [00:15&lt;00:25,  9.43it/s]</p>
+<p>ExactExplainer explainer:  48%|████▊     | 191/400 [00:15&lt;00:17, 12.25it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  40%|████      | 161/400 [00:16&lt;00:26,  9.00it/s]</p>
+<p>ExactExplainer explainer:  48%|████▊     | 193/400 [00:15&lt;00:16, 12.30it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  40%|████      | 162/400 [00:16&lt;00:26,  9.06it/s]</p>
+<p>ExactExplainer explainer:  49%|████▉     | 195/400 [00:15&lt;00:16, 12.28it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  41%|████      | 163/400 [00:16&lt;00:27,  8.65it/s]</p>
+<p>ExactExplainer explainer:  49%|████▉     | 197/400 [00:15&lt;00:16, 12.14it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  41%|████      | 164/400 [00:16&lt;00:28,  8.36it/s]</p>
+<p>ExactExplainer explainer:  50%|████▉     | 199/400 [00:15&lt;00:16, 12.19it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  41%|████▏     | 165/400 [00:16&lt;00:28,  8.11it/s]</p>
+<p>ExactExplainer explainer:  50%|█████     | 201/400 [00:15&lt;00:16, 12.28it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  42%|████▏     | 166/400 [00:16&lt;00:29,  7.97it/s]</p>
+<p>ExactExplainer explainer:  51%|█████     | 203/400 [00:16&lt;00:15, 12.36it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  42%|████▏     | 167/400 [00:16&lt;00:29,  8.02it/s]</p>
+<p>ExactExplainer explainer:  51%|█████▏    | 205/400 [00:16&lt;00:16, 12.12it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  42%|████▏     | 168/400 [00:16&lt;00:28,  8.20it/s]</p>
+<p>ExactExplainer explainer:  52%|█████▏    | 207/400 [00:16&lt;00:15, 12.18it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  42%|████▏     | 169/400 [00:17&lt;00:27,  8.40it/s]</p>
+<p>ExactExplainer explainer:  52%|█████▏    | 209/400 [00:16&lt;00:15, 12.17it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  42%|████▎     | 170/400 [00:17&lt;00:26,  8.58it/s]</p>
+<p>ExactExplainer explainer:  53%|█████▎    | 211/400 [00:16&lt;00:15, 11.96it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  43%|████▎     | 171/400 [00:17&lt;00:26,  8.65it/s]</p>
+<p>ExactExplainer explainer:  53%|█████▎    | 213/400 [00:16&lt;00:15, 12.00it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  43%|████▎     | 172/400 [00:17&lt;00:25,  8.87it/s]</p>
+<p>ExactExplainer explainer:  54%|█████▍    | 215/400 [00:17&lt;00:15, 11.97it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  43%|████▎     | 173/400 [00:17&lt;00:24,  9.18it/s]</p>
+<p>ExactExplainer explainer:  54%|█████▍    | 217/400 [00:17&lt;00:15, 11.96it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  44%|████▎     | 174/400 [00:17&lt;00:24,  9.23it/s]</p>
+<p>ExactExplainer explainer:  55%|█████▍    | 219/400 [00:17&lt;00:15, 12.00it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  44%|████▍     | 175/400 [00:17&lt;00:25,  8.85it/s]</p>
+<p>ExactExplainer explainer:  55%|█████▌    | 221/400 [00:17&lt;00:14, 12.04it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  44%|████▍     | 176/400 [00:17&lt;00:24,  8.99it/s]</p>
+<p>ExactExplainer explainer:  56%|█████▌    | 223/400 [00:17&lt;00:14, 12.04it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  44%|████▍     | 177/400 [00:17&lt;00:24,  9.13it/s]</p>
+<p>ExactExplainer explainer:  56%|█████▋    | 225/400 [00:17&lt;00:14, 12.04it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  44%|████▍     | 178/400 [00:17&lt;00:24,  9.15it/s]</p>
+<p>ExactExplainer explainer:  57%|█████▋    | 227/400 [00:18&lt;00:14, 12.16it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  45%|████▍     | 179/400 [00:18&lt;00:24,  8.98it/s]</p>
+<p>ExactExplainer explainer:  57%|█████▋    | 229/400 [00:18&lt;00:13, 12.24it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  45%|████▌     | 180/400 [00:18&lt;00:24,  8.85it/s]</p>
+<p>ExactExplainer explainer:  58%|█████▊    | 231/400 [00:18&lt;00:13, 12.32it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  45%|████▌     | 181/400 [00:18&lt;00:25,  8.73it/s]</p>
+<p>ExactExplainer explainer:  58%|█████▊    | 233/400 [00:18&lt;00:13, 12.35it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  46%|████▌     | 182/400 [00:18&lt;00:25,  8.44it/s]</p>
+<p>ExactExplainer explainer:  59%|█████▉    | 235/400 [00:18&lt;00:13, 12.28it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  46%|████▌     | 183/400 [00:18&lt;00:26,  8.05it/s]</p>
+<p>ExactExplainer explainer:  59%|█████▉    | 237/400 [00:18&lt;00:13, 12.29it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  46%|████▌     | 184/400 [00:18&lt;00:27,  7.94it/s]</p>
+<p>ExactExplainer explainer:  60%|█████▉    | 239/400 [00:18&lt;00:13, 12.38it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  46%|████▋     | 185/400 [00:18&lt;00:26,  8.01it/s]</p>
+<p>ExactExplainer explainer:  60%|██████    | 241/400 [00:19&lt;00:12, 12.28it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  46%|████▋     | 186/400 [00:18&lt;00:25,  8.33it/s]</p>
+<p>ExactExplainer explainer:  61%|██████    | 243/400 [00:19&lt;00:12, 12.33it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  47%|████▋     | 187/400 [00:19&lt;00:24,  8.56it/s]</p>
+<p>ExactExplainer explainer:  61%|██████▏   | 245/400 [00:19&lt;00:12, 12.30it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  47%|████▋     | 188/400 [00:19&lt;00:24,  8.77it/s]</p>
+<p>ExactExplainer explainer:  62%|██████▏   | 247/400 [00:19&lt;00:12, 12.05it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  47%|████▋     | 189/400 [00:19&lt;00:23,  9.08it/s]</p>
+<p>ExactExplainer explainer:  62%|██████▏   | 249/400 [00:19&lt;00:12, 11.89it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  48%|████▊     | 190/400 [00:19&lt;00:22,  9.25it/s]</p>
+<p>ExactExplainer explainer:  63%|██████▎   | 251/400 [00:19&lt;00:12, 12.03it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  48%|████▊     | 191/400 [00:19&lt;00:22,  9.44it/s]</p>
+<p>ExactExplainer explainer:  63%|██████▎   | 253/400 [00:20&lt;00:12, 12.08it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  48%|████▊     | 192/400 [00:19&lt;00:22,  9.24it/s]</p>
+<p>ExactExplainer explainer:  64%|██████▍   | 255/400 [00:20&lt;00:11, 12.19it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  48%|████▊     | 193/400 [00:19&lt;00:22,  9.21it/s]</p>
+<p>ExactExplainer explainer:  64%|██████▍   | 257/400 [00:20&lt;00:11, 12.25it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  48%|████▊     | 194/400 [00:19&lt;00:22,  9.24it/s]</p>
+<p>ExactExplainer explainer:  65%|██████▍   | 259/400 [00:20&lt;00:11, 12.32it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  49%|████▉     | 195/400 [00:19&lt;00:22,  9.31it/s]</p>
+<p>ExactExplainer explainer:  65%|██████▌   | 261/400 [00:20&lt;00:11, 12.26it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  49%|████▉     | 196/400 [00:20&lt;00:22,  9.25it/s]</p>
+<p>ExactExplainer explainer:  66%|██████▌   | 263/400 [00:20&lt;00:11, 12.34it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  49%|████▉     | 197/400 [00:20&lt;00:21,  9.37it/s]</p>
+<p>ExactExplainer explainer:  66%|██████▋   | 265/400 [00:21&lt;00:10, 12.39it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  50%|████▉     | 198/400 [00:20&lt;00:21,  9.51it/s]</p>
+<p>ExactExplainer explainer:  67%|██████▋   | 267/400 [00:21&lt;00:10, 12.34it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  50%|████▉     | 199/400 [00:20&lt;00:21,  9.56it/s]</p>
+<p>ExactExplainer explainer:  67%|██████▋   | 269/400 [00:21&lt;00:10, 12.42it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  50%|█████     | 201/400 [00:20&lt;00:20,  9.82it/s]</p>
+<p>ExactExplainer explainer:  68%|██████▊   | 271/400 [00:21&lt;00:10, 12.42it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  50%|█████     | 202/400 [00:20&lt;00:20,  9.70it/s]</p>
+<p>ExactExplainer explainer:  68%|██████▊   | 273/400 [00:21&lt;00:10, 12.32it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  51%|█████     | 203/400 [00:20&lt;00:20,  9.53it/s]</p>
+<p>ExactExplainer explainer:  69%|██████▉   | 275/400 [00:21&lt;00:10, 12.31it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  51%|█████     | 204/400 [00:20&lt;00:21,  9.09it/s]</p>
+<p>ExactExplainer explainer:  69%|██████▉   | 277/400 [00:22&lt;00:09, 12.34it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  51%|█████▏    | 205/400 [00:21&lt;00:21,  8.88it/s]</p>
+<p>ExactExplainer explainer:  70%|██████▉   | 279/400 [00:22&lt;00:09, 12.50it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  52%|█████▏    | 206/400 [00:21&lt;00:21,  9.03it/s]</p>
+<p>ExactExplainer explainer:  70%|███████   | 281/400 [00:22&lt;00:09, 12.38it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  52%|█████▏    | 207/400 [00:21&lt;00:21,  9.18it/s]</p>
+<p>ExactExplainer explainer:  71%|███████   | 283/400 [00:22&lt;00:09, 12.40it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  52%|█████▏    | 208/400 [00:21&lt;00:20,  9.37it/s]</p>
+<p>ExactExplainer explainer:  71%|███████▏  | 285/400 [00:22&lt;00:09, 12.41it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  52%|█████▏    | 209/400 [00:21&lt;00:20,  9.44it/s]</p>
+<p>ExactExplainer explainer:  72%|███████▏  | 287/400 [00:22&lt;00:09, 12.19it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  52%|█████▎    | 210/400 [00:21&lt;00:20,  9.39it/s]</p>
+<p>ExactExplainer explainer:  72%|███████▏  | 289/400 [00:23&lt;00:09, 12.26it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  53%|█████▎    | 211/400 [00:21&lt;00:19,  9.48it/s]</p>
+<p>ExactExplainer explainer:  73%|███████▎  | 291/400 [00:23&lt;00:08, 12.28it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  53%|█████▎    | 212/400 [00:21&lt;00:19,  9.45it/s]</p>
+<p>ExactExplainer explainer:  73%|███████▎  | 293/400 [00:23&lt;00:08, 12.34it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  53%|█████▎    | 213/400 [00:21&lt;00:19,  9.54it/s]</p>
+<p>ExactExplainer explainer:  74%|███████▍  | 295/400 [00:23&lt;00:08, 12.35it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  54%|█████▎    | 214/400 [00:21&lt;00:19,  9.36it/s]</p>
+<p>ExactExplainer explainer:  74%|███████▍  | 297/400 [00:23&lt;00:08, 12.36it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  54%|█████▍    | 215/400 [00:22&lt;00:19,  9.44it/s]</p>
+<p>ExactExplainer explainer:  75%|███████▍  | 299/400 [00:23&lt;00:08, 12.30it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  54%|█████▍    | 216/400 [00:22&lt;00:19,  9.45it/s]</p>
+<p>ExactExplainer explainer:  75%|███████▌  | 301/400 [00:24&lt;00:08, 12.23it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  54%|█████▍    | 217/400 [00:22&lt;00:19,  9.35it/s]</p>
+<p>ExactExplainer explainer:  76%|███████▌  | 303/400 [00:24&lt;00:07, 12.22it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  55%|█████▍    | 218/400 [00:22&lt;00:19,  9.32it/s]</p>
+<p>ExactExplainer explainer:  76%|███████▋  | 305/400 [00:24&lt;00:07, 12.31it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  55%|█████▍    | 219/400 [00:22&lt;00:20,  8.71it/s]</p>
+<p>ExactExplainer explainer:  77%|███████▋  | 307/400 [00:24&lt;00:07, 12.46it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  55%|█████▌    | 220/400 [00:22&lt;00:19,  9.01it/s]</p>
+<p>ExactExplainer explainer:  77%|███████▋  | 309/400 [00:24&lt;00:07, 12.21it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  55%|█████▌    | 221/400 [00:22&lt;00:19,  9.20it/s]</p>
+<p>ExactExplainer explainer:  78%|███████▊  | 311/400 [00:24&lt;00:07, 12.35it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  56%|█████▌    | 222/400 [00:22&lt;00:19,  9.18it/s]</p>
+<p>ExactExplainer explainer:  78%|███████▊  | 313/400 [00:25&lt;00:07, 12.24it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  56%|█████▌    | 223/400 [00:22&lt;00:19,  9.24it/s]</p>
+<p>ExactExplainer explainer:  79%|███████▉  | 315/400 [00:25&lt;00:06, 12.31it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  56%|█████▌    | 224/400 [00:23&lt;00:19,  9.24it/s]</p>
+<p>ExactExplainer explainer:  79%|███████▉  | 317/400 [00:25&lt;00:06, 12.20it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  56%|█████▋    | 226/400 [00:23&lt;00:18,  9.25it/s]</p>
+<p>ExactExplainer explainer:  80%|███████▉  | 319/400 [00:25&lt;00:06, 12.32it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  57%|█████▋    | 227/400 [00:23&lt;00:19,  8.77it/s]</p>
+<p>ExactExplainer explainer:  80%|████████  | 321/400 [00:25&lt;00:06, 12.47it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  57%|█████▋    | 228/400 [00:23&lt;00:19,  8.63it/s]</p>
+<p>ExactExplainer explainer:  81%|████████  | 323/400 [00:25&lt;00:06, 12.43it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  57%|█████▋    | 229/400 [00:23&lt;00:19,  8.65it/s]</p>
+<p>ExactExplainer explainer:  81%|████████▏ | 325/400 [00:25&lt;00:05, 12.56it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  57%|█████▊    | 230/400 [00:23&lt;00:19,  8.75it/s]</p>
+<p>ExactExplainer explainer:  82%|████████▏ | 327/400 [00:26&lt;00:05, 12.55it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  58%|█████▊    | 231/400 [00:23&lt;00:18,  8.92it/s]</p>
+<p>ExactExplainer explainer:  82%|████████▏ | 329/400 [00:26&lt;00:05, 12.33it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  58%|█████▊    | 232/400 [00:23&lt;00:18,  9.00it/s]</p>
+<p>ExactExplainer explainer:  83%|████████▎ | 331/400 [00:26&lt;00:05, 12.41it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  58%|█████▊    | 233/400 [00:24&lt;00:18,  9.19it/s]</p>
+<p>ExactExplainer explainer:  83%|████████▎ | 333/400 [00:26&lt;00:05, 12.38it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  58%|█████▊    | 234/400 [00:24&lt;00:18,  9.15it/s]</p>
+<p>ExactExplainer explainer:  84%|████████▍ | 335/400 [00:26&lt;00:05, 12.26it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  59%|█████▉    | 235/400 [00:24&lt;00:17,  9.33it/s]</p>
+<p>ExactExplainer explainer:  84%|████████▍ | 337/400 [00:26&lt;00:05, 12.21it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  59%|█████▉    | 236/400 [00:24&lt;00:17,  9.35it/s]</p>
+<p>ExactExplainer explainer:  85%|████████▍ | 339/400 [00:27&lt;00:05, 12.04it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  59%|█████▉    | 237/400 [00:24&lt;00:17,  9.45it/s]</p>
+<p>ExactExplainer explainer:  85%|████████▌ | 341/400 [00:27&lt;00:04, 12.03it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  60%|█████▉    | 238/400 [00:24&lt;00:16,  9.59it/s]</p>
+<p>ExactExplainer explainer:  86%|████████▌ | 343/400 [00:27&lt;00:04, 12.16it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  60%|█████▉    | 239/400 [00:24&lt;00:16,  9.60it/s]</p>
+<p>ExactExplainer explainer:  86%|████████▋ | 345/400 [00:27&lt;00:04, 12.21it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  60%|██████    | 240/400 [00:24&lt;00:17,  9.36it/s]</p>
+<p>ExactExplainer explainer:  87%|████████▋ | 347/400 [00:27&lt;00:04, 12.08it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  60%|██████    | 241/400 [00:24&lt;00:17,  9.32it/s]</p>
+<p>ExactExplainer explainer:  87%|████████▋ | 349/400 [00:27&lt;00:04, 12.20it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  60%|██████    | 242/400 [00:25&lt;00:16,  9.42it/s]</p>
+<p>ExactExplainer explainer:  88%|████████▊ | 351/400 [00:28&lt;00:03, 12.29it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  61%|██████    | 243/400 [00:25&lt;00:16,  9.35it/s]</p>
+<p>ExactExplainer explainer:  88%|████████▊ | 353/400 [00:28&lt;00:03, 12.35it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  61%|██████    | 244/400 [00:25&lt;00:16,  9.39it/s]</p>
+<p>ExactExplainer explainer:  89%|████████▉ | 355/400 [00:28&lt;00:03, 12.23it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  61%|██████▏   | 245/400 [00:25&lt;00:16,  9.24it/s]</p>
+<p>ExactExplainer explainer:  89%|████████▉ | 357/400 [00:28&lt;00:03, 12.08it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  62%|██████▏   | 246/400 [00:25&lt;00:16,  9.39it/s]</p>
+<p>ExactExplainer explainer:  90%|████████▉ | 359/400 [00:28&lt;00:03, 11.92it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  62%|██████▏   | 247/400 [00:25&lt;00:16,  9.56it/s]</p>
+<p>ExactExplainer explainer:  90%|█████████ | 361/400 [00:28&lt;00:03, 11.86it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  62%|██████▏   | 248/400 [00:25&lt;00:15,  9.66it/s]</p>
+<p>ExactExplainer explainer:  91%|█████████ | 363/400 [00:29&lt;00:03, 12.13it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  62%|██████▏   | 249/400 [00:25&lt;00:15,  9.66it/s]</p>
+<p>ExactExplainer explainer:  91%|█████████▏| 365/400 [00:29&lt;00:02, 12.22it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  62%|██████▎   | 250/400 [00:25&lt;00:15,  9.56it/s]</p>
+<p>ExactExplainer explainer:  92%|█████████▏| 367/400 [00:29&lt;00:02, 12.23it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  63%|██████▎   | 251/400 [00:25&lt;00:15,  9.58it/s]</p>
+<p>ExactExplainer explainer:  92%|█████████▏| 369/400 [00:29&lt;00:02, 12.32it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  63%|██████▎   | 252/400 [00:26&lt;00:15,  9.65it/s]</p>
+<p>ExactExplainer explainer:  93%|█████████▎| 371/400 [00:29&lt;00:02, 12.30it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  63%|██████▎   | 253/400 [00:26&lt;00:15,  9.61it/s]</p>
+<p>ExactExplainer explainer:  93%|█████████▎| 373/400 [00:29&lt;00:02, 12.41it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  64%|██████▎   | 254/400 [00:26&lt;00:16,  9.01it/s]</p>
+<p>ExactExplainer explainer:  94%|█████████▍| 375/400 [00:30&lt;00:02, 12.44it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  64%|██████▍   | 255/400 [00:26&lt;00:15,  9.10it/s]</p>
+<p>ExactExplainer explainer:  94%|█████████▍| 377/400 [00:30&lt;00:01, 12.46it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  64%|██████▍   | 256/400 [00:26&lt;00:15,  9.20it/s]</p>
+<p>ExactExplainer explainer:  95%|█████████▍| 379/400 [00:30&lt;00:01, 12.38it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  64%|██████▍   | 257/400 [00:26&lt;00:15,  9.37it/s]</p>
+<p>ExactExplainer explainer:  95%|█████████▌| 381/400 [00:30&lt;00:01, 12.36it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  65%|██████▍   | 259/400 [00:26&lt;00:14,  9.50it/s]</p>
+<p>ExactExplainer explainer:  96%|█████████▌| 383/400 [00:30&lt;00:01, 12.52it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  65%|██████▌   | 260/400 [00:26&lt;00:14,  9.53it/s]</p>
+<p>ExactExplainer explainer:  96%|█████████▋| 385/400 [00:30&lt;00:01, 12.45it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  65%|██████▌   | 261/400 [00:27&lt;00:14,  9.59it/s]</p>
+<p>ExactExplainer explainer:  97%|█████████▋| 387/400 [00:31&lt;00:01, 12.59it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  66%|██████▌   | 262/400 [00:27&lt;00:14,  9.68it/s]</p>
+<p>ExactExplainer explainer:  97%|█████████▋| 389/400 [00:31&lt;00:00, 12.64it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  66%|██████▌   | 263/400 [00:27&lt;00:14,  9.72it/s]</p>
+<p>ExactExplainer explainer:  98%|█████████▊| 391/400 [00:31&lt;00:00, 12.56it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  66%|██████▌   | 264/400 [00:27&lt;00:14,  9.40it/s]</p>
+<p>ExactExplainer explainer:  98%|█████████▊| 393/400 [00:31&lt;00:00, 12.67it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  66%|██████▋   | 265/400 [00:27&lt;00:14,  9.55it/s]</p>
+<p>ExactExplainer explainer:  99%|█████████▉| 395/400 [00:31&lt;00:00, 12.61it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  66%|██████▋   | 266/400 [00:27&lt;00:14,  9.56it/s]</p>
+<p>ExactExplainer explainer:  99%|█████████▉| 397/400 [00:31&lt;00:00, 12.60it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  67%|██████▋   | 267/400 [00:27&lt;00:13,  9.68it/s]</p>
+<p>ExactExplainer explainer: 100%|█████████▉| 399/400 [00:31&lt;00:00, 12.67it/s]</p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  67%|██████▋   | 268/400 [00:27&lt;00:14,  9.42it/s]</p>
+<p>ExactExplainer explainer: 401it [00:32, 12.68it/s]                         </p>
 <pre><code>[A
 </code></pre>
-<p>ExactExplainer explainer:  67%|██████▋   | 269/400 [00:27&lt;00:14,  9.19it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  68%|██████▊   | 270/400 [00:27&lt;00:13,  9.32it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  68%|██████▊   | 271/400 [00:28&lt;00:13,  9.34it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  68%|██████▊   | 272/400 [00:28&lt;00:14,  9.06it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  68%|██████▊   | 273/400 [00:28&lt;00:14,  8.60it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  68%|██████▊   | 274/400 [00:28&lt;00:14,  8.61it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  69%|██████▉   | 275/400 [00:28&lt;00:14,  8.70it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  69%|██████▉   | 276/400 [00:28&lt;00:14,  8.79it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  69%|██████▉   | 277/400 [00:28&lt;00:13,  8.86it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  70%|██████▉   | 278/400 [00:28&lt;00:13,  8.72it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  70%|██████▉   | 279/400 [00:29&lt;00:13,  8.68it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  70%|███████   | 280/400 [00:29&lt;00:13,  8.84it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  70%|███████   | 281/400 [00:29&lt;00:13,  8.86it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  70%|███████   | 282/400 [00:29&lt;00:13,  9.08it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  71%|███████   | 283/400 [00:29&lt;00:12,  9.05it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  71%|███████   | 284/400 [00:29&lt;00:12,  9.25it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  71%|███████▏  | 285/400 [00:29&lt;00:12,  9.28it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  72%|███████▏  | 286/400 [00:29&lt;00:12,  9.43it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  72%|███████▏  | 287/400 [00:29&lt;00:11,  9.44it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  72%|███████▏  | 288/400 [00:29&lt;00:11,  9.46it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  72%|███████▏  | 289/400 [00:30&lt;00:12,  8.60it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  72%|███████▎  | 290/400 [00:30&lt;00:12,  8.90it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  73%|███████▎  | 291/400 [00:30&lt;00:12,  9.04it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  73%|███████▎  | 292/400 [00:30&lt;00:11,  9.25it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  73%|███████▎  | 293/400 [00:30&lt;00:11,  9.26it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  74%|███████▎  | 294/400 [00:30&lt;00:11,  9.24it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  74%|███████▍  | 296/400 [00:30&lt;00:10,  9.62it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  74%|███████▍  | 297/400 [00:30&lt;00:10,  9.64it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  74%|███████▍  | 298/400 [00:31&lt;00:10,  9.68it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  75%|███████▍  | 299/400 [00:31&lt;00:10,  9.53it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  75%|███████▌  | 300/400 [00:31&lt;00:10,  9.56it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  75%|███████▌  | 301/400 [00:31&lt;00:10,  9.48it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  76%|███████▌  | 303/400 [00:31&lt;00:10,  9.39it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  76%|███████▌  | 304/400 [00:31&lt;00:10,  9.39it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  76%|███████▋  | 305/400 [00:31&lt;00:10,  9.35it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  76%|███████▋  | 306/400 [00:31&lt;00:10,  9.34it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  77%|███████▋  | 307/400 [00:32&lt;00:09,  9.41it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  77%|███████▋  | 308/400 [00:32&lt;00:09,  9.41it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  78%|███████▊  | 310/400 [00:32&lt;00:09,  9.66it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  78%|███████▊  | 311/400 [00:32&lt;00:09,  9.63it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  78%|███████▊  | 312/400 [00:32&lt;00:09,  9.46it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  78%|███████▊  | 313/400 [00:32&lt;00:09,  9.52it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  78%|███████▊  | 314/400 [00:32&lt;00:09,  9.43it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  79%|███████▉  | 315/400 [00:32&lt;00:08,  9.49it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  79%|███████▉  | 316/400 [00:32&lt;00:08,  9.59it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  79%|███████▉  | 317/400 [00:33&lt;00:08,  9.51it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  80%|███████▉  | 318/400 [00:33&lt;00:08,  9.64it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  80%|███████▉  | 319/400 [00:33&lt;00:08,  9.61it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  80%|████████  | 320/400 [00:33&lt;00:08,  9.61it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  80%|████████  | 321/400 [00:33&lt;00:08,  9.59it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  80%|████████  | 322/400 [00:33&lt;00:08,  9.70it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  81%|████████  | 323/400 [00:33&lt;00:08,  9.57it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  81%|████████  | 324/400 [00:33&lt;00:08,  9.35it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  81%|████████▏ | 325/400 [00:33&lt;00:07,  9.39it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  82%|████████▏ | 326/400 [00:33&lt;00:07,  9.36it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  82%|████████▏ | 327/400 [00:34&lt;00:07,  9.53it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  82%|████████▏ | 329/400 [00:34&lt;00:07,  9.88it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  82%|████████▎ | 330/400 [00:34&lt;00:07,  9.77it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  83%|████████▎ | 331/400 [00:34&lt;00:07,  9.46it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  83%|████████▎ | 332/400 [00:34&lt;00:07,  9.14it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  83%|████████▎ | 333/400 [00:34&lt;00:07,  9.14it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  84%|████████▎ | 334/400 [00:34&lt;00:07,  9.04it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  84%|████████▍ | 335/400 [00:34&lt;00:07,  9.17it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  84%|████████▍ | 337/400 [00:35&lt;00:06,  9.56it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  84%|████████▍ | 338/400 [00:35&lt;00:06,  9.07it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  85%|████████▍ | 339/400 [00:35&lt;00:06,  9.06it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  85%|████████▌ | 340/400 [00:35&lt;00:06,  9.06it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  85%|████████▌ | 341/400 [00:35&lt;00:06,  8.99it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  86%|████████▌ | 342/400 [00:35&lt;00:06,  9.04it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  86%|████████▌ | 343/400 [00:35&lt;00:06,  9.26it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  86%|████████▌ | 344/400 [00:35&lt;00:06,  9.14it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  86%|████████▋ | 345/400 [00:36&lt;00:05,  9.34it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  87%|████████▋ | 347/400 [00:36&lt;00:05,  9.74it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  87%|████████▋ | 348/400 [00:36&lt;00:05,  9.65it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  87%|████████▋ | 349/400 [00:36&lt;00:05,  9.67it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  88%|████████▊ | 350/400 [00:36&lt;00:05,  9.73it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  88%|████████▊ | 351/400 [00:36&lt;00:05,  9.76it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  88%|████████▊ | 352/400 [00:36&lt;00:04,  9.77it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  88%|████████▊ | 353/400 [00:36&lt;00:04,  9.55it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  88%|████████▊ | 354/400 [00:36&lt;00:04,  9.47it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  89%|████████▉ | 355/400 [00:37&lt;00:04,  9.53it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  89%|████████▉ | 356/400 [00:37&lt;00:04,  9.51it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  89%|████████▉ | 357/400 [00:37&lt;00:04,  9.44it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  90%|████████▉ | 358/400 [00:37&lt;00:04,  9.33it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  90%|████████▉ | 359/400 [00:37&lt;00:04,  9.49it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  90%|█████████ | 360/400 [00:37&lt;00:04,  9.34it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  90%|█████████ | 361/400 [00:37&lt;00:04,  9.03it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  90%|█████████ | 362/400 [00:37&lt;00:04,  9.00it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  91%|█████████ | 363/400 [00:37&lt;00:04,  9.13it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  91%|█████████ | 364/400 [00:38&lt;00:03,  9.11it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  91%|█████████▏| 365/400 [00:38&lt;00:03,  9.29it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  92%|█████████▏| 366/400 [00:38&lt;00:03,  9.44it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  92%|█████████▏| 367/400 [00:38&lt;00:03,  9.49it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  92%|█████████▏| 368/400 [00:38&lt;00:03,  9.62it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  92%|█████████▏| 369/400 [00:38&lt;00:03,  9.49it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  92%|█████████▎| 370/400 [00:38&lt;00:03,  9.56it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  93%|█████████▎| 371/400 [00:38&lt;00:03,  9.52it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  93%|█████████▎| 372/400 [00:38&lt;00:03,  9.22it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  93%|█████████▎| 373/400 [00:39&lt;00:02,  9.27it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  94%|█████████▎| 374/400 [00:39&lt;00:02,  9.25it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  94%|█████████▍| 375/400 [00:39&lt;00:02,  9.38it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  94%|█████████▍| 376/400 [00:39&lt;00:02,  9.54it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  94%|█████████▍| 377/400 [00:39&lt;00:02,  9.58it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  94%|█████████▍| 378/400 [00:39&lt;00:02,  9.64it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  95%|█████████▍| 379/400 [00:39&lt;00:02,  9.69it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  95%|█████████▌| 380/400 [00:39&lt;00:02,  9.60it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  95%|█████████▌| 381/400 [00:39&lt;00:01,  9.55it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  96%|█████████▌| 382/400 [00:39&lt;00:01,  9.59it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  96%|█████████▌| 383/400 [00:40&lt;00:01,  9.46it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  96%|█████████▌| 384/400 [00:40&lt;00:01,  9.30it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  96%|█████████▋| 386/400 [00:40&lt;00:01,  9.68it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  97%|█████████▋| 388/400 [00:40&lt;00:01,  9.87it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  98%|█████████▊| 390/400 [00:40&lt;00:00, 10.00it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  98%|█████████▊| 391/400 [00:40&lt;00:00,  9.97it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  98%|█████████▊| 392/400 [00:40&lt;00:00,  9.96it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  98%|█████████▊| 393/400 [00:41&lt;00:00,  9.95it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  98%|█████████▊| 394/400 [00:41&lt;00:00,  9.96it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  99%|█████████▉| 395/400 [00:41&lt;00:00,  9.83it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  99%|█████████▉| 396/400 [00:41&lt;00:00,  9.82it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer: 100%|█████████▉| 398/400 [00:41&lt;00:00,  9.99it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer: 100%|██████████| 400/400 [00:41&lt;00:00, 10.15it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer: 401it [00:41,  7.17it/s]                         </p>
-<p>100%|██████████| 1/1 [00:42&lt;00:00, 42.79s/it]</p>
-<p>100%|██████████| 1/1 [00:42&lt;00:00, 42.79s/it]</p>
+<p>ExactExplainer explainer: 401it [00:32,  8.49it/s]</p>
+<p>100%|██████████| 1/1 [00:32&lt;00:00, 32.98s/it]</p>
+<p>100%|██████████| 1/1 [00:32&lt;00:00, 32.98s/it]</p>
 <pre><code>Feature 2 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────

@@ -645,7 +645,7 @@
 <h1 id="global-effect-an-in-depth-tutorial">Global Effect - An in-depth tutorial</h1>
 <ul>
 <li>Author: <a href="https://givasile.github.io/">givasile</a></li>
-<li>Runtime: ~20 s</li>
+<li>Runtime: ~10 s</li>
 <li>Description: An in-depth comparison of the global effect methods (ALE,
   RHALE, PDP-ICE, d-PDP-ICE, SHAP-DP) on a synthetic example with correlated
   features and known closed-form effects, showing why ALE-based methods are
@@ -994,7 +994,7 @@ so estimates there are intrinsically noisier.</p>
 <span class="c1"># RHALE</span>
 <span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">f</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">dfdx</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
-<span class="n">assert_per_half</span><span class="p">(</span><span class="n">rhale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">),</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="mf">2e-1</span><span class="p">,</span> <span class="mf">4e-1</span><span class="p">)</span>
+<span class="n">assert_per_half</span><span class="p">(</span><span class="n">rhale</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span> <span class="n">rhale_gt</span><span class="p">(</span><span class="n">xx</span><span class="p">),</span> <span class="mf">2e-1</span><span class="p">,</span> <span class="mf">4e-1</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"all closed-form checks passed"</span><span class="p">)</span>
 </code></pre></div>

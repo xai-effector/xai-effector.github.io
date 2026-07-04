@@ -623,7 +623,7 @@
 <h1 id="model-with-conditional-interaction">Model with conditional interaction</h1>
 <ul>
 <li>Author: <a href="https://givasile.github.io/">givasile</a></li>
-<li>Runtime: ~10 s</li>
+<li>Runtime: ~5 s</li>
 <li>Description: Global effects (PDP, ALE, RHALE) on a model whose three-way
   conditional interaction defines four regions; the estimates are derived
   analytically and tested against <code>effector.benchmarks</code>.</li>
@@ -665,7 +665,7 @@ x_1^4 &amp; \text{if } x_2 \geq 0 \text{ and } x_3 \geq 0
 <h2 id="pdp">PDP</h2>
 <h3 id="effector">Effector</h3>
 <p>Let's see below the PDP effects for each feature, using <code>effector</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">dataset</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">dataset</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">)</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]:</span>
     <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feature</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
