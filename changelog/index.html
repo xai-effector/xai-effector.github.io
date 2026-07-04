@@ -475,6 +475,11 @@
 
 
 <h1 id="changelog">Changelog</h1>
+<h1 id="unreleased">[Unreleased]</h1>
+<h3 id="added">Added</h3>
+<ul>
+<li><code>random_state</code> on every public effect-class constructor (<code>PDP</code>, <code>DerPDP</code>, <code>ALE</code>, <code>RHALE</code>, <code>ShapDP</code>, the 5 regional variants, and <code>FeatureEffect</code>); default <code>21</code>, so two identical constructions give identical <code>eval</code>/<code>fit</code>/<code>plot</code> output out of the box, <code>None</code> opts into fresh randomness. The seed also drives plot-time ICE/SHAP-scatter subsampling and is passed to the shap/shapiq explainer (<code>seed=</code>/<code>random_state=</code>) unless overridden via <code>shap_explainer_kwargs</code>. No effector code touches the global <code>np.random</code> state anymore.</li>
+</ul>
 <h1 id="021-2026-07-01">[0.2.1] - 2026-07-01</h1>
 <h3 id="changed">Changed</h3>
 <ul>
@@ -503,7 +508,7 @@
 <li>fixed bug in <code>project.toml</code>, added dependency to <code>overrides</code></li>
 </ul>
 <h2 id="0111-2025-07-10">[0.1.11] - 2025-07-10</h2>
-<h3 id="added">Added</h3>
+<h3 id="added_1">Added</h3>
 <ul>
 <li>added codecov to the project</li>
 </ul>
@@ -523,7 +528,7 @@
 <li>bug in github actions</li>
 </ul>
 <h2 id="018-2025-06-18">[0.1.8] - 2025-06-18</h2>
-<h3 id="added_1">Added</h3>
+<h3 id="added_2">Added</h3>
 <ul>
 <li>NO2 real example</li>
 </ul>
@@ -536,7 +541,7 @@
 <li>added dependecies to <code>requirement-dev.txt</code></li>
 </ul>
 <h2 id="017-2025-05-08">[0.1.7] - 2025-05-08</h2>
-<h3 id="added_2">Added</h3>
+<h3 id="added_3">Added</h3>
 <ul>
 <li>added organizations the that support the project</li>
 </ul>
@@ -550,7 +555,7 @@
 <li>REAME.md and index.md: added refereces to effector</li>
 </ul>
 <h2 id="015-2025-03-24">[0.1.5] - 2025-03-24</h2>
-<h3 id="added_3">Added</h3>
+<h3 id="added_4">Added</h3>
 <ul>
 <li>added <code>ucimlrepo</code> to the dependencies</li>
 <li><code>space_partitioning</code> module with <code>Best</code> and <code>BestDepthWise</code> classes for space partitioning.</li>
@@ -588,7 +593,7 @@
 <li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
 <li>changed README.md to reflect the new changes.</li>
 </ul>
-<h3 id="added_4">Added</h3>
+<h3 id="added_5">Added</h3>
 <ul>
 <li>license</li>
 <li>documentation for space partitioning methods</li>
@@ -610,7 +615,7 @@
 </li>
 </ul>
 <h2 id="010-2025-02-17">[0.1.0] - 2025-02-17</h2>
-<h3 id="added_5">Added</h3>
+<h3 id="added_6">Added</h3>
 <ul>
 <li>Initialized changelog file and added basic versioning structure.</li>
 </ul>
