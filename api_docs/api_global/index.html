@@ -899,18 +899,36 @@ Check the Usage section below and the method-specific documentation for more inf
 
 <details class="definition" open="">
   <summary>Definition</summary>
-  <p>ALE is defined as:
+  <p>ALE reveals the effect of <span class="arithmatex">\(x_s\)</span> by accumulating, bin by bin, the
+average <em>local effect</em> of the feature. The axis of <span class="arithmatex">\(x_s\)</span> is split
+into <span class="arithmatex">\(K\)</span> fixed bins by the limits <span class="arithmatex">\(z_0 &lt; z_1 &lt; \dots &lt; z_K\)</span>. For an
+instance <span class="arithmatex">\(x^i\)</span> whose <span class="arithmatex">\(x_s^i\)</span> falls in bin <span class="arithmatex">\(k\)</span>, the local effect is
+the secant of the model across that bin:
 $$
-\hat{f}^{ALE}(x_s) = TODO
-$$</p>
-<p>The heterogeneity is:
+\mathtt{effect}<em s="z_k">i = \frac{f(x^i</em>
 $$
-TODO
-$$</p>
-<p>The std of the bin-effects is:
+where }) - f(x^i_{s=z_{k-1}})}{z_k - z_{k-1}<span class="arithmatex">\(x^i_{s=z}\)</span> is <span class="arithmatex">\(x^i\)</span> with its <span class="arithmatex">\(s\)</span>-th coordinate set to <span class="arithmatex">\(z\)</span>.
+The bin effect is the mean local effect over the instances <span class="arithmatex">\(S_k\)</span>
+that fall in bin <span class="arithmatex">\(k\)</span>, and ALE at a point <span class="arithmatex">\(x\)</span> lying in bin <span class="arithmatex">\(k_x\)</span>
+accumulates the completed bins plus the partial contribution of the
+current one:
 $$
-TODO
+\mu_k = \frac{1}{|S_k|} \sum_{i \in S_k} \mathtt{effect}<em k="1">i
+\qquad
+\hat{f}^{ALE}(x) = \sum</em>)\, \mu_k
+                   + (x - z_{k_x - 1})\, \mu_{k_x}
+$$
+The curve is centered afterwards (by default }^{k_x - 1} (z_k - z_{k-1<code>zero_integral</code>,
+subtracting its mean over the axis).</p>
+<p>The heterogeneity is the variance of the local effects within the
+bin containing <span class="arithmatex">\(x\)</span>; <code>eval_heter</code> returns it as a step function:
+$$
+H(x) = \sigma^2_{k_x},
+\qquad
+\sigma^2_k = \frac{1}{|S_k|} \sum_{i \in S_k} (\mathtt{effect}_i - \mu_k)^2
 $$</p>
+<p>The std of the bin-effects is <span class="arithmatex">\(\sqrt{\sigma^2_k}\)</span>, drawn as the
+error bars on the bin plot.</p>
 </details>
 
 <details class="notes" open="">
@@ -1175,7 +1193,25 @@ $$</p>
 <span class="normal">228</span>
 <span class="normal">229</span>
 <span class="normal">230</span>
-<span class="normal">231</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -1189,20 +1225,38 @@ $$</p>
 <span class="sd">    Constructor for the ALE plot.</span>
 
 <span class="sd">    Definition:</span>
-<span class="sd">        ALE is defined as:</span>
+<span class="sd">        ALE reveals the effect of $x_s$ by accumulating, bin by bin, the</span>
+<span class="sd">        average *local effect* of the feature. The axis of $x_s$ is split</span>
+<span class="sd">        into $K$ fixed bins by the limits $z_0 &lt; z_1 &lt; \dots &lt; z_K$. For an</span>
+<span class="sd">        instance $x^i$ whose $x_s^i$ falls in bin $k$, the local effect is</span>
+<span class="sd">        the secant of the model across that bin:</span>
 <span class="sd">        $$</span>
-<span class="sd">        \hat{f}^{ALE}(x_s) = TODO</span>
+<span class="sd">        \mathtt{effect}_i = \frac{f(x^i_{s=z_k}) - f(x^i_{s=z_{k-1}})}{z_k - z_{k-1}}</span>
+<span class="sd">        $$</span>
+<span class="sd">        where $x^i_{s=z}$ is $x^i$ with its $s$-th coordinate set to $z$.</span>
+<span class="sd">        The bin effect is the mean local effect over the instances $S_k$</span>
+<span class="sd">        that fall in bin $k$, and ALE at a point $x$ lying in bin $k_x$</span>
+<span class="sd">        accumulates the completed bins plus the partial contribution of the</span>
+<span class="sd">        current one:</span>
+<span class="sd">        $$</span>
+<span class="sd">        \mu_k = \frac{1}{|S_k|} \sum_{i \in S_k} \mathtt{effect}_i</span>
+<span class="sd">        \qquad</span>
+<span class="sd">        \hat{f}^{ALE}(x) = \sum_{k=1}^{k_x - 1} (z_k - z_{k-1})\, \mu_k</span>
+<span class="sd">                           + (x - z_{k_x - 1})\, \mu_{k_x}</span>
+<span class="sd">        $$</span>
+<span class="sd">        The curve is centered afterwards (by default `zero_integral`,</span>
+<span class="sd">        subtracting its mean over the axis).</span>
+
+<span class="sd">        The heterogeneity is the variance of the local effects within the</span>
+<span class="sd">        bin containing $x$; `eval_heter` returns it as a step function:</span>
+<span class="sd">        $$</span>
+<span class="sd">        H(x) = \sigma^2_{k_x},</span>
+<span class="sd">        \qquad</span>
+<span class="sd">        \sigma^2_k = \frac{1}{|S_k|} \sum_{i \in S_k} (\mathtt{effect}_i - \mu_k)^2</span>
 <span class="sd">        $$</span>
 
-<span class="sd">        The heterogeneity is:</span>
-<span class="sd">        $$</span>
-<span class="sd">        TODO</span>
-<span class="sd">        $$</span>
-
-<span class="sd">        The std of the bin-effects is:</span>
-<span class="sd">        $$</span>
-<span class="sd">        TODO</span>
-<span class="sd">        $$</span>
+<span class="sd">        The std of the bin-effects is $\sqrt{\sigma^2_k}$, drawn as the</span>
+<span class="sd">        error bars on the bin plot.</span>
 
 <span class="sd">    Notes:</span>
 <span class="sd">        - The required parameters are `data` and `model`. The rest are optional.</span>
@@ -1370,25 +1424,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">259</span>
-<span class="normal">260</span>
-<span class="normal">261</span>
-<span class="normal">262</span>
-<span class="normal">263</span>
-<span class="normal">264</span>
-<span class="normal">265</span>
-<span class="normal">266</span>
-<span class="normal">267</span>
-<span class="normal">268</span>
-<span class="normal">269</span>
-<span class="normal">270</span>
-<span class="normal">271</span>
-<span class="normal">272</span>
-<span class="normal">273</span>
-<span class="normal">274</span>
-<span class="normal">275</span>
-<span class="normal">276</span>
-<span class="normal">277</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">277</span>
 <span class="normal">278</span>
 <span class="normal">279</span>
 <span class="normal">280</span>
@@ -1407,7 +1443,25 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">293</span>
 <span class="normal">294</span>
 <span class="normal">295</span>
-<span class="normal">296</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"fixed"</span><span class="p">,</span>
@@ -2143,18 +2197,35 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
 <details class="definition" open="">
   <summary>Definition</summary>
-  <p>RHALE is defined as:
+  <p>RHALE is ALE with the <em>pointwise derivative</em> as the local effect.
+Because the effect is read at the instance instead of as a secant
+across the bin, it no longer depends on the bin width, which makes
+the accumulated curve and the per-bin heterogeneity robust to the
+binning. The axis of <span class="arithmatex">\(x_s\)</span> is split into <span class="arithmatex">\(K\)</span> bins by the limits
+<span class="arithmatex">\(z_0 &lt; z_1 &lt; \dots &lt; z_K\)</span>, and for an instance <span class="arithmatex">\(x^i\)</span> whose <span class="arithmatex">\(x_s^i\)</span>
+falls in bin <span class="arithmatex">\(k\)</span> the local effect is
 $$
-\hat{f}^{RHALE}(x_s) = TODO
-$$</p>
-<p>The heterogeneity is:
+\mathtt{effect}<em s_k="S_k" _in="\in" i="i">i = \frac{\partial f}{\partial x_s}(x^i)
 $$
-TODO
-$$</p>
-<p>The std of the bin-effects is:
+taken from the model Jacobian (exact if <code>model_jac</code> is provided,
+otherwise numerical). The bin effect, the accumulation and the
+heterogeneity are then identical to ALE:
 $$
-TODO
+\mu_k = \frac{1}{|S_k|} \sum</em>} \mathtt{effect<em k="1">i
+\qquad
+\hat{f}^{RHALE}(x) = \sum</em>)\, \mu_k
+                     + (x - z_{k_x - 1})\, \mu_{k_x}
+$$
+The curve is centered afterwards (by default }^{k_x - 1} (z_k - z_{k-1<code>zero_integral</code>).</p>
+<p>The heterogeneity is the variance of the local effects within the
+bin containing <span class="arithmatex">\(x\)</span>; <code>eval_heter</code> returns it as a step function:
+$$
+H(x) = \sigma^2_{k_x},
+\qquad
+\sigma^2_k = \frac{1}{|S_k|} \sum_{i \in S_k} (\mathtt{effect}_i - \mu_k)^2
 $$</p>
+<p>The std of the bin-effects is <span class="arithmatex">\(\sqrt{\sigma^2_k}\)</span>, drawn as the
+error bars on the bin plot.</p>
 </details>
 
 <details class="notes" open="">
@@ -2385,25 +2456,7 @@ $$</p>
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">300</span>
-<span class="normal">301</span>
-<span class="normal">302</span>
-<span class="normal">303</span>
-<span class="normal">304</span>
-<span class="normal">305</span>
-<span class="normal">306</span>
-<span class="normal">307</span>
-<span class="normal">308</span>
-<span class="normal">309</span>
-<span class="normal">310</span>
-<span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span>
-<span class="normal">317</span>
-<span class="normal">318</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
@@ -2467,7 +2520,42 @@ $$</p>
 <span class="normal">379</span>
 <span class="normal">380</span>
 <span class="normal">381</span>
-<span class="normal">382</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span>
+<span class="normal">385</span>
+<span class="normal">386</span>
+<span class="normal">387</span>
+<span class="normal">388</span>
+<span class="normal">389</span>
+<span class="normal">390</span>
+<span class="normal">391</span>
+<span class="normal">392</span>
+<span class="normal">393</span>
+<span class="normal">394</span>
+<span class="normal">395</span>
+<span class="normal">396</span>
+<span class="normal">397</span>
+<span class="normal">398</span>
+<span class="normal">399</span>
+<span class="normal">400</span>
+<span class="normal">401</span>
+<span class="normal">402</span>
+<span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -2483,20 +2571,37 @@ $$</p>
 <span class="sd">    Constructor for RHALE.</span>
 
 <span class="sd">    Definition:</span>
-<span class="sd">        RHALE is defined as:</span>
+<span class="sd">        RHALE is ALE with the *pointwise derivative* as the local effect.</span>
+<span class="sd">        Because the effect is read at the instance instead of as a secant</span>
+<span class="sd">        across the bin, it no longer depends on the bin width, which makes</span>
+<span class="sd">        the accumulated curve and the per-bin heterogeneity robust to the</span>
+<span class="sd">        binning. The axis of $x_s$ is split into $K$ bins by the limits</span>
+<span class="sd">        $z_0 &lt; z_1 &lt; \dots &lt; z_K$, and for an instance $x^i$ whose $x_s^i$</span>
+<span class="sd">        falls in bin $k$ the local effect is</span>
 <span class="sd">        $$</span>
-<span class="sd">        \hat{f}^{RHALE}(x_s) = TODO</span>
+<span class="sd">        \mathtt{effect}_i = \frac{\partial f}{\partial x_s}(x^i)</span>
+<span class="sd">        $$</span>
+<span class="sd">        taken from the model Jacobian (exact if `model_jac` is provided,</span>
+<span class="sd">        otherwise numerical). The bin effect, the accumulation and the</span>
+<span class="sd">        heterogeneity are then identical to ALE:</span>
+<span class="sd">        $$</span>
+<span class="sd">        \mu_k = \frac{1}{|S_k|} \sum_{i \in S_k} \mathtt{effect}_i</span>
+<span class="sd">        \qquad</span>
+<span class="sd">        \hat{f}^{RHALE}(x) = \sum_{k=1}^{k_x - 1} (z_k - z_{k-1})\, \mu_k</span>
+<span class="sd">                             + (x - z_{k_x - 1})\, \mu_{k_x}</span>
+<span class="sd">        $$</span>
+<span class="sd">        The curve is centered afterwards (by default `zero_integral`).</span>
+
+<span class="sd">        The heterogeneity is the variance of the local effects within the</span>
+<span class="sd">        bin containing $x$; `eval_heter` returns it as a step function:</span>
+<span class="sd">        $$</span>
+<span class="sd">        H(x) = \sigma^2_{k_x},</span>
+<span class="sd">        \qquad</span>
+<span class="sd">        \sigma^2_k = \frac{1}{|S_k|} \sum_{i \in S_k} (\mathtt{effect}_i - \mu_k)^2</span>
 <span class="sd">        $$</span>
 
-<span class="sd">        The heterogeneity is:</span>
-<span class="sd">        $$</span>
-<span class="sd">        TODO</span>
-<span class="sd">        $$</span>
-
-<span class="sd">        The std of the bin-effects is:</span>
-<span class="sd">        $$</span>
-<span class="sd">        TODO</span>
-<span class="sd">        $$</span>
+<span class="sd">        The std of the bin-effects is $\sqrt{\sigma^2_k}$, drawn as the</span>
+<span class="sd">        error bars on the bin plot.</span>
 
 <span class="sd">    Notes:</span>
 <span class="sd">        The required parameters are `data` and `model`. The rest are optional.</span>
@@ -2677,45 +2782,45 @@ $$</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">419</span>
-<span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
-<span class="normal">424</span>
-<span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span>
-<span class="normal">430</span>
-<span class="normal">431</span>
-<span class="normal">432</span>
-<span class="normal">433</span>
-<span class="normal">434</span>
-<span class="normal">435</span>
-<span class="normal">436</span>
-<span class="normal">437</span>
-<span class="normal">438</span>
-<span class="normal">439</span>
-<span class="normal">440</span>
-<span class="normal">441</span>
-<span class="normal">442</span>
-<span class="normal">443</span>
-<span class="normal">444</span>
-<span class="normal">445</span>
-<span class="normal">446</span>
-<span class="normal">447</span>
-<span class="normal">448</span>
-<span class="normal">449</span>
-<span class="normal">450</span>
-<span class="normal">451</span>
-<span class="normal">452</span>
-<span class="normal">453</span>
-<span class="normal">454</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">454</span>
 <span class="normal">455</span>
 <span class="normal">456</span>
-<span class="normal">457</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
