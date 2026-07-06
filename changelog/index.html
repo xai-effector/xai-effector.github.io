@@ -327,6 +327,116 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The design contract (R1-R10)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../method_semantics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Method semantics by feature type
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../guides/" class="md-nav__link">
         
@@ -476,24 +586,59 @@
 
 <h1 id="changelog">Changelog</h1>
 <h1 id="unreleased">[Unreleased]</h1>
-<h1 id="030-2026-07-04">[0.3.0] - 2026-07-04</h1>
+<h3 id="breaking">Breaking</h3>
+<ul>
+<li>one <code>schema=</code> argument replaces the metadata kwargs on every public constructor: <code>feature_names=</code>, <code>target_name=</code> (all classes) and <code>feature_types=</code>, <code>cat_limit=</code> (regional classes) are removed; pass <code>schema={"feature_names": ..., "feature_types": ..., "cat_limit": ..., "target_name": ..., "scale_x_list": ..., "scale_y": ...}</code> (or an <code>effector.Schema</code>) instead — every field optional, explicit fields win over inference</li>
+<li>SHAP configuration moved to the constructor: <code>budget</code>, <code>shap_explainer_kwargs</code>, <code>shap_explanation_kwargs</code> are no longer <code>fit</code> kwargs on <code>ShapDP</code>/<code>RegionalShapDP</code> (and <code>RegionalShapDP</code> gains <code>shap_values=</code> for parity); <code>fit</code> keeps only the analysis args</li>
+<li>all <code>fit</code> signatures are keyword-only after <code>features</code>; <code>points_for_mean_heterogeneity</code> removed from regional <code>fit</code> (internal, shares one grid constant with <code>points_for_centering</code>)</li>
+<li><code>DerPDP.plot</code>/<code>RegionalDerPDP.plot</code>: <code>dy_limits</code> renamed to <code>y_limits</code> (its only axis); ALE/RHALE plots dropped <code>nof_points</code> (the curve is drawn exactly at the bin limits)</li>
+<li><code>utils.get_feature_types</code> deprecated (delegates to <code>effector.ingestion.infer_feature_types</code>) and its vocabulary changed to the three-way taxonomy</li>
+</ul>
 <h3 id="added">Added</h3>
+<ul>
+<li>pandas DataFrame ingestion (R10): <code>data</code> can be a DataFrame — column names/dtypes become the metadata, non-numeric columns are encoded at the door, and the model is always called with a reconstructed DataFrame (original columns/dtypes); pandas stays an optional dependency (never imported on the numpy path)</li>
+<li>three-way feature taxonomy <code>continuous</code>/<code>ordinal</code>/<code>nominal</code> (aliases <code>cont</code>/<code>cat</code>), stored on every class as <code>feature_types</code> + <code>feature_metadata</code>; heuristic type inferences (low-cardinality int) emit a <code>UserWarning</code> nudging an explicit declaration</li>
+<li><strong>categorical features as feature of interest</strong> (docs/method_semantics.md is the exactness contract): PDP/ICE evaluate only at the observed levels (bars + jittered ICE dots); ALE accumulates adjacent-level differences (exact for ordinal; nominal defaults to the encoded order with a documented caveat, or <code>order=[...]</code> / <code>order="similarity"</code> KS-seriation on <code>fit</code>); RHALE does discrete derivatives + Greedy/DP adaptive level grouping (ordinal only); ShapDP does per-level mean/variance with a step lookup; DerPDP and RHALE-on-nominal raise clear errors; centering and <code>heter_score</code> become frequency-weighted over levels</li>
+<li><strong>regional effects on categorical features</strong>: <code>search_partitions_when_categorical</code> now defaults to <code>True</code>, the heterogeneity of a categorical feature of interest is the frequency-weighted per-level variance, and every regional method finds subgroups for per-level effects (see <code>notebooks/synthetic-examples/08_categorical_features.ipynb</code>)</li>
+<li><code>scale_x_list</code>/<code>scale_y</code> accepted at construction (schema) as plot defaults; plot-time dicts override, <code>False</code> disables</li>
+<li><code>models.ConditionalCategorical</code> closed-form ground-truth model; <code>effector.ordering.similarity_order</code> (scipy-only Molnar/iml seriation)</li>
+<li>input contract spec: <code>docs/design.md</code> R10 (accepted data types, <code>Schema</code> metadata argument, three-way feature taxonomy, define-or-infer, model-call rule, scaling precedence) and <code>docs/method_semantics.md</code> (the exact <code>eval</code>/<code>eval_heter</code>/<code>heter_score</code>/<code>plot</code> formulas per method and feature type)</li>
+<li><code>category_names</code> schema field: per-feature human-readable level labels shown on categorical plot axes instead of the numeric codes; resolved to a value-keyed map at ingest, so regional nodes that restrict a categorical feature to a subset of its levels still label correctly</li>
+<li><code>FeatureEffect</code> facade on a categorical feature of interest drops the methods its type doesn't support (e.g. <code>RHALE</code> on a nominal) with a <code>UserWarning</code>, overlays the rest at the observed levels, and raises only when nothing is left</li>
+</ul>
+<h3 id="changed">Changed</h3>
+<ul>
+<li>unified defaults: <code>nof_instances</code> is 10,000 everywhere except SHAP-based classes (1,000) — <code>RegionalALE</code>/<code>RegionalRHALE</code> were 100,000 and <code>FeatureEffect</code> 1,000; <code>nof_ice</code>/<code>nof_shap_values</code> default to 100; plot grids default to 100 points; one <code>heterogeneity</code> vocabulary on all plots (<code>False | "std" | method-native</code>, <code>True</code> ≡ <code>"std"</code>)</li>
+<li>type inference now runs on the full data (before <code>nof_instances</code> subsampling); regional node objects and facade sub-methods inherit the parent's resolved metadata instead of re-inferring from subsets</li>
+<li><code>space_partitioning.compile</code>: <code>categorical_limit</code> renamed to <code>cat_limit</code></li>
+<li><code>PDP</code>/<code>RegionalPDP</code> default centering is now <code>zero_integral</code> (was <code>False</code>), so <code>eval(centering=None)</code> and the global/regional plots center consistently with <code>ALE</code>/<code>ShapDP</code></li>
+<li>the method / feature-type capability matrix (e.g. <code>RHALE</code> and <code>DerPDP</code> on nominal) is enforced at regional <code>fit</code> time, not only later at <code>plot</code>, so <code>fit</code>/<code>summary</code>/<code>plot</code> stay consistent for an unsupported feature of interest</li>
+</ul>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><code>ALE</code>/<code>RHALE</code> <code>.plot()</code> crashed on a categorical feature whose level codes are not <code>0..K-1</code> (e.g. ordinal hours <code>1..24</code>): the plot grid was built from positional codes <code>0..K-1</code> and rejected by <code>eval</code>; it now draws at the observed level values</li>
+<li><code>tree</code> display no longer crashes on per-feature <code>None</code> entries in <code>scale_x_list</code></li>
+<li><code>helpers.indices_within_limits</code> raises <code>ValueError</code> instead of a bare <code>assert</code> when <code>axis_limits</code> exclude every point</li>
+<li>removed the phantom <code>avg_output</code> constructor docstring on <code>ShapDP</code> and the stale <code>ice_non_vectorized</code> docstring example</li>
+</ul>
+<h1 id="030-2026-07-04">[0.3.0] - 2026-07-04</h1>
+<h3 id="added_1">Added</h3>
 <ul>
 <li><code>random_state</code> on every public effect-class constructor (<code>PDP</code>, <code>DerPDP</code>, <code>ALE</code>, <code>RHALE</code>, <code>ShapDP</code>, the 5 regional variants, and <code>FeatureEffect</code>); default <code>21</code>, so two identical constructions give identical <code>eval</code>/<code>fit</code>/<code>plot</code> output out of the box, <code>None</code> opts into fresh randomness. The seed also drives plot-time ICE/SHAP-scatter subsampling and is passed to the shap/shapiq explainer (<code>seed=</code>/<code>random_state=</code>) unless overridden via <code>shap_explainer_kwargs</code>. No effector code touches the global <code>np.random</code> state anymore.</li>
 </ul>
 <h1 id="021-2026-07-01">[0.2.1] - 2026-07-01</h1>
-<h3 id="changed">Changed</h3>
+<h3 id="changed_1">Changed</h3>
 <ul>
 <li>modernized GitHub Actions CI: replaced <code>black</code>/<code>flake8</code>/<code>isort</code> with <code>ruff</code>, added a Python 3.10-3.13 test matrix, gated PyPI publishing behind a main-ancestry check + test run + wheel smoke test, added a docs build-check on PRs, pinned workflow permissions, added concurrency cancellation, and added <code>dependabot.yml</code></li>
 <li>PyPI releases now auto-create a matching GitHub Release with notes from this changelog</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed_1">Fixed</h3>
 <ul>
 <li>fixed a latent <code>NameError</code> in <code>RegionalEffectBase._fit_feature</code>'s string-based <code>space_partitioner</code> fallback (<code>effector/regional_effect.py</code>)</li>
 <li>fixed <code>prep_dale_fit_params</code> validating <code>max_nof_bins</code> twice instead of <code>min_points_per_bin</code> (<code>effector/helpers.py</code>)</li>
 </ul>
 <h1 id="020-2025-07-21">[0.2.0] - 2025-07-21</h1>
-<h3 id="changed_1">Changed</h3>
+<h3 id="changed_2">Changed</h3>
 <ul>
 <li>updated the guide that measures runtimes of regional methods</li>
 <li>moved <code>shap</code>/<code>shapiq</code> to an optional <code>effector[shap]</code> extra, so the core install stays lightweight (<code>numpy</code>, <code>scipy</code>, <code>matplotlib</code>, <code>tqdm</code>); <code>ShapDP</code>/<code>RegionalShapDP</code> now raise a clear <code>ImportError</code> pointing to <code>pip install effector[shap]</code> if used without it</li>
@@ -504,32 +649,32 @@
 <li>dropped the unused <code>overrides</code> dependency</li>
 </ul>
 <h1 id="0112-2025-07-13">[0.1.12] - 2025-07-13</h1>
-<h3 id="fixed_1">Fixed</h3>
+<h3 id="fixed_2">Fixed</h3>
 <ul>
 <li>fixed bug in <code>project.toml</code>, added dependency to <code>overrides</code></li>
 </ul>
 <h2 id="0111-2025-07-10">[0.1.11] - 2025-07-10</h2>
-<h3 id="added_1">Added</h3>
+<h3 id="added_2">Added</h3>
 <ul>
 <li>added codecov to the project</li>
 </ul>
-<h3 id="fixed_2">Fixed</h3>
+<h3 id="fixed_3">Fixed</h3>
 <ul>
 <li>fixed all notebooks to work with the latest version of Effector</li>
 <li>fixed bug in <code>RegionalPDP</code> plots, where <code>centering</code> was not working properly, it was set to <code>False</code> and the user defined argument was not being passed.</li>
 </ul>
 <h2 id="0110-2025-06-18">[0.1.10] - 2025-06-18</h2>
-<h3 id="fixed_3">Fixed</h3>
+<h3 id="fixed_4">Fixed</h3>
 <ul>
 <li>bug in <code>project.toml</code></li>
 </ul>
 <h2 id="019-2025-06-18">[0.1.9] - 2025-06-18</h2>
-<h3 id="fixed_4">Fixed</h3>
+<h3 id="fixed_5">Fixed</h3>
 <ul>
 <li>bug in github actions</li>
 </ul>
 <h2 id="018-2025-06-18">[0.1.8] - 2025-06-18</h2>
-<h3 id="added_2">Added</h3>
+<h3 id="added_3">Added</h3>
 <ul>
 <li>NO2 real example</li>
 </ul>
@@ -537,12 +682,12 @@
 <ul>
 <li>fixed documentation errors, fixed node indexes</li>
 </ul>
-<h3 id="changed_2">Changed</h3>
+<h3 id="changed_3">Changed</h3>
 <ul>
 <li>added dependecies to <code>requirement-dev.txt</code></li>
 </ul>
 <h2 id="017-2025-05-08">[0.1.7] - 2025-05-08</h2>
-<h3 id="added_3">Added</h3>
+<h3 id="added_4">Added</h3>
 <ul>
 <li>added organizations the that support the project</li>
 </ul>
@@ -551,24 +696,24 @@
 <ul>
 <li>fixed bug in <code>project.toml</code>, added dependency to <code>shapiq</code></li>
 </ul>
-<h3 id="changed_3">Changed</h3>
+<h3 id="changed_4">Changed</h3>
 <ul>
 <li>REAME.md and index.md: added refereces to effector</li>
 </ul>
 <h2 id="015-2025-03-24">[0.1.5] - 2025-03-24</h2>
-<h3 id="added_4">Added</h3>
+<h3 id="added_5">Added</h3>
 <ul>
 <li>added <code>ucimlrepo</code> to the dependencies</li>
 <li><code>space_partitioning</code> module with <code>Best</code> and <code>BestDepthWise</code> classes for space partitioning.</li>
 <li><code>space_partitioning.Best</code> (default) is a node-wise partitioning, i.e., it splits each node based on the split that maximizes the heterogeneity drop.</li>
 <li><code>space_partitioning.BestDepthWise</code> is a depth-wise partitioning, i.e., all nodes of a certain level are split based on the same condition.</li>
 </ul>
-<h3 id="fixed_5">Fixed</h3>
+<h3 id="fixed_6">Fixed</h3>
 <ul>
 <li>fixed bug in <code>space_partitioning.Best()</code>; partitioning now checks that the absolute heterogeneity should be over a threshold to be considered a valuable split</li>
 <li>fixed bug in RegionalPDP plots, where <code>centering</code> was not working properly, it was set to <code>False</code> and the user defined argument was not being passed.</li>
 </ul>
-<h3 id="changed_4">Changed</h3>
+<h3 id="changed_5">Changed</h3>
 <ul>
 <li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
 <li>added support for shapiq backend in <code>shap_dp</code> and <code>shap_regional_dp</code> (added as alternative to <code>shap</code>)</li>
@@ -577,30 +722,30 @@
 <li>set the default value of <code>centering</code> to <code>False</code> for <code>RegionalDerPDP</code> plots (from <code>True</code>)</li>
 </ul>
 <h2 id="014-2025-02-26">[0.1.4] - 2025-02-26</h2>
-<h3 id="changed_5">Changed</h3>
+<h3 id="changed_6">Changed</h3>
 <ul>
 <li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
 <li>update all notebooks with new names</li>
 </ul>
 <h2 id="013-2025-02-25">[0.1.3] - 2025-02-25</h2>
-<h3 id="changed_6">Changed</h3>
+<h3 id="changed_7">Changed</h3>
 <ul>
 <li>shap_dp (both global and regional) can now take custom arguments for the SHAP explainer</li>
 </ul>
 <h2 id="012-2025-02-22">[0.1.2] - 2025-02-22</h2>
-<h3 id="changed_7">Changed</h3>
+<h3 id="changed_8">Changed</h3>
 <ul>
 <li>all plots return a <code>fig, ax</code> tuple, if the user wants to modify the plot further.</li>
 <li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
 <li>changed README.md to reflect the new changes.</li>
 </ul>
-<h3 id="added_5">Added</h3>
+<h3 id="added_6">Added</h3>
 <ul>
 <li>license</li>
 <li>documentation for space partitioning methods</li>
 </ul>
 <h2 id="011-2025-02-17">[0.1.1] - 2025-02-17</h2>
-<h3 id="changed_8">Changed</h3>
+<h3 id="changed_9">Changed</h3>
 <ul>
 <li>
 <p>Updated GitHub Actions workflows:</p>
@@ -616,7 +761,7 @@
 </li>
 </ul>
 <h2 id="010-2025-02-17">[0.1.0] - 2025-02-17</h2>
-<h3 id="added_6">Added</h3>
+<h3 id="added_7">Added</h3>
 <ul>
 <li>Initialized changelog file and added basic versioning structure.</li>
 </ul>

@@ -325,6 +325,116 @@
   
   
   
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Design
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix="">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    The design contract (R1-R10)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../method_semantics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Method semantics by feature type
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../guides/" class="md-nav__link">
         
@@ -654,7 +764,26 @@
 <h3 id="dataset">Dataset</h3>
 <details class="note" open="open">
 <summary>A dataset, typically the test set</summary>
-<p>Must be a <code>np.ndarray</code> with shape <code>(N, D)</code>. </p>
+<p>A <code>np.ndarray</code> with shape <code>(N, D)</code> <strong>or a pandas DataFrame</strong> (R10).
+ A DataFrame brings its own metadata: column names become feature names and
+ dtypes decide the feature types (<code>float</code> → continuous, low-cardinality
+ <code>int</code> → ordinal, <code>category</code>/strings → nominal, ordered <code>category</code> →
+ ordinal). With a DataFrame, your model is always called with a
+ reconstructed DataFrame (original columns and dtypes) — if it expects a
+ raw array, wrap it: <code>lambda X: f(X.to_numpy())</code>.</p>
+</details>
+<details class="note" open="open">
+<summary>Metadata travels in one <code>schema</code> argument</summary>
+<p>Everything else (names, types, target name, axis un-scaling) goes into a
+ single optional <code>schema=</code> argument — an <code>effector.Schema</code> or a plain dict:</p>
+<div class="highlight"><pre><span></span><code><span class="n">schema</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"feature_names"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"hour"</span><span class="p">,</span> <span class="s2">"weekday"</span><span class="p">,</span> <span class="s2">"temp"</span><span class="p">],</span>
+    <span class="s2">"feature_types"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ordinal"</span><span class="p">,</span> <span class="s2">"nominal"</span><span class="p">,</span> <span class="s2">"continuous"</span><span class="p">],</span>
+    <span class="s2">"target_name"</span><span class="p">:</span> <span class="s2">"bike-rentals"</span><span class="p">,</span>
+<span class="p">}</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+</code></pre></div>
+<p>Every field is optional; explicit fields always win over inference.</p>
 </details>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">synthetic example</label><label for="__tabbed_1_2">a real case</label></div>
 <div class="tabbed-content">
