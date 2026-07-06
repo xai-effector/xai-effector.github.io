@@ -586,6 +586,7 @@
 
 <h1 id="changelog">Changelog</h1>
 <h1 id="unreleased">[Unreleased]</h1>
+<h1 id="040-2026-07-06">[0.4.0] - 2026-07-06</h1>
 <h3 id="breaking">Breaking</h3>
 <ul>
 <li>one <code>schema=</code> argument replaces the metadata kwargs on every public constructor: <code>feature_names=</code>, <code>target_name=</code> (all classes) and <code>feature_types=</code>, <code>cat_limit=</code> (regional classes) are removed; pass <code>schema={"feature_names": ..., "feature_types": ..., "cat_limit": ..., "target_name": ..., "scale_x_list": ..., "scale_y": ...}</code> (or an <code>effector.Schema</code>) instead — every field optional, explicit fields win over inference</li>
@@ -596,7 +597,7 @@
 </ul>
 <h3 id="added">Added</h3>
 <ul>
-<li>pandas DataFrame ingestion (R10): <code>data</code> can be a DataFrame — column names/dtypes become the metadata, non-numeric columns are encoded at the door, and the model is always called with a reconstructed DataFrame (original columns/dtypes); pandas stays an optional dependency (never imported on the numpy path)</li>
+<li><strong>effector is numpy-only</strong> (R10): <code>data</code> must be a 2-D numeric numpy array and <code>model</code>/<code>model_jac</code> are <code>numpy → numpy</code> callables, called exactly as given (never wrapped) — a DataFrame passed to a constructor is rejected with a pointer to <code>from_dataframe</code>. <code>effector.from_dataframe(df) -&gt; (X, schema)</code> is the opt-in convenience that reads a DataFrame's names/dtypes/category labels into a numpy matrix + populated <code>Schema</code> (it never touches the model); pandas stays an optional dependency, never imported on the numpy path</li>
 <li>three-way feature taxonomy <code>continuous</code>/<code>ordinal</code>/<code>nominal</code> (aliases <code>cont</code>/<code>cat</code>), stored on every class as <code>feature_types</code> + <code>feature_metadata</code>; heuristic type inferences (low-cardinality int) emit a <code>UserWarning</code> nudging an explicit declaration</li>
 <li><strong>categorical features as feature of interest</strong> (docs/method_semantics.md is the exactness contract): PDP/ICE evaluate only at the observed levels (bars + jittered ICE dots); ALE accumulates adjacent-level differences (exact for ordinal; nominal defaults to the encoded order with a documented caveat, or <code>order=[...]</code> / <code>order="similarity"</code> KS-seriation on <code>fit</code>); RHALE does discrete derivatives + Greedy/DP adaptive level grouping (ordinal only); ShapDP does per-level mean/variance with a step lookup; DerPDP and RHALE-on-nominal raise clear errors; centering and <code>heter_score</code> become frequency-weighted over levels</li>
 <li><strong>regional effects on categorical features</strong>: <code>search_partitions_when_categorical</code> now defaults to <code>True</code>, the heterogeneity of a categorical feature of interest is the frequency-weighted per-level variance, and every regional method finds subgroups for per-level effects (see <code>notebooks/synthetic-examples/08_categorical_features.ipynb</code>)</li>
@@ -620,6 +621,7 @@
 <li><code>tree</code> display no longer crashes on per-feature <code>None</code> entries in <code>scale_x_list</code></li>
 <li><code>helpers.indices_within_limits</code> raises <code>ValueError</code> instead of a bare <code>assert</code> when <code>axis_limits</code> exclude every point</li>
 <li>removed the phantom <code>avg_output</code> constructor docstring on <code>ShapDP</code> and the stale <code>ice_non_vectorized</code> docstring example</li>
+<li><code>helpers.prep_data</code>: the subsample <code>indices</code> (stored as <code>self.indices</code> on every effect object) are now original-relative — they index <code>data</code> as passed in even when the <code>axis_limits</code> filter dropped rows (<code>data_in[indices] == data_out</code>), giving a stable handle back to the user's rows</li>
 </ul>
 <h1 id="030-2026-07-04">[0.3.0] - 2026-07-04</h1>
 <h3 id="added_1">Added</h3>
