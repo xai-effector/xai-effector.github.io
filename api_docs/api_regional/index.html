@@ -1217,8 +1217,8 @@ Check the Usage section below and the method-specific documentation for more inf
     <span class="bp">self</span><span class="o">.</span><span class="n">method_name</span> <span class="o">=</span> <span class="n">method_name</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
 
-    <span class="c1"># the one door for data + metadata (R10): DataFrame -&gt; numpy core</span>
-    <span class="c1"># matrix + wrapped model; numpy passes through untouched. Type</span>
+    <span class="c1"># the border crossing (R10): validate numpy `data`, resolve/auto-infer</span>
+    <span class="c1"># metadata; `model`/`model_jac` pass through as given (numpy-only). Type</span>
     <span class="c1"># inference runs on the full data, before subsampling.</span>
     <span class="n">ing</span> <span class="o">=</span> <span class="n">ingestion</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">data</span>
@@ -1883,8 +1883,9 @@ Check the Usage section below and the method-specific documentation for more inf
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -1959,8 +1960,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">254</span>
-<span class="normal">255</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
 <span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
@@ -2026,7 +2026,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">318</span>
 <span class="normal">319</span>
 <span class="normal">320</span>
-<span class="normal">321</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -2073,8 +2075,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -2217,9 +2220,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">404</span>
-<span class="normal">405</span>
-<span class="normal">406</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">406</span>
 <span class="normal">407</span>
 <span class="normal">408</span>
 <span class="normal">409</span>
@@ -2253,7 +2254,9 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">437</span>
 <span class="normal">438</span>
 <span class="normal">439</span>
-<span class="normal">440</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -2471,9 +2474,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">442</span>
-<span class="normal">443</span>
-<span class="normal">444</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">444</span>
 <span class="normal">445</span>
 <span class="normal">446</span>
 <span class="normal">447</span>
@@ -2508,7 +2509,9 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0, cat_limit=10)</code>
 <span class="normal">476</span>
 <span class="normal">477</span>
 <span class="normal">478</span>
-<span class="normal">479</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">479</span>
+<span class="normal">480</span>
+<span class="normal">481</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -2739,8 +2742,9 @@ If you have the jacobian already computed, provide it directly to the constructo
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -2899,7 +2903,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal"> 98</span>
 <span class="normal"> 99</span>
 <span class="normal">100</span>
-<span class="normal">101</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">101</span>
+<span class="normal">102</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -2963,8 +2968,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -3108,8 +3114,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">167</span>
-<span class="normal">168</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">168</span>
 <span class="normal">169</span>
 <span class="normal">170</span>
 <span class="normal">171</span>
@@ -3152,7 +3157,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
-<span class="normal">211</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">211</span>
+<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -3378,8 +3384,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">213</span>
-<span class="normal">214</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">214</span>
 <span class="normal">215</span>
 <span class="normal">216</span>
 <span class="normal">217</span>
@@ -3415,7 +3420,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">247</span>
 <span class="normal">248</span>
 <span class="normal">249</span>
-<span class="normal">250</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">250</span>
+<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -3601,8 +3607,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -3743,7 +3750,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">128</span>
 <span class="normal">129</span>
 <span class="normal">130</span>
-<span class="normal">131</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">131</span>
+<span class="normal">132</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -3790,8 +3798,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -3948,8 +3957,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">169</span>
-<span class="normal">170</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">170</span>
 <span class="normal">171</span>
 <span class="normal">172</span>
 <span class="normal">173</span>
@@ -3990,7 +3998,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">208</span>
 <span class="normal">209</span>
 <span class="normal">210</span>
-<span class="normal">211</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">211</span>
+<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -4262,8 +4271,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">213</span>
-<span class="normal">214</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">214</span>
 <span class="normal">215</span>
 <span class="normal">216</span>
 <span class="normal">217</span>
@@ -4308,7 +4316,8 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
-<span class="normal">259</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">259</span>
+<span class="normal">260</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -4523,8 +4532,9 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -4599,8 +4609,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">263</span>
-<span class="normal">264</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">264</span>
 <span class="normal">265</span>
 <span class="normal">266</span>
 <span class="normal">267</span>
@@ -4671,7 +4680,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">332</span>
 <span class="normal">333</span>
 <span class="normal">334</span>
-<span class="normal">335</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -4724,8 +4735,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -4866,9 +4878,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">371</span>
 <span class="normal">372</span>
 <span class="normal">373</span>
 <span class="normal">374</span>
@@ -4903,7 +4913,9 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">403</span>
 <span class="normal">404</span>
 <span class="normal">405</span>
-<span class="normal">406</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -5170,9 +5182,7 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">408</span>
-<span class="normal">409</span>
-<span class="normal">410</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">410</span>
 <span class="normal">411</span>
 <span class="normal">412</span>
 <span class="normal">413</span>
@@ -5216,7 +5226,9 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 <span class="normal">451</span>
 <span class="normal">452</span>
 <span class="normal">453</span>
-<span class="normal">454</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">454</span>
+<span class="normal">455</span>
+<span class="normal">456</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -5411,8 +5423,9 @@ conditioned on each feature in the <code>candidate_conditioning_features</code> 
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -5586,7 +5599,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">92</span>
 <span class="normal">93</span>
 <span class="normal">94</span>
-<span class="normal">95</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">95</span>
+<span class="normal">96</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -5638,8 +5652,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (`nof_instances` subsampling and the shap/shapiq explainer, unless overridden via `shap_explainer_kwargs`)</span>
@@ -5846,8 +5861,7 @@ check the official documentation of <a href="https://shap.readthedocs.io/en/late
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">171</span>
-<span class="normal">172</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">172</span>
 <span class="normal">173</span>
 <span class="normal">174</span>
 <span class="normal">175</span>
@@ -5906,7 +5920,8 @@ check the official documentation of <a href="https://shap.readthedocs.io/en/late
 <span class="normal">228</span>
 <span class="normal">229</span>
 <span class="normal">230</span>
-<span class="normal">231</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">231</span>
+<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -6196,8 +6211,7 @@ check the official documentation of <a href="https://shap.readthedocs.io/en/late
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">233</span>
-<span class="normal">234</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">234</span>
 <span class="normal">235</span>
 <span class="normal">236</span>
 <span class="normal">237</span>
@@ -6243,7 +6257,8 @@ check the official documentation of <a href="https://shap.readthedocs.io/en/late
 <span class="normal">277</span>
 <span class="normal">278</span>
 <span class="normal">279</span>
-<span class="normal">280</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">280</span>
+<span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>

@@ -1151,8 +1151,9 @@ error bars on the bin plot.</p>
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -1325,7 +1326,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">371</span>
 <span class="normal">372</span>
 <span class="normal">373</span>
-<span class="normal">374</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">374</span>
+<span class="normal">375</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -1398,8 +1400,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -1568,8 +1571,7 @@ reuse the fitted order.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">406</span>
-<span class="normal">407</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">407</span>
 <span class="normal">408</span>
 <span class="normal">409</span>
 <span class="normal">410</span>
@@ -1627,7 +1629,8 @@ reuse the fitted order.</p>
 <span class="normal">462</span>
 <span class="normal">463</span>
 <span class="normal">464</span>
-<span class="normal">465</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">465</span>
+<span class="normal">466</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -1813,7 +1816,10 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">380</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
 <span class="normal">383</span>
@@ -1859,10 +1865,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -2629,8 +2632,9 @@ error bars on the bin plot.</p>
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -2713,8 +2717,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">472</span>
-<span class="normal">473</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">473</span>
 <span class="normal">474</span>
 <span class="normal">475</span>
 <span class="normal">476</span>
@@ -2815,7 +2818,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">571</span>
 <span class="normal">572</span>
 <span class="normal">573</span>
-<span class="normal">574</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">574</span>
+<span class="normal">575</span>
+<span class="normal">576</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -2898,8 +2903,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -3074,9 +3080,7 @@ reuse the fitted order.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">616</span>
-<span class="normal">617</span>
-<span class="normal">618</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">618</span>
 <span class="normal">619</span>
 <span class="normal">620</span>
 <span class="normal">621</span>
@@ -3134,7 +3138,9 @@ reuse the fitted order.</p>
 <span class="normal">673</span>
 <span class="normal">674</span>
 <span class="normal">675</span>
-<span class="normal">676</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">676</span>
+<span class="normal">677</span>
+<span class="normal">678</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -3321,7 +3327,10 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">380</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
 <span class="normal">383</span>
@@ -3367,10 +3376,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -4094,8 +4100,9 @@ where <span class="arithmatex">\(x_s^j\)</span> are an equally spaced grid of po
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -4268,7 +4275,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">364</span>
 <span class="normal">365</span>
 <span class="normal">366</span>
-<span class="normal">367</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">367</span>
+<span class="normal">368</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -4339,8 +4347,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -4674,7 +4683,10 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">380</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
 <span class="normal">383</span>
@@ -4720,10 +4732,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -4992,8 +5001,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">369</span>
-<span class="normal">370</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">370</span>
 <span class="normal">371</span>
 <span class="normal">372</span>
 <span class="normal">373</span>
@@ -5060,7 +5068,8 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">434</span>
 <span class="normal">435</span>
 <span class="normal">436</span>
-<span class="normal">437</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">437</span>
+<span class="normal">438</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ice"</span><span class="p">,</span>
@@ -5322,8 +5331,9 @@ where <span class="arithmatex">\(x_s^j\)</span> are an equally spaced grid of po
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -5406,8 +5416,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/global_effect_pdp.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">445</span>
-<span class="normal">446</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">446</span>
 <span class="normal">447</span>
 <span class="normal">448</span>
 <span class="normal">449</span>
@@ -5503,7 +5512,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">539</span>
 <span class="normal">540</span>
 <span class="normal">541</span>
-<span class="normal">542</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">542</span>
+<span class="normal">543</span>
+<span class="normal">544</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -5581,8 +5592,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (e.g. `nof_instances` subsampling)</span>
@@ -5916,7 +5928,10 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">380</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
 <span class="normal">383</span>
@@ -5962,10 +5977,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -6250,9 +6262,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_pdp.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">544</span>
-<span class="normal">545</span>
-<span class="normal">546</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">546</span>
 <span class="normal">547</span>
 <span class="normal">548</span>
 <span class="normal">549</span>
@@ -6320,7 +6330,9 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">611</span>
 <span class="normal">612</span>
 <span class="normal">613</span>
-<span class="normal">614</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">614</span>
+<span class="normal">615</span>
+<span class="normal">616</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"ice"</span><span class="p">,</span>
@@ -6560,8 +6572,9 @@ $$</p>
 with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code></p>
 <ul>
-<li>omitted fields are inferred from the data (DataFrame dtypes,
-  numpy heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>); to start
+  from a DataFrame use <code>effector.from_dataframe</code></li>
 <li>explicit fields always win over inference</li>
 </ul>
               </div>
@@ -6878,7 +6891,8 @@ The default value is <code>1_000</code> instances, which is a good trade-off bet
 <span class="normal">217</span>
 <span class="normal">218</span>
 <span class="normal">219</span>
-<span class="normal">220</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">220</span>
+<span class="normal">221</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
@@ -6954,8 +6968,9 @@ The default value is <code>1_000</code> instances, which is a good trade-off bet
 <span class="sd">            with any of the keys `feature_names`, `feature_types`,</span>
 <span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`</span>
 
-<span class="sd">            - omitted fields are inferred from the data (DataFrame dtypes,</span>
-<span class="sd">              numpy heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`); to start</span>
+<span class="sd">              from a DataFrame use `effector.from_dataframe`</span>
 <span class="sd">            - explicit fields always win over inference</span>
 
 <span class="sd">        random_state: seed for every internal random step (`nof_instances` subsampling and the shap/shapiq explainer, unless overridden via `shap_explainer_kwargs`)</span>
@@ -7136,8 +7151,7 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">318</span>
-<span class="normal">319</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">319</span>
 <span class="normal">320</span>
 <span class="normal">321</span>
 <span class="normal">322</span>
@@ -7174,7 +7188,8 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
 <span class="normal">353</span>
 <span class="normal">354</span>
 <span class="normal">355</span>
-<span class="normal">356</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">356</span>
+<span class="normal">357</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -7339,7 +7354,10 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">380</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
 <span class="normal">381</span>
 <span class="normal">382</span>
 <span class="normal">383</span>
@@ -7385,10 +7403,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">423</span>
 <span class="normal">424</span>
 <span class="normal">425</span>
-<span class="normal">426</span>
-<span class="normal">427</span>
-<span class="normal">428</span>
-<span class="normal">429</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+<span class="normal">426</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
@@ -7661,8 +7676,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">358</span>
-<span class="normal">359</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">359</span>
 <span class="normal">360</span>
 <span class="normal">361</span>
 <span class="normal">362</span>
@@ -7817,7 +7831,8 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">511</span>
 <span class="normal">512</span>
 <span class="normal">513</span>
-<span class="normal">514</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">514</span>
+<span class="normal">515</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"shap_values"</span><span class="p">,</span>

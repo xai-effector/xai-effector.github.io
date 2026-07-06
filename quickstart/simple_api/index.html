@@ -764,13 +764,13 @@
 <h3 id="dataset">Dataset</h3>
 <details class="note" open="open">
 <summary>A dataset, typically the test set</summary>
-<p>A <code>np.ndarray</code> with shape <code>(N, D)</code> <strong>or a pandas DataFrame</strong> (R10).
- A DataFrame brings its own metadata: column names become feature names and
- dtypes decide the feature types (<code>float</code> → continuous, low-cardinality
- <code>int</code> → ordinal, <code>category</code>/strings → nominal, ordered <code>category</code> →
- ordinal). With a DataFrame, your model is always called with a
- reconstructed DataFrame (original columns and dtypes) — if it expects a
- raw array, wrap it: <code>lambda X: f(X.to_numpy())</code>.</p>
+<p>A <code>np.ndarray</code> with shape <code>(N, D)</code> — effector is numpy-only (R10).
+ Started from a pandas DataFrame? Convert it once with
+ <code>X, schema = effector.from_dataframe(df)</code>: it reads column names, dtypes
+ (<code>float</code> → continuous, low-cardinality <code>int</code> → ordinal, <code>category</code>/strings
+ → nominal, ordered <code>category</code> → ordinal), and category labels into a
+ <code>Schema</code> you can inspect and tweak. It converts the data only — it never
+ touches your model.</p>
 </details>
 <details class="note" open="open">
 <summary>Metadata travels in one <code>schema</code> argument</summary>
@@ -803,8 +803,11 @@
 <span class="n">X</span> <span class="o">=</span> <span class="n">bike_sharing_dataset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">features</span> 
 <span class="n">y</span> <span class="o">=</span> <span class="n">bike_sharing_dataset</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">targets</span> 
 
-<span class="c1"># split data</span>
+<span class="c1"># split data (still pandas DataFrames)</span>
 <span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># effector is numpy-only: convert the DataFrame to (numpy, schema)</span>
+<span class="n">X_test_np</span><span class="p">,</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
 </code></pre></div>
 </div>
 </div>
@@ -813,7 +816,12 @@
 <h3 id="ml-model">ML model</h3>
 <details class="note" open="open">
 <summary>A trained black-box model</summary>
-<p>Must be a <code>Callable</code> with signature <code>X: np.ndarray[N, D]) -&gt; np.ndarray[N]</code>. </p>
+<p>Must be a numpy→numpy <code>Callable</code>, signature
+ <code>X: np.ndarray[N, D] -&gt; np.ndarray[N]</code>. A model trained on a DataFrame, a
+ PyTorch/TensorFlow tensor, or an sklearn <code>Pipeline</code> is yours to wrap into
+ that shape — e.g. PyTorch:
+ <code>model = lambda X: net(torch.as_tensor(X, dtype=torch.float32)).detach().numpy().ravel()</code>.
+ See the <a href="../pure_numpy/"><em>effector is purely numpy based</em></a> guide.</p>
 </details>
 <div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">synthetic example</label><label for="__tabbed_2_2">scikit-learn</label><label for="__tabbed_2_3">tensorflow</label><label for="__tabbed_2_4">pytorch</label></div>
 <div class="tabbed-content">
