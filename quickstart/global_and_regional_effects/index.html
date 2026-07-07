@@ -380,7 +380,7 @@
   <span class="md-ellipsis">
     
   
-    The design contract (R1-R10)
+    The design contract (R1-R11)
   
 
     
@@ -619,6 +619,17 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#under-the-hood-a-regional-effect-is-a-masked-global-effect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Under the hood: a regional effect is a masked global effect
+      
+    </span>
+  </a>
   
 </li>
       
@@ -1038,8 +1049,34 @@ Let's focus on the first-level splits first.</p>
 🌴 <strong>Weekends &amp; Holidays:</strong> Rentals increase at <strong>9:00 AM</strong>, peak at <strong>12:00 PM</strong>, and decline around <strong>4:00 PM</strong>—a typical leisure pattern.  </p>
 <p>📊 <strong>PDP and SHAP-DP go further</strong><br>
 They reveal another key factor: <strong>temperature</strong>. The impact of <code>hour</code> on bike rentals differs on non-working days depending on whether it’s hot or cold.  </p>
-<p>✔️ This makes sense—temperature matters for sightseeing, but not for commuting.</p>
 </details>
+<hr>
+<h2 id="under-the-hood-a-regional-effect-is-a-masked-global-effect">Under the hood: a regional effect is a masked global effect</h2>
+<details class="note" open="open">
+<summary>Regional plots are global-frame views</summary>
+<p>A regional node is <strong>not</strong> a new effect fitted from scratch on a data subset.
+<code>effector</code> fits the global effect <strong>once</strong> (one pass over the model) and every
+node plot is that same object's summary restricted to the node's instances:
+the axis limits, the PDP grid, and the ALE bin edges stay on the global frame,
+while means, heterogeneity bands, and centering are re-computed from the
+node's instances only — with <strong>zero extra model calls</strong>. The heterogeneity
+printed in the partition tree and the band drawn in the node plot come from
+the same computation.</p>
+</details>
+<p>You can use the same mechanism ad hoc, with any condition you like, without
+fitting a regional object at all — every global method's <code>eval</code> and <code>plot</code>
+accept a boolean <code>mask</code> over the instances:</p>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># the effect of `hour`, only over working days</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">6</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">feature_label</span><span class="o">=</span><span class="s2">"hr | workingday"</span><span class="p">)</span>
+</code></pre></div>
+<p><code>RegionalPDP.plot(feature, node_idx)</code> does exactly this, with the node's mask
+and label. See <em>The design contract</em> (R11) and <em>Method semantics</em> for what is
+re-computed versus frozen per method.</p>
+<pre><code>✔️ This makes sense—temperature matters for sightseeing, but not for commuting.
+</code></pre>
 
 
 

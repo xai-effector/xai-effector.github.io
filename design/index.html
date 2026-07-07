@@ -20,7 +20,7 @@
     
     
       
-        <title>The design contract (R1-R10) - effector</title>
+        <title>The design contract (R1-R11) - effector</title>
       
     
     
@@ -118,7 +118,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              The design contract (R1-R10)
+              The design contract (R1-R11)
             
           </span>
         </div>
@@ -395,7 +395,7 @@
   <span class="md-ellipsis">
     
   
-    The design contract (R1-R10)
+    The design contract (R1-R11)
   
 
     
@@ -413,7 +413,7 @@
   <span class="md-ellipsis">
     
   
-    The design contract (R1-R10)
+    The design contract (R1-R11)
   
 
     
@@ -542,6 +542,17 @@
     <span class="md-ellipsis">
       
         R10 — Input contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#r11-regional-masked-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R11 — Regional ≡ masked global
       
     </span>
   </a>
@@ -836,6 +847,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#r11-regional-masked-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        R11 — Regional ≡ masked global
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -893,8 +915,8 @@ method-specific payload; <code>fit_args["feature_{i}"]</code> records the kwargs
 to detect refit.</p>
 <h2 id="r5-one-method-registry">R5 — One method registry</h2>
 <p><code>effector.method_registry</code> holds the single
-<code>{canonical_name: (cls, needs_jac, uses_data_effect, display_name)}</code> table
-plus aliases. <code>FeatureEffect</code>, <code>RegionalEffectBase._create_fe_object</code>, and
+<code>{canonical_name: (cls, needs_jac, display_name, ...capabilities)}</code> table
+plus aliases. <code>FeatureEffect</code>, <code>RegionalEffectBase</code>, and
 plot titles all read it; per-method if/elif chains are a bug.</p>
 <h2 id="r6-string-argument-registries">R6 — String-argument registries</h2>
 <p>Exactly one alias table per concept, resolved by one <code>return_default</code>-style
@@ -1013,6 +1035,36 @@ construction-time defaults; a plot-time <code>scale_x</code>/<code>scale_y</code
 checks name/type list lengths against <code>dim</code>, canonical type values, scale
 dict shapes (<code>{"mean","std"}</code>, <code>std != 0</code>), <code>cat_limit</code> sanity, and
 <code>category_names</code> lengths against the observed levels.</p>
+<h2 id="r11-regional-masked-global">R11 — Regional ≡ masked global</h2>
+<p>A regional effect is <strong>not</strong> a re-instantiated global object on a data
+subset; it is the one global object's own summary restricted by a boolean
+mask. Every global <code>eval</code>/<code>eval_heter</code>/<code>heter_score</code>/<code>plot</code> accepts
+<code>mask=</code> (boolean, shape <code>(N,)</code>); <code>RegionalX.eval/eval_heter/plot(feature,
+node_idx)</code> delegates to the one fitted global object with the node's mask
+(plus <code>feature_label=</code> for the region title). One source of truth: the
+heterogeneity printed in the partition tree <strong>is</strong>
+<code>global.heter_score(feature, mask)</code>, and every plotted node band derives
+from <code>eval_heter(feature, xs, mask)</code>.</p>
+<p><strong>The invariant.</strong> <code>axis_limits</code> is the immutable global frame, fixed at
+construction. A mask never mutates stored state — no axis_limits, no bins,
+no payloads. Anything region-shaped is transient, derived per call via
+<code>_effective_limits(feature, mask)</code> = <code>[min, max]</code> of the masked column
+(categorical analog: <code>_level_weights</code>). Its only consumers: masked
+centering constants, the masked plot x-window, and degeneracy guards
+(empty mask / collapsed interval → <code>ValueError</code>).</p>
+<p><strong>Model-free.</strong> Masked surfaces extend the single-model-touch constitution
+to eval/plot: everything is re-summarized from the stored per-instance
+local effects, zero model calls (contract-tested). The one allowed
+exception: PDP <code>eval(mask=)</code> at points off the cached grid recomputes ICE
+on <code>data[mask]</code> exactly — symmetric with global PDP eval.</p>
+<p><strong>Frame semantics.</strong> Structure frozen on the global frame stays frozen:
+ALE keeps its bin edges, PDP its grid. Bins/levels left empty by the mask
+are interpolated (<code>fill_nans</code>) and edge bins extend flat — a region never
+re-touches the model to re-support the frame. RHALE/ShapDP store
+per-instance local effects, so masked calls re-run binning; the
+<code>binning_scope</code> fit kwarg (<code>"global"</code> default | <code>"effective"</code>) selects the
+range handed to <code>find_limits</code>, is recorded in <code>fit_args</code>, and is replayed
+on every masked call — split search and display always share it.</p>
 
 
 

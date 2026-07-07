@@ -386,7 +386,7 @@
   <span class="md-ellipsis">
     
   
-    The design contract (R1-R10)
+    The design contract (R1-R11)
   
 
     
@@ -471,6 +471,17 @@
     <span class="md-ellipsis">
       
         Shared rules
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#masked-evaluation-regional-masked-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Masked evaluation (regional ≡ masked global)
       
     </span>
   </a>
@@ -705,6 +716,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#masked-evaluation-regional-masked-global" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Masked evaluation (regional ≡ masked global)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#pdp" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -814,6 +836,40 @@ their natural numeric order. Nominal levels are indexed by an order <span class=
   per-level jittered dots. Nominal → same bars at positions <span class="arithmatex">\(1..K\)</span> with level labels as
   ticks; bar order follows <span class="arithmatex">\(\pi\)</span>; PDP/ShapDP may reorder for display (<code>order="effect"</code>).</li>
 </ul>
+<h2 id="masked-evaluation-regional-masked-global">Masked evaluation (regional ≡ masked global)</h2>
+<p><code>eval</code>/<code>eval_heter</code>/<code>heter_score</code>/<code>plot</code> all accept <code>mask=</code> — a boolean array
+over the <span class="arithmatex">\(N\)</span> instances — and return the method's own summary restricted to the
+selected instances. This is exactly what a regional node is (design contract
+R11): <code>RegionalX.plot(feature, node_idx)</code> = <code>globalX.plot(feature,
+mask=node_mask)</code>. Masked calls are model-free — they re-summarize the stored
+per-instance local effects (one exception below). Per method, what re-runs and
+what stays frozen:</p>
+<ul>
+<li><strong>PDP / DerPDP</strong> — the grid is frozen (global frame). Masked mean and
+  variance are re-averaged over the masked <em>columns</em> of the cached ICE (d-ICE)
+  table; centering constants are recomputed per masked instance. The one
+  allowed model touch: <code>eval(mask=)</code> at points off the cached grid recomputes
+  ICE on <code>data[mask]</code> exactly; heterogeneity and plot always interpolate from
+  the cached grid.</li>
+<li><strong>ALE</strong> — bin edges are frozen (the edge-bound secants cannot be recomputed
+  without touching the model). Masked per-bin means/variances are re-averaged
+  from the stored per-instance effects; bins left empty by the mask are
+  interpolated (<code>fill_nans</code>) and edge bins extend flat.</li>
+<li><strong>RHALE / ShapDP</strong> — the stored local effects are per-instance (jacobian
+  values / SHAP values), so a masked call re-runs binning on the masked data.
+  The <code>binning_scope</code> fit kwarg selects the range handed to the binner:
+  <code>"global"</code> (default) = the global <code>axis_limits</code> interval, <code>"effective"</code> =
+  the masked column's <code>[min, max]</code>. It is recorded at fit and replayed on
+  every masked call, so the split search's <code>heter_score(mask)</code> and every
+  masked eval/plot share the same scope.</li>
+<li><strong>Categorical features</strong> keep the parent's level frame: means/variances are
+  re-aggregated per level within the mask, level weights <span class="arithmatex">\(w_k\)</span> become the
+  within-mask frequencies, and levels absent from the region are interpolated
+  (ALE transitions) or dropped from the bars.</li>
+</ul>
+<p>Masked plots window the x-axis to the effective interval, so node plots look
+"zoomed" by default. A degenerate mask (empty, or collapsing the feature to a
+point) raises <code>ValueError</code>.</p>
 <h2 id="pdp">PDP</h2>
 <p>ICE curve: <span class="arithmatex">\(\hat f^{(i)}(x) = f(x,\, x^{(i)}_c)\)</span>.</p>
 <table>
@@ -978,7 +1034,7 @@ Plot: bars + jittered per-level <span class="arithmatex">\(\phi\)</span> dots (c
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../design/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The design contract (R1-R10)">
+          <a href="../design/" class="md-footer__link md-footer__link--prev" aria-label="Previous: The design contract (R1-R11)">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -988,7 +1044,7 @@ Plot: bars + jittered per-level <span class="arithmatex">\(\phi\)</span> dots (c
                 Previous
               </span>
               <div class="md-ellipsis">
-                The design contract (R1-R10)
+                The design contract (R1-R11)
               </div>
             </div>
           </a>
