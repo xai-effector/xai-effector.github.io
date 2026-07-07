@@ -1960,8 +1960,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
-<span class="normal">256</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">256</span>
 <span class="normal">257</span>
 <span class="normal">258</span>
 <span class="normal">259</span>
@@ -2028,7 +2027,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">320</span>
 <span class="normal">321</span>
 <span class="normal">322</span>
-<span class="normal">323</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+<span class="normal">323</span>
+<span class="normal">324</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">data</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
     <span class="n">model</span><span class="p">:</span> <span class="nb">callable</span><span class="p">,</span>
@@ -2220,8 +2220,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0)</code></li>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">406</span>
-<span class="normal">407</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">407</span>
 <span class="normal">408</span>
 <span class="normal">409</span>
 <span class="normal">410</span>
@@ -2256,7 +2255,8 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0)</code></li>
 <span class="normal">439</span>
 <span class="normal">440</span>
 <span class="normal">441</span>
-<span class="normal">442</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">442</span>
+<span class="normal">443</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -2474,8 +2474,7 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0)</code></li>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">444</span>
-<span class="normal">445</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">445</span>
 <span class="normal">446</span>
 <span class="normal">447</span>
 <span class="normal">448</span>
@@ -2511,7 +2510,8 @@ For example: <code>Fixed(nof_bins=20, min_points_per_bin=0)</code></li>
 <span class="normal">478</span>
 <span class="normal">479</span>
 <span class="normal">480</span>
-<span class="normal">481</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">481</span>
+<span class="normal">482</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -2797,7 +2797,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, candidate_conditioning_features='all', space_partitioner='best', binning_method='greedy') (effector.regional_effect_ale.RegionalRHALE.fit)" href="#effector.regional_effect_ale.RegionalRHALE.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, candidate_conditioning_features='all', space_partitioner='best', binning_method='dp') (effector.regional_effect_ale.RegionalRHALE.fit)" href="#effector.regional_effect_ale.RegionalRHALE.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Find subregions by minimizing the RHALE-based heterogeneity.</p>
@@ -3010,7 +3010,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
 
 <h4 id="effector.regional_effect_ale.RegionalRHALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'greedy'</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'dp'</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3105,7 +3105,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
               </div>
             </td>
             <td>
-                  <code>'greedy'</code>
+                  <code>'dp'</code>
             </td>
           </tr>
       </tbody>
@@ -3158,7 +3158,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">209</span>
 <span class="normal">210</span>
 <span class="normal">211</span>
-<span class="normal">212</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">212</span>
+<span class="normal">213</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -3168,8 +3169,9 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
         <span class="nb">str</span><span class="p">,</span>
         <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">,</span>
         <span class="n">ap</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span>
-        <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="s2">"greedy"</span><span class="p">,</span>
+        <span class="n">ap</span><span class="o">.</span><span class="n">Agglomerative</span><span class="p">,</span>
+        <span class="n">ap</span><span class="o">.</span><span class="n">Quantile</span><span class="p">,</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">"dp"</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Find subregions by minimizing the RHALE-based heterogeneity.</span>
@@ -3384,8 +3386,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_ale.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">214</span>
-<span class="normal">215</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">215</span>
 <span class="normal">216</span>
 <span class="normal">217</span>
 <span class="normal">218</span>
@@ -3421,7 +3422,8 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 <span class="normal">248</span>
 <span class="normal">249</span>
 <span class="normal">250</span>
-<span class="normal">251</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">251</span>
+<span class="normal">252</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
@@ -5498,7 +5500,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, candidate_conditioning_features='all', space_partitioner='best', binning_method='greedy') (effector.regional_effect_shap.RegionalShapDP.fit)" href="#effector.regional_effect_shap.RegionalShapDP.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, candidate_conditioning_features='all', space_partitioner='best', binning_method='dp') (effector.regional_effect_shap.RegionalShapDP.fit)" href="#effector.regional_effect_shap.RegionalShapDP.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Fit the regional SHAP.</p>
@@ -5701,7 +5703,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
 
 <h4 id="effector.regional_effect_shap.RegionalShapDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'greedy'</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'dp'</span><span class="p">)</span></code>
 
 </h4>
 
@@ -5778,7 +5780,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
                 <code>binning_method</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Greedy(init_nof_bins=20, min_points_per_bin=2, discount=0.3) (effector.axis_partitioning.Greedy)" href="../api_axis_partitioning/#effector.axis_partitioning.Greedy">Greedy</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed(nof_bins=20, min_points_per_bin=0) (effector.axis_partitioning.Fixed)" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.DynamicProgramming(max_nof_bins=20, min_points_per_bin=2, discount=0.3) (effector.axis_partitioning.DynamicProgramming)" href="../api_axis_partitioning/#effector.axis_partitioning.DynamicProgramming">DynamicProgramming</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Agglomerative(init_nof_bins=20, min_points_per_bin=2, discount=0.3) (effector.axis_partitioning.Agglomerative)" href="../api_axis_partitioning/#effector.axis_partitioning.Agglomerative">Agglomerative</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Quantile(nof_bins=20, min_points_per_bin=0) (effector.axis_partitioning.Quantile)" href="../api_axis_partitioning/#effector.axis_partitioning.Quantile">Quantile</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed(nof_bins=20, min_points_per_bin=0) (effector.axis_partitioning.Fixed)" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -5786,7 +5788,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
               </div>
             </td>
             <td>
-                  <code>'greedy'</code>
+                  <code>'dp'</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -5921,13 +5923,17 @@ check the official documentation of <a href="https://shap.readthedocs.io/en/late
 <span class="normal">229</span>
 <span class="normal">230</span>
 <span class="normal">231</span>
-<span class="normal">232</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="n">space_partitioner</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"best"</span><span class="p">,</span>
-    <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"greedy"</span><span class="p">,</span>
+    <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
+        <span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Agglomerative</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Quantile</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">"dp"</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""</span>
 <span class="sd">    Fit the regional SHAP.</span>
@@ -6211,9 +6217,7 @@ check the official documentation of <a href="https://shap.readthedocs.io/en/late
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/regional_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">234</span>
-<span class="normal">235</span>
-<span class="normal">236</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">236</span>
 <span class="normal">237</span>
 <span class="normal">238</span>
 <span class="normal">239</span>
@@ -6258,7 +6262,9 @@ check the official documentation of <a href="https://shap.readthedocs.io/en/late
 <span class="normal">278</span>
 <span class="normal">279</span>
 <span class="normal">280</span>
-<span class="normal">281</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">node_idx</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>

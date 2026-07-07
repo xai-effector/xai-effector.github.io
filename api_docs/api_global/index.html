@@ -924,16 +924,14 @@ Check the Usage section below and the method-specific documentation for more inf
 </details>
 <details class="example">
 <summary>Usage</summary>
-<div class="highlight"><pre><span></span><code><span class="c1"># customize the space partitioning algorithm</span>
-<span class="n">axis_partitioner</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># customize the axis-partitioning (binning) method</span>
+<span class="n">binning_method</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Agglomerative</span><span class="p">(</span>
     <span class="n">init_nof_bins</span> <span class="o">=</span> <span class="mi">50</span><span class="p">,</span> <span class="c1"># start from 50 bins (default: 20)</span>
     <span class="n">min_points_per_bin</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="c1"># minimum number of points per bin (default: 2)</span>
-    <span class="n">cat_limit</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># maximum number of categories for a feature to be considered categorical (default: 10)</span>
-
 <span class="p">)</span>
 <span class="n">g_method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
     <span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="c1"># list of features to be analyzed</span>
-    <span class="n">axis_partitioner</span><span class="o">=</span><span class="n">axis_partitioner</span><span class="p">,</span> <span class="c1"># custom axis partitioner</span>
+    <span class="n">binning_method</span><span class="o">=</span><span class="n">binning_method</span><span class="p">,</span> <span class="c1"># custom binning method</span>
 <span class="p">)</span>
 </code></pre></div>
 </details>
@@ -2683,7 +2681,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, centering=True, points_for_centering=helpers.NOF_INTERNAL_POINTS, binning_method='greedy', order=None) (effector.global_effect_ale.RHALE.fit)" href="#effector.global_effect_ale.RHALE.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, centering=True, points_for_centering=helpers.NOF_INTERNAL_POINTS, binning_method='dp', order=None) (effector.global_effect_ale.RHALE.fit)" href="#effector.global_effect_ale.RHALE.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Fit the model.</p>
@@ -2940,7 +2938,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
 
 
 <h4 id="effector.global_effect_ale.RHALE.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">NOF_INTERNAL_POINTS</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'greedy'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">NOF_INTERNAL_POINTS</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'dp'</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3001,7 +2999,7 @@ with any of the keys <code>feature_names</code>, <code>feature_types</code>,
               </div>
             </td>
             <td>
-                  <code>'greedy'</code>
+                  <code>'dp'</code>
             </td>
           </tr>
           <tr class="doc-section-item">
@@ -3143,8 +3141,8 @@ reuse the fitted order.</p>
     <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">NOF_INTERNAL_POINTS</span><span class="p">,</span>
     <span class="n">binning_method</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span>
-        <span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span>
-    <span class="p">]</span> <span class="o">=</span> <span class="s2">"greedy"</span><span class="p">,</span>
+        <span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Agglomerative</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Quantile</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">"dp"</span><span class="p">,</span>
     <span class="n">order</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""Fit the model.</span>
@@ -6716,7 +6714,7 @@ The default value is <code>1_000</code> instances, which is a good trade-off bet
       </thead>
       <tbody>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, centering=True, points_for_centering=helpers.NOF_INTERNAL_POINTS, binning_method='greedy') (effector.global_effect_shap.ShapDP.fit)" href="#effector.global_effect_shap.ShapDP.fit">fit</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="fit(features='all', *, centering=True, points_for_centering=helpers.NOF_INTERNAL_POINTS, binning_method='dp') (effector.global_effect_shap.ShapDP.fit)" href="#effector.global_effect_shap.ShapDP.fit">fit</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Fit the SHAP Dependence Plot to the data.</p>
@@ -7027,7 +7025,7 @@ The default value is <code>1_000</code> instances, which is a good trade-off bet
 
 
 <h4 id="effector.global_effect_shap.ShapDP.fit" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">NOF_INTERNAL_POINTS</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'greedy'</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">points_for_centering</span><span class="o">=</span><span class="n">helpers</span><span class="o">.</span><span class="n">NOF_INTERNAL_POINTS</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s1">'dp'</span><span class="p">)</span></code>
 
 </h4>
 
@@ -7114,7 +7112,7 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
                 <code>binning_method</code>
             </td>
             <td>
-                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Greedy(init_nof_bins=20, min_points_per_bin=2, discount=0.3) (effector.axis_partitioning.Greedy)" href="../api_axis_partitioning/#effector.axis_partitioning.Greedy">Greedy</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed(nof_bins=20, min_points_per_bin=0) (effector.axis_partitioning.Fixed)" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.DynamicProgramming(max_nof_bins=20, min_points_per_bin=2, discount=0.3) (effector.axis_partitioning.DynamicProgramming)" href="../api_axis_partitioning/#effector.axis_partitioning.DynamicProgramming">DynamicProgramming</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Agglomerative(init_nof_bins=20, min_points_per_bin=2, discount=0.3) (effector.axis_partitioning.Agglomerative)" href="../api_axis_partitioning/#effector.axis_partitioning.Agglomerative">Agglomerative</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Quantile(nof_bins=20, min_points_per_bin=0) (effector.axis_partitioning.Quantile)" href="../api_axis_partitioning/#effector.axis_partitioning.Quantile">Quantile</a>, <a class="autorefs autorefs-internal" title="effector.axis_partitioning.Fixed(nof_bins=20, min_points_per_bin=0) (effector.axis_partitioning.Fixed)" href="../api_axis_partitioning/#effector.axis_partitioning.Fixed">Fixed</a>]</code>
             </td>
             <td>
               <div class="doc-md-description">
@@ -7126,7 +7124,7 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
               </div>
             </td>
             <td>
-                  <code>'greedy'</code>
+                  <code>'dp'</code>
             </td>
           </tr>
       </tbody>
@@ -7135,12 +7133,7 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">319</span>
-<span class="normal">320</span>
-<span class="normal">321</span>
-<span class="normal">322</span>
-<span class="normal">323</span>
-<span class="normal">324</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">324</span>
 <span class="normal">325</span>
 <span class="normal">326</span>
 <span class="normal">327</span>
@@ -7173,13 +7166,22 @@ using the <code>UnivariateSpline</code> function from <code>scipy.interpolate</c
 <span class="normal">354</span>
 <span class="normal">355</span>
 <span class="normal">356</span>
-<span class="normal">357</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
+<span class="normal">357</span>
+<span class="normal">358</span>
+<span class="normal">359</span>
+<span class="normal">360</span>
+<span class="normal">361</span>
+<span class="normal">362</span>
+<span class="normal">363</span>
+<span class="normal">364</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">fit</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">features</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
     <span class="n">points_for_centering</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">NOF_INTERNAL_POINTS</span><span class="p">,</span>
-    <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Greedy</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"greedy"</span><span class="p">,</span>
+    <span class="n">binning_method</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span>
+        <span class="nb">str</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Agglomerative</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Quantile</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">Fixed</span>
+    <span class="p">]</span> <span class="o">=</span> <span class="s2">"dp"</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
 <span class="w">    </span><span class="sa">r</span><span class="sd">"""Fit the SHAP Dependence Plot to the data.</span>
 
@@ -7656,14 +7658,7 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect_shap.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span>
-<span class="normal">366</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">366</span>
 <span class="normal">367</span>
 <span class="normal">368</span>
 <span class="normal">369</span>
@@ -7812,7 +7807,14 @@ for the curve, <code>heter_score(feature)</code> for the scalar, and
 <span class="normal">512</span>
 <span class="normal">513</span>
 <span class="normal">514</span>
-<span class="normal">515</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span>
+<span class="normal">520</span>
+<span class="normal">521</span>
+<span class="normal">522</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
     <span class="n">heterogeneity</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"shap_values"</span><span class="p">,</span>
