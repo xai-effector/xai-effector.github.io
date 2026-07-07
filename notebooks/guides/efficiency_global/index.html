@@ -672,6 +672,23 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Total Runtime">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#binning-cost-the-role-of-k-and-binning_method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Binning cost: the role of K and binning_method
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1037,6 +1054,60 @@
 </tr>
 </tbody>
 </table>
+<h3 id="binning-cost-the-role-of-k-and-binning_method">Binning cost: the role of <code>K</code> and <code>binning_method</code></h3>
+<p>The table above folds binning into the constants by using <code>Fixed(nof_bins=20)</code>. But <strong>ALE and RHALE bin the local effects inside <code>.fit()</code></strong>, and that step has its own cost — a pure-numpy pass over the <span class="arithmatex">\(N\)</span> local effects, <em>independent of the model</em>. With <span class="arithmatex">\(K\)</span> the number of bins, the per-feature binning cost <span class="arithmatex">\(C_\text{bin}\)</span> depends on the <code>binning_method</code>:</p>
+<table>
+<thead>
+<tr>
+<th><code>binning_method</code></th>
+<th>complexity</th>
+<th>notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Fixed</code></td>
+<td><span class="arithmatex">\(O(N)\)</span></td>
+<td>uniform grid; ALE's only option, RHALE-capable</td>
+</tr>
+<tr>
+<td><code>Greedy</code></td>
+<td><span class="arithmatex">\(O(K \cdot N)\)</span></td>
+<td>adaptive one-pass merge; <strong>RHALE default</strong></td>
+</tr>
+<tr>
+<td><code>DynamicProgramming</code></td>
+<td><span class="arithmatex">\(O(N + K^2)\)</span></td>
+<td>globally optimal bins</td>
+</tr>
+</tbody>
+</table>
+<p>Because it touches no model, <span class="arithmatex">\(C_\text{bin}\)</span> is negligible against any nonzero <span class="arithmatex">\(t_f\)</span> — <strong>as long as it stays sub-model-call.</strong> The catch is that it is paid <strong>per feature</strong> (<span class="arithmatex">\(D \cdot C_\text{bin}\)</span>), so a slow binner over many features can quietly dominate when <span class="arithmatex">\(t_f\)</span> is small.</p>
+<p>Measured at <span class="arithmatex">\(N = 50{,}000\)</span> (per feature): <code>Fixed</code> ≈ 1.5 ms, <code>Greedy</code> ≈ 8 ms, <code>DynamicProgramming</code> ≈ 1.5 ms.</p>
+<div class="admonition note">
+<p class="admonition-title">DynamicProgramming used to be the landmine</p>
+<p><code>DynamicProgramming</code> was previously <span class="arithmatex">\(O(K^3 N)\)</span>: at <span class="arithmatex">\(N = 50{,}000,\ K = 40\)</span> it cost <strong>≈ 3.3 s per feature</strong> (≈ <strong>66 s</strong> for <span class="arithmatex">\(D = 20\)</span>) — which could dwarf the model itself for fast <span class="arithmatex">\(t_f\)</span>, and even make RHALE slower than PDP. It is now <span class="arithmatex">\(O(N + K^2)\)</span> (<strong>≈ 1.5 ms</strong>, a ~2000× speedup), so the binning method no longer changes the runtime picture.</p>
+</div>
+<p>Making binning explicit, the totals for the two accumulation-based methods become:</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th><span class="arithmatex">\(T\)</span> (all features)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ALE</strong></td>
+<td><span class="arithmatex">\(2 D\, t_f + D \cdot O(N)\)</span></td>
+</tr>
+<tr>
+<td><strong>RHALE</strong></td>
+<td><span class="arithmatex">\(t_f + D \cdot C_\text{bin}(N, K, \texttt{binning\_method})\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>RHALE still needs only <strong>one</strong> Jacobian pass for all <span class="arithmatex">\(D\)</span> features, so it stays model-bound: for realistic <span class="arithmatex">\(t_f\)</span>, <span class="arithmatex">\(C_\text{bin}\)</span> is milliseconds and any <code>binning_method</code> is a fine choice.</p>
 <h2 id="shap-dp">SHAP-DP</h2>
 <p>SHAP-DP is a much slower method, compared to the others. Let's see how it scales with <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(t_f\)</span>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>

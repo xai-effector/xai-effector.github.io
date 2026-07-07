@@ -618,7 +618,7 @@
 
 
 <h3 id="effector.axis_partitioning.Fixed" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span></code>
 
 </h3>
 
@@ -643,23 +643,13 @@
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/axis_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">368</span>
-<span class="normal">369</span>
-<span class="normal">370</span>
-<span class="normal">371</span>
-<span class="normal">372</span>
-<span class="normal">373</span>
-<span class="normal">374</span>
-<span class="normal">375</span>
-<span class="normal">376</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
-    <span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="p">):</span>
-    <span class="n">method_args</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">"nof_bins"</span><span class="p">:</span> <span class="n">nof_bins</span><span class="p">,</span>
-        <span class="s2">"min_points"</span><span class="p">:</span> <span class="n">min_points_per_bin</span><span class="p">,</span>
-        <span class="s2">"cat_limit"</span><span class="p">:</span> <span class="n">cat_limit</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">Fixed</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"fixed"</span><span class="p">,</span> <span class="n">method_args</span><span class="p">)</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="n">Constraints</span><span class="p">(</span><span class="n">min_points_per_bin</span><span class="o">=</span><span class="n">min_points_per_bin</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"nof_bins"</span><span class="p">:</span> <span class="n">nof_bins</span><span class="p">}</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Fixed</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"fixed"</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
                   </details>
 
@@ -689,7 +679,7 @@
 
 
 <h3 id="effector.axis_partitioning.Greedy" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">init_nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Greedy</span><span class="p">(</span><span class="n">init_nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span></code>
 
 </h3>
 
@@ -716,35 +706,25 @@
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/axis_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">156</span>
-<span class="normal">157</span>
-<span class="normal">158</span>
-<span class="normal">159</span>
-<span class="normal">160</span>
-<span class="normal">161</span>
-<span class="normal">162</span>
-<span class="normal">163</span>
-<span class="normal">164</span>
-<span class="normal">165</span>
-<span class="normal">166</span>
-<span class="normal">167</span>
-<span class="normal">168</span>
-<span class="normal">169</span>
-<span class="normal">170</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">init_nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
     <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">discount</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
-    <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="k">assert</span> <span class="n">min_points_per_bin</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"min_points_per_bin should be at least 2"</span>
-    <span class="n">method_args</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">"init_nof_bins"</span><span class="p">:</span> <span class="n">init_nof_bins</span><span class="p">,</span>
-        <span class="s2">"min_points"</span><span class="p">:</span> <span class="n">min_points_per_bin</span><span class="p">,</span>
-        <span class="s2">"discount"</span><span class="p">:</span> <span class="n">discount</span><span class="p">,</span>
-        <span class="s2">"cat_limit"</span><span class="p">:</span> <span class="n">cat_limit</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">Greedy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"greedy"</span><span class="p">,</span> <span class="n">method_args</span><span class="p">)</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="n">Constraints</span><span class="p">(</span><span class="n">min_points_per_bin</span><span class="o">=</span><span class="n">min_points_per_bin</span><span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"init_nof_bins"</span><span class="p">:</span> <span class="n">init_nof_bins</span><span class="p">,</span> <span class="s2">"discount"</span><span class="p">:</span> <span class="n">discount</span><span class="p">}</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Greedy</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"greedy"</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
                   </details>
 
@@ -774,7 +754,7 @@
 
 
 <h3 id="effector.axis_partitioning.DynamicProgramming" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">(</span><span class="n">max_nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">cat_limit</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">DynamicProgramming</span><span class="p">(</span><span class="n">max_nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">discount</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span></code>
 
 </h3>
 
@@ -799,35 +779,33 @@
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/axis_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
-<span class="normal">245</span>
-<span class="normal">246</span>
-<span class="normal">247</span>
-<span class="normal">248</span>
-<span class="normal">249</span>
-<span class="normal">250</span>
-<span class="normal">251</span>
-<span class="normal">252</span>
-<span class="normal">253</span>
-<span class="normal">254</span>
-<span class="normal">255</span>
-<span class="normal">256</span>
-<span class="normal">257</span>
-<span class="normal">258</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">max_nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
     <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">discount</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
-    <span class="n">cat_limit</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span>
 <span class="p">):</span>
     <span class="k">assert</span> <span class="n">min_points_per_bin</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"min_points_per_bin should be at least 2"</span>
-    <span class="n">method_args</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">"max_nof_bins"</span><span class="p">:</span> <span class="n">max_nof_bins</span><span class="p">,</span>
-        <span class="s2">"min_points"</span><span class="p">:</span> <span class="n">min_points_per_bin</span><span class="p">,</span>
-        <span class="s2">"discount"</span><span class="p">:</span> <span class="n">discount</span><span class="p">,</span>
-        <span class="s2">"cat_limit"</span><span class="p">:</span> <span class="n">cat_limit</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="nb">super</span><span class="p">(</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"dynamic_programming"</span><span class="p">,</span> <span class="n">method_args</span><span class="p">)</span>
+    <span class="n">constraints</span> <span class="o">=</span> <span class="n">Constraints</span><span class="p">(</span>
+        <span class="n">min_points_per_bin</span><span class="o">=</span><span class="n">min_points_per_bin</span><span class="p">,</span> <span class="n">max_nof_bins</span><span class="o">=</span><span class="n">max_nof_bins</span>
+    <span class="p">)</span>
+    <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"discount"</span><span class="p">:</span> <span class="n">discount</span><span class="p">}</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">DynamicProgramming</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+        <span class="s2">"dynamic_programming"</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">params</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
                   </details>
 
