@@ -272,170 +272,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Docs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Design
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The design contract (R1-R11)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../method_semantics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Method semantics by feature type
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../guides/" class="md-nav__link">
         
   
@@ -471,6 +307,33 @@
     
   
     Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
   
 
     
@@ -640,6 +503,63 @@
 
 
 
+        <p>Uniform grid: exactly <code>nof_bins</code> equal-width bins — <code>ALE</code>'s default (<code>"fixed"</code>).</p>
+<p>Ignores <code>y</code>, so it is deterministic and the cheapest option (O(N)). It is
+also the only binner <code>ALE</code> accepts: a shared fixed grid is part of ALE's
+definition. It honors the requested bin count exactly — it never collapses
+to fewer bins; if some bin ends up under <code>min_points_per_bin</code> it reports
+failure instead.</p>
+
+        <p>Initialize the fixed binner.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>nof_bins</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of equal-width bins over the axis range.</p>
+              </div>
+            </td>
+            <td>
+                  <code>20</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_points_per_bin</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>If any bin of the grid holds fewer points,
+<code>find_limits</code> returns <code>False</code>. <code>0</code> disables the check.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -654,10 +574,24 @@
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/axis_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">438</span>
-<span class="normal">439</span>
-<span class="normal">440</span>
-<span class="normal">441</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">509</span>
+<span class="normal">510</span>
+<span class="normal">511</span>
+<span class="normal">512</span>
+<span class="normal">513</span>
+<span class="normal">514</span>
+<span class="normal">515</span>
+<span class="normal">516</span>
+<span class="normal">517</span>
+<span class="normal">518</span>
+<span class="normal">519</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Initialize the fixed binner.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nof_bins: Number of equal-width bins over the axis range.</span>
+<span class="sd">        min_points_per_bin: If any bin of the grid holds fewer points,</span>
+<span class="sd">            `find_limits` returns `False`. `0` disables the check.</span>
+<span class="sd">    """</span>
     <span class="n">constraints</span> <span class="o">=</span> <span class="n">Constraints</span><span class="p">(</span><span class="n">min_points_per_bin</span><span class="o">=</span><span class="n">min_points_per_bin</span><span class="p">)</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"nof_bins"</span><span class="p">:</span> <span class="n">nof_bins</span><span class="p">}</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">Fixed</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"fixed"</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
@@ -701,13 +635,88 @@
 
 
 
-        <p>Bottom-up agglomerative binning.</p>
+        <p>Bottom-up greedy binning: near-optimal adaptive bins at a fraction of DP's cost.</p>
 <p>Start from a fine uniform grid of <code>init_nof_bins</code> cells and repeatedly remove
 the interior boundary whose removal reduces the total cost the most, stopping
-when no removal helps (under-filled bins carry <code>big_M</code>, so they are merged
-away first). A genuine greedy — order-independent and driven by the same
-variance×width objective <code>DynamicProgramming</code> optimizes, but only locally
-optimal. O(N + K^2). (Replaces the old left-to-right <code>Greedy</code> sweep.)</p>
+when no removal helps (under-filled bins are merged away first). Driven by
+the same variance-based objective <code>DynamicProgramming</code> optimizes exactly, but
+only locally optimal — O(N + K^2) instead of O(N + K^3). Pick it when <code>"dp"</code>
+is too slow.</p>
+<div class="admonition note">
+<p class="admonition-title">Replaces the old <code>Greedy</code></p>
+<p>The old left-to-right <code>Greedy</code> sweep was replaced by this
+order-independent agglomerative merge; <code>Greedy</code> and the <code>"greedy"</code>
+alias still work and resolve here.</p>
+</div>
+
+        <p>Initialize the agglomerative binner.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>init_nof_bins</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of cells in the starting uniform grid; the
+final bins are unions of these cells, so it caps the resolution.</p>
+              </div>
+            </td>
+            <td>
+                  <code>20</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_points_per_bin</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Bins with fewer points are penalized and merged
+away. Must be at least 2 (variance needs two points).</p>
+              </div>
+            </td>
+            <td>
+                  <code>2</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>discount</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How much to reward well-populated bins. A bin holding a
+fraction <code>p</code> of the points has its cost scaled by
+<code>1 - discount * p</code>; higher values favor fewer, fuller bins.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0.3</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -723,21 +732,43 @@ optimal. O(N + K^2). (Replaces the old left-to-right <code>Greedy</code> sweep.)
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/axis_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">307</span>
-<span class="normal">308</span>
-<span class="normal">309</span>
-<span class="normal">310</span>
-<span class="normal">311</span>
-<span class="normal">312</span>
-<span class="normal">313</span>
-<span class="normal">314</span>
-<span class="normal">315</span>
-<span class="normal">316</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span>
+<span class="normal">354</span>
+<span class="normal">355</span>
+<span class="normal">356</span>
+<span class="normal">357</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">init_nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
     <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">discount</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
 <span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Initialize the agglomerative binner.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        init_nof_bins: Number of cells in the starting uniform grid; the</span>
+<span class="sd">            final bins are unions of these cells, so it caps the resolution.</span>
+<span class="sd">        min_points_per_bin: Bins with fewer points are penalized and merged</span>
+<span class="sd">            away. Must be at least 2 (variance needs two points).</span>
+<span class="sd">        discount: How much to reward well-populated bins. A bin holding a</span>
+<span class="sd">            fraction `p` of the points has its cost scaled by</span>
+<span class="sd">            `1 - discount * p`; higher values favor fewer, fuller bins.</span>
+<span class="sd">    """</span>
     <span class="k">assert</span> <span class="n">min_points_per_bin</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"min_points_per_bin should be at least 2"</span>
     <span class="n">constraints</span> <span class="o">=</span> <span class="n">Constraints</span><span class="p">(</span><span class="n">min_points_per_bin</span><span class="o">=</span><span class="n">min_points_per_bin</span><span class="p">)</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"init_nof_bins"</span><span class="p">:</span> <span class="n">init_nof_bins</span><span class="p">,</span> <span class="s2">"discount"</span><span class="p">:</span> <span class="n">discount</span><span class="p">}</span>
@@ -782,11 +813,64 @@ optimal. O(N + K^2). (Replaces the old left-to-right <code>Greedy</code> sweep.)
 
 
 
-        <p>Equal-frequency binning: edges at data quantiles so every bin holds ~the
-same number of points. Like <code>Fixed</code> it ignores <code>y</code>, but it adapts the edge
-positions to the <code>x</code> distribution — robust for skewed features where a
-uniform grid wastes bins. O(N log N). Under-filled bins (only with heavy
-ties) are merged into a neighbor to honor <code>min_points_per_bin</code>.</p>
+        <p>Equal-frequency binning: edges at data quantiles (<code>"quantile"</code>).</p>
+<p>Every bin holds roughly the same number of points. Like <code>Fixed</code> it ignores
+<code>y</code>, but it adapts the edge positions to the <code>x</code> distribution — pick it for
+skewed features, where a uniform grid wastes bins on empty stretches.
+O(N log N). Tied quantiles collapse (so discrete-ish data yields fewer
+bins), and under-filled bins are merged into a neighbor to honor
+<code>min_points_per_bin</code>.</p>
+
+        <p>Initialize the quantile binner.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>nof_bins</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of equal-frequency bins (edges at the <code>i/nof_bins</code>
+quantiles); duplicates collapse, so ties may yield fewer.</p>
+              </div>
+            </td>
+            <td>
+                  <code>20</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_points_per_bin</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Bins with fewer points are merged into a
+neighbor. <code>0</code> disables the check.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
 
 
 
@@ -802,10 +886,26 @@ ties) are merged into a neighbor to honor <code>min_points_per_bin</code>.</p>
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/axis_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">472</span>
-<span class="normal">473</span>
-<span class="normal">474</span>
-<span class="normal">475</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">554</span>
+<span class="normal">555</span>
+<span class="normal">556</span>
+<span class="normal">557</span>
+<span class="normal">558</span>
+<span class="normal">559</span>
+<span class="normal">560</span>
+<span class="normal">561</span>
+<span class="normal">562</span>
+<span class="normal">563</span>
+<span class="normal">564</span>
+<span class="normal">565</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span> <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">0</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Initialize the quantile binner.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        nof_bins: Number of equal-frequency bins (edges at the `i/nof_bins`</span>
+<span class="sd">            quantiles); duplicates collapse, so ties may yield fewer.</span>
+<span class="sd">        min_points_per_bin: Bins with fewer points are merged into a</span>
+<span class="sd">            neighbor. `0` disables the check.</span>
+<span class="sd">    """</span>
     <span class="n">constraints</span> <span class="o">=</span> <span class="n">Constraints</span><span class="p">(</span><span class="n">min_points_per_bin</span><span class="o">=</span><span class="n">min_points_per_bin</span><span class="p">)</span>
     <span class="n">params</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"nof_bins"</span><span class="p">:</span> <span class="n">nof_bins</span><span class="p">}</span>
     <span class="nb">super</span><span class="p">(</span><span class="n">Quantile</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="s2">"quantile"</span><span class="p">,</span> <span class="n">constraints</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
@@ -849,6 +949,83 @@ ties) are merged into a neighbor to honor <code>min_points_per_bin</code>.</p>
 
 
 
+        <p>Optimal variance-based binning — <code>RHALE</code>'s default (<code>"dp"</code>).</p>
+<p>Among all partitions of a uniform <code>max_nof_bins</code>-cell grid, dynamic
+programming finds the one that exactly minimizes the total cost
+<code>Var[y] * width * (1 - discount * n/N)</code> summed over bins: bin edges land
+where the local effects change behavior. The most accurate binner and the
+most expensive — O(N + K^3) in <code>max_nof_bins</code>; for large grids consider
+<code>Agglomerative</code>, which chases the same objective greedily.</p>
+
+        <p>Initialize the dynamic-programming binner.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_nof_bins</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Number of cells in the candidate grid and an upper
+bound on the number of bins; the optimum may use fewer.</p>
+              </div>
+            </td>
+            <td>
+                  <code>20</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>min_points_per_bin</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>Bins with fewer points are penalized and
+avoided. Must be at least 2 (variance needs two points).</p>
+              </div>
+            </td>
+            <td>
+                  <code>2</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>discount</code>
+            </td>
+            <td>
+                  <code><span title="float">float</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>How much to reward well-populated bins. A bin holding a
+fraction <code>p</code> of the points has its cost scaled by
+<code>1 - discount * p</code>; higher values favor fewer, fuller bins.</p>
+              </div>
+            </td>
+            <td>
+                  <code>0.3</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
 
 
 
@@ -863,25 +1040,47 @@ ties) are merged into a neighbor to honor <code>min_points_per_bin</code>.</p>
 
                   <details class="mkdocstrings-source">
                     <summary>Source code in <code>effector/axis_partitioning.py</code></summary>
-                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">352</span>
-<span class="normal">353</span>
-<span class="normal">354</span>
-<span class="normal">355</span>
-<span class="normal">356</span>
-<span class="normal">357</span>
-<span class="normal">358</span>
-<span class="normal">359</span>
-<span class="normal">360</span>
-<span class="normal">361</span>
-<span class="normal">362</span>
-<span class="normal">363</span>
-<span class="normal">364</span>
-<span class="normal">365</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">403</span>
+<span class="normal">404</span>
+<span class="normal">405</span>
+<span class="normal">406</span>
+<span class="normal">407</span>
+<span class="normal">408</span>
+<span class="normal">409</span>
+<span class="normal">410</span>
+<span class="normal">411</span>
+<span class="normal">412</span>
+<span class="normal">413</span>
+<span class="normal">414</span>
+<span class="normal">415</span>
+<span class="normal">416</span>
+<span class="normal">417</span>
+<span class="normal">418</span>
+<span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span>
+<span class="normal">424</span>
+<span class="normal">425</span>
+<span class="normal">426</span>
+<span class="normal">427</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">max_nof_bins</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">20</span><span class="p">,</span>
     <span class="n">min_points_per_bin</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span>
     <span class="n">discount</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.3</span><span class="p">,</span>
 <span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Initialize the dynamic-programming binner.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        max_nof_bins: Number of cells in the candidate grid and an upper</span>
+<span class="sd">            bound on the number of bins; the optimum may use fewer.</span>
+<span class="sd">        min_points_per_bin: Bins with fewer points are penalized and</span>
+<span class="sd">            avoided. Must be at least 2 (variance needs two points).</span>
+<span class="sd">        discount: How much to reward well-populated bins. A bin holding a</span>
+<span class="sd">            fraction `p` of the points has its cost scaled by</span>
+<span class="sd">            `1 - discount * p`; higher values favor fewer, fuller bins.</span>
+<span class="sd">    """</span>
     <span class="k">assert</span> <span class="n">min_points_per_bin</span> <span class="o">&gt;=</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"min_points_per_bin should be at least 2"</span>
     <span class="n">constraints</span> <span class="o">=</span> <span class="n">Constraints</span><span class="p">(</span>
         <span class="n">min_points_per_bin</span><span class="o">=</span><span class="n">min_points_per_bin</span><span class="p">,</span> <span class="n">max_nof_bins</span><span class="o">=</span><span class="n">max_nof_bins</span>

@@ -1,0 +1,1085 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../static/effector_favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>The input layer - effector</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto Flex";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#the-contract" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="effector" class="md-header__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  <img src="../../static/effector_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            effector
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              The input layer
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="effector" class="md-nav__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  <img src="../../static/effector_logo.png" alt="logo">
+
+    </a>
+    effector
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    effector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api_docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#the-contract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The contract
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-model-regression" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model: regression
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-model-classification" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The model: classification
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-jacobian-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The jacobian (optional)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-three-feature-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The three feature types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#level-names" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Level names
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#units" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Units
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#starting-from-pandas" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Starting from pandas
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#when-you-get-it-wrong" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        When you get it wrong
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>The input layer</h1>
+
+<details class="success" open="open">
+<summary>Description</summary>
+<p>The in-depth guide to part <strong>(a)</strong> of <a href="../simple_api/"><code>effector</code>'s API</a>:
+the numpy-only contract, wrapping any model (regressor or classifier;
+sklearn, torch, keras, DataFrame pipeline), and the <code>schema</code> that makes the
+whole explanation speak your vocabulary.</p>
+</details>
+<details class="note" open="open">
+<summary>Reading time</summary>
+<p>Approx. 10' to read.</p>
+</details>
+<h2 id="the-contract">The contract</h2>
+<p><code>effector</code> speaks one language: <strong>numpy</strong>.</p>
+<pre class="mermaid"><code>flowchart LR
+    D["&lt;b&gt;data&lt;/b&gt;&lt;br/&gt;np.ndarray (N, D)"] --&gt; E["&lt;b&gt;engine&lt;/b&gt;"]
+    M["&lt;b&gt;model&lt;/b&gt;&lt;br/&gt;numpy → numpy"] --&gt; E
+    S["&lt;b&gt;schema&lt;/b&gt;&lt;br/&gt;&lt;i&gt;everything else&lt;/i&gt;"] --&gt; E</code></pre>
+<table>
+<thead>
+<tr>
+<th>you hand it</th>
+<th>it must be</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>data</code></td>
+<td>a 2-D numeric numpy array, <code>(N, D)</code></td>
+</tr>
+<tr>
+<td><code>model</code></td>
+<td>a callable <code>(N, D) → (N,)</code></td>
+</tr>
+<tr>
+<td><code>model_jac</code> <em>(optional)</em></td>
+<td>a callable <code>(N, D) → (N, D)</code></td>
+</tr>
+<tr>
+<td><code>schema</code> <em>(optional)</em></td>
+<td>names, types, level names, units</td>
+</tr>
+</tbody>
+</table>
+<p>That is the whole contract. If your model was trained in PyTorch, TensorFlow, or
+on a pandas DataFrame, <strong>you</strong> wrap it into a <code>numpy → numpy</code> function; that
+wrapper is exactly where the framework-specific concerns (dtype, device,
+batching) belong, because only you know them.</p>
+<details class="tip" open="open">
+<summary>Why numpy?</summary>
+<p>A numpy array is the one format PyTorch, TensorFlow, JAX, scikit-learn,
+XGBoost, and plain Python functions all speak. Standing on numpy makes
+<code>effector</code> <strong>fast</strong> (your model is called as-is, with zero per-call
+conversion) and lets it explain <strong>any</strong> model without shipping a single
+framework adapter.</p>
+</details>
+<details class="danger" open="open">
+<summary>Nothing is auto-detected</summary>
+<p><a href="../../api_docs/api_adapters/"><code>effector.adapters</code></a> <em>returns</em> a wrapper; it
+never installs one behind your back. <strong>You</strong> make the final pass into the
+constructor, so if a conversion is happening, it is on a line you wrote.</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">from_sklearn</span><span class="p">(</span><span class="n">est</span><span class="p">)</span>   <span class="c1"># estimator -&gt; plain callable</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>             <span class="c1"># the handshake: probe on 2 rows</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>         <span class="c1"># the final pass is yours</span>
+</code></pre></div>
+</details>
+<h2 id="the-model-regression">The model: regression</h2>
+<p>Your model returns a number per row. Wrap it so that number arrives as a numpy
+<code>(N,)</code> array, and every method works on it unchanged.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:5"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio"><input id="__tabbed_1_2" name="__tabbed_1" type="radio"><input id="__tabbed_1_3" name="__tabbed_1" type="radio"><input id="__tabbed_1_4" name="__tabbed_1" type="radio"><input id="__tabbed_1_5" name="__tabbed_1" type="radio"><div class="tabbed-labels"><label for="__tabbed_1_1">Already numpy</label><label for="__tabbed_1_2">scikit-learn</label><label for="__tabbed_1_3">PyTorch</label><label for="__tabbed_1_4">TensorFlow / Keras</label><label for="__tabbed_1_5">A DataFrame-hungry pipeline</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>Nothing to wrap; just call it.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="mi">500</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+<span class="n">model</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">A</span><span class="p">:</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">A</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">A</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">from_sklearn</span><span class="p">(</span><span class="n">est</span><span class="p">)</span>
+</code></pre></div>
+<p>Wraps <code>est.predict</code> and validates the output shape.</p>
+</div>
+<div class="tabbed-block">
+<p>The adapter handles <code>eval()</code> mode, <code>no_grad</code>, device and dtype:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">net</span><span class="p">)</span>
+</code></pre></div>
+<p>Which is exactly this, by hand; write it yourself whenever your forward pass
+needs something special (a head selection, custom batching):</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">device</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">.</span><span class="n">device</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>                     <span class="c1"># numpy (N, D) -&gt; numpy (N,)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">net</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Keras <code>.predict</code> already takes numpy in and returns numpy out, so the
+wrapper is almost a no-op:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">net</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>If your model <em>needs</em> a DataFrame (a <code>ColumnTransformer</code> / <code>OneHotEncoder</code>
+pipeline trained on string columns), reconstruct the frame <strong>inside your
+wrapper</strong>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">levels</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"clear"</span><span class="p">,</span> <span class="s2">"mist"</span><span class="p">,</span> <span class="s2">"rain"</span><span class="p">]</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>                     <span class="c1"># numpy grid -&gt; numpy predictions</span>
+    <span class="n">frame</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+        <span class="s2">"hour"</span><span class="p">:</span>    <span class="n">X</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="s2">"temp"</span><span class="p">:</span>    <span class="n">X</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="s2">"weather"</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Categorical</span><span class="o">.</span><span class="n">from_codes</span><span class="p">(</span>
+            <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">X</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]),</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">),</span> <span class="n">levels</span><span class="p">),</span>
+    <span class="p">})</span>
+    <span class="k">return</span> <span class="n">pipeline</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">frame</span><span class="p">)</span>
+</code></pre></div>
+<p>You own the reconstruction, so it is visible and testable; <code>effector</code> never
+guesses how to call your model.</p>
+</div>
+</div>
+</div>
+<h2 id="the-model-classification">The model: classification</h2>
+<p>A classifier's <code>predict</code> returns <strong>labels</strong>. You cannot average, subtract or
+integrate a label; a feature effect does all three. There is no "average effect
+of <code>temp</code> on the label <code>rain</code>".</p>
+<p>So <code>effector</code> never explains labels. It explains the <strong>probability surface</strong>
+behind them:</p>
+<div class="arithmatex">\[
+f(x) = P(\text{class} = k \mid x) \in [0, 1]
+\]</div>
+<p>That is a real-valued function of <code>x</code>: a regression surface like any other.
+Every method (<code>PDP</code>, <code>ALE</code>, <code>RHALE</code>, <code>ShapDP</code>, …) applies to it unchanged.
+Classification is not a mode in <code>effector</code>; it is a wrapper you write once.</p>
+<details class="danger" open="open">
+<summary>You must pick one class</summary>
+<p>One explanation explains <strong>one</strong> class. <code>P(class = k)</code> is a different
+surface for every <code>k</code>: different shape, different story. A multiclass model
+has no single "the" explanation.</p>
+<ul>
+<li><strong>Binary</strong>: explain the positive class. The other one is its mirror,
+  <code>1 - p</code>, so it adds nothing.</li>
+<li><strong>Multiclass</strong>: loop; one explanation per class.</li>
+</ul>
+<p>Effects then read in <strong>probability units</strong>: a <code>+0.12</code> on the <code>y</code>-axis means
+<em>this feature value pushes P(class = k) up by 12 percentage points</em>. Say so
+in the schema and every plot and table is labelled for you:
+<code>target_name="P(rain)"</code>.</p>
+</details>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:4"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio"><input id="__tabbed_2_2" name="__tabbed_2" type="radio"><input id="__tabbed_2_3" name="__tabbed_2" type="radio"><input id="__tabbed_2_4" name="__tabbed_2" type="radio"><div class="tabbed-labels"><label for="__tabbed_2_1">scikit-learn</label><label for="__tabbed_2_2">PyTorch</label><label for="__tabbed_2_3">TensorFlow / Keras</label><label for="__tabbed_2_4">Anything else</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p><code>from_sklearn</code> <strong>refuses</strong> a classifier; that refusal is the whole point.
+Use <code>classifier_proba</code>: it is <code>predict_proba(X)[:, k]</code> with the class lookup
+done for you (a label from <code>clf.classes_</code>, or a column index).</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">classifier_proba</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="s2">"yes"</span><span class="p">)</span>   <span class="c1"># P(class="yes")</span>
+
+<span class="n">schema</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">Schema</span><span class="p">(</span><span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="o">...</span><span class="p">],</span> <span class="n">target_name</span><span class="o">=</span><span class="s2">"P(yes)"</span><span class="p">)</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>Anything that duck-types sklearn works too (<code>XGBClassifier</code>,
+<code>LGBMClassifier</code>, a fitted <code>Pipeline</code>); all it needs is <code>.predict_proba</code>
+and <code>.classes_</code>.</p>
+<p>One explanation per class:</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">classes_</span><span class="p">):</span>
+    <span class="n">model_k</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">classifier_proba</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">class_</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model_k</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>A classification head emits <strong>logits</strong>; turn them into the probability of
+one class yourself:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+
+<span class="n">net</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+<span class="n">device</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">net</span><span class="o">.</span><span class="n">parameters</span><span class="p">())</span><span class="o">.</span><span class="n">device</span>
+<span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>                             <span class="c1"># the class you are explaining</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>                     <span class="c1"># numpy (N, D) -&gt; numpy (N,)</span>
+    <span class="k">with</span> <span class="n">torch</span><span class="o">.</span><span class="n">no_grad</span><span class="p">():</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span>
+        <span class="n">p</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">net</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">dim</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>      <span class="c1"># (N, C)</span>
+        <span class="k">return</span> <span class="n">p</span><span class="p">[:,</span> <span class="n">k</span><span class="p">]</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</code></pre></div>
+<p>For a single-logit binary head, swap <code>softmax</code> for
+<code>torch.sigmoid(net(t)).ravel()</code>.</p>
+</div>
+<div class="tabbed-block">
+<p>A Keras model whose last layer is already a <code>softmax</code> returns the
+probabilities directly; just select the column:</p>
+<div class="highlight"><pre><span></span><code><span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>                             <span class="c1"># the class you are explaining</span>
+<span class="n">model</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">net</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)[:,</span> <span class="n">k</span><span class="p">]</span>
+</code></pre></div>
+<p>A binary <code>sigmoid</code> head returns <code>(N, 1)</code>, so <code>.ravel()</code> is all you need.
+If the model emits raw logits, apply the softmax yourself first, exactly as
+in the PyTorch tab.</p>
+</div>
+<div class="tabbed-block">
+<p>The contract has not changed: hand <code>effector</code> a callable that takes
+<code>(N, D)</code> numpy in and returns <code>(N,)</code> numpy out, whose values happen to be
+the probability of your chosen class.</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">X</span><span class="p">:</span> <span class="n">my_model</span><span class="o">.</span><span class="n">probabilities</span><span class="p">(</span><span class="n">X</span><span class="p">)[:,</span> <span class="n">k</span><span class="p">]</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">check</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X</span><span class="p">)</span>     <span class="c1"># probe it on 2 rows before you commit</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<details class="question" open="open">
+<summary>Why four adapters and not twelve?</summary>
+<p>You may have noticed the gaps: there is no <code>from_keras</code>, and no torch
+classifier adapter. That is deliberate. One rule decides:</p>
+<p>👉 <strong>An adapter exists only where it stands on a guarantee, or does work you
+would plausibly get wrong.</strong></p>
+<p>✅ sklearn <strong>guarantees</strong> that <code>predict_proba</code> returns a normalized
+<code>(N, C)</code> and that <code>classes_</code> names its columns. <code>classifier_proba</code> can
+therefore turn <code>class_="yes"</code> into the right column, safely, every time.</p>
+<p>✅ A torch jacobian is <strong>subtle</strong>: autograd, eval mode, the sum-backward
+trick. <code>from_torch(net, jacobian=True)</code> writes it so you don't.</p>
+<p>⚠️ A torch or keras classification head guarantees <strong>nothing</strong>. Logits,
+log-softmax and probabilities look identical from the outside. An adapter
+would have to guess, and a wrong guess is <em>silent</em>: <code>softmax(softmax(z))</code>
+still lands in <code>[0, 1]</code>, still passes every check, and quietly flattens
+your explanation into a lie.</p>
+<p>So <code>effector</code> does not guess. Where the convention runs out, the honest
+wrapper is three lines, you can read them, and they are in the tabs above.</p>
+</details>
+<h2 id="the-jacobian-optional">The jacobian (optional)</h2>
+<p>Only <code>RHALE</code> and <code>DerPDP</code> use it. It is <code>numpy → numpy</code> like everything else,
+one gradient row per input row:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model_jac</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>      <span class="c1"># (N, D) -&gt; (N, D);  row i = ∇f(x_i)</span>
+</code></pre></div>
+<p>Skip it and they still work: they fall back to a central finite difference
+(<code>utils.compute_jacobian_numerically</code>, <code>eps=1e-6</code>). You pay <code>2 × D</code> extra model
+calls and you lose exactness, so give them the real thing when your framework
+can produce it.</p>
+<details class="tip" open="open">
+<summary>The sum trick, once</summary>
+<p>Every autodiff snippet below backpropagates <code>f(X).sum()</code>, not a loop over
+rows. That is exact, not an approximation: row <code>i</code>'s output depends only on
+row <code>i</code>'s input, so <code>∂(Σⱼ f(xⱼ)) / ∂xᵢ</code> collapses to <code>∇f(xᵢ)</code>. One backward
+pass gives you the whole <code>(N, D)</code> table.</p>
+</details>
+<div class="tabbed-set tabbed-alternate" data-tabs="3:4"><input checked="checked" id="__tabbed_3_1" name="__tabbed_3" type="radio"><input id="__tabbed_3_2" name="__tabbed_3" type="radio"><input id="__tabbed_3_3" name="__tabbed_3" type="radio"><input id="__tabbed_3_4" name="__tabbed_3" type="radio"><div class="tabbed-labels"><label for="__tabbed_3_1">PyTorch</label><label for="__tabbed_3_2">TensorFlow / Keras</label><label for="__tabbed_3_3">JAX</label><label for="__tabbed_3_4">scikit-learn</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<p>The adapter hands you both callables:</p>
+<div class="highlight"><pre><span></span><code><span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">adapters</span><span class="o">.</span><span class="n">from_torch</span><span class="p">(</span><span class="n">net</span><span class="p">,</span> <span class="n">jacobian</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<p>By hand, when your forward pass needs something special:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_jac</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>                     <span class="c1"># numpy (N, D) -&gt; numpy (N, D)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">as_tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">float32</span><span class="p">,</span>
+                        <span class="n">device</span><span class="o">=</span><span class="n">device</span><span class="p">)</span><span class="o">.</span><span class="n">requires_grad_</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">net</span><span class="p">(</span><span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">backward</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">t</span><span class="o">.</span><span class="n">grad</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><code>GradientTape</code> is the same trick with a different spelling:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">tensorflow</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">tf</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model_jac</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>                     <span class="c1"># numpy (N, D) -&gt; numpy (N, D)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">convert_to_tensor</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="n">tf</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">tf</span><span class="o">.</span><span class="n">GradientTape</span><span class="p">()</span> <span class="k">as</span> <span class="n">tape</span><span class="p">:</span>
+        <span class="n">tape</span><span class="o">.</span><span class="n">watch</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">tf</span><span class="o">.</span><span class="n">reduce_sum</span><span class="p">(</span><span class="n">net</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">tape</span><span class="o">.</span><span class="n">gradient</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span><span class="o">.</span><span class="n">numpy</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p><code>grad</code> differentiates one row; <code>vmap</code> maps it over all of them:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">jax</span><span class="o">,</span><span class="w"> </span><span class="nn">jax.numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">jnp</span>
+
+<span class="n">grad_f</span> <span class="o">=</span> <span class="n">jax</span><span class="o">.</span><span class="n">vmap</span><span class="p">(</span><span class="n">jax</span><span class="o">.</span><span class="n">grad</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">:])[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">model_jac</span><span class="p">(</span><span class="n">X</span><span class="p">):</span>                     <span class="c1"># numpy (N, D) -&gt; numpy (N, D)</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">grad_f</span><span class="p">(</span><span class="n">jnp</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">X</span><span class="p">)))</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<p>Usually there is nothing to hand over; scikit-learn models do not expose a jacobian.</p>
+</div>
+</div>
+</div>
+<details class="danger" open="open">
+<summary>Not every model has a derivative</summary>
+<p><code>RHALE</code> and <code>DerPDP</code> are built on the pointwise derivative, so they are the
+<strong>wrong tools for a tree ensemble</strong>. Reach for <code>ALE</code> instead: it differences
+across bin edges rather than infinitesimally, so it reads a step function
+correctly. <code>PDP</code> and <code>ShapDP</code> never touch a jacobian at all.</p>
+</details>
+<h2 id="the-schema">The schema</h2>
+<p>Everything that is <em>not</em> data and <em>not</em> the model travels in one optional
+argument. It is what makes rules read <code>season = winter</code> instead of <code>x_7 = 0.0</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">schema</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">Schema</span><span class="p">(</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"hr"</span><span class="p">,</span> <span class="s2">"temp"</span><span class="p">,</span> <span class="s2">"workingday"</span><span class="p">],</span>
+    <span class="n">feature_types</span><span class="o">=</span><span class="p">[</span><span class="s2">"ordinal"</span><span class="p">,</span> <span class="s2">"continuous"</span><span class="p">,</span> <span class="s2">"nominal"</span><span class="p">],</span>
+    <span class="n">target_name</span><span class="o">=</span><span class="s2">"count"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+</code></pre></div>
+<p>Every field is optional; whatever you do not declare is inferred or synthesized
+(<code>x_0…</code>, <code>"y"</code>). A plain dict with the same keys works too.</p>
+<table>
+<thead>
+<tr>
+<th>field</th>
+<th>meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>feature_names</code></td>
+<td>one name per column (default <code>x_0, x_1, …</code>)</td>
+</tr>
+<tr>
+<td><code>feature_types</code></td>
+<td><code>"continuous"</code> / <code>"ordinal"</code> / <code>"nominal"</code> per column</td>
+</tr>
+<tr>
+<td><code>category_names</code></td>
+<td>per categorical feature: a human-readable name per level, in ascending order</td>
+</tr>
+<tr>
+<td><code>target_name</code></td>
+<td>name of the model output (default <code>"y"</code>)</td>
+</tr>
+<tr>
+<td><code>scale_x_list</code></td>
+<td>per-feature <code>{"mean": .., "std": ..}</code> to display plots in original units</td>
+</tr>
+<tr>
+<td><code>scale_y</code></td>
+<td><code>{"mean": .., "std": ..}</code> for the output axis</td>
+</tr>
+<tr>
+<td><code>cat_limit</code></td>
+<td>cardinality threshold for the int-column type heuristic (default 10)</td>
+</tr>
+</tbody>
+</table>
+<p>✅ With a schema, <strong>every verb takes a name instead of an index</strong>: <code>pdp.plot(0)</code>
+and <code>pdp.plot("hr")</code> are the same call.</p>
+<h3 id="the-three-feature-types">The three feature types</h3>
+<pre class="mermaid"><code>flowchart TD
+    T["&lt;b&gt;feature type&lt;/b&gt;"] --&gt; C["&lt;b&gt;continuous&lt;/b&gt;&lt;br/&gt;a real axis"]
+    T --&gt; O["&lt;b&gt;ordinal&lt;/b&gt;&lt;br/&gt;ordered levels&lt;br/&gt;&lt;i&gt;winter &amp;lt; spring &amp;lt; …&lt;/i&gt;"]
+    T --&gt; N["&lt;b&gt;nominal&lt;/b&gt;&lt;br/&gt;unordered levels&lt;br/&gt;&lt;i&gt;red, green, blue&lt;/i&gt;"]</code></pre>
+<p>⚠️ <strong>The type is not cosmetic; it changes the math.</strong> Splits on an ordinal
+feature can use thresholds (<code>season ≤ spring</code>); splits on a nominal one cannot,
+and its effects are computed order-free (all-pairs level differences). Get the
+type wrong and the explanation answers the wrong question. See
+<a href="../../guides/methods/">the methods reference</a>.</p>
+<h3 id="level-names">Level names</h3>
+<p>Give the levels names and they appear on every axis, in every rule, in every
+tree, instead of numeric codes.</p>
+<div class="highlight"><pre><span></span><code><span class="n">schema</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">Schema</span><span class="p">(</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"hr"</span><span class="p">,</span> <span class="s2">"workingday"</span><span class="p">,</span> <span class="s2">"season"</span><span class="p">],</span>
+    <span class="n">feature_types</span><span class="o">=</span><span class="p">[</span><span class="s2">"continuous"</span><span class="p">,</span> <span class="s2">"nominal"</span><span class="p">,</span> <span class="s2">"nominal"</span><span class="p">],</span>
+    <span class="n">category_names</span><span class="o">=</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="p">[</span><span class="s2">"no"</span><span class="p">,</span> <span class="s2">"yes"</span><span class="p">],</span> <span class="p">[</span><span class="s2">"winter"</span><span class="p">,</span> <span class="s2">"spring"</span><span class="p">,</span> <span class="s2">"summer"</span><span class="p">,</span> <span class="s2">"fall"</span><span class="p">]],</span>
+<span class="p">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>workingday = no 🔹 [id: 1 | heter: 0.37 | inst: 614 | w: 0.31]
+    season ∈ {spring, summer, fall} 🔹 [id: 3 | heter: 0.34 | inst: 460 | w: 0.23]
+</code></pre></div>
+<h3 id="units">Units</h3>
+<p>If you fed the model standardized columns, hand back the scaling and the plots
+speak the original units.</p>
+<div class="highlight"><pre><span></span><code><span class="n">schema</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">Schema</span><span class="p">(</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">],</span>
+    <span class="n">scale_x_list</span><span class="o">=</span><span class="p">[{</span><span class="s2">"mean"</span><span class="p">:</span> <span class="mf">15.2</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">:</span> <span class="mf">8.6</span><span class="p">}],</span>   <span class="c1"># °C, not z-scores</span>
+    <span class="n">scale_y</span><span class="o">=</span><span class="p">{</span><span class="s2">"mean"</span><span class="p">:</span> <span class="mf">190.0</span><span class="p">,</span> <span class="s2">"std"</span><span class="p">:</span> <span class="mf">181.0</span><span class="p">},</span>       <span class="c1"># rentals, not z-scores</span>
+<span class="p">)</span>
+</code></pre></div>
+<h2 id="starting-from-pandas">Starting from pandas</h2>
+<p>Most workflows begin with a DataFrame. Convert it <strong>once</strong>; it reads column
+names, dtypes and category labels into <code>(X, schema)</code>, and never touches your
+model.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">dataclasses</span>
+
+<span class="n">X_np</span><span class="p">,</span> <span class="n">schema</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>   <span class="c1"># numpy matrix + a populated Schema</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">schema</span><span class="o">.</span><span class="n">feature_types</span><span class="p">)</span>                  <span class="c1"># inspect the guesses...</span>
+
+<span class="c1"># Schema is a frozen dataclass: override anything you don't like</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">dataclasses</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span>
+    <span class="n">schema</span><span class="p">,</span> <span class="n">feature_types</span><span class="o">=</span><span class="p">[</span><span class="s2">"ordinal"</span><span class="p">,</span> <span class="s2">"continuous"</span><span class="p">,</span> <span class="s2">"nominal"</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X_np</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+</code></pre></div>
+<details class="warning" open="open">
+<summary>Always inspect the returned schema</summary>
+<p><code>from_dataframe</code> infers types from dtypes, but an <strong>integer</strong> column is
+ambiguous: ordinal, continuous, or a label-encoded nominal are all
+plausible. <code>effector</code> emits a <code>UserWarning</code> for those guesses. Check them.</p>
+</details>
+<details class="danger" open="open">
+<summary>The worse-model trap</summary>
+<p>Raw integer codes fed into a distance-based model (an MLP, a kNN) imply an
+order and a spacing that may not exist. Scale them for the <strong>model</strong> if you
+must, but keep the schema calling them categorical for the <strong>explanation</strong>;
+the two are separate decisions.</p>
+</details>
+<h2 id="when-you-get-it-wrong">When you get it wrong</h2>
+<p>Passing a DataFrame straight into a constructor raises, with the fix in the
+message:</p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">model</span><span class="p">)</span>
+<span class="c1"># TypeError: effector is numpy-only: `data` must be a 2-D numeric numpy array,</span>
+<span class="c1">#   not a pandas DataFrame. Convert it first:</span>
+<span class="c1">#       X, schema = effector.from_dataframe(df)</span>
+<span class="c1">#   and pass a numpy-&gt;numpy `model` ...</span>
+</code></pre></div>
+<hr>
+<h2 id="where-to-next">Where to next</h2>
+<ul>
+<li><strong>(b)</strong> <a href="../report/">The one-liner and the report</a>: what to do once the inputs are in</li>
+<li><strong>(c)</strong> <a href="../interactive_api/">The interactive API</a>: drive the analysis yourself</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/givasile/effector" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

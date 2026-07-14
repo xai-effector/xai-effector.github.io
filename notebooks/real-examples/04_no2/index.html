@@ -272,170 +272,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../api_docs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Docs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Design
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The design contract (R1-R11)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../method_semantics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Method semantics by feature type
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../guides/" class="md-nav__link">
         
   
@@ -471,6 +307,33 @@
     
   
     Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
   
 
     
@@ -631,6 +494,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#importance-and-one-click-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importance and one-click explanation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#conclusion" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -659,10 +533,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#regionalpdp" class="md-nav__link">
+  <a href="#regional-pdp" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RegionalPDP
+        Regional PDP
       
     </span>
   </a>
@@ -670,10 +544,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#regionalrhale" class="md-nav__link">
+  <a href="#regional-rhale" class="md-nav__link">
     <span class="md-ellipsis">
       
-        RegionalRHALE
+        Regional RHALE
       
     </span>
   </a>
@@ -707,6 +581,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cross-method-sanity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-method sanity check
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -731,6 +616,7 @@
 <li>Description: Global and regional effects (PDP, RHALE, SHAP-DP) of wind
   speed on NO₂ concentration in Oslo, explaining a neural network and
   revealing interactions with wind direction and traffic volume.</li>
+<li>📄 The whole notebook in one page: <a href="https://xai-effector.github.io/static/reports/04_no2_pdp.html">PDP report</a></li>
 </ul>
 <p>The <a href="https://www.openml.org/search?type=data&amp;sort=version&amp;status=any&amp;order=asc&amp;exact_name=no2&amp;id=547">NO2</a> is a subsample of 500 observations from a data set that originate in a study where air pollution at a road is related to traffic volume and meteorological variables, collected by the Norwegian Public Roads Administration. The response variable (column 1) consist of hourly values of the logarithm of the concentration of NO2 (particles), measured at Alnabru in Oslo, Norway, between October 2001 and August 2003.</p>
 <p>The predictor variables (columns 2 to 8) are the logarithm of the number of cars per hour, temperature 2 meter above ground (degree C), wind speed (meters/second), the temperature difference between 25 and 2 meters above ground (degree C), wind direction (degrees between 0 and 360), hour of day and day number from October 1. 2001.</p>
@@ -745,7 +631,7 @@
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">42</span><span class="p">)</span>
 </code></pre></div>
 <pre><code>WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
-I0000 00:00:1783341904.357399   32906 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
+I0000 00:00:1784066952.812651   23030 cpu_feature_guard.cc:227] This TensorFlow binary is optimized to use available CPU instructions in performance-critical operations.
 To enable the following instructions: AVX2 FMA, in other operations, rebuild TensorFlow with the appropriate compiler flags.
 </code></pre>
 <h2 id="preprocess-the-data">Preprocess the data</h2>
@@ -828,79 +714,12 @@ The model achieves a root mean squared error on the test of about <span class="a
 
 <span class="n">optimizer</span> <span class="o">=</span> <span class="n">keras</span><span class="o">.</span><span class="n">optimizers</span><span class="o">.</span><span class="n">Adam</span><span class="p">(</span><span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.001</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="n">optimizer</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s2">"mse"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">"mae"</span><span class="p">,</span> <span class="n">keras</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">RootMeanSquaredError</span><span class="p">()])</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"train [mse, mae, rmse]:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"test  [mse, mae, rmse]:"</span><span class="p">,</span> <span class="p">[</span><span class="nb">round</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">model</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">Y_test</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="mi">0</span><span class="p">)])</span>
 </code></pre></div>
-<pre><code>Epoch 1/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 933ms/step - loss: 0.9584 - mae: 0.7906 - root_mean_squared_error: 0.9790</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m1s[0m 950ms/step - loss: 0.9584 - mae: 0.7906 - root_mean_squared_error: 0.9790</p>
-<pre><code>Epoch 2/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 29ms/step - loss: 0.6712 - mae: 0.6472 - root_mean_squared_error: 0.8192</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 44ms/step - loss: 0.6712 - mae: 0.6472 - root_mean_squared_error: 0.8192</p>
-<pre><code>Epoch 3/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 27ms/step - loss: 0.5145 - mae: 0.5716 - root_mean_squared_error: 0.7173</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - loss: 0.5145 - mae: 0.5716 - root_mean_squared_error: 0.7173</p>
-<pre><code>Epoch 4/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 26ms/step - loss: 0.4573 - mae: 0.5309 - root_mean_squared_error: 0.6763</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 39ms/step - loss: 0.4573 - mae: 0.5309 - root_mean_squared_error: 0.6763</p>
-<pre><code>Epoch 5/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 27ms/step - loss: 0.4320 - mae: 0.5061 - root_mean_squared_error: 0.6572</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 41ms/step - loss: 0.4320 - mae: 0.5061 - root_mean_squared_error: 0.6572</p>
-<pre><code>Epoch 6/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 27ms/step - loss: 0.4075 - mae: 0.4871 - root_mean_squared_error: 0.6384</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 42ms/step - loss: 0.4075 - mae: 0.4871 - root_mean_squared_error: 0.6384</p>
-<pre><code>Epoch 7/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 27ms/step - loss: 0.3981 - mae: 0.4815 - root_mean_squared_error: 0.6309</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - loss: 0.3981 - mae: 0.4815 - root_mean_squared_error: 0.6309</p>
-<pre><code>Epoch 8/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 26ms/step - loss: 0.3882 - mae: 0.4777 - root_mean_squared_error: 0.6231</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - loss: 0.3882 - mae: 0.4777 - root_mean_squared_error: 0.6231</p>
-<pre><code>Epoch 9/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 27ms/step - loss: 0.3707 - mae: 0.4679 - root_mean_squared_error: 0.6089</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 40ms/step - loss: 0.3707 - mae: 0.4679 - root_mean_squared_error: 0.6089</p>
-<pre><code>Epoch 10/10
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 25ms/step - loss: 0.3507 - mae: 0.4533 - root_mean_squared_error: 0.5922</p>
-<pre><code>
-</code></pre>
-<p>[1m1/1[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 38ms/step - loss: 0.3507 - mae: 0.4533 - root_mean_squared_error: 0.5922</p>
-<p>[1m 1/13[0m [32m━[0m[37m━━━━━━━━━━━━━━━━━━━[0m [1m1s[0m 102ms/step - loss: 0.4061 - mae: 0.4523 - root_mean_squared_error: 0.6372</p>
-<pre><code>
-</code></pre>
-<p>[1m13/13[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 3ms/step - loss: 0.3362 - mae: 0.4484 - root_mean_squared_error: 0.5798  </p>
-<p>[1m1/4[0m [32m━━━━━[0m[37m━━━━━━━━━━━━━━━[0m [1m0s[0m 15ms/step - loss: 0.6244 - mae: 0.6522 - root_mean_squared_error: 0.7902</p>
-<pre><code>
-</code></pre>
-<p>[1m4/4[0m [32m━━━━━━━━━━━━━━━━━━━━[0m[37m[0m [1m0s[0m 6ms/step - loss: 0.4984 - mae: 0.5615 - root_mean_squared_error: 0.7060 </p>
-<pre><code>[0.4984276592731476, 0.5615400075912476, 0.7059940695762634]
+<pre><code>train [mse, mae, rmse]: [0.336, 0.448, 0.58]
+test  [mse, mae, rmse]: [0.498, 0.562, 0.706]
 </code></pre>
 <h2 id="explain">Explain</h2>
 <p>We will focus on the feature <code>wind_speed</code> (wind speed) because its global effect is quite heterogeneous and the heterogeneity can be further explained using regional effects.</p>
@@ -922,11 +741,20 @@ The model achieves a root mean squared error on the test of about <span class="a
 <span class="n">y_limits</span><span class="o">=</span><span class="p">(</span><span class="mf">2.5</span><span class="p">,</span><span class="mf">5.5</span><span class="p">)</span>
 <span class="n">dy_limits</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
 <span class="n">foi</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># the full schema: names and the inverse scaling — reports and rules</span>
+<span class="c1"># render in raw units automatically</span>
+<span class="n">schema</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">Schema</span><span class="p">(</span>
+    <span class="n">feature_names</span><span class="o">=</span><span class="n">feature_names</span><span class="p">,</span>
+    <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span>
+    <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span>
+    <span class="n">target_name</span><span class="o">=</span><span class="n">target_name</span><span class="p">,</span>
+<span class="p">)</span>
 </code></pre></div>
 <h2 id="global-effect">Global Effect</h2>
 <p><strong>Overview of All Features</strong></p>
 <p>We start by examining all features. Feature effect methods are generally more meaningful for numerical features. To compare effects across features more easily, we standardize the <code>y_limits</code>.  </p>
-<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)):</span>
     <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
@@ -940,194 +768,133 @@ The model achieves a root mean squared error on the test of about <span class="a
 <div class="highlight"><pre><span></span><code><span class="n">y_limits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.5</span><span class="p">)</span>
 </code></pre></div>
 <h3 id="pdp">PDP</h3>
-<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">5000</span><span class="p">)</span>
 <span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">foi</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nof_ice</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_17_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_17_0.png"></a></p>
 <h3 id="rhale">RHALE</h3>
-<div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"std"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">foi</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_19_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_19_0.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="n">shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
 <span class="n">shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">foi</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p>ExactExplainer explainer:  13%|█▎        | 53/400 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  14%|█▍        | 56/400 [00:10&lt;00:19, 17.64it/s]</p>
-<p>ExactExplainer explainer:  14%|█▍        | 58/400 [00:10&lt;00:23, 14.80it/s]</p>
-<p>ExactExplainer explainer:  15%|█▌        | 60/400 [00:10&lt;00:23, 14.17it/s]</p>
-<p>ExactExplainer explainer:  16%|█▌        | 62/400 [00:10&lt;00:24, 13.62it/s]</p>
-<p>ExactExplainer explainer:  16%|█▌        | 64/400 [00:10&lt;00:25, 13.23it/s]</p>
-<p>ExactExplainer explainer:  16%|█▋        | 66/400 [00:10&lt;00:25, 13.15it/s]</p>
-<p>ExactExplainer explainer:  17%|█▋        | 68/400 [00:11&lt;00:25, 13.05it/s]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 70/400 [00:11&lt;00:25, 13.01it/s]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 72/400 [00:11&lt;00:25, 13.09it/s]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 74/400 [00:11&lt;00:24, 13.19it/s]</p>
-<p>ExactExplainer explainer:  19%|█▉        | 76/400 [00:11&lt;00:24, 13.11it/s]</p>
-<p>ExactExplainer explainer:  20%|█▉        | 78/400 [00:11&lt;00:24, 13.15it/s]</p>
-<p>ExactExplainer explainer:  20%|██        | 80/400 [00:12&lt;00:24, 13.06it/s]</p>
-<p>ExactExplainer explainer:  20%|██        | 82/400 [00:12&lt;00:24, 12.98it/s]</p>
-<p>ExactExplainer explainer:  21%|██        | 84/400 [00:12&lt;00:24, 12.82it/s]</p>
-<p>ExactExplainer explainer:  22%|██▏       | 86/400 [00:12&lt;00:25, 12.44it/s]</p>
-<p>ExactExplainer explainer:  22%|██▏       | 88/400 [00:12&lt;00:25, 12.23it/s]</p>
-<p>ExactExplainer explainer:  22%|██▎       | 90/400 [00:12&lt;00:25, 12.32it/s]</p>
-<p>ExactExplainer explainer:  23%|██▎       | 92/400 [00:13&lt;00:24, 12.62it/s]</p>
-<p>ExactExplainer explainer:  24%|██▎       | 94/400 [00:13&lt;00:23, 12.81it/s]</p>
-<p>ExactExplainer explainer:  24%|██▍       | 96/400 [00:13&lt;00:23, 12.77it/s]</p>
-<p>ExactExplainer explainer:  24%|██▍       | 98/400 [00:13&lt;00:23, 12.87it/s]</p>
-<p>ExactExplainer explainer:  25%|██▌       | 100/400 [00:13&lt;00:23, 12.88it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 102/400 [00:13&lt;00:23, 12.87it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 104/400 [00:13&lt;00:22, 12.87it/s]</p>
-<p>ExactExplainer explainer:  26%|██▋       | 106/400 [00:14&lt;00:22, 13.04it/s]</p>
-<p>ExactExplainer explainer:  27%|██▋       | 108/400 [00:14&lt;00:22, 13.00it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 110/400 [00:14&lt;00:22, 12.93it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 112/400 [00:14&lt;00:22, 12.90it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 114/400 [00:14&lt;00:21, 13.00it/s]</p>
-<p>ExactExplainer explainer:  29%|██▉       | 116/400 [00:14&lt;00:21, 13.17it/s]</p>
-<p>ExactExplainer explainer:  30%|██▉       | 118/400 [00:15&lt;00:21, 13.23it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 120/400 [00:15&lt;00:21, 13.25it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 122/400 [00:15&lt;00:21, 13.16it/s]</p>
-<p>ExactExplainer explainer:  31%|███       | 124/400 [00:15&lt;00:21, 12.86it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 126/400 [00:15&lt;00:21, 13.02it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 128/400 [00:15&lt;00:20, 13.02it/s]</p>
-<p>ExactExplainer explainer:  32%|███▎      | 130/400 [00:15&lt;00:20, 13.05it/s]</p>
-<p>ExactExplainer explainer:  33%|███▎      | 132/400 [00:16&lt;00:20, 13.07it/s]</p>
-<p>ExactExplainer explainer:  34%|███▎      | 134/400 [00:16&lt;00:20, 12.98it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 136/400 [00:16&lt;00:20, 13.03it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 138/400 [00:16&lt;00:20, 12.81it/s]</p>
-<p>ExactExplainer explainer:  35%|███▌      | 140/400 [00:16&lt;00:20, 12.79it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 142/400 [00:16&lt;00:20, 12.84it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 144/400 [00:17&lt;00:19, 12.89it/s]</p>
-<p>ExactExplainer explainer:  36%|███▋      | 146/400 [00:17&lt;00:19, 13.01it/s]</p>
-<p>ExactExplainer explainer:  37%|███▋      | 148/400 [00:17&lt;00:19, 13.01it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 150/400 [00:17&lt;00:19, 12.94it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 152/400 [00:17&lt;00:19, 12.75it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 154/400 [00:17&lt;00:19, 12.77it/s]</p>
-<p>ExactExplainer explainer:  39%|███▉      | 156/400 [00:17&lt;00:18, 12.87it/s]</p>
-<p>ExactExplainer explainer:  40%|███▉      | 158/400 [00:18&lt;00:19, 12.72it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 160/400 [00:18&lt;00:19, 12.48it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 162/400 [00:18&lt;00:18, 12.62it/s]</p>
-<p>ExactExplainer explainer:  41%|████      | 164/400 [00:18&lt;00:18, 12.54it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 166/400 [00:18&lt;00:18, 12.62it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 168/400 [00:18&lt;00:18, 12.50it/s]</p>
-<p>ExactExplainer explainer:  42%|████▎     | 170/400 [00:19&lt;00:18, 12.72it/s]</p>
-<p>ExactExplainer explainer:  43%|████▎     | 172/400 [00:19&lt;00:17, 12.72it/s]</p>
-<p>ExactExplainer explainer:  44%|████▎     | 174/400 [00:19&lt;00:17, 12.82it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 176/400 [00:19&lt;00:17, 12.90it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 178/400 [00:19&lt;00:17, 12.83it/s]</p>
-<p>ExactExplainer explainer:  45%|████▌     | 180/400 [00:19&lt;00:17, 12.93it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 182/400 [00:19&lt;00:16, 13.01it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 184/400 [00:20&lt;00:16, 13.05it/s]</p>
-<p>ExactExplainer explainer:  46%|████▋     | 186/400 [00:20&lt;00:16, 12.96it/s]</p>
-<p>ExactExplainer explainer:  47%|████▋     | 188/400 [00:20&lt;00:16, 12.67it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 190/400 [00:20&lt;00:16, 12.57it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 192/400 [00:20&lt;00:16, 12.53it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 194/400 [00:20&lt;00:16, 12.67it/s]</p>
-<p>ExactExplainer explainer:  49%|████▉     | 196/400 [00:21&lt;00:15, 12.82it/s]</p>
-<p>ExactExplainer explainer:  50%|████▉     | 198/400 [00:21&lt;00:15, 12.81it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 200/400 [00:21&lt;00:16, 12.48it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 202/400 [00:21&lt;00:16, 12.14it/s]</p>
-<p>ExactExplainer explainer:  51%|█████     | 204/400 [00:21&lt;00:16, 12.04it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 206/400 [00:21&lt;00:16, 11.93it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 208/400 [00:22&lt;00:16, 11.99it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▎    | 210/400 [00:22&lt;00:15, 11.96it/s]</p>
-<p>ExactExplainer explainer:  53%|█████▎    | 212/400 [00:22&lt;00:15, 12.15it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▎    | 214/400 [00:22&lt;00:15, 12.31it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 216/400 [00:22&lt;00:14, 12.37it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▍    | 218/400 [00:22&lt;00:14, 12.33it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▌    | 220/400 [00:23&lt;00:14, 12.47it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 222/400 [00:23&lt;00:14, 12.54it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 224/400 [00:23&lt;00:14, 12.50it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▋    | 226/400 [00:23&lt;00:14, 12.36it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▋    | 228/400 [00:23&lt;00:14, 12.22it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▊    | 230/400 [00:23&lt;00:13, 12.16it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 232/400 [00:24&lt;00:13, 12.02it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 234/400 [00:24&lt;00:13, 12.20it/s]</p>
-<p>ExactExplainer explainer:  59%|█████▉    | 236/400 [00:24&lt;00:13, 12.25it/s]</p>
-<p>ExactExplainer explainer:  60%|█████▉    | 238/400 [00:24&lt;00:13, 12.17it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 240/400 [00:24&lt;00:13, 12.20it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 242/400 [00:24&lt;00:12, 12.31it/s]</p>
-<p>ExactExplainer explainer:  61%|██████    | 244/400 [00:25&lt;00:12, 12.22it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 246/400 [00:25&lt;00:12, 12.34it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 248/400 [00:25&lt;00:12, 12.38it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▎   | 250/400 [00:25&lt;00:11, 12.51it/s]</p>
-<p>ExactExplainer explainer:  63%|██████▎   | 252/400 [00:25&lt;00:11, 12.57it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▎   | 254/400 [00:25&lt;00:11, 12.67it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 256/400 [00:25&lt;00:11, 12.54it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 258/400 [00:26&lt;00:11, 12.34it/s]</p>
-<p>ExactExplainer explainer:  65%|██████▌   | 260/400 [00:26&lt;00:11, 12.53it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 262/400 [00:26&lt;00:11, 12.54it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 264/400 [00:26&lt;00:10, 12.52it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▋   | 266/400 [00:26&lt;00:10, 12.51it/s]</p>
-<p>ExactExplainer explainer:  67%|██████▋   | 268/400 [00:26&lt;00:10, 12.58it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 270/400 [00:27&lt;00:10, 12.51it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 272/400 [00:27&lt;00:10, 12.39it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 274/400 [00:27&lt;00:10, 12.52it/s]</p>
-<p>ExactExplainer explainer:  69%|██████▉   | 276/400 [00:27&lt;00:09, 12.55it/s]</p>
-<p>ExactExplainer explainer:  70%|██████▉   | 278/400 [00:27&lt;00:09, 12.56it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 280/400 [00:27&lt;00:09, 12.70it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 282/400 [00:28&lt;00:09, 12.63it/s]</p>
-<p>ExactExplainer explainer:  71%|███████   | 284/400 [00:28&lt;00:09, 12.37it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 286/400 [00:28&lt;00:09, 12.18it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 288/400 [00:28&lt;00:09, 12.14it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▎  | 290/400 [00:28&lt;00:09, 12.18it/s]</p>
-<p>ExactExplainer explainer:  73%|███████▎  | 292/400 [00:28&lt;00:08, 12.22it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▎  | 294/400 [00:29&lt;00:08, 12.31it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 296/400 [00:29&lt;00:08, 12.32it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 298/400 [00:29&lt;00:08, 12.29it/s]</p>
-<p>ExactExplainer explainer:  75%|███████▌  | 300/400 [00:29&lt;00:08, 12.26it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 302/400 [00:29&lt;00:08, 12.24it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 304/400 [00:29&lt;00:07, 12.21it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▋  | 306/400 [00:30&lt;00:07, 12.21it/s]</p>
-<p>ExactExplainer explainer:  77%|███████▋  | 308/400 [00:30&lt;00:07, 12.15it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 310/400 [00:30&lt;00:07, 12.05it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 312/400 [00:30&lt;00:07, 12.03it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 314/400 [00:30&lt;00:07, 11.83it/s]</p>
-<p>ExactExplainer explainer:  79%|███████▉  | 316/400 [00:30&lt;00:07, 11.90it/s]</p>
-<p>ExactExplainer explainer:  80%|███████▉  | 318/400 [00:31&lt;00:06, 11.91it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 320/400 [00:31&lt;00:06, 11.74it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 322/400 [00:31&lt;00:06, 11.32it/s]</p>
-<p>ExactExplainer explainer:  81%|████████  | 324/400 [00:31&lt;00:06, 11.34it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 326/400 [00:31&lt;00:06, 11.32it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 328/400 [00:31&lt;00:06, 11.35it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▎ | 330/400 [00:32&lt;00:06, 11.25it/s]</p>
-<p>ExactExplainer explainer:  83%|████████▎ | 332/400 [00:32&lt;00:05, 11.47it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▎ | 334/400 [00:32&lt;00:05, 11.26it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 336/400 [00:32&lt;00:05, 11.39it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 338/400 [00:32&lt;00:05, 11.52it/s]</p>
-<p>ExactExplainer explainer:  85%|████████▌ | 340/400 [00:32&lt;00:05, 11.61it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 342/400 [00:33&lt;00:04, 11.69it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 344/400 [00:33&lt;00:04, 11.75it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▋ | 346/400 [00:33&lt;00:04, 11.60it/s]</p>
-<p>ExactExplainer explainer:  87%|████████▋ | 348/400 [00:33&lt;00:04, 11.64it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 350/400 [00:33&lt;00:04, 11.60it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 352/400 [00:33&lt;00:04, 11.73it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 354/400 [00:34&lt;00:03, 11.66it/s]</p>
-<p>ExactExplainer explainer:  89%|████████▉ | 356/400 [00:34&lt;00:03, 11.57it/s]</p>
-<p>ExactExplainer explainer:  90%|████████▉ | 358/400 [00:34&lt;00:03, 11.67it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 360/400 [00:34&lt;00:03, 11.58it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 362/400 [00:34&lt;00:03, 11.60it/s]</p>
-<p>ExactExplainer explainer:  91%|█████████ | 364/400 [00:35&lt;00:03, 11.72it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 366/400 [00:35&lt;00:02, 11.75it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 368/400 [00:35&lt;00:02, 11.84it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▎| 370/400 [00:35&lt;00:02, 11.97it/s]</p>
-<p>ExactExplainer explainer:  93%|█████████▎| 372/400 [00:35&lt;00:02, 11.91it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▎| 374/400 [00:35&lt;00:02, 11.90it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 376/400 [00:36&lt;00:02, 11.89it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 378/400 [00:36&lt;00:01, 11.70it/s]</p>
-<p>ExactExplainer explainer:  95%|█████████▌| 380/400 [00:36&lt;00:01, 11.78it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 382/400 [00:36&lt;00:01, 11.82it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 384/400 [00:36&lt;00:01, 11.57it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▋| 386/400 [00:36&lt;00:01, 11.60it/s]</p>
-<p>ExactExplainer explainer:  97%|█████████▋| 388/400 [00:37&lt;00:01, 11.54it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 390/400 [00:37&lt;00:00, 11.51it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 392/400 [00:37&lt;00:00, 11.72it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 394/400 [00:37&lt;00:00, 11.75it/s]</p>
-<p>ExactExplainer explainer:  99%|█████████▉| 396/400 [00:37&lt;00:00, 11.65it/s]</p>
-<p>ExactExplainer explainer: 100%|█████████▉| 398/400 [00:37&lt;00:00, 11.57it/s]</p>
-<p>ExactExplainer explainer: 100%|██████████| 400/400 [00:38&lt;00:00, 11.71it/s]</p>
-<p>ExactExplainer explainer: 401it [00:38,  9.12it/s]                         </p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_20_176.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_20_176.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_20_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_20_0.png"></a></p>
+<h3 id="importance-and-one-click-explanation">Importance and one-click explanation</h3>
+<p>Beyond per-feature curves, every global effect exposes an <code>importance</code> score
+(the dispersion of the <em>mean</em> effect — the μ-twin of heterogeneity), and
+<code>effector.explain(...)</code> runs the whole pipeline (fit → rank → regional search)
+and returns a self-contained <code>Report</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># per-feature importance = dispersion of the mean effect (mu-twin of heterogeneity)</span>
+<span class="n">pdp_imp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"importances:"</span><span class="p">,</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pdp_imp</span><span class="o">.</span><span class="n">importances</span><span class="p">(),</span> <span class="mi">3</span><span class="p">))))</span>
+
+<span class="c1"># one-click auto-explanation -&gt; Report (serializable; self-contained HTML)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model_forward</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">method</span><span class="o">=</span><span class="s2">"pdp"</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">2000</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># the whole notebook, in one page: the report published with this example</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">_out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"reports"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"04_no2"</span>
+<span class="n">_out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">_out</span> <span class="o">/</span> <span class="s2">"report_pdp.html"</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>importances: {'cars_per_hour': np.float64(0.741), 'temperature_at_2m': np.float64(0.255), 'wind_speed': np.float64(0.259), 'temperature_diff_2m_25m': np.float64(0.245), 'wind_direction': np.float64(0.073), 'hour_of_day': np.float64(0.169), 'day': np.float64(0.051)}
+
+
+[effector] global effects   (GAM)  -&gt; 89.3% of the model's variance
+           regional effects (CALM) -&gt; 95.5%
+
+  ════════════════════════════════════════════════════════════════════════
+  PDP report  ·  target: no2_concentration
+  ════════════════════════════════════════════════════════════════════════
+
+  DATA &amp; MODEL
+  ────────────────────────────────────────────────────────────────────────
+    instances     400
+    features      7  ·  7 continuous
+    model output  mean 3.69 · std 0.585 · range [2.03, 4.86]
+    model R²      0.656  (on this subsample)
+
+  EXPLAINED VARIANCE
+  ────────────────────────────────────────────────────────────────────────
+    step         split on                 solo     ΔR²      R²       heter
+    ──────────────────────────────────────────────────────────────────────
+    GAM          (all features global)       —       —   89.3%           —
+  + wind_speed   cars_per_hour, wind…    +4.0%   +4.0%   93.3% 0.19 → 0.10
+  + temperature_dcars_per_hour, wind…    +3.6%   +2.2%   95.5% 0.16 → 0.12
+    ──────────────────────────────────────────────────────────────────────
+    FINAL                                                95.5%
+
+  REJECTED SPLITS                                            min gain 1.0%
+  ────────────────────────────────────────────────────────────────────────
+    feature      split on                 solo     ΔR²    reason
+    ──────────────────────────────────────────────────────────────────────
+  ✗ cars_per_hourhour_of_day, temper…    +2.3%   -0.8%    redundant
+  ✗ wind_directiocars_per_hour, temp…    +3.7%   -1.3%    redundant
+
+    ✗ redundant: it would explain variance on its own (see solo),
+      but the accepted splits already account for it.
+
+  FEATURES                                ranked, in the selected snapshot
+  ────────────────────────────────────────────────────────────────────────
+    feature        importance                          heter      #regions
+    ──────────────────────────────────────────────────────────────────────
+    cars_per_hour      0.7413  ██████████████████     0.1999             1
+    temperature_at     0.2547  ██████                 0.1472             1
+    wind_speed         0.2443  ██████                 0.0977             4
+    temperature_di     0.2076  █████                  0.1166             4
+    ──────────────────────────────────────────────────────────────────────
+    the features above carry 83% of the total importance mass
+
+
+
+Feature 2 - Full partition tree:
+🌳 Full Tree Structure:
+───────────────────────
+wind_speed 🔹 [id: 0 | heter: 0.19 | inst: 400 | w: 1.00]
+    wind_direction &lt; 127.60 🔹 [id: 1 | heter: 0.12 | inst: 210 | w: 0.53]
+        cars_per_hour &lt; 7.54 🔹 [id: 2 | heter: 0.11 | inst: 124 | w: 0.31]
+        cars_per_hour ≥ 7.54 🔹 [id: 3 | heter: 0.08 | inst: 86 | w: 0.21]
+    wind_direction ≥ 127.60 🔹 [id: 4 | heter: 0.13 | inst: 190 | w: 0.47]
+        cars_per_hour &lt; 6.74 🔹 [id: 5 | heter: 0.13 | inst: 57 | w: 0.14]
+        cars_per_hour ≥ 6.74 🔹 [id: 6 | heter: 0.09 | inst: 133 | w: 0.33]
+--------------------------------------------------
+Feature 2 - Statistics per tree level:
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.19
+    Level 1🔹heter: 0.12 | 🔻0.07 (36.06%)
+        Level 2🔹heter: 0.10 | 🔻0.03 (20.99%)
+
+
+
+
+Feature 3 - Full partition tree:
+🌳 Full Tree Structure:
+───────────────────────
+temperature_diff_2m_25m 🔹 [id: 0 | heter: 0.16 | inst: 400 | w: 1.00]
+    cars_per_hour &lt; 7.34 🔹 [id: 1 | heter: 0.15 | inst: 193 | w: 0.48]
+        wind_speed &lt; 3.09 🔹 [id: 2 | heter: 0.13 | inst: 113 | w: 0.28]
+        wind_speed ≥ 3.09 🔹 [id: 3 | heter: 0.14 | inst: 80 | w: 0.20]
+    cars_per_hour ≥ 7.34 🔹 [id: 4 | heter: 0.12 | inst: 207 | w: 0.52]
+        wind_direction &lt; 163.20 🔹 [id: 5 | heter: 0.09 | inst: 104 | w: 0.26]
+        wind_direction ≥ 163.20 🔹 [id: 6 | heter: 0.11 | inst: 103 | w: 0.26]
+--------------------------------------------------
+Feature 3 - Statistics per tree level:
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.16
+    Level 1🔹heter: 0.13 | 🔻0.03 (16.24%)
+        Level 2🔹heter: 0.12 | 🔻0.02 (11.72%)
+
+
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+</code></pre>
 <h3 id="conclusion">Conclusion</h3>
 <p>All methods consistently indicate that <code>NO₂</code> concentration decreases as <code>wind speed</code> increases. This aligns with physical intuition: higher wind speeds help disperse pollutants more effectively.</p>
 <p>The steepest drop occurs at low to moderate wind speeds, where even small increases in wind can significantly improve dispersion.</p>
@@ -1146,542 +913,121 @@ The model achieves a root mean squared error on the test of about <span class="a
 <h2 id="regional-effect">Regional Effect</h2>
 <div class="highlight"><pre><span></span><code><span class="n">y_limits</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.5</span><span class="p">)</span>
 </code></pre></div>
-<h3 id="regionalpdp">RegionalPDP</h3>
-<div class="highlight"><pre><span></span><code><span class="n">regional_pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">5_000</span><span class="p">)</span>
-<span class="n">regional_pdp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
+<h3 id="regional-pdp">Regional PDP</h3>
+<div class="highlight"><pre><span></span><code><span class="n">pdp_reg</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">5_000</span><span class="p">)</span>
+<span class="n">pdp_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="s2">"all"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">part_pdp</span> <span class="o">=</span> <span class="n">pdp_reg</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="n">foi</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">part_pdp</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
-<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  5.30it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  5.28it/s]</p>
 <pre><code>Feature 2 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-wind_speed 🔹 [id: 0 | heter: 0.04 | inst: 400 | w: 1.00]
-    wind_direction ≤ 127.60 🔹 [id: 1 | heter: 0.02 | inst: 210 | w: 0.53]
-        cars_per_hour ≤ 7.54 🔹 [id: 2 | heter: 0.01 | inst: 124 | w: 0.31]
-        cars_per_hour &gt; 7.54 🔹 [id: 3 | heter: 0.01 | inst: 86 | w: 0.21]
-    wind_direction &gt; 127.60 🔹 [id: 4 | heter: 0.02 | inst: 190 | w: 0.47]
-        cars_per_hour ≤ 6.74 🔹 [id: 5 | heter: 0.01 | inst: 57 | w: 0.14]
-        cars_per_hour &gt; 6.74 🔹 [id: 6 | heter: 0.01 | inst: 133 | w: 0.33]
+wind_speed 🔹 [id: 0 | heter: 0.19 | inst: 400 | w: 1.00]
+    wind_direction &lt; 127.60 🔹 [id: 1 | heter: 0.12 | inst: 210 | w: 0.53]
+        cars_per_hour &lt; 7.54 🔹 [id: 2 | heter: 0.11 | inst: 124 | w: 0.31]
+        cars_per_hour ≥ 7.54 🔹 [id: 3 | heter: 0.08 | inst: 86 | w: 0.21]
+    wind_direction ≥ 127.60 🔹 [id: 4 | heter: 0.13 | inst: 190 | w: 0.47]
+        cars_per_hour &lt; 6.74 🔹 [id: 5 | heter: 0.13 | inst: 57 | w: 0.14]
+        cars_per_hour ≥ 6.74 🔹 [id: 6 | heter: 0.09 | inst: 133 | w: 0.33]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 0.04
-    Level 1🔹heter: 0.02 | 🔻0.02 (59.23%)
-        Level 2🔹heter: 0.01 | 🔻0.01 (38.54%)
+Level 0🔹heter: 0.19
+    Level 1🔹heter: 0.12 | 🔻0.07 (36.06%)
+        Level 2🔹heter: 0.10 | 🔻0.03 (20.99%)
 </code></pre>
-<div class="highlight"><pre><span></span><code><span class="c1"># plot the level-1 subregions (node ids depend on the fitted tree)</span>
-<span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">regional_pdp</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="sa">f</span><span class="s2">"feature_</span><span class="si">{</span><span class="n">foi</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># plot the level-1 subregions (region ids depend on the fitted tree)</span>
+<span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">part_pdp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">part_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_26_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_26_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_26_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_26_1.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">regional_pdp</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="sa">f</span><span class="s2">"feature_</span><span class="si">{</span><span class="n">foi</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">regional_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_28_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_28_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_28_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_28_1.png"></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">part_pdp</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">part_pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_27_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_27_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_27_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_27_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_27_2.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_27_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_27_3.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_27_3.png"></a></p>
-<h3 id="regionalrhale">RegionalRHALE</h3>
-<div class="highlight"><pre><span></span><code><span class="n">regional_rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalRHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">})</span>
-<span class="n">regional_rhale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_29_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_29_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_29_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_29_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_29_2.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_29_2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_29_3.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_29_3.png"></a></p>
+<h3 id="regional-rhale">Regional RHALE</h3>
+<div class="highlight"><pre><span></span><code><span class="n">rhale_reg</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+<span class="n">rhale_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="s2">"all"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">part_rhale</span> <span class="o">=</span> <span class="n">rhale_reg</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="n">foi</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">part_rhale</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
-<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.16it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00,  1.16it/s]</p>
 <pre><code>Feature 2 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-wind_speed 🔹 [id: 0 | heter: 0.01 | inst: 400 | w: 1.00]
-    wind_direction ≤ 127.60 🔹 [id: 1 | heter: 0.01 | inst: 210 | w: 0.53]
-        cars_per_hour ≤ 7.34 🔹 [id: 2 | heter: 0.01 | inst: 114 | w: 0.28]
-        cars_per_hour &gt; 7.34 🔹 [id: 3 | heter: 0.00 | inst: 96 | w: 0.24]
-    wind_direction &gt; 127.60 🔹 [id: 4 | heter: 0.01 | inst: 190 | w: 0.47]
-        cars_per_hour ≤ 6.94 🔹 [id: 5 | heter: 0.00 | inst: 63 | w: 0.16]
-        cars_per_hour &gt; 6.94 🔹 [id: 6 | heter: 0.00 | inst: 127 | w: 0.32]
+wind_speed 🔹 [id: 0 | heter: 0.15 | inst: 400 | w: 1.00]
+    wind_direction &lt; 127.60 🔹 [id: 1 | heter: 0.11 | inst: 210 | w: 0.53]
+        cars_per_hour &lt; 7.54 🔹 [id: 2 | heter: 0.09 | inst: 124 | w: 0.31]
+        cars_per_hour ≥ 7.54 🔹 [id: 3 | heter: 0.07 | inst: 86 | w: 0.21]
+    wind_direction ≥ 127.60 🔹 [id: 4 | heter: 0.08 | inst: 190 | w: 0.47]
+        cars_per_hour &lt; 6.94 🔹 [id: 5 | heter: 0.07 | inst: 63 | w: 0.16]
+        cars_per_hour ≥ 6.94 🔹 [id: 6 | heter: 0.06 | inst: 127 | w: 0.32]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 0.01
-    Level 1🔹heter: 0.01 | 🔻0.01 (58.65%)
-        Level 2🔹heter: 0.00 | 🔻0.00 (38.41%)
+Level 0🔹heter: 0.15
+    Level 1🔹heter: 0.09 | 🔻0.05 (36.12%)
+        Level 2🔹heter: 0.07 | 🔻0.02 (20.36%)
 </code></pre>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">regional_rhale</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="sa">f</span><span class="s2">"feature_</span><span class="si">{</span><span class="n">foi</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">part_rhale</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">part_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_30_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_30_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_30_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_30_1.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">regional_rhale</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="sa">f</span><span class="s2">"feature_</span><span class="si">{</span><span class="n">foi</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">regional_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_32_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_32_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_32_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_32_1.png"></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">part_rhale</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">part_rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_31_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_31_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_31_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_31_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_31_2.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_31_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_31_3.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_31_3.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_33_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_33_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_33_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_33_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_33_2.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_33_2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_33_3.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_33_3.png"></a></p>
 <h3 id="regional-shap-dp">Regional SHAP-DP</h3>
-<div class="highlight"><pre><span></span><code><span class="n">regional_shap_dp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
-<span class="n">regional_shap_dp</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">shap_dp_reg</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">shap_dp_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="s2">"all"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">part_shap</span> <span class="o">=</span> <span class="n">shap_dp_reg</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="n">foi</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">)</span>
+<span class="n">part_shap</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
-<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  31%|███       | 124/400 [00:00&lt;?, ?it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  32%|███▏      | 127/400 [00:10&lt;00:15, 17.20it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  32%|███▏      | 129/400 [00:10&lt;00:19, 14.19it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  33%|███▎      | 131/400 [00:10&lt;00:20, 13.12it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  33%|███▎      | 133/400 [00:10&lt;00:21, 12.65it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  34%|███▍      | 135/400 [00:10&lt;00:21, 12.46it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  34%|███▍      | 137/400 [00:11&lt;00:21, 12.44it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  35%|███▍      | 139/400 [00:11&lt;00:21, 12.10it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  35%|███▌      | 141/400 [00:11&lt;00:21, 12.05it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  36%|███▌      | 143/400 [00:11&lt;00:21, 12.01it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  36%|███▋      | 145/400 [00:11&lt;00:21, 11.90it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  37%|███▋      | 147/400 [00:11&lt;00:21, 12.01it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  37%|███▋      | 149/400 [00:12&lt;00:20, 11.98it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  38%|███▊      | 151/400 [00:12&lt;00:20, 11.91it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  38%|███▊      | 153/400 [00:12&lt;00:21, 11.64it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  39%|███▉      | 155/400 [00:12&lt;00:21, 11.66it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  39%|███▉      | 157/400 [00:12&lt;00:20, 11.64it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  40%|███▉      | 159/400 [00:12&lt;00:20, 11.70it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  40%|████      | 161/400 [00:13&lt;00:20, 11.66it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  41%|████      | 163/400 [00:13&lt;00:20, 11.65it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  41%|████▏     | 165/400 [00:13&lt;00:20, 11.50it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  42%|████▏     | 167/400 [00:13&lt;00:20, 11.35it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  42%|████▏     | 169/400 [00:13&lt;00:20, 11.53it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  43%|████▎     | 171/400 [00:13&lt;00:19, 11.74it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  43%|████▎     | 173/400 [00:14&lt;00:19, 11.90it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  44%|████▍     | 175/400 [00:14&lt;00:18, 11.97it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  44%|████▍     | 177/400 [00:14&lt;00:18, 11.80it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  45%|████▍     | 179/400 [00:14&lt;00:18, 11.90it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  45%|████▌     | 181/400 [00:14&lt;00:18, 12.08it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  46%|████▌     | 183/400 [00:14&lt;00:18, 11.89it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  46%|████▋     | 185/400 [00:15&lt;00:18, 11.76it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  47%|████▋     | 187/400 [00:15&lt;00:18, 11.74it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  47%|████▋     | 189/400 [00:15&lt;00:17, 11.73it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  48%|████▊     | 191/400 [00:15&lt;00:17, 11.92it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  48%|████▊     | 193/400 [00:15&lt;00:17, 12.07it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  49%|████▉     | 195/400 [00:15&lt;00:16, 12.10it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  49%|████▉     | 197/400 [00:16&lt;00:16, 12.02it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  50%|████▉     | 199/400 [00:16&lt;00:16, 12.12it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  50%|█████     | 201/400 [00:16&lt;00:16, 12.15it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  51%|█████     | 203/400 [00:16&lt;00:16, 12.06it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  51%|█████▏    | 205/400 [00:16&lt;00:16, 12.11it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  52%|█████▏    | 207/400 [00:16&lt;00:15, 12.15it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  52%|█████▏    | 209/400 [00:17&lt;00:15, 12.00it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  53%|█████▎    | 211/400 [00:17&lt;00:15, 12.05it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  53%|█████▎    | 213/400 [00:17&lt;00:15, 11.93it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  54%|█████▍    | 215/400 [00:17&lt;00:15, 11.81it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  54%|█████▍    | 217/400 [00:17&lt;00:15, 11.80it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  55%|█████▍    | 219/400 [00:17&lt;00:15, 11.92it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  55%|█████▌    | 221/400 [00:18&lt;00:15, 11.79it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  56%|█████▌    | 223/400 [00:18&lt;00:14, 11.97it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  56%|█████▋    | 225/400 [00:18&lt;00:14, 11.99it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  57%|█████▋    | 227/400 [00:18&lt;00:14, 11.76it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  57%|█████▋    | 229/400 [00:18&lt;00:14, 11.73it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  58%|█████▊    | 231/400 [00:18&lt;00:14, 11.62it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  58%|█████▊    | 233/400 [00:19&lt;00:14, 11.53it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  59%|█████▉    | 235/400 [00:19&lt;00:14, 11.65it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  59%|█████▉    | 237/400 [00:19&lt;00:13, 11.66it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  60%|█████▉    | 239/400 [00:19&lt;00:13, 11.70it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  60%|██████    | 241/400 [00:19&lt;00:13, 11.87it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  61%|██████    | 243/400 [00:20&lt;00:13, 11.82it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  61%|██████▏   | 245/400 [00:20&lt;00:13, 11.92it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  62%|██████▏   | 247/400 [00:20&lt;00:12, 11.94it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  62%|██████▏   | 249/400 [00:20&lt;00:12, 12.10it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  63%|██████▎   | 251/400 [00:20&lt;00:12, 12.12it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  63%|██████▎   | 253/400 [00:20&lt;00:12, 12.01it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  64%|██████▍   | 255/400 [00:20&lt;00:12, 12.08it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  64%|██████▍   | 257/400 [00:21&lt;00:11, 12.10it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  65%|██████▍   | 259/400 [00:21&lt;00:11, 12.08it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  65%|██████▌   | 261/400 [00:21&lt;00:11, 11.96it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  66%|██████▌   | 263/400 [00:21&lt;00:11, 12.05it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  66%|██████▋   | 265/400 [00:21&lt;00:11, 11.99it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  67%|██████▋   | 267/400 [00:22&lt;00:11, 11.83it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  67%|██████▋   | 269/400 [00:22&lt;00:10, 11.95it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  68%|██████▊   | 271/400 [00:22&lt;00:10, 11.89it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  68%|██████▊   | 273/400 [00:22&lt;00:10, 11.68it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  69%|██████▉   | 275/400 [00:22&lt;00:10, 11.93it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  69%|██████▉   | 277/400 [00:22&lt;00:10, 11.82it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  70%|██████▉   | 279/400 [00:23&lt;00:10, 11.97it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  70%|███████   | 281/400 [00:23&lt;00:09, 12.11it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  71%|███████   | 283/400 [00:23&lt;00:09, 11.93it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  71%|███████▏  | 285/400 [00:23&lt;00:09, 11.89it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  72%|███████▏  | 287/400 [00:23&lt;00:09, 11.86it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  72%|███████▏  | 289/400 [00:23&lt;00:09, 11.94it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  73%|███████▎  | 291/400 [00:24&lt;00:09, 11.68it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  73%|███████▎  | 293/400 [00:24&lt;00:09, 11.87it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  74%|███████▍  | 295/400 [00:24&lt;00:08, 11.98it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  74%|███████▍  | 297/400 [00:24&lt;00:08, 12.09it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  75%|███████▍  | 299/400 [00:24&lt;00:08, 12.00it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  75%|███████▌  | 301/400 [00:24&lt;00:08, 11.93it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  76%|███████▌  | 303/400 [00:25&lt;00:08, 11.77it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  76%|███████▋  | 305/400 [00:25&lt;00:07, 11.99it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  77%|███████▋  | 307/400 [00:25&lt;00:07, 12.05it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  77%|███████▋  | 309/400 [00:25&lt;00:07, 12.01it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  78%|███████▊  | 311/400 [00:25&lt;00:07, 12.13it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  78%|███████▊  | 313/400 [00:25&lt;00:07, 12.09it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  79%|███████▉  | 315/400 [00:26&lt;00:06, 12.19it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  79%|███████▉  | 317/400 [00:26&lt;00:06, 11.87it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  80%|███████▉  | 319/400 [00:26&lt;00:06, 11.74it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  80%|████████  | 321/400 [00:26&lt;00:06, 11.90it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  81%|████████  | 323/400 [00:26&lt;00:06, 11.86it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  81%|████████▏ | 325/400 [00:26&lt;00:06, 12.06it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  82%|████████▏ | 327/400 [00:27&lt;00:06, 11.95it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  82%|████████▏ | 329/400 [00:27&lt;00:06, 11.77it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  83%|████████▎ | 331/400 [00:27&lt;00:05, 11.82it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  83%|████████▎ | 333/400 [00:27&lt;00:05, 11.71it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  84%|████████▍ | 335/400 [00:27&lt;00:05, 11.80it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  84%|████████▍ | 337/400 [00:27&lt;00:05, 11.77it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  85%|████████▍ | 339/400 [00:28&lt;00:05, 11.82it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  85%|████████▌ | 341/400 [00:28&lt;00:05, 11.66it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  86%|████████▌ | 343/400 [00:28&lt;00:04, 11.69it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  86%|████████▋ | 345/400 [00:28&lt;00:04, 11.72it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  87%|████████▋ | 347/400 [00:28&lt;00:04, 11.76it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  87%|████████▋ | 349/400 [00:28&lt;00:04, 11.58it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  88%|████████▊ | 351/400 [00:29&lt;00:04, 11.49it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  88%|████████▊ | 353/400 [00:29&lt;00:04, 11.57it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  89%|████████▉ | 355/400 [00:29&lt;00:03, 11.56it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  89%|████████▉ | 357/400 [00:29&lt;00:03, 11.76it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  90%|████████▉ | 359/400 [00:29&lt;00:03, 11.86it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  90%|█████████ | 361/400 [00:29&lt;00:03, 12.02it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  91%|█████████ | 363/400 [00:30&lt;00:03, 12.07it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  91%|█████████▏| 365/400 [00:30&lt;00:02, 12.03it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  92%|█████████▏| 367/400 [00:30&lt;00:02, 11.74it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  92%|█████████▏| 369/400 [00:30&lt;00:02, 11.75it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  93%|█████████▎| 371/400 [00:30&lt;00:02, 11.70it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  93%|█████████▎| 373/400 [00:30&lt;00:02, 11.67it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  94%|█████████▍| 375/400 [00:31&lt;00:02, 11.80it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  94%|█████████▍| 377/400 [00:31&lt;00:01, 11.57it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  95%|█████████▍| 379/400 [00:31&lt;00:01, 11.45it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  95%|█████████▌| 381/400 [00:31&lt;00:01, 11.45it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  96%|█████████▌| 383/400 [00:31&lt;00:01, 11.60it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  96%|█████████▋| 385/400 [00:32&lt;00:01, 11.44it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  97%|█████████▋| 387/400 [00:32&lt;00:01, 11.70it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  97%|█████████▋| 389/400 [00:32&lt;00:00, 11.77it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  98%|█████████▊| 391/400 [00:32&lt;00:00, 11.57it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  98%|█████████▊| 393/400 [00:32&lt;00:00, 11.68it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  99%|█████████▉| 395/400 [00:32&lt;00:00, 11.66it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer:  99%|█████████▉| 397/400 [00:33&lt;00:00, 11.87it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer: 100%|█████████▉| 399/400 [00:33&lt;00:00, 11.88it/s]</p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer: 401it [00:33, 11.80it/s]                         </p>
-<pre><code>[A
-</code></pre>
-<p>ExactExplainer explainer: 401it [00:33,  8.31it/s]</p>
-<p>100%|██████████| 1/1 [00:34&lt;00:00, 34.22s/it]</p>
-<p>100%|██████████| 1/1 [00:34&lt;00:00, 34.23s/it]</p>
 <pre><code>Feature 2 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-wind_speed 🔹 [id: 0 | heter: 0.01 | inst: 400 | w: 1.00]
-    wind_direction ≤ 145.40 🔹 [id: 1 | heter: 0.00 | inst: 213 | w: 0.53]
-        cars_per_hour ≤ 7.54 🔹 [id: 2 | heter: 0.00 | inst: 125 | w: 0.31]
-        cars_per_hour &gt; 7.54 🔹 [id: 3 | heter: 0.00 | inst: 88 | w: 0.22]
-    wind_direction &gt; 145.40 🔹 [id: 4 | heter: 0.00 | inst: 187 | w: 0.47]
-        cars_per_hour ≤ 6.94 🔹 [id: 5 | heter: 0.00 | inst: 62 | w: 0.15]
-        cars_per_hour &gt; 6.94 🔹 [id: 6 | heter: 0.00 | inst: 125 | w: 0.31]
+wind_speed 🔹 [id: 0 | heter: 0.06 | inst: 400 | w: 1.00]
+    wind_direction &lt; 145.40 🔹 [id: 1 | heter: 0.05 | inst: 213 | w: 0.53]
+        cars_per_hour &lt; 7.34 🔹 [id: 2 | heter: 0.04 | inst: 115 | w: 0.29]
+        cars_per_hour ≥ 7.34 🔹 [id: 3 | heter: 0.03 | inst: 98 | w: 0.24]
+    wind_direction ≥ 145.40 🔹 [id: 4 | heter: 0.04 | inst: 187 | w: 0.47]
+        temperature_diff_2m_25m &lt; -0.07 🔹 [id: 5 | heter: 0.02 | inst: 72 | w: 0.18]
+        temperature_diff_2m_25m ≥ -0.07 🔹 [id: 6 | heter: 0.04 | inst: 115 | w: 0.29]
 --------------------------------------------------
 Feature 2 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 0.01
-    Level 1🔹heter: 0.00 | 🔻0.01 (69.82%)
-        Level 2🔹heter: 0.00 | 🔻0.00 (51.33%)
+Level 0🔹heter: 0.06
+    Level 1🔹heter: 0.05 | 🔻0.02 (30.71%)
+        Level 2🔹heter: 0.04 | 🔻0.01 (19.89%)
 </code></pre>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">regional_shap_dp</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="sa">f</span><span class="s2">"feature_</span><span class="si">{</span><span class="n">foi</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-        <span class="n">regional_shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">part_shap</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">part_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_34_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_34_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_34_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_34_1.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">regional_shap_dp</span><span class="o">.</span><span class="n">tree</span><span class="p">[</span><span class="sa">f</span><span class="s2">"feature_</span><span class="si">{</span><span class="n">foi</span><span class="si">}</span><span class="s2">"</span><span class="p">]</span><span class="o">.</span><span class="n">nodes</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">node</span><span class="o">.</span><span class="n">info</span><span class="p">[</span><span class="s2">"level"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
-        <span class="n">regional_shap_dp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">foi</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_36_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_36_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_36_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_36_1.png"></a></p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="n">part_shap</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">level</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">part_shap</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">r</span><span class="o">.</span><span class="n">idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_35_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_35_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_35_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_35_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_35_2.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_35_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_35_3.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_35_3.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_37_0.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_37_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_37_1.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_37_1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_37_2.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_37_2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../04_no2_files/04_no2_37_3.png" data-desc-position="bottom"><img alt="png" src="../04_no2_files/04_no2_37_3.png"></a></p>
 <h3 id="conclusion_1">Conclusion</h3>
 <p>Regional methods reveal two distinct patterns: </p>
 <ul>
@@ -1697,6 +1043,95 @@ Level 0🔹heter: 0.01
 <li>If <strong>cars/hour ≤ 7</strong>, NO₂ still decreases slightly even with higher wind.</li>
 <li>If <strong>cars/hour &gt; 7</strong>, the trend either flattens (SHAP-DP) or shows a slight increase (PDP, rHALE), potentially due to congestion-induced buildup or ineffective dispersal under certain wind conditions.</li>
 </ul>
+<h2 id="cross-method-sanity-check">Cross-method sanity check</h2>
+<p>The one-liner <code>effector.explain</code> with every engine this notebook's model
+supports. Everything must run end to end; the closing table puts the reads
+side by side. Where methods disagree — ranking, accepted splits, R² — that is
+a property of the data/model worth a closer look, not an error.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">_out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"reports"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"04_no2"</span>
+<span class="n">_out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># === cross-method sweep: effector.explain on every applicable engine ======</span>
+<span class="n">sweep_reports</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">_m</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"derpdp"</span><span class="p">,</span> <span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"shapdp"</span><span class="p">]:</span>
+    <span class="n">_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"nof_instances"</span><span class="p">:</span> <span class="mi">300</span><span class="p">}</span> <span class="k">if</span> <span class="n">_m</span> <span class="o">==</span> <span class="s2">"shapdp"</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- </span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2"> "</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span>
+        <span class="n">X_train</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(),</span> <span class="n">model_forward</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">,</span>
+        <span class="n">y</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">Y_train</span><span class="p">)</span><span class="o">.</span><span class="n">squeeze</span><span class="p">(),</span> <span class="n">method</span><span class="o">=</span><span class="n">_m</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="o">**</span><span class="n">_kw</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">_m</span> <span class="o">!=</span> <span class="s2">"pdp"</span><span class="p">:</span>  <span class="c1"># the published report is the narrated one above</span>
+        <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">_out</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"report_</span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2">.html"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'method'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'ranking (plotted)'</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'GAM R2'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'final R2'</span><span class="si">:</span><span class="s2">&gt;9</span><span class="si">}</span><span class="s2">  splits"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_m</span><span class="p">,</span> <span class="n">_r</span> <span class="ow">in</span> <span class="n">sweep_reports</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">_rank</span> <span class="o">=</span> <span class="s2">" &gt; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">fr</span> <span class="ow">in</span> <span class="n">_r</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">_ev</span> <span class="o">=</span> <span class="n">_r</span><span class="o">.</span><span class="n">explained_variance</span>
+    <span class="k">if</span> <span class="n">_ev</span><span class="p">:</span>
+        <span class="n">_sp</span> <span class="o">=</span> <span class="s2">"; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'on'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">_ev</span><span class="p">[</span><span class="s2">"stages"</span><span class="p">])</span> <span class="ow">or</span> <span class="s2">"none"</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'gam_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.1%</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'regional_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8.1%</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">_sp</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;7</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">  (derivative scale: no variance ledger)"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">reports stored in </span><span class="si">{</span><span class="n">_out</span><span class="si">}</span><span class="s2">/"</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>--- pdp --------------------------------------------------
+
+
+[effector] global effects   (GAM)  -&gt; 89.3% of the model's variance
+           regional effects (CALM) -&gt; 95.5%
+--- derpdp --------------------------------------------------
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- ale --------------------------------------------------
+
+
+[effector] global effects   (GAM)  -&gt; 87.6% of the model's variance
+           regional effects (CALM) -&gt; 95.5%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- rhale --------------------------------------------------
+
+
+[effector] global effects   (GAM)  -&gt; 86.9% of the model's variance
+           regional effects (CALM) -&gt; 95.5%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- shapdp --------------------------------------------------
+
+
+[effector] global effects   (GAM)  -&gt; 90.2% of the model's variance
+           regional effects (CALM) -&gt; 95.3%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+
+method   ranking (plotted)                              GAM R2  final R2  splits
+pdp      cars_per_hour &gt; temperature_at_2m &gt; wind_speed &gt; temperature_diff_2m_25m   89.3%    95.5%  wind_speed on cars_per_hour, wind_direction; temperature_diff_2m_25m on cars_per_hour, wind_direction, wind_speed
+derpdp   cars_per_hour &gt; wind_speed &gt; temperature_diff_2m_25m &gt; temperature_at_2m       -        -  (derivative scale: no variance ledger)
+ale      cars_per_hour &gt; temperature_at_2m &gt; temperature_diff_2m_25m &gt; wind_speed   87.6%    95.5%  wind_speed on cars_per_hour, wind_direction; temperature_at_2m on day, hour_of_day
+rhale    cars_per_hour &gt; temperature_at_2m &gt; wind_speed &gt; temperature_diff_2m_25m   86.9%    95.5%  wind_speed on cars_per_hour, wind_direction; temperature_at_2m on day, hour_of_day
+shapdp   cars_per_hour &gt; temperature_at_2m &gt; wind_speed &gt; temperature_diff_2m_25m   90.2%    95.3%  wind_speed on cars_per_hour, temperature_diff_2m_25m, wind_direction; cars_per_hour on temperature_at_2m, temperature_diff_2m_25m
+
+reports stored in reports/04_no2/
+</code></pre>
 
 
 

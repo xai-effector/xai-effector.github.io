@@ -272,170 +272,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../api_docs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Docs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Design
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The design contract (R1-R11)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../method_semantics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Method semantics by feature type
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../guides/" class="md-nav__link">
         
   
@@ -471,6 +307,33 @@
     
   
     Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
   
 
     
@@ -608,10 +471,21 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#derpdp-refuses-by-design" class="md-nav__link">
+  <a href="#derpdp-differentiates-discretely" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DerPDP refuses — by design
+        DerPDP differentiates discretely
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#importance-and-one-click-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importance and one-click explanation
       
     </span>
   </a>
@@ -668,6 +542,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cross-method-sanity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-method sanity check
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -686,7 +571,8 @@
 
 
 <h1 id="categorical-features">Categorical features</h1>
-<p><code>effector</code> distinguishes three feature types (see <code>docs/method_semantics.md</code> for the exact formulas):</p>
+<p>📄 The whole notebook in one page: <a href="https://xai-effector.github.io/static/reports/08_categorical_features_pdp.html">PDP report</a></p>
+<p><code>effector</code> distinguishes three feature types (see <code>docs/guides/method_semantics.md</code> for the exact formulas):</p>
 <table>
 <thead>
 <tr>
@@ -734,8 +620,8 @@
 <tr>
 <td>DerPDP</td>
 <td>✓</td>
-<td>error</td>
-<td>error</td>
+<td>✓ ICE differences, transition bars</td>
+<td>✓ transition bars + all-pairs scalars</td>
 </tr>
 <tr>
 <td>ALE</td>
@@ -747,7 +633,7 @@
 <td>RHALE</td>
 <td>✓</td>
 <td>✓ + level grouping</td>
-<td>error</td>
+<td>✓ as ALE (no grouping)</td>
 </tr>
 <tr>
 <td>ShapDP</td>
@@ -779,18 +665,18 @@
 <span class="n">schema</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"level"</span><span class="p">,</span> <span class="s2">"x1"</span><span class="p">,</span> <span class="s2">"x2"</span><span class="p">],</span> <span class="s2">"feature_types"</span><span class="p">:</span> <span class="p">[</span><span class="s2">"ordinal"</span><span class="p">,</span> <span class="s2">"continuous"</span><span class="p">,</span> <span class="s2">"continuous"</span><span class="p">]}</span>
 </code></pre></div>
 <h2 id="pdp-bars-at-the-levels-ice-as-jittered-dots">PDP: bars at the levels, ICE as jittered dots</h2>
-<p>For a discrete feature the model is evaluated <strong>only at the observed levels</strong> — never at fake in-between values.</p>
+<p>For a discrete feature the model is evaluated <strong>only at the observed levels</strong> — never at fake in-between values. Verbs take the feature by index or by name — <code>pdp.plot(0)</code> and <code>pdp.plot("level")</code> are the same call; we use the name below.</p>
 <div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
-<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"ice"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"ice"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_5_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_5_0.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"std"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"std"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_6_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_6_0.png"></a></p>
 <p><code>eval</code> follows the same rule — asking for a non-level value is an error:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]),</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">))</span>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">]),</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">))</span>
 <span class="k">try</span><span class="p">:</span>
-    <span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">]))</span>
+    <span class="n">pdp</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.5</span><span class="p">]))</span>
 <span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"ValueError:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
 </code></pre></div>
@@ -800,25 +686,106 @@ ValueError: level is categorical and can only be evaluated at its observed level
 <h2 id="ale-adjacent-level-differences-accumulated">ALE: adjacent-level differences, accumulated</h2>
 <p>Each bar is the accumulated effect at a level; the whisker is the standard deviation of the <em>step into</em> that level. For an ordinal feature this is exact — the model is only queried at real levels.</p>
 <div class="highlight"><pre><span></span><code><span class="n">ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
-<span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">)</span>
+<span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_10_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_10_0.png"></a></p>
 <h2 id="rhale-adaptive-level-grouping">RHALE: adaptive level grouping</h2>
 <p>On ordinal features RHALE treats the adjacent-level differences as a discrete derivative and lets Greedy/DP binning merge neighboring transitions with similar effect — useful for high-cardinality ordinal features.</p>
 <div class="highlight"><pre><span></span><code><span class="n">rhale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
 <span class="n">rhale</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">binning_method</span><span class="o">=</span><span class="s2">"greedy"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">)</span>
-<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">)</span>
+<span class="n">rhale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">)</span>
 </code></pre></div>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_12_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_12_0.png"></a></p>
-<h2 id="derpdp-refuses-by-design">DerPDP refuses — by design</h2>
-<p>A derivative needs a continuous axis; the adjacent differences of the PDP bars carry the same information.</p>
+<h2 id="derpdp-differentiates-discretely">DerPDP differentiates discretely</h2>
+<p>On a discrete axis the derivative becomes the finite difference: for every instance, the change in prediction when the level switches to the next one. The jacobian is never used there — the bars below are per-transition means (± std) of the plain ICE differences, labeled <code>v→w</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="n">derpdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">derpdp</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">ValueError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"ValueError:"</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
+<span class="n">derpdp</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"level"</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"std"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"heter_score:"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">derpdp</span><span class="o">.</span><span class="n">heter_score</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"importance :"</span><span class="p">,</span> <span class="nb">round</span><span class="p">(</span><span class="n">derpdp</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="mi">3</span><span class="p">))</span>
 </code></pre></div>
-<pre><code>ValueError: d-pdp does not support ordinal features (feature 0 'level' is ordinal). A derivative needs a continuous axis; use PDP instead — adjacent differences of the per-level PDP bars carry the same information.
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_14_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_14_0.png"></a></p>
+<pre><code>heter_score: 0.58
+importance : 0.891
+</code></pre>
+<h2 id="importance-and-one-click-explanation">Importance and one-click explanation</h2>
+<p>Every global effect exposes <code>importances()</code> — the per-feature dispersion of the <em>mean</em> effect (the μ-twin of heterogeneity), a scalar summary of how much each feature moves the prediction. <code>effector.explain(...)</code> wraps the whole tour into a serializable <code>Report</code> with a self-contained HTML view.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># per-feature importance = dispersion of the mean effect (the mu-twin of heterogeneity)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"importances:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pdp</span><span class="o">.</span><span class="n">importances</span><span class="p">(),</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># one-click auto-explanation -&gt; Report (serializable; self-contained HTML)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"pdp"</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># the whole notebook, in one page: the report published with this example</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">_out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"reports"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"08_categorical_features"</span>
+<span class="n">_out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">_out</span> <span class="o">/</span> <span class="s2">"report_pdp.html"</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>importances: [1.103 0.039 0.007]
+[effector] global effects   (GAM)  -&gt; 90.5% of the model's variance
+           regional effects (CALM) -&gt; 98.4%
+
+  ════════════════════════════════════════════════════════════════════════
+  PDP report  ·  target: y
+  ════════════════════════════════════════════════════════════════════════
+
+  DATA &amp; MODEL
+  ────────────────────────────────────────────────────────────────────────
+    instances     1,000
+    features      3  ·  1 ordinal · 2 continuous
+    model output  mean 0.875 · std 1.17 · range [-0.993, 3]
+
+  EXPLAINED VARIANCE
+  ────────────────────────────────────────────────────────────────────────
+    step         split on                 solo     ΔR²      R²       heter
+    ──────────────────────────────────────────────────────────────────────
+    GAM          (all features global)       —       —   90.5%           —
+  + x1           level, x2               +7.9%   +7.9%   98.4% 0.37 → 0.08
+    ──────────────────────────────────────────────────────────────────────
+    FINAL                                                98.4%
+
+  REJECTED SPLITS                                            min gain 1.0%
+  ────────────────────────────────────────────────────────────────────────
+    feature      split on                 solo     ΔR²    reason
+    ──────────────────────────────────────────────────────────────────────
+  ✗ level        x1, x2                  +7.0%   -4.8%    redundant
+
+    ✗ redundant: it would explain variance on its own (see solo),
+      but the accepted splits already account for it.
+
+  FEATURES                                ranked, in the selected snapshot
+  ────────────────────────────────────────────────────────────────────────
+    feature        importance                          heter      #regions
+    ──────────────────────────────────────────────────────────────────────
+    level              1.1028  ██████████████████     0.3607             1
+    x1                 0.2291  ████                   0.0757             3
+    ──────────────────────────────────────────────────────────────────────
+    the features above carry 99% of the total importance mass
+
+
+
+Feature 1 - Full partition tree:
+🌳 Full Tree Structure:
+───────────────────────
+x1 🔹 [id: 0 | heter: 0.37 | inst: 1000 | w: 1.00]
+    x2 &lt; 0.00 🔹 [id: 1 | heter: 0.00 | inst: 498 | w: 0.50]
+    x2 ≥ 0.00 🔹 [id: 2 | heter: 0.51 | inst: 502 | w: 0.50]
+        level = 0.00 🔹 [id: 3 | heter: 0.00 | inst: 233 | w: 0.23]
+        level ∈ {1.00, 2.00} 🔹 [id: 4 | heter: 0.28 | inst: 269 | w: 0.27]
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.37
+    Level 1🔹heter: 0.26 | 🔻0.11 (31.02%)
+        Level 2🔹heter: 0.08 | 🔻0.18 (70.34%)
+
+
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
 </code></pre>
 <h2 id="regional-effects-on-a-categorical-feature">Regional effects on a categorical feature</h2>
 <p><em>For which subgroups is the per-level effect stable?</em> We use <span class="arithmatex">\(f(x) = a_{x_0} + b_{x_0}\,\mathbb{1}_{x_2&gt;0}\)</span>: the level effect is unstable globally, but perfectly stable once you condition on the <span class="arithmatex">\(x_2\)</span> gate.</p>
@@ -828,33 +795,33 @@ ValueError: level is categorical and can only be evaluated at its observed level
     <span class="n">codes</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">A</span><span class="p">[</span><span class="n">codes</span><span class="p">]</span> <span class="o">+</span> <span class="n">B</span><span class="p">[</span><span class="n">codes</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
 
-<span class="n">reg</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalPDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">gated_model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">space_partitioner</span><span class="o">=</span><span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
-<span class="n">reg</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">pdp_reg</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">gated_model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
+<span class="n">pdp_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">finder</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">space_partitioning</span><span class="o">.</span><span class="n">Best</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">partitions</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="n">pdp_reg</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="n">finder</span><span class="p">)}</span>
+<span class="n">partitions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div>
-<p>0%|          | 0/1 [00:00&lt;?, ?it/s]</p>
-<p>100%|██████████| 1/1 [00:00&lt;00:00, 67.41it/s]</p>
 <pre><code>Feature 0 - Full partition tree:
 🌳 Full Tree Structure:
 ───────────────────────
-level 🔹 [id: 0 | heter: 0.20 | inst: 1000 | w: 1.00]
-    x2 ≤ 0.00 🔹 [id: 1 | heter: 0.00 | inst: 498 | w: 0.50]
-    x2 &gt; 0.00 🔹 [id: 2 | heter: 0.00 | inst: 502 | w: 0.50]
+level 🔹 [id: 0 | heter: 0.44 | inst: 1000 | w: 1.00]
+    x2 &lt; 0.00 🔹 [id: 1 | heter: 0.00 | inst: 498 | w: 0.50]
+    x2 ≥ 0.00 🔹 [id: 2 | heter: 0.00 | inst: 502 | w: 0.50]
 --------------------------------------------------
 Feature 0 - Statistics per tree level:
 🌳 Tree Summary:
 ─────────────────
-Level 0🔹heter: 0.20
-    Level 1🔹heter: 0.00 | 🔻0.20 (100.00%)
+Level 0🔹heter: 0.44
+    Level 1🔹heter: 0.00 | 🔻0.44 (100.00%)
 </code></pre>
-<div class="highlight"><pre><span></span><code><span class="n">reg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"ice"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">partitions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"ice"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_17_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_17_0.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="n">reg</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"ice"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_19_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_19_0.png"></a></p>
+<div class="highlight"><pre><span></span><code><span class="n">partitions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"ice"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_18_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_18_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_20_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_20_0.png"></a></p>
 <h2 id="nominal-features-from-a-pandas-dataframe">Nominal features from a pandas DataFrame</h2>
-<p>With a DataFrame, string/<code>category</code> columns are encoded at the door and your model is always called with a reconstructed DataFrame (original dtypes). Plots translate the codes back to the category labels.</p>
+<p>effector is numpy-only, so a DataFrame is converted at the door with <code>effector.from_dataframe(df)</code>, which returns <code>(X, schema)</code>: <code>X</code> is the encoded <code>(N, D)</code> numpy matrix and <code>schema</code> carries the feature types and the category labels. Your model stays a plain numpy→numpy callable (it receives the encoded codes). Plots translate the codes back to the category labels via the schema.</p>
 <div class="highlight"><pre><span></span><code><span class="n">N2</span> <span class="o">=</span> <span class="mi">800</span>
 <span class="n">color</span> <span class="o">=</span> <span class="n">rng</span><span class="o">.</span><span class="n">choice</span><span class="p">([</span><span class="s2">"red"</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">],</span> <span class="n">N2</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="p">[</span><span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.25</span><span class="p">])</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
@@ -862,30 +829,121 @@ Level 0🔹heter: 0.20
     <span class="s2">"x1"</span><span class="p">:</span> <span class="n">rng</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">N2</span><span class="p">),</span>
 <span class="p">})</span>
 
+<span class="c1"># effector is numpy-only: convert the DataFrame to (X, schema) at the door.</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">schema_nominal</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="n">schema_nominal</span><span class="o">.</span><span class="n">category_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># e.g. ['blue', 'green', 'red']</span>
+
+<span class="c1"># the model is numpy-&gt;numpy; it receives the encoded codes in column 0.</span>
 <span class="n">color_effect</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"red"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">}</span>
+<span class="n">effect_by_code</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">color_effect</span><span class="p">[</span><span class="n">name</span><span class="p">]</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">levels</span><span class="p">])</span>
+<span class="n">green_code</span> <span class="o">=</span> <span class="n">levels</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s2">"green"</span><span class="p">)</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">df_model</span><span class="p">(</span><span class="n">d</span><span class="p">):</span>
-    <span class="n">base</span> <span class="o">=</span> <span class="n">d</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">color_effect</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">(</span><span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">base</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">d</span><span class="p">[</span><span class="s2">"x1"</span><span class="p">]</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span> <span class="o">*</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s2">"color"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"green"</span><span class="p">)</span><span class="o">.</span><span class="n">to_numpy</span><span class="p">()</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">np_model</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">codes</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">effect_by_code</span><span class="p">[</span><span class="n">codes</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span> <span class="o">*</span> <span class="n">x</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">(</span><span class="n">codes</span> <span class="o">==</span> <span class="n">green_code</span><span class="p">)</span>
 
-<span class="n">pdp_nominal</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_model</span><span class="p">)</span>
+<span class="n">pdp_nominal</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np_model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema_nominal</span><span class="p">)</span>
 <span class="n">pdp_nominal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">heterogeneity</span><span class="o">=</span><span class="s2">"ice"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_20_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_20_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_22_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_22_0.png"></a></p>
 <h3 id="ale-on-a-nominal-feature-the-order-caveat">ALE on a nominal feature: the order caveat</h3>
 <p>ALE accumulates along an order that nominal features do not have. By default effector uses the ascending encoded order and the curve's <em>shape</em> depends on it — the meaningful quantities are the adjacent-level differences. You can declare the order (<code>order=[...]</code>) or induce it from the other features (<code>order="similarity"</code>, Kolmogorov–Smirnov seriation):</p>
-<div class="highlight"><pre><span></span><code><span class="n">ale_nominal</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_model</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">ale_nominal</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">np_model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema_nominal</span><span class="p">)</span>
 <span class="n">ale_nominal</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="s2">"similarity"</span><span class="p">)</span>
 <span class="n">ale_nominal</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="s2">"zero_start"</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_22_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_22_0.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../08_categorical_features_files/08_categorical_features_24_0.png" data-desc-position="bottom"><img alt="png" src="../08_categorical_features_files/08_categorical_features_24_0.png"></a></p>
 <h2 id="takeaways">Takeaways</h2>
 <ul>
 <li>Declare <code>feature_types</code> in the <code>schema</code> whenever you know them — inference is a fallback, not an oracle.</li>
-<li>PDP/ShapDP treat ordinal and nominal identically (order-free math); ALE needs an order and RHALE additionally needs a <em>real</em> one (ordinal only).</li>
+<li>PDP/ShapDP treat ordinal and nominal identically (order-free math); ALE needs an order; RHALE groups adjacent levels only when the order is <em>real</em> (ordinal) and falls back to plain ALE on nominal.</li>
+<li>DerPDP differentiates discretely: per-transition ICE differences, never the jacobian.</li>
+<li><code>heter_score</code>/<code>importance</code> are std-type scalars in output units (the units contract) — comparable across feature types and, in magnitude, across methods; for nominal features they are order-free (all level pairs).</li>
 <li>Regional effects answer stability questions per level — heterogeneity is frequency-weighted over the levels.</li>
-<li>The exact formulas per method and feature type live in <code>docs/method_semantics.md</code>.</li>
+<li>The exact formulas per method and feature type live in <code>docs/guides/method_semantics.md</code>.</li>
 </ul>
+<h2 id="cross-method-sanity-check">Cross-method sanity check</h2>
+<p>The one-liner <code>effector.explain</code> with every engine this notebook's model
+supports. Everything must run end to end; the closing table puts the reads
+side by side. Where methods disagree — ranking, accepted splits, R² — that is
+a property of the data/model worth a closer look, not an error.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">_out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"reports"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"08_categorical_features"</span>
+<span class="n">_out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># === cross-method sweep: effector.explain on every applicable engine ======</span>
+<span class="n">sweep_reports</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">_m</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"derpdp"</span><span class="p">,</span> <span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"shapdp"</span><span class="p">]:</span>
+    <span class="n">_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"nof_instances"</span><span class="p">:</span> <span class="mi">300</span><span class="p">}</span> <span class="k">if</span> <span class="n">_m</span> <span class="o">==</span> <span class="s2">"shapdp"</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- </span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2"> "</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">_m</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="o">**</span><span class="n">_kw</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">_m</span> <span class="o">!=</span> <span class="s2">"pdp"</span><span class="p">:</span>  <span class="c1"># the published report is the narrated one above</span>
+        <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">_out</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"report_</span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2">.html"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'method'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'ranking (plotted)'</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'GAM R2'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'final R2'</span><span class="si">:</span><span class="s2">&gt;9</span><span class="si">}</span><span class="s2">  splits"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_m</span><span class="p">,</span> <span class="n">_r</span> <span class="ow">in</span> <span class="n">sweep_reports</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">_rank</span> <span class="o">=</span> <span class="s2">" &gt; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">fr</span> <span class="ow">in</span> <span class="n">_r</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">_ev</span> <span class="o">=</span> <span class="n">_r</span><span class="o">.</span><span class="n">explained_variance</span>
+    <span class="k">if</span> <span class="n">_ev</span><span class="p">:</span>
+        <span class="n">_sp</span> <span class="o">=</span> <span class="s2">"; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'on'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">_ev</span><span class="p">[</span><span class="s2">"stages"</span><span class="p">])</span> <span class="ow">or</span> <span class="s2">"none"</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'gam_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.1%</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'regional_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8.1%</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">_sp</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;7</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">  (derivative scale: no variance ledger)"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">reports stored in </span><span class="si">{</span><span class="n">_out</span><span class="si">}</span><span class="s2">/"</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>--- pdp --------------------------------------------------
+[effector] global effects   (GAM)  -&gt; 90.5% of the model's variance
+           regional effects (CALM) -&gt; 98.4%
+--- derpdp --------------------------------------------------
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- ale --------------------------------------------------
+[effector] global effects   (GAM)  -&gt; 90.3% of the model's variance
+           regional effects (CALM) -&gt; 97.4%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- rhale --------------------------------------------------
+[effector] global effects   (GAM)  -&gt; 90.5% of the model's variance
+           regional effects (CALM) -&gt; 98.4%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- shapdp --------------------------------------------------
+
+
+[effector] global effects   (GAM)  -&gt; 90.4% of the model's variance
+           regional effects (CALM) -&gt; 98.2%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+
+method   ranking (plotted)                              GAM R2  final R2  splits
+pdp      level &gt; x1                                     90.5%    98.4%  x1 on level, x2
+derpdp   level                                              -        -  (derivative scale: no variance ledger)
+ale      level                                          90.3%    97.4%  level on x1, x2
+rhale    level &gt; x1                                     90.5%    98.4%  x1 on level, x2
+shapdp   level &gt; x1                                     90.4%    98.2%  x1 on level, x2; level on x1, x2
+
+reports stored in reports/08_categorical_features/
+</code></pre>
 
 
 

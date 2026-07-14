@@ -1,0 +1,828 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../static/effector_favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>effector's report - effector</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto Flex";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#one-call" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="effector" class="md-header__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  <img src="../../static/effector_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            effector
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              effector's report
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="effector" class="md-nav__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  <img src="../../static/effector_logo.png" alt="logo">
+
+    </a>
+    effector
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    effector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../api_docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#one-call" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        One call
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-headline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The headline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reading-show" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reading .show()
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The components
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-html-page" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The HTML page
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The HTML page">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#see-a-real-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        See a real one
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#it-is-a-value" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        It is a value
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#where-to-next" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Where to next
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+  <h1>effector's report</h1>
+
+<details class="success" open="open">
+<summary>Description</summary>
+<p>The in-depth guide to part <strong>(b)</strong> of <a href="../simple_api/"><code>effector</code>'s API</a>:
+the one-liner <code>effector.explain(...)</code>, the <code>Report</code> it returns, and a map
+of its components; each component has its own page.</p>
+</details>
+<details class="note" open="open">
+<summary>Reading time</summary>
+<p>Approx. 5' to read; each component page is another 2' to 7'.</p>
+</details>
+<h2 id="one-call">One call</h2>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
+
+<span class="n">report</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_test</span><span class="p">)</span>
+</code></pre></div>
+<p><code>explain</code> walks the <a href="../interactive_api/">interactive API</a> for you, with
+default settings, in a fixed order:</p>
+<pre class="mermaid"><code>flowchart LR
+    A["&lt;b&gt;fit&lt;/b&gt;&lt;br/&gt;once"] --&gt; B["&lt;b&gt;rank&lt;/b&gt;&lt;br/&gt;importance"]
+    B --&gt; C["&lt;b&gt;hunt&lt;/b&gt;&lt;br/&gt;find_regions on the&lt;br/&gt;heterogeneous features"]
+    C --&gt; D["&lt;b&gt;select&lt;/b&gt;&lt;br/&gt;which splits pay&lt;br/&gt;for themselves"]
+    D --&gt; E["&lt;b&gt;freeze&lt;/b&gt;&lt;br/&gt;→ Report"]</code></pre>
+<p>The result is a <strong>value</strong>, not a live handle on the engine: you can pickle it,
+<code>to_dict()</code> it, mail it, and read it back with <code>Report.from_dict()</code> on a machine
+that has neither your model nor your data.</p>
+<h2 id="the-headline">The headline</h2>
+<p>Before anything else, <code>explain</code> prints the one number worth having:</p>
+<div class="highlight"><pre><span></span><code>[effector] global effects   (GAM)  -&gt; 71.7% of the model's variance
+           regional effects (CALM) -&gt; 88.6%
+</code></pre></div>
+<p>👉 <strong>How much of your model does this explanation actually capture?</strong> Each line
+is a surrogate you could actually ship. The <strong>GAM</strong> is the purely global read:
+one curve per feature, no regions; it reproduces 71.7% of the model's variance.
+The <strong>CALM</strong> allows subregions and reaches 88.6%.
+You may interpret them both as: </p>
+<details class="note" open="open">
+<summary>How to read the headline</summary>
+<p><em>The global effects (GAM) explain the black-box model with 71.7% fidelity</em>.
+<em>The regional effects (CALM) explain the black-box model with 88.6% fidelity</em>.</p>
+</details>
+<p>The second line only appears when a split was accepted; a model that is already
+additive prints one line, and that is the correct answer.</p>
+<p>⚠️ If that first number is low, <em>every global effect plot you are about to look
+at is a bad summary of your model</em>. That is the point of showing it first.</p>
+<h2 id="reading-show">Reading <code>.show()</code></h2>
+<div class="highlight"><pre><span></span><code><span class="n">report</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+<p>Three tables, then the partition trees.</p>
+<div class="highlight"><pre><span></span><code>  ════════════════════════════════════════════════════════════════════════
+  PDP report  ·  target: bike-rentals
+  ════════════════════════════════════════════════════════════════════════
+
+  DATA &amp; MODEL
+  ────────────────────────────────────────────────────────────────────────
+    instances     2,000
+    features      11  ·  5 nominal · 3 ordinal · 3 continuous
+    model output  mean 174 · std 177 · range [-48.9, 928]
+    model R²      0.947  (on this subsample)
+
+  EXPLAINED VARIANCE
+  ────────────────────────────────────────────────────────────────────────
+    step         split on                 solo     ΔR²      R²       heter
+    ──────────────────────────────────────────────────────────────────────
+    GAM          (all features global)       —       —   71.7%           —
+  + hr           temp, workingday, yr   +15.5%  +15.5%   87.2% 0.48 → 0.29
+  + hum          hr, temp, weathersit    +1.8%   +1.4%   88.6% 0.17 → 0.15
+    ──────────────────────────────────────────────────────────────────────
+    FINAL                                                88.6%
+
+  REJECTED SPLITS                                            min gain 1.0%
+  ────────────────────────────────────────────────────────────────────────
+    feature      split on                 solo     ΔR²    reason
+    ──────────────────────────────────────────────────────────────────────
+  ✗ temp         hr, hum                 +1.7%   +0.9%    below threshold
+  ✗ yr           hr, hum                 +1.5%   -0.1%    redundant
+  ✗ workingday   hr, yr                  +4.9%   -4.3%    redundant
+
+    ✗ redundant: it would explain variance on its own (see solo),
+      but the accepted splits already account for it.
+
+  FEATURES                                ranked, in the selected snapshot
+  ────────────────────────────────────────────────────────────────────────
+    feature        importance                          heter      #regions
+    ──────────────────────────────────────────────────────────────────────
+    hr                 0.7314  ██████████████████     0.2882             4
+    temp               0.2281  ██████                 0.2668             1
+    yr                 0.1878  █████                  0.2028             1
+    hum                0.1020  ███                    0.1525             4
+    ──────────────────────────────────────────────────────────────────────
+    the features above carry 80% of the total importance mass
+</code></pre></div>
+<details class="tip" open="open">
+<summary>Terminals that mangle box-drawing characters</summary>
+<p><code>report.show(ascii=True)</code> draws the same tables in plain ASCII.</p>
+</details>
+<h2 id="the-components">The components</h2>
+<p>Every block above, and every section of the HTML page, has its own in-depth
+page: how to read it, where its numbers come from, and what to check.</p>
+<table>
+<thead>
+<tr>
+<th>component</th>
+<th>the question it answers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="data_and_model/">The data &amp; model header</a></td>
+<td>what ran, on what data, and how good is the model?</td>
+</tr>
+<tr>
+<td><a href="explained_variance/">The explained variance ledger</a></td>
+<td>how much of the model does the explanation capture?</td>
+</tr>
+<tr>
+<td><a href="rejected_splits/">The rejected splits</a></td>
+<td>what was refused, and why?</td>
+</tr>
+<tr>
+<td><a href="ranked_features/">The ranked features</a></td>
+<td>where is the signal, and in which units?</td>
+</tr>
+<tr>
+<td><a href="triage_plane/">The triage plane</a></td>
+<td>where to look first?</td>
+</tr>
+<tr>
+<td><a href="regional_analysis/">The regional analysis</a></td>
+<td>how to read a tree and its per leaf plots?</td>
+</tr>
+<tr>
+<td><a href="global_baseline/">The global baseline</a></td>
+<td>what would you have believed without regions?</td>
+</tr>
+<tr>
+<td><a href="configuration/">Configuring the report</a></td>
+<td>which knob moves what?</td>
+</tr>
+</tbody>
+</table>
+<h2 id="the-html-page">The HTML page</h2>
+<div class="highlight"><pre><span></span><code><span class="n">report</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="s2">"report.html"</span><span class="p">)</span>   <span class="c1"># writes the file; returns None</span>
+</code></pre></div>
+<p>A <strong>single self-contained file</strong>: every figure inlined as a base64 PNG, no
+external assets, no CDN. Mail it, commit it, drop it in a PR.</p>
+<pre class="mermaid"><code>flowchart TD
+    S1["&lt;b&gt;1 · Overview&lt;/b&gt;&lt;br/&gt;where to look"]
+    S2["&lt;b&gt;2 · Regional analysis&lt;/b&gt;&lt;br/&gt;the final CALM"]
+    S3["&lt;b&gt;3 · Global baseline&lt;/b&gt;&lt;br/&gt;without regions"]
+    S1 --&gt; S2 --&gt; S3</code></pre>
+<table>
+<thead>
+<tr>
+<th>section</th>
+<th>what it shows</th>
+<th>in depth</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>1 · Overview</strong></td>
+<td>the ledger bar, the triage plane, the ranked table</td>
+<td><a href="explained_variance/">ledger</a> · <a href="triage_plane/">triage</a> · <a href="ranked_features/">ranking</a></td>
+</tr>
+<tr>
+<td><strong>2 · Regional analysis</strong></td>
+<td>the selected snapshot, one subsection per feature</td>
+<td><a href="regional_analysis/">regional analysis</a></td>
+</tr>
+<tr>
+<td><strong>3 · Global baseline</strong></td>
+<td>what you would have believed <strong>without</strong> regions</td>
+<td><a href="global_baseline/">global baseline</a></td>
+</tr>
+</tbody>
+</table>
+<p>👉 Section 3 exists so the report can be <em>checked</em>, not just trusted. It is the
+explanation you would have shipped if you had never split anything.</p>
+<h3 id="see-a-real-one">See a real one</h3>
+<p>This is the page produced by the bike-sharing run above; the very report whose
+<code>.show()</code> you just read. It is live: scroll it, click a figure to zoom, collapse
+a section.</p>
+<p><a href="../../static/reports/01_bike_sharing_dataset_pdp.html" target="_blank"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path d="M3.75 2h3.5a.75.75 0 0 1 0 1.5h-3.5a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h8.5a.25.25 0 0 0 .25-.25v-3.5a.75.75 0 0 1 1.5 0v3.5A1.75 1.75 0 0 1 12.25 14h-8.5A1.75 1.75 0 0 1 2 12.25v-8.5C2 2.784 2.784 2 3.75 2m6.854-1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.042-.018.75.75 0 0 1-.018-1.042l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1"></path></svg></span> Open it full screen</a></p>
+<iframe src="../../static/reports/01_bike_sharing_dataset_pdp.html" title="effector report: bike-sharing, PDP" width="100%" height="720" loading="lazy" style="border: 1px solid var(--md-default-fg-color--lightest);
+               border-radius: 8px; background: white;"></iframe>
+
+<h2 id="it-is-a-value">It is a value</h2>
+<div class="highlight"><pre><span></span><code><span class="n">d</span> <span class="o">=</span> <span class="n">report</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span>                  <span class="c1"># plain, serializable</span>
+<span class="n">again</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">Report</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">d</span><span class="p">)</span>  <span class="c1"># no model, no data needed</span>
+<span class="n">again</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>                          <span class="c1"># identical output</span>
+</code></pre></div>
+<p>Every knob of the pipeline, <code>to_html(share_y=)</code>, and the unbound behavior of a
+rebuilt report live in <a href="configuration/">configuring the report</a>.</p>
+<hr>
+<h2 id="where-to-next">Where to next</h2>
+<ul>
+<li><a href="#the-components">The components</a>: the eight in-depth pages above</li>
+<li><a href="../interactive_api/">The interactive API</a>: drive the same pipeline yourself</li>
+<li><a href="../input_guide/">The input layer</a>: schema, names, types, units</li>
+<li><a href="../../api_docs/api_report/">API docs</a>: the <code>Report</code> reference</li>
+</ul>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/givasile/effector" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

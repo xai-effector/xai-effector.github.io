@@ -1,0 +1,2863 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../static/effector_favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Triage, comparison &amp; theme - effector</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Flex:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Roboto Flex";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/_mkdocstrings.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#triage-comparison-theme" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="effector" class="md-header__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  <img src="../../static/effector_logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            effector
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Triage, comparison &amp; theme
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.3 16-.7-2h-3.2l-.7 2H7.8L11 7h2l3.2 9zM20 8.69V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12zm-9.15 3.96h2.3L12 9z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="indigo" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="effector" class="md-nav__button md-logo" aria-label="effector" data-md-component="logo">
+      
+  <img src="../../static/effector_logo.png" alt="logo">
+
+    </a>
+    effector
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix="">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    effector
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../guides/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Guides
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../examples/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contributing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Contributing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../changelog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        API
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effector.visualization.plot_triage" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        plot_triage
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effector.visualization.compare" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        compare
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effector.feature_effect.FeatureEffect" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-class"></code>&nbsp;FeatureEffect
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="&nbsp;FeatureEffect">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#effector.feature_effect.FeatureEffect.eval" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;eval
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effector.feature_effect.FeatureEffect.plot" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        <code class="doc-symbol doc-symbol-toc doc-symbol-method"></code>&nbsp;plot
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#effector.theme.set_theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        set_theme
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+
+<h1 id="triage-comparison-theme">Triage, comparison &amp; theme</h1>
+<h2 id="summary">Summary</h2>
+<p>Two free functions stand <em>above</em> the engines. They take fitted effect
+objects, query their public verbs, and draw — they compute nothing themselves
+and store nothing.</p>
+<p><strong><code>plot_triage</code></strong> is the survey: importance (x) against heterogeneity (y),
+one labeled point per feature. Bottom-left is unimportant; bottom-right is
+important and fully described by its mean effect; top-right — important <em>and</em>
+heterogeneous — is where <code>find_regions</code> should look. With
+<code>partitions=effect.find_regions(features="heterogeneous")</code> it becomes the
+before/after story: an arrow runs from each partitioned feature's global
+point to each leaf point — leaves of a good partition move right (more
+decisive) and down (heterogeneity explained).</p>
+<div class="highlight"><pre><span></span><code><span class="n">pdp</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+
+<span class="n">effector</span><span class="o">.</span><span class="n">plot_triage</span><span class="p">(</span><span class="n">pdp</span><span class="p">)</span>                          <span class="c1"># step (b): the survey</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">pdp</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">"heterogeneous"</span><span class="p">)</span> <span class="c1"># step (d)</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">plot_triage</span><span class="p">(</span><span class="n">pdp</span><span class="p">,</span> <span class="n">partitions</span><span class="o">=</span><span class="n">parts</span><span class="p">)</span>        <span class="c1"># step (e): the arrows</span>
+</code></pre></div>
+<p><strong><code>compare</code></strong> is the cross-examination: overlay the mean effect of several
+fitted engines — different methods, or even different models over the same
+columns — on one feature, always centered.</p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">pdp</span><span class="p">,</span> <span class="n">rhale</span><span class="p">,</span> <span class="n">shapdp</span><span class="p">,</span> <span class="n">feature</span><span class="o">=</span><span class="s2">"temp"</span><span class="p">)</span>
+</code></pre></div>
+<p><strong><code>FeatureEffect</code></strong> is the single-model shortcut with the same look: it
+ingests once and builds its own engines (same data, subsample, limits, and
+schema for every method), so the only difference between the overlaid curves
+is the method itself.</p>
+<div class="highlight"><pre><span></span><code><span class="n">fe</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">FeatureEffect</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+<span class="n">fe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="s2">"temp"</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"PDP"</span><span class="p">,</span> <span class="s2">"ALE"</span><span class="p">,</span> <span class="s2">"RHALE"</span><span class="p">])</span>
+</code></pre></div>
+<p><strong><code>set_theme</code></strong> switches the house matplotlib style for every figure the
+package produces:</p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="s2">"dark"</span><span class="p">)</span>     <span class="c1"># "light" | "dark" | "paper" | "default"</span>
+</code></pre></div>
+<hr>
+<h2 id="api">API</h2>
+
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="effector.visualization.plot_triage" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">plot_triage</span><span class="p">(</span><span class="n">effect</span><span class="p">,</span> <span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">threshold</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+
+        <p>The triage plane of one fitted effect: importance (x) against heterogeneity (y), one labeled point per feature.</p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">plot_triage</span><span class="p">(</span><span class="n">pdp</span><span class="p">)</span>                       <span class="c1"># survey every feature</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">pdp</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">"heterogeneous"</span><span class="p">)</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">plot_triage</span><span class="p">(</span><span class="n">pdp</span><span class="p">,</span> <span class="n">partitions</span><span class="o">=</span><span class="n">parts</span><span class="p">)</span>     <span class="c1"># before/after arrows</span>
+</code></pre></div>
+<p>Read it as a to-do list: bottom-left is unimportant and honest, the
+bottom-right features are important and fully described by their mean
+effect, and the top-right corner — important <em>and</em> heterogeneous — is
+where the mean effect hides something and <code>find_regions</code> should look.</p>
+<div class="admonition tip">
+<p class="admonition-title">The before/after story</p>
+<p>With <code>partitions</code>, an arrow runs from every partitioned feature's
+global point to each of its leaf points (the leaf's
+<code>importance</code>/<code>heter_score</code> under its rule, computed model-free from
+the caches). Leaves of a good partition land right and down — more
+decisive, less heterogeneous.</p>
+</div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>effect</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>a fitted effect object (<code>PDP</code>/<code>RHALE</code>/...); its <code>importance</code>
+and <code>heter_score</code> are queried per feature.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>partitions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>{feature_name_or_index: Partition}</code> — exactly
+what <code>effect.find_regions(features=...)</code> returns. Root-only
+partitions are skipped.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>threshold</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="bool">bool</span>, <span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the heterogeneity threshold line. <code>None</code> (default) draws
+the median heterogeneity of the plotted features — the same
+convention <code>effector.explain</code> and <code>find_regions
+(features="heterogeneous")</code> use; a float draws that value;
+<code>False</code> draws nothing.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>features</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="str">str</span>, <span title="list">list</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>which features to plot — <code>"all"</code> or a list of
+indices/names. Feature types the method does not support are
+skipped with one <code>UserWarning</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>'all'</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>title</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>figure title.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>show_plot</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if <code>True</code>, show the figure and return <code>None</code>; if <code>False</code>,
+return <code>(fig, ax)</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>effector/visualization.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1169</span>
+<span class="normal">1170</span>
+<span class="normal">1171</span>
+<span class="normal">1172</span>
+<span class="normal">1173</span>
+<span class="normal">1174</span>
+<span class="normal">1175</span>
+<span class="normal">1176</span>
+<span class="normal">1177</span>
+<span class="normal">1178</span>
+<span class="normal">1179</span>
+<span class="normal">1180</span>
+<span class="normal">1181</span>
+<span class="normal">1182</span>
+<span class="normal">1183</span>
+<span class="normal">1184</span>
+<span class="normal">1185</span>
+<span class="normal">1186</span>
+<span class="normal">1187</span>
+<span class="normal">1188</span>
+<span class="normal">1189</span>
+<span class="normal">1190</span>
+<span class="normal">1191</span>
+<span class="normal">1192</span>
+<span class="normal">1193</span>
+<span class="normal">1194</span>
+<span class="normal">1195</span>
+<span class="normal">1196</span>
+<span class="normal">1197</span>
+<span class="normal">1198</span>
+<span class="normal">1199</span>
+<span class="normal">1200</span>
+<span class="normal">1201</span>
+<span class="normal">1202</span>
+<span class="normal">1203</span>
+<span class="normal">1204</span>
+<span class="normal">1205</span>
+<span class="normal">1206</span>
+<span class="normal">1207</span>
+<span class="normal">1208</span>
+<span class="normal">1209</span>
+<span class="normal">1210</span>
+<span class="normal">1211</span>
+<span class="normal">1212</span>
+<span class="normal">1213</span>
+<span class="normal">1214</span>
+<span class="normal">1215</span>
+<span class="normal">1216</span>
+<span class="normal">1217</span>
+<span class="normal">1218</span>
+<span class="normal">1219</span>
+<span class="normal">1220</span>
+<span class="normal">1221</span>
+<span class="normal">1222</span>
+<span class="normal">1223</span>
+<span class="normal">1224</span>
+<span class="normal">1225</span>
+<span class="normal">1226</span>
+<span class="normal">1227</span>
+<span class="normal">1228</span>
+<span class="normal">1229</span>
+<span class="normal">1230</span>
+<span class="normal">1231</span>
+<span class="normal">1232</span>
+<span class="normal">1233</span>
+<span class="normal">1234</span>
+<span class="normal">1235</span>
+<span class="normal">1236</span>
+<span class="normal">1237</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span>
+<span class="normal">1240</span>
+<span class="normal">1241</span>
+<span class="normal">1242</span>
+<span class="normal">1243</span>
+<span class="normal">1244</span>
+<span class="normal">1245</span>
+<span class="normal">1246</span>
+<span class="normal">1247</span>
+<span class="normal">1248</span>
+<span class="normal">1249</span>
+<span class="normal">1250</span>
+<span class="normal">1251</span>
+<span class="normal">1252</span>
+<span class="normal">1253</span>
+<span class="normal">1254</span>
+<span class="normal">1255</span>
+<span class="normal">1256</span>
+<span class="normal">1257</span>
+<span class="normal">1258</span>
+<span class="normal">1259</span>
+<span class="normal">1260</span>
+<span class="normal">1261</span>
+<span class="normal">1262</span>
+<span class="normal">1263</span>
+<span class="normal">1264</span>
+<span class="normal">1265</span>
+<span class="normal">1266</span>
+<span class="normal">1267</span>
+<span class="normal">1268</span>
+<span class="normal">1269</span>
+<span class="normal">1270</span>
+<span class="normal">1271</span>
+<span class="normal">1272</span>
+<span class="normal">1273</span>
+<span class="normal">1274</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot_triage</span><span class="p">(</span>
+    <span class="n">effect</span><span class="p">,</span>
+    <span class="n">partitions</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">threshold</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">features</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"all"</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""The triage plane of one fitted effect: importance (x) against heterogeneity (y), one labeled point per feature.</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    effector.plot_triage(pdp)                       # survey every feature</span>
+<span class="sd">    parts = pdp.find_regions(features="heterogeneous")</span>
+<span class="sd">    effector.plot_triage(pdp, partitions=parts)     # before/after arrows</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Read it as a to-do list: bottom-left is unimportant and honest, the</span>
+<span class="sd">    bottom-right features are important and fully described by their mean</span>
+<span class="sd">    effect, and the top-right corner — important *and* heterogeneous — is</span>
+<span class="sd">    where the mean effect hides something and `find_regions` should look.</span>
+
+<span class="sd">    !!! tip "The before/after story"</span>
+<span class="sd">        With `partitions`, an arrow runs from every partitioned feature's</span>
+<span class="sd">        global point to each of its leaf points (the leaf's</span>
+<span class="sd">        `importance`/`heter_score` under its rule, computed model-free from</span>
+<span class="sd">        the caches). Leaves of a good partition land right and down — more</span>
+<span class="sd">        decisive, less heterogeneous.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        effect: a fitted effect object (`PDP`/`RHALE`/...); its `importance`</span>
+<span class="sd">            and `heter_score` are queried per feature.</span>
+<span class="sd">        partitions: optional `{feature_name_or_index: Partition}` — exactly</span>
+<span class="sd">            what `effect.find_regions(features=...)` returns. Root-only</span>
+<span class="sd">            partitions are skipped.</span>
+<span class="sd">        threshold: the heterogeneity threshold line. `None` (default) draws</span>
+<span class="sd">            the median heterogeneity of the plotted features — the same</span>
+<span class="sd">            convention `effector.explain` and `find_regions</span>
+<span class="sd">            (features="heterogeneous")` use; a float draws that value;</span>
+<span class="sd">            `False` draws nothing.</span>
+<span class="sd">        features: which features to plot — `"all"` or a list of</span>
+<span class="sd">            indices/names. Feature types the method does not support are</span>
+<span class="sd">            skipped with one `UserWarning`.</span>
+<span class="sd">        title: figure title.</span>
+<span class="sd">        show_plot: if `True`, show the figure and return `None`; if `False`,</span>
+<span class="sd">            return `(fig, ax)`.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">features</span> <span class="o">!=</span> <span class="s2">"all"</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"Invalid features argument: </span><span class="si">{</span><span class="n">features</span><span class="si">!r}</span><span class="s2">; use 'all' or a "</span>
+                <span class="s2">"list of indices/names"</span>
+            <span class="p">)</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">effect</span><span class="o">.</span><span class="n">dim</span><span class="p">))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">candidates</span> <span class="o">=</span> <span class="p">[</span><span class="n">effect</span><span class="o">.</span><span class="n">_resolve_feature</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">features</span><span class="p">]</span>
+
+    <span class="n">plotted</span><span class="p">,</span> <span class="n">skipped</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">candidates</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">effect</span><span class="o">.</span><span class="n">_check_feature_type_supported</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+            <span class="n">plotted</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+            <span class="n">skipped</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">effect</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="n">f</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">skipped</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"plot_triage skipped feature(s) </span><span class="si">{</span><span class="n">skipped</span><span class="si">}</span><span class="s2"> — this method does "</span>
+            <span class="sa">f</span><span class="s2">"not support their feature type."</span><span class="p">,</span>
+            <span class="ne">UserWarning</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">plotted</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"plot_triage: no supported features to plot"</span><span class="p">)</span>
+
+    <span class="n">imp</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">effect</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">plotted</span><span class="p">}</span>
+    <span class="n">het</span> <span class="o">=</span> <span class="p">{</span><span class="n">f</span><span class="p">:</span> <span class="n">effect</span><span class="o">.</span><span class="n">heter_score</span><span class="p">(</span><span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">plotted</span><span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">threshold</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">threshold</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">([</span><span class="n">het</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">plotted</span><span class="p">]))</span>
+        <span class="n">thr_label</span> <span class="o">=</span> <span class="s2">"heterogeneity threshold (median)"</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">thr_label</span> <span class="o">=</span> <span class="s2">"heterogeneity threshold"</span>
+
+    <span class="n">arrows</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">if</span> <span class="n">partitions</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">partition</span> <span class="ow">in</span> <span class="n">partitions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+            <span class="n">f</span> <span class="o">=</span> <span class="n">effect</span><span class="o">.</span><span class="n">_resolve_feature</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">partition</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">continue</span>  <span class="c1"># root-only: nothing was found</span>
+            <span class="n">start</span> <span class="o">=</span> <span class="p">(</span><span class="n">imp</span><span class="p">[</span><span class="n">f</span><span class="p">],</span> <span class="n">het</span><span class="p">[</span><span class="n">f</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">leaf</span> <span class="ow">in</span> <span class="n">partition</span><span class="o">.</span><span class="n">leaves</span><span class="p">:</span>
+                <span class="n">arrows</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
+                    <span class="p">(</span>
+                        <span class="n">start</span><span class="p">,</span>
+                        <span class="p">(</span>
+                            <span class="n">effect</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">rule</span><span class="p">),</span>
+                            <span class="n">effect</span><span class="o">.</span><span class="n">heter_score</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">rule</span><span class="o">=</span><span class="n">leaf</span><span class="o">.</span><span class="n">rule</span><span class="p">),</span>
+                        <span class="p">),</span>
+                    <span class="p">)</span>
+                <span class="p">)</span>
+
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">()</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="n">effect</span><span class="o">.</span><span class="n">feature_names</span><span class="p">[</span><span class="n">f</span><span class="p">],</span> <span class="n">imp</span><span class="p">[</span><span class="n">f</span><span class="p">],</span> <span class="n">het</span><span class="p">[</span><span class="n">f</span><span class="p">])</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">plotted</span><span class="p">]</span>
+    <span class="c1"># both axes are std-type quantities in the target's units (units contract)</span>
+    <span class="n">unit</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">" (</span><span class="si">{</span><span class="n">effect</span><span class="o">.</span><span class="n">target_name</span><span class="si">}</span><span class="s2"> units)"</span>
+    <span class="n">_draw_triage</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">points</span><span class="p">,</span> <span class="n">arrows</span><span class="p">,</span> <span class="n">threshold</span><span class="p">,</span> <span class="n">thr_label</span><span class="p">,</span> <span class="n">unit</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_finalize</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span><span class="p">,</span> <span class="n">show_plot</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="effector.visualization.compare" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">visualization</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="o">*</span><span class="n">effects</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Overlay the mean effect of several <em>fitted</em> effect objects on one feature.</p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">pdp</span><span class="p">,</span> <span class="n">ale</span><span class="p">,</span> <span class="n">rhale</span><span class="p">,</span> <span class="n">feature</span><span class="o">=</span><span class="s2">"hr"</span><span class="p">)</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">compare</span><span class="p">(</span><span class="n">pdp_a</span><span class="p">,</span> <span class="n">pdp_b</span><span class="p">,</span> <span class="n">feature</span><span class="o">=</span><span class="s2">"hr"</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s2">"model A"</span><span class="p">,</span> <span class="s2">"model B"</span><span class="p">])</span>
+</code></pre></div>
+<p>The cross-examination verb above the engines: you hold the effect objects
+(different methods, or even different models over the same columns);
+<code>compare</code> queries each one's <code>eval</code> on a shared grid and overlays the
+curves — one theme color per effect. It computes nothing itself and
+stores nothing.</p>
+<div class="admonition warning">
+<p class="admonition-title">Always centered</p>
+<p>A comparison is only meaningful for centered effects (each method
+uses a different reference level), so <code>centering=False</code> is coerced to
+<code>"zero_integral"</code> with a warning.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Derivative units don't mix</p>
+<p><code>DerPDP</code> effects (dy/dx) can only be compared with each other — never
+on the same axis as the output-unit methods
+(<code>PDP</code>/<code>ALE</code>/<code>RHALE</code>/<code>ShapDP</code>).</p>
+</div>
+<p>The single-model shortcut with the same look is
+<code>effector.FeatureEffect(data, model).plot(feature, methods=[...])</code>, which
+builds its own engines; <code>compare</code> overlays engines you already have.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>*effects</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>two or more fitted effect objects (<code>PDP</code>/<code>ALE</code>/<code>RHALE</code>/
+<code>ShapDP</code>/<code>DerPDP</code>) over data with the same columns.</p>
+              </div>
+            </td>
+            <td>
+                  <code>()</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>feature</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>index or name of the feature to compare on.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>labels</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="list">list</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>one legend label per effect; defaults to the method display
+names, deduped (<code>"PDP"</code>, <code>"PDP (2)"</code>, ...).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>centering</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>how to center — <code>True</code>/<code>"zero_integral"</code> (around the y
+axis) or <code>"zero_start"</code> (each curve starts at <code>y=0</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>nof_points</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>size of the shared grid (continuous features); the grid
+spans the intersection of the effects' axis limits.</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scale_x</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>None</code> or a <code>{"mean", "std"}</code> dict for the x axis; defaults
+to the first effect's schema scaling.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scale_y</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>same, for the y axis.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>y_limits</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="tuple">tuple</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>None</code> or tuple, manual y-axis limits.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>title</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[None, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>figure title.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>show_plot</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if <code>True</code>, show the figure and return <code>None</code>; if <code>False</code>,
+return <code>(fig, ax)</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>fewer than two effects; effects disagree on columns,
+feature resolution, categorical status, or observed level sets;
+derivative and output units are mixed; or the axis intervals do
+not overlap.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>effector/visualization.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 905</span>
+<span class="normal"> 906</span>
+<span class="normal"> 907</span>
+<span class="normal"> 908</span>
+<span class="normal"> 909</span>
+<span class="normal"> 910</span>
+<span class="normal"> 911</span>
+<span class="normal"> 912</span>
+<span class="normal"> 913</span>
+<span class="normal"> 914</span>
+<span class="normal"> 915</span>
+<span class="normal"> 916</span>
+<span class="normal"> 917</span>
+<span class="normal"> 918</span>
+<span class="normal"> 919</span>
+<span class="normal"> 920</span>
+<span class="normal"> 921</span>
+<span class="normal"> 922</span>
+<span class="normal"> 923</span>
+<span class="normal"> 924</span>
+<span class="normal"> 925</span>
+<span class="normal"> 926</span>
+<span class="normal"> 927</span>
+<span class="normal"> 928</span>
+<span class="normal"> 929</span>
+<span class="normal"> 930</span>
+<span class="normal"> 931</span>
+<span class="normal"> 932</span>
+<span class="normal"> 933</span>
+<span class="normal"> 934</span>
+<span class="normal"> 935</span>
+<span class="normal"> 936</span>
+<span class="normal"> 937</span>
+<span class="normal"> 938</span>
+<span class="normal"> 939</span>
+<span class="normal"> 940</span>
+<span class="normal"> 941</span>
+<span class="normal"> 942</span>
+<span class="normal"> 943</span>
+<span class="normal"> 944</span>
+<span class="normal"> 945</span>
+<span class="normal"> 946</span>
+<span class="normal"> 947</span>
+<span class="normal"> 948</span>
+<span class="normal"> 949</span>
+<span class="normal"> 950</span>
+<span class="normal"> 951</span>
+<span class="normal"> 952</span>
+<span class="normal"> 953</span>
+<span class="normal"> 954</span>
+<span class="normal"> 955</span>
+<span class="normal"> 956</span>
+<span class="normal"> 957</span>
+<span class="normal"> 958</span>
+<span class="normal"> 959</span>
+<span class="normal"> 960</span>
+<span class="normal"> 961</span>
+<span class="normal"> 962</span>
+<span class="normal"> 963</span>
+<span class="normal"> 964</span>
+<span class="normal"> 965</span>
+<span class="normal"> 966</span>
+<span class="normal"> 967</span>
+<span class="normal"> 968</span>
+<span class="normal"> 969</span>
+<span class="normal"> 970</span>
+<span class="normal"> 971</span>
+<span class="normal"> 972</span>
+<span class="normal"> 973</span>
+<span class="normal"> 974</span>
+<span class="normal"> 975</span>
+<span class="normal"> 976</span>
+<span class="normal"> 977</span>
+<span class="normal"> 978</span>
+<span class="normal"> 979</span>
+<span class="normal"> 980</span>
+<span class="normal"> 981</span>
+<span class="normal"> 982</span>
+<span class="normal"> 983</span>
+<span class="normal"> 984</span>
+<span class="normal"> 985</span>
+<span class="normal"> 986</span>
+<span class="normal"> 987</span>
+<span class="normal"> 988</span>
+<span class="normal"> 989</span>
+<span class="normal"> 990</span>
+<span class="normal"> 991</span>
+<span class="normal"> 992</span>
+<span class="normal"> 993</span>
+<span class="normal"> 994</span>
+<span class="normal"> 995</span>
+<span class="normal"> 996</span>
+<span class="normal"> 997</span>
+<span class="normal"> 998</span>
+<span class="normal"> 999</span>
+<span class="normal">1000</span>
+<span class="normal">1001</span>
+<span class="normal">1002</span>
+<span class="normal">1003</span>
+<span class="normal">1004</span>
+<span class="normal">1005</span>
+<span class="normal">1006</span>
+<span class="normal">1007</span>
+<span class="normal">1008</span>
+<span class="normal">1009</span>
+<span class="normal">1010</span>
+<span class="normal">1011</span>
+<span class="normal">1012</span>
+<span class="normal">1013</span>
+<span class="normal">1014</span>
+<span class="normal">1015</span>
+<span class="normal">1016</span>
+<span class="normal">1017</span>
+<span class="normal">1018</span>
+<span class="normal">1019</span>
+<span class="normal">1020</span>
+<span class="normal">1021</span>
+<span class="normal">1022</span>
+<span class="normal">1023</span>
+<span class="normal">1024</span>
+<span class="normal">1025</span>
+<span class="normal">1026</span>
+<span class="normal">1027</span>
+<span class="normal">1028</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">compare</span><span class="p">(</span>
+    <span class="o">*</span><span class="n">effects</span><span class="p">,</span>
+    <span class="n">feature</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
+    <span class="n">labels</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">list</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">scale_x</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">scale_y</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">y_limits</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">title</span><span class="p">:</span> <span class="n">typing</span><span class="o">.</span><span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Overlay the mean effect of several *fitted* effect objects on one feature.</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    effector.compare(pdp, ale, rhale, feature="hr")</span>
+<span class="sd">    effector.compare(pdp_a, pdp_b, feature="hr", labels=["model A", "model B"])</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    The cross-examination verb above the engines: you hold the effect objects</span>
+<span class="sd">    (different methods, or even different models over the same columns);</span>
+<span class="sd">    `compare` queries each one's `eval` on a shared grid and overlays the</span>
+<span class="sd">    curves — one theme color per effect. It computes nothing itself and</span>
+<span class="sd">    stores nothing.</span>
+
+<span class="sd">    !!! warning "Always centered"</span>
+<span class="sd">        A comparison is only meaningful for centered effects (each method</span>
+<span class="sd">        uses a different reference level), so `centering=False` is coerced to</span>
+<span class="sd">        `"zero_integral"` with a warning.</span>
+
+<span class="sd">    !!! note "Derivative units don't mix"</span>
+<span class="sd">        `DerPDP` effects (dy/dx) can only be compared with each other — never</span>
+<span class="sd">        on the same axis as the output-unit methods</span>
+<span class="sd">        (`PDP`/`ALE`/`RHALE`/`ShapDP`).</span>
+
+<span class="sd">    The single-model shortcut with the same look is</span>
+<span class="sd">    `effector.FeatureEffect(data, model).plot(feature, methods=[...])`, which</span>
+<span class="sd">    builds its own engines; `compare` overlays engines you already have.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        *effects: two or more fitted effect objects (`PDP`/`ALE`/`RHALE`/</span>
+<span class="sd">            `ShapDP`/`DerPDP`) over data with the same columns.</span>
+<span class="sd">        feature: index or name of the feature to compare on.</span>
+<span class="sd">        labels: one legend label per effect; defaults to the method display</span>
+<span class="sd">            names, deduped (`"PDP"`, `"PDP (2)"`, ...).</span>
+<span class="sd">        centering: how to center — `True`/`"zero_integral"` (around the y</span>
+<span class="sd">            axis) or `"zero_start"` (each curve starts at `y=0`).</span>
+<span class="sd">        nof_points: size of the shared grid (continuous features); the grid</span>
+<span class="sd">            spans the intersection of the effects' axis limits.</span>
+<span class="sd">        scale_x: `None` or a `{"mean", "std"}` dict for the x axis; defaults</span>
+<span class="sd">            to the first effect's schema scaling.</span>
+<span class="sd">        scale_y: same, for the y axis.</span>
+<span class="sd">        y_limits: `None` or tuple, manual y-axis limits.</span>
+<span class="sd">        title: figure title.</span>
+<span class="sd">        show_plot: if `True`, show the figure and return `None`; if `False`,</span>
+<span class="sd">            return `(fig, ax)`.</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: fewer than two effects; effects disagree on columns,</span>
+<span class="sd">            feature resolution, categorical status, or observed level sets;</span>
+<span class="sd">            derivative and output units are mixed; or the axis intervals do</span>
+<span class="sd">            not overlap.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"compare needs at least two effect objects, got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+
+    <span class="n">dims</span> <span class="o">=</span> <span class="p">{</span><span class="n">e</span><span class="o">.</span><span class="n">dim</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">effects</span><span class="p">}</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"compare needs effects over data with the same columns; "</span>
+            <span class="sa">f</span><span class="s2">"got dims </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="n">dims</span><span class="p">)</span><span class="si">}</span><span class="s2">"</span>
+        <span class="p">)</span>
+    <span class="n">idxs</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">_resolve_feature</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">effects</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">idxs</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"feature </span><span class="si">{</span><span class="n">feature</span><span class="si">!r}</span><span class="s2"> resolves to different columns across the "</span>
+            <span class="sa">f</span><span class="s2">"effects: </span><span class="si">{</span><span class="n">idxs</span><span class="si">}</span><span class="s2">; align the schemas or pass an index"</span>
+        <span class="p">)</span>
+    <span class="n">f</span> <span class="o">=</span> <span class="n">idxs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
+    <span class="n">is_cat</span> <span class="o">=</span> <span class="p">{</span><span class="nb">bool</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">_is_cat</span><span class="p">(</span><span class="n">f</span><span class="p">))</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">effects</span><span class="p">}</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">is_cat</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="sa">f</span><span class="s2">"the effects disagree on whether feature </span><span class="si">{</span><span class="n">feature</span><span class="si">!r}</span><span class="s2"> is "</span>
+            <span class="s2">"categorical; align the schemas"</span>
+        <span class="p">)</span>
+    <span class="n">discrete</span> <span class="o">=</span> <span class="n">is_cat</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>
+
+    <span class="n">is_der</span> <span class="o">=</span> <span class="p">[</span><span class="n">e</span><span class="o">.</span><span class="n">method_name</span> <span class="o">==</span> <span class="s2">"d-pdp"</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">effects</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">is_der</span><span class="p">)</span> <span class="ow">and</span> <span class="ow">not</span> <span class="nb">all</span><span class="p">(</span><span class="n">is_der</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+            <span class="s2">"cannot mix derivative-unit effects (DerPDP, dy/dx) with "</span>
+            <span class="s2">"level-unit effects (PDP/ALE/RHALE/ShapDP) on one axis"</span>
+        <span class="p">)</span>
+
+    <span class="n">centering</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_centering</span><span class="p">(</span><span class="n">centering</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">centering</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">"Comparing methods without centering is not meaningful (each "</span>
+            <span class="s2">"method uses a different reference level). Using "</span>
+            <span class="s2">"centering='zero_integral'."</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">centering</span> <span class="o">=</span> <span class="s2">"zero_integral"</span>
+
+    <span class="n">first</span> <span class="o">=</span> <span class="n">effects</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">discrete</span><span class="p">:</span>
+        <span class="n">level_sets</span> <span class="o">=</span> <span class="p">[</span><span class="nb">tuple</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">data</span><span class="p">[:,</span> <span class="n">f</span><span class="p">])</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">effects</span><span class="p">]</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">level_sets</span><span class="p">))</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"the effects observe different level sets for feature "</span>
+                <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">feature</span><span class="si">!r}</span><span class="s2">: </span><span class="si">{</span><span class="nb">sorted</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">level_sets</span><span class="p">))</span><span class="si">}</span><span class="s2">"</span>
+            <span class="p">)</span>
+        <span class="n">xs</span><span class="p">,</span> <span class="n">level_labels</span> <span class="o">=</span> <span class="n">first</span><span class="o">.</span><span class="n">_level_display</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">asarray</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">lo</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">effects</span><span class="p">)</span>
+        <span class="n">hi</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">f</span><span class="p">]</span> <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">effects</span><span class="p">)</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">lo</span> <span class="o">&lt;</span> <span class="n">hi</span><span class="p">:</span>
+            <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+                <span class="sa">f</span><span class="s2">"the effects' axis intervals for feature </span><span class="si">{</span><span class="n">feature</span><span class="si">!r}</span><span class="s2"> do not "</span>
+                <span class="sa">f</span><span class="s2">"overlap (intersection [</span><span class="si">{</span><span class="n">lo</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">hi</span><span class="si">}</span><span class="s2">])"</span>
+            <span class="p">)</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">lo</span><span class="p">,</span> <span class="n">hi</span><span class="p">,</span> <span class="n">nof_points</span><span class="p">)</span>
+        <span class="n">level_labels</span> <span class="o">=</span> <span class="kc">None</span>
+
+    <span class="k">if</span> <span class="n">labels</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">labels</span> <span class="o">=</span> <span class="n">_method_labels</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span> <span class="o">!=</span> <span class="nb">len</span><span class="p">(</span><span class="n">effects</span><span class="p">):</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"got </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">labels</span><span class="p">)</span><span class="si">}</span><span class="s2"> labels for </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">effects</span><span class="p">)</span><span class="si">}</span><span class="s2"> effects"</span><span class="p">)</span>
+
+    <span class="n">curves</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="n">label</span><span class="p">:</span> <span class="n">e</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="n">centering</span><span class="p">)</span> <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">e</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">labels</span><span class="p">,</span> <span class="n">effects</span><span class="p">)</span>
+    <span class="p">}</span>
+
+    <span class="n">scale_x</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span>
+        <span class="n">scale_x</span><span class="p">,</span> <span class="n">first</span><span class="o">.</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">if</span> <span class="n">first</span><span class="o">.</span><span class="n">scale_x_list</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">)</span>
+    <span class="n">scale_y</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">first</span><span class="o">.</span><span class="n">scale_y</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">plot_effect_comparison</span><span class="p">(</span>
+        <span class="n">xs</span><span class="p">,</span>
+        <span class="n">f</span><span class="p">,</span>
+        <span class="n">curves</span><span class="p">,</span>
+        <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x</span><span class="p">,</span>
+        <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span>
+        <span class="n">avg_output</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>  <span class="c1"># possibly different models: no shared baseline</span>
+        <span class="n">feature_names</span><span class="o">=</span><span class="n">first</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>
+        <span class="n">target_name</span><span class="o">=</span><span class="s2">"dy/dx"</span> <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">is_der</span><span class="p">)</span> <span class="k">else</span> <span class="n">first</span><span class="o">.</span><span class="n">target_name</span><span class="p">,</span>
+        <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span>
+        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
+        <span class="n">discrete</span><span class="o">=</span><span class="n">discrete</span><span class="p">,</span>
+        <span class="n">level_labels</span><span class="o">=</span><span class="n">level_labels</span><span class="p">,</span>
+        <span class="n">show_plot</span><span class="o">=</span><span class="n">show_plot</span><span class="p">,</span>
+        <span class="n">level_kind</span><span class="o">=</span><span class="n">first</span><span class="o">.</span><span class="n">feature_types</span><span class="p">[</span><span class="n">f</span><span class="p">]</span> <span class="k">if</span> <span class="n">discrete</span> <span class="k">else</span> <span class="s2">"nominal"</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-class">
+
+
+
+<h3 id="effector.feature_effect.FeatureEffect" class="doc doc-heading">
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">feature_effect</span><span class="o">.</span><span class="n">FeatureEffect</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">21</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+
+
+
+        <p>Compare global feature-effect methods on a single figure — one model, one object.</p>
+<div class="highlight"><pre><span></span><code><span class="n">fe</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">FeatureEffect</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+<span class="n">fe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>                             <span class="c1"># PDP vs ALE vs RHALE overlaid</span>
+<span class="n">fe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"PDP"</span><span class="p">,</span> <span class="s2">"ShapDP"</span><span class="p">])</span>  <span class="c1"># ShapDP is opt-in (slow)</span>
+</code></pre></div>
+<p>Holds the shared ingredients (<code>data</code>, <code>model</code>, metadata, axis limits) once
+and lazily builds the underlying method objects (<code>PDP</code>, <code>ALE</code>, <code>RHALE</code>,
+<code>ShapDP</code>) on demand. <code>eval</code> returns each method's mean effect on a shared
+grid; <code>plot</code> overlays them on one axis.</p>
+<div class="admonition note">
+<p class="admonition-title">Same background data for every method</p>
+<p>The data is filtered to <code>axis_limits</code> and subsampled to
+<code>nof_instances</code> <em>once</em>; every method object is built on that identical
+subset. The only difference between the curves is the method itself.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title"><code>DerPDP</code> is not in the pool</p>
+<p>It lives in derivative units (dy/dx) and cannot share an axis with the
+output-unit methods.</p>
+</div>
+<p>To overlay effect objects you already hold — different subsets, even
+different models — use <code>effector.compare</code> instead; <code>FeatureEffect</code> always
+builds its own.</p>
+
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>data</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the design matrix — a <code>(N, D)</code> numeric numpy array (start
+from a DataFrame via <code>effector.from_dataframe</code>).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model</code>
+            </td>
+            <td>
+                  <code><span title="typing.Callable">Callable</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the black-box model, a numpy-&gt;numpy <code>Callable</code>
+<code>(N, D) -&gt; (N,)</code> (see <code>effector.adapters</code> for wrappers).</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>model_jac</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Callable">Callable</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the model Jacobian <code>(N, D) -&gt; (N, D)</code>, optional. Used by
+<code>RHALE</code>; if omitted, <code>RHALE</code> falls back to numerical
+differentiation (slower and approximate).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>axis_limits</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>(2, D)</code> array of per-feature limits, or <code>None</code> to
+infer from the data.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>nof_instances</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="int">int</span>, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>number of instances shared across all methods.</p>
+<ul>
+<li>use an <code>int</code> to subsample</li>
+<li>use <code>"all"</code> to use every instance</li>
+</ul>
+              </div>
+            </td>
+            <td>
+                  <code>10000</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>schema</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.Union">Union</span>[<a class="autorefs autorefs-internal" title="effector.ingestion.Schema(feature_names=None, feature_types=None, cat_limit=None, target_name=None, scale_x_list=None, scale_y=None, category_names=None)
+
+  
+      dataclass
+   (effector.ingestion.Schema)" href="../api_ingestion/#effector.ingestion.Schema">Schema</a>, <span title="dict">dict</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>input metadata — an <code>effector.Schema</code> or a plain <code>dict</code>
+with any of its keys (<code>feature_names</code>, <code>feature_types</code>,
+<code>cat_limit</code>, <code>target_name</code>, <code>scale_x_list</code>, <code>scale_y</code>,
+<code>category_names</code>)</p>
+<ul>
+<li>omitted fields are auto-inferred from <code>data</code> (numpy
+  heuristics) or synthesized (<code>["x_0", ...]</code>, <code>"y"</code>)</li>
+<li>explicit fields always win over inference</li>
+</ul>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>random_state</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>seed for every internal random step (e.g. the shared
+<code>nof_instances</code> subsampling), inherited by every lazily built
+method object. Use an <code>int</code> (default: <code>21</code>) for reproducible
+output, or <code>None</code> for non-deterministic behavior.</p>
+              </div>
+            </td>
+            <td>
+                  <code>21</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+
+
+
+
+
+
+
+
+
+
+<p><span class="doc-section-title">Methods:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="eval(feature, xs, methods=None, centering=True, method_kwargs=None) (effector.feature_effect.FeatureEffect.eval)" href="#effector.feature_effect.FeatureEffect.eval">eval</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Evaluate the mean effect of several methods on one shared grid.</p>
+                </div>
+              </td>
+            </tr>
+            <tr class="doc-section-item">
+              <td><code><a class="autorefs autorefs-internal" title="plot(feature, methods=None, centering=True, nof_points=100, scale_x=None, scale_y=None, y_limits=None, show_avg_output=False, method_kwargs=None, show_plot=True) (effector.feature_effect.FeatureEffect.plot)" href="#effector.feature_effect.FeatureEffect.plot">plot</a></code></td>
+              <td>
+                <div class="doc-md-description">
+                  <p>Overlay the mean effect of several methods for one feature.</p>
+                </div>
+              </td>
+            </tr>
+      </tbody>
+    </table>
+
+
+
+                  <details class="mkdocstrings-source">
+                    <summary>Source code in <code>effector/feature_effect.py</code></summary>
+                    <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">data</span><span class="p">,</span>
+    <span class="n">model</span><span class="p">:</span> <span class="n">Callable</span><span class="p">,</span>
+    <span class="n">model_jac</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Callable</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">axis_limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">nof_instances</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">,</span>
+    <span class="n">schema</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="n">ingestion</span><span class="o">.</span><span class="n">Schema</span><span class="p">,</span> <span class="nb">dict</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="mi">21</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""</span>
+<span class="sd">    Args:</span>
+<span class="sd">        data: the design matrix — a `(N, D)` numeric numpy array (start</span>
+<span class="sd">            from a DataFrame via `effector.from_dataframe`).</span>
+<span class="sd">        model: the black-box model, a numpy-&gt;numpy `Callable`</span>
+<span class="sd">            `(N, D) -&gt; (N,)` (see `effector.adapters` for wrappers).</span>
+<span class="sd">        model_jac: the model Jacobian `(N, D) -&gt; (N, D)`, optional. Used by</span>
+<span class="sd">            `RHALE`; if omitted, `RHALE` falls back to numerical</span>
+<span class="sd">            differentiation (slower and approximate).</span>
+<span class="sd">        axis_limits: `(2, D)` array of per-feature limits, or `None` to</span>
+<span class="sd">            infer from the data.</span>
+<span class="sd">        nof_instances: number of instances shared across all methods.</span>
+
+<span class="sd">            - use an `int` to subsample</span>
+<span class="sd">            - use `"all"` to use every instance</span>
+
+<span class="sd">        schema: input metadata — an `effector.Schema` or a plain `dict`</span>
+<span class="sd">            with any of its keys (`feature_names`, `feature_types`,</span>
+<span class="sd">            `cat_limit`, `target_name`, `scale_x_list`, `scale_y`,</span>
+<span class="sd">            `category_names`)</span>
+
+<span class="sd">            - omitted fields are auto-inferred from `data` (numpy</span>
+<span class="sd">              heuristics) or synthesized (`["x_0", ...]`, `"y"`)</span>
+<span class="sd">            - explicit fields always win over inference</span>
+
+<span class="sd">        random_state: seed for every internal random step (e.g. the shared</span>
+<span class="sd">            `nof_instances` subsampling), inherited by every lazily built</span>
+<span class="sd">            method object. Use an `int` (default: `21`) for reproducible</span>
+<span class="sd">            output, or `None` for non-deterministic behavior.</span>
+<span class="sd">    """</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">random_state</span> <span class="o">=</span> <span class="n">random_state</span>
+
+    <span class="c1"># the one door for data + metadata (R10)</span>
+    <span class="n">ing</span> <span class="o">=</span> <span class="n">ingestion</span><span class="o">.</span><span class="n">ingest</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="n">schema</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">data</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">model</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">model_jac</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">model_jac</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">feature_metadata</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">meta</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">dim</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+
+    <span class="c1"># shared preprocessing (helpers.prep_data): filter to axis limits (or</span>
+    <span class="c1"># infer them), then subsample ONCE so every method sees the exact same</span>
+    <span class="c1"># background data.</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_data</span><span class="p">(</span>
+        <span class="n">data</span><span class="p">,</span> <span class="n">axis_limits</span><span class="p">,</span> <span class="n">nof_instances</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="n">random_state</span>
+    <span class="p">)</span>
+
+    <span class="c1"># flat mirrors of the resolved metadata</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ing</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">feature_names</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">feature_types</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">ing</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">feature_types</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">cat_limit</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">cat_limit</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">target_name</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">target_name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">scale_x_list</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">scale_x_list</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">scale_y</span> <span class="o">=</span> <span class="n">ing</span><span class="o">.</span><span class="n">meta</span><span class="o">.</span><span class="n">scale_y</span>
+
+    <span class="c1"># lazily instantiated method objects, keyed by canonical name</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">_methods</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+</code></pre></div></td></tr></tbody></table></div>
+                  </details>
+
+
+
+<div class="doc doc-children">
+
+
+
+
+
+
+
+
+
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="effector.feature_effect.FeatureEffect.eval" class="doc doc-heading">
+            <code class="highlight language-python"><span class="nb">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">method_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Evaluate the mean effect of several methods on one shared grid.</p>
+<div class="highlight"><pre><span></span><code><span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">fe</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">curves</span> <span class="o">=</span> <span class="n">fe</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xs</span><span class="p">)</span>   <span class="c1"># {"PDP": y, "ALE": y, "RHALE": y}</span>
+</code></pre></div>
+<p>Methods that do not support the feature's type (e.g. <code>RHALE</code> on a
+nominal feature) are dropped with a warning.</p>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>feature</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>index of the feature.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>xs</code>
+            </td>
+            <td>
+                  <code><span title="numpy.ndarray">ndarray</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>the grid to evaluate on, shape <code>(T,)</code>. For a categorical
+feature pass its observed levels.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>methods</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="str">str</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>list of method names. Supported: <code>"PDP"</code>, <code>"ALE"</code>,
+<code>"RHALE"</code>, <code>"ShapDP"</code> (alias <code>"SHAP"</code>). Defaults to
+<code>["PDP", "ALE", "RHALE"]</code> — <code>ShapDP</code> is opt-in as it is slower
+and needs the <code>shap</code> package.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>centering</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>True</code> / <code>"zero_integral"</code> (center around the y axis),
+<code>"zero_start"</code> (start each curve at <code>y=0</code>), or <code>False</code> (raw).</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>method_kwargs</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>{method_name: {**constructor_kwargs}}</code> to
+customize individual methods.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+    <p><span class="doc-section-title">Returns:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="dict">dict</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>{display_name: y}</code> with one <code>(T,)</code> mean-effect array per method.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>effector/feature_effect.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">197</span>
+<span class="normal">198</span>
+<span class="normal">199</span>
+<span class="normal">200</span>
+<span class="normal">201</span>
+<span class="normal">202</span>
+<span class="normal">203</span>
+<span class="normal">204</span>
+<span class="normal">205</span>
+<span class="normal">206</span>
+<span class="normal">207</span>
+<span class="normal">208</span>
+<span class="normal">209</span>
+<span class="normal">210</span>
+<span class="normal">211</span>
+<span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">eval</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">xs</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span>
+    <span class="n">methods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">method_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Evaluate the mean effect of several methods on one shared grid.</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    xs = np.linspace(fe.axis_limits[0, 3], fe.axis_limits[1, 3], 100)</span>
+<span class="sd">    curves = fe.eval(feature=3, xs=xs)   # {"PDP": y, "ALE": y, "RHALE": y}</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    Methods that do not support the feature's type (e.g. `RHALE` on a</span>
+<span class="sd">    nominal feature) are dropped with a warning.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        feature: index of the feature.</span>
+<span class="sd">        xs: the grid to evaluate on, shape `(T,)`. For a categorical</span>
+<span class="sd">            feature pass its observed levels.</span>
+<span class="sd">        methods: list of method names. Supported: `"PDP"`, `"ALE"`,</span>
+<span class="sd">            `"RHALE"`, `"ShapDP"` (alias `"SHAP"`). Defaults to</span>
+<span class="sd">            `["PDP", "ALE", "RHALE"]` — `ShapDP` is opt-in as it is slower</span>
+<span class="sd">            and needs the `shap` package.</span>
+<span class="sd">        centering: `True` / `"zero_integral"` (center around the y axis),</span>
+<span class="sd">            `"zero_start"` (start each curve at `y=0`), or `False` (raw).</span>
+<span class="sd">        method_kwargs: optional `{method_name: {**constructor_kwargs}}` to</span>
+<span class="sd">            customize individual methods.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        `{display_name: y}` with one `(T,)` mean-effect array per method.</span>
+<span class="sd">    """</span>
+    <span class="k">if</span> <span class="n">methods</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">methods</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"PDP"</span><span class="p">,</span> <span class="s2">"ALE"</span><span class="p">,</span> <span class="s2">"RHALE"</span><span class="p">]</span>
+    <span class="n">methods</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_supported_methods</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">methods</span><span class="p">)</span>
+    <span class="n">centering</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_centering</span><span class="p">(</span><span class="n">centering</span><span class="p">)</span>
+
+    <span class="n">curves</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">methods</span><span class="p">:</span>
+        <span class="n">mk</span> <span class="o">=</span> <span class="n">method_kwargs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">if</span> <span class="n">method_kwargs</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_get_method</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">mk</span><span class="p">)</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">method_registry</span><span class="o">.</span><span class="n">resolve</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">_canonical</span><span class="p">(</span><span class="n">name</span><span class="p">))</span><span class="o">.</span><span class="n">display_name</span>
+        <span class="n">curves</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">obj</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">xs</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="n">centering</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">curves</span>
+</code></pre></div></td></tr></tbody></table></div>
+            </details>
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h4 id="effector.feature_effect.FeatureEffect.plot" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">nof_points</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_avg_output</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">method_kwargs</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>
+
+</h4>
+
+
+    <div class="doc doc-contents ">
+
+        <p>Overlay the mean effect of several methods for one feature.</p>
+<div class="highlight"><pre><span></span><code><span class="n">fe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>                                  <span class="c1"># PDP vs ALE vs RHALE</span>
+<span class="n">fe</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">methods</span><span class="o">=</span><span class="p">[</span><span class="s2">"PDP"</span><span class="p">,</span> <span class="s2">"ALE"</span><span class="p">,</span> <span class="s2">"ShapDP"</span><span class="p">])</span>  <span class="c1"># add ShapDP (slow)</span>
+</code></pre></div>
+<p>The grid is shared: a linspace over the feature's axis limits, or the
+observed levels for a categorical feature.</p>
+<div class="admonition warning">
+<p class="admonition-title">Always centered</p>
+<p>The comparison is only meaningful for centered effects (each
+method uses a different reference level), so <code>centering=False</code> is
+coerced to <code>"zero_integral"</code> with a warning.</p>
+</div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>feature</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>index of the feature to plot.</p>
+              </div>
+            </td>
+            <td>
+                <em>required</em>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>methods</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>[<span title="str">str</span>]]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>list of method names to compare. Supported: <code>"PDP"</code>,
+<code>"ALE"</code>, <code>"RHALE"</code>, <code>"ShapDP"</code> (alias <code>"SHAP"</code>). Defaults to
+<code>["PDP", "ALE", "RHALE"]</code> — <code>ShapDP</code> is opt-in as it is slower
+and needs the <code>shap</code> package.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>centering</code>
+            </td>
+            <td>
+                  <code><span title="typing.Union">Union</span>[<span title="bool">bool</span>, <span title="str">str</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>how to center the curves</p>
+<ul>
+<li><code>True</code> / <code>"zero_integral"</code>: center around the <code>y</code> axis</li>
+<li><code>"zero_start"</code>: start each curve from <code>y=0</code></li>
+</ul>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>nof_points</code>
+            </td>
+            <td>
+                  <code><span title="int">int</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>size of the shared evaluation grid (continuous
+features).</p>
+              </div>
+            </td>
+            <td>
+                  <code>100</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scale_x</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>None</code> or a <code>{"mean", "std"}</code> dict to map the x axis
+back to original units; defaults to the schema's scaling.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>scale_y</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>same, for the y axis.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>y_limits</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="typing.List">List</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p><code>None</code> or tuple, manual y-axis limits.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>show_avg_output</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>whether to draw the model's average output as a
+horizontal line.</p>
+              </div>
+            </td>
+            <td>
+                  <code>False</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>method_kwargs</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="dict">dict</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>{method_name: {**constructor_kwargs}}</code> to
+customize individual methods
+(e.g. <code>{"ShapDP": {"nof_instances": 300}}</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>show_plot</code>
+            </td>
+            <td>
+                  <code><span title="bool">bool</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>if <code>True</code>, show the figure and return <code>None</code>; if
+<code>False</code>, return <code>(fig, ax)</code>.</p>
+              </div>
+            </td>
+            <td>
+                  <code>True</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>effector/feature_effect.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span>
+<span class="normal">250</span>
+<span class="normal">251</span>
+<span class="normal">252</span>
+<span class="normal">253</span>
+<span class="normal">254</span>
+<span class="normal">255</span>
+<span class="normal">256</span>
+<span class="normal">257</span>
+<span class="normal">258</span>
+<span class="normal">259</span>
+<span class="normal">260</span>
+<span class="normal">261</span>
+<span class="normal">262</span>
+<span class="normal">263</span>
+<span class="normal">264</span>
+<span class="normal">265</span>
+<span class="normal">266</span>
+<span class="normal">267</span>
+<span class="normal">268</span>
+<span class="normal">269</span>
+<span class="normal">270</span>
+<span class="normal">271</span>
+<span class="normal">272</span>
+<span class="normal">273</span>
+<span class="normal">274</span>
+<span class="normal">275</span>
+<span class="normal">276</span>
+<span class="normal">277</span>
+<span class="normal">278</span>
+<span class="normal">279</span>
+<span class="normal">280</span>
+<span class="normal">281</span>
+<span class="normal">282</span>
+<span class="normal">283</span>
+<span class="normal">284</span>
+<span class="normal">285</span>
+<span class="normal">286</span>
+<span class="normal">287</span>
+<span class="normal">288</span>
+<span class="normal">289</span>
+<span class="normal">290</span>
+<span class="normal">291</span>
+<span class="normal">292</span>
+<span class="normal">293</span>
+<span class="normal">294</span>
+<span class="normal">295</span>
+<span class="normal">296</span>
+<span class="normal">297</span>
+<span class="normal">298</span>
+<span class="normal">299</span>
+<span class="normal">300</span>
+<span class="normal">301</span>
+<span class="normal">302</span>
+<span class="normal">303</span>
+<span class="normal">304</span>
+<span class="normal">305</span>
+<span class="normal">306</span>
+<span class="normal">307</span>
+<span class="normal">308</span>
+<span class="normal">309</span>
+<span class="normal">310</span>
+<span class="normal">311</span>
+<span class="normal">312</span>
+<span class="normal">313</span>
+<span class="normal">314</span>
+<span class="normal">315</span>
+<span class="normal">316</span>
+<span class="normal">317</span>
+<span class="normal">318</span>
+<span class="normal">319</span>
+<span class="normal">320</span>
+<span class="normal">321</span>
+<span class="normal">322</span>
+<span class="normal">323</span>
+<span class="normal">324</span>
+<span class="normal">325</span>
+<span class="normal">326</span>
+<span class="normal">327</span>
+<span class="normal">328</span>
+<span class="normal">329</span>
+<span class="normal">330</span>
+<span class="normal">331</span>
+<span class="normal">332</span>
+<span class="normal">333</span>
+<span class="normal">334</span>
+<span class="normal">335</span>
+<span class="normal">336</span>
+<span class="normal">337</span>
+<span class="normal">338</span>
+<span class="normal">339</span>
+<span class="normal">340</span>
+<span class="normal">341</span>
+<span class="normal">342</span>
+<span class="normal">343</span>
+<span class="normal">344</span>
+<span class="normal">345</span>
+<span class="normal">346</span>
+<span class="normal">347</span>
+<span class="normal">348</span>
+<span class="normal">349</span>
+<span class="normal">350</span>
+<span class="normal">351</span>
+<span class="normal">352</span>
+<span class="normal">353</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">plot</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">feature</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span>
+    <span class="n">methods</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">[</span><span class="nb">str</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">centering</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">str</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+    <span class="n">nof_points</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span>
+    <span class="n">scale_x</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">scale_y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">y_limits</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">List</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_avg_output</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span>
+    <span class="n">method_kwargs</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">show_plot</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span>
+<span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Overlay the mean effect of several methods for one feature.</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    fe.plot(feature=3)                                  # PDP vs ALE vs RHALE</span>
+<span class="sd">    fe.plot(feature=3, methods=["PDP", "ALE", "ShapDP"])  # add ShapDP (slow)</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    The grid is shared: a linspace over the feature's axis limits, or the</span>
+<span class="sd">    observed levels for a categorical feature.</span>
+
+<span class="sd">    !!! warning "Always centered"</span>
+<span class="sd">        The comparison is only meaningful for centered effects (each</span>
+<span class="sd">        method uses a different reference level), so `centering=False` is</span>
+<span class="sd">        coerced to `"zero_integral"` with a warning.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        feature: index of the feature to plot.</span>
+<span class="sd">        methods: list of method names to compare. Supported: `"PDP"`,</span>
+<span class="sd">            `"ALE"`, `"RHALE"`, `"ShapDP"` (alias `"SHAP"`). Defaults to</span>
+<span class="sd">            `["PDP", "ALE", "RHALE"]` — `ShapDP` is opt-in as it is slower</span>
+<span class="sd">            and needs the `shap` package.</span>
+<span class="sd">        centering: how to center the curves</span>
+
+<span class="sd">            - `True` / `"zero_integral"`: center around the `y` axis</span>
+<span class="sd">            - `"zero_start"`: start each curve from `y=0`</span>
+
+<span class="sd">        nof_points: size of the shared evaluation grid (continuous</span>
+<span class="sd">            features).</span>
+<span class="sd">        scale_x: `None` or a `{"mean", "std"}` dict to map the x axis</span>
+<span class="sd">            back to original units; defaults to the schema's scaling.</span>
+<span class="sd">        scale_y: same, for the y axis.</span>
+<span class="sd">        y_limits: `None` or tuple, manual y-axis limits.</span>
+<span class="sd">        show_avg_output: whether to draw the model's average output as a</span>
+<span class="sd">            horizontal line.</span>
+<span class="sd">        method_kwargs: optional `{method_name: {**constructor_kwargs}}` to</span>
+<span class="sd">            customize individual methods</span>
+<span class="sd">            (e.g. `{"ShapDP": {"nof_instances": 300}}`).</span>
+<span class="sd">        show_plot: if `True`, show the figure and return `None`; if</span>
+<span class="sd">            `False`, return `(fig, ax)`.</span>
+<span class="sd">    """</span>
+    <span class="n">centering</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">prep_centering</span><span class="p">(</span><span class="n">centering</span><span class="p">)</span>
+    <span class="n">scale_x</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span>
+        <span class="n">scale_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_x_list</span> <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">)</span>
+    <span class="n">scale_y</span> <span class="o">=</span> <span class="n">helpers</span><span class="o">.</span><span class="n">resolve_scale</span><span class="p">(</span><span class="n">scale_y</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">scale_y</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">centering</span> <span class="ow">is</span> <span class="kc">False</span><span class="p">:</span>
+        <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+            <span class="s2">"Comparing methods without centering is not meaningful (each method "</span>
+            <span class="s2">"uses a different reference level). Using centering='zero_integral'."</span><span class="p">,</span>
+            <span class="n">stacklevel</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">centering</span> <span class="o">=</span> <span class="s2">"zero_integral"</span>
+
+    <span class="c1"># shared grid: observed levels for a categorical feature (evaluated only</span>
+    <span class="c1"># at levels, R10), else a continuous linspace</span>
+    <span class="n">discrete</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_cat</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">discrete</span><span class="p">:</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_levels</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">xs</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">feature</span><span class="p">],</span> <span class="bp">self</span><span class="o">.</span><span class="n">axis_limits</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">feature</span><span class="p">],</span> <span class="n">nof_points</span>
+        <span class="p">)</span>
+    <span class="n">curves</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span>
+        <span class="n">feature</span><span class="p">,</span>
+        <span class="n">xs</span><span class="p">,</span>
+        <span class="n">methods</span><span class="o">=</span><span class="n">methods</span><span class="p">,</span>
+        <span class="n">centering</span><span class="o">=</span><span class="n">centering</span><span class="p">,</span>
+        <span class="n">method_kwargs</span><span class="o">=</span><span class="n">method_kwargs</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">avg_output</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">helpers</span><span class="o">.</span><span class="n">prep_avg_output</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">data</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">model</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">scale_y</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">show_avg_output</span>
+        <span class="k">else</span> <span class="kc">None</span>
+    <span class="p">)</span>
+
+    <span class="n">level_labels</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="k">if</span> <span class="n">discrete</span><span class="p">:</span>
+        <span class="n">name_map</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_metadata</span><span class="o">.</span><span class="n">category_names</span> <span class="ow">or</span> <span class="p">{})</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">name_map</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+            <span class="n">level_labels</span> <span class="o">=</span> <span class="p">[</span><span class="n">name_map</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">v</span><span class="p">),</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">v</span><span class="si">:</span><span class="s2">g</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">vis</span><span class="o">.</span><span class="n">plot_effect_comparison</span><span class="p">(</span>
+        <span class="n">xs</span><span class="p">,</span>
+        <span class="n">feature</span><span class="p">,</span>
+        <span class="n">curves</span><span class="p">,</span>
+        <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x</span><span class="p">,</span>
+        <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span>
+        <span class="n">avg_output</span><span class="o">=</span><span class="n">avg_output</span><span class="p">,</span>
+        <span class="n">feature_names</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_names</span><span class="p">,</span>
+        <span class="n">target_name</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">target_name</span><span class="p">,</span>
+        <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span>
+        <span class="n">discrete</span><span class="o">=</span><span class="n">discrete</span><span class="p">,</span>
+        <span class="n">level_labels</span><span class="o">=</span><span class="n">level_labels</span><span class="p">,</span>
+        <span class="n">show_plot</span><span class="o">=</span><span class="n">show_plot</span><span class="p">,</span>
+        <span class="n">level_kind</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">feature_types</span><span class="p">[</span><span class="n">feature</span><span class="p">]</span> <span class="k">if</span> <span class="n">discrete</span> <span class="k">else</span> <span class="s2">"nominal"</span><span class="p">,</span>
+    <span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+  </div>
+
+    </div>
+
+</div>
+
+<div class="doc doc-object doc-function">
+
+
+<h3 id="effector.theme.set_theme" class="doc doc-heading">
+            <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">theme</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">'light'</span><span class="p">)</span></code>
+
+</h3>
+
+
+    <div class="doc doc-contents first">
+
+        <p>Activate a house theme for every figure effector draws after this call.</p>
+<div class="highlight"><pre><span></span><code><span class="n">effector</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="s2">"dark"</span><span class="p">)</span>
+<span class="n">effector</span><span class="o">.</span><span class="n">set_theme</span><span class="p">(</span><span class="s2">"default"</span><span class="p">)</span>   <span class="c1"># back to stock matplotlib</span>
+</code></pre></div>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Look</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>"light"</code></td>
+<td>the default: off-white surface, colorblind-safe palette</td>
+</tr>
+<tr>
+<td><code>"dark"</code></td>
+<td>the same palette on a dark surface</td>
+</tr>
+<tr>
+<td><code>"paper"</code></td>
+<td>pure white, no grid, 300-dpi savefig — print-ready</td>
+</tr>
+<tr>
+<td><code>"default"</code></td>
+<td>restore stock matplotlib rcParams</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Global by design</p>
+<p>The chrome (background, font, grid, spines) lives in matplotlib's
+global <code>rcParams</code> — matplotlib re-reads those at draw time, so a
+local <code>rc_context</code> would revert before render. Palette colors and
+chrome switch together for <em>new</em> figures; existing figures keep their
+look.</p>
+</div>
+
+
+<p><span class="doc-section-title">Parameters:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Type</th>
+          <th>Description</th>
+          <th>Default</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                <code>name</code>
+            </td>
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>one of the names above (default <code>"light"</code>).</p>
+              </div>
+            </td>
+            <td>
+                  <code>'light'</code>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+<p><span class="doc-section-title">Raises:</span></p>
+    <table>
+      <thead>
+        <tr>
+          <th>Type</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+          <tr class="doc-section-item">
+            <td>
+                  <code><span title="ValueError">ValueError</span></code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>unknown theme name.</p>
+              </div>
+            </td>
+          </tr>
+      </tbody>
+    </table>
+
+
+            <details class="mkdocstrings-source">
+              <summary>Source code in <code>effector/theme.py</code></summary>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">212</span>
+<span class="normal">213</span>
+<span class="normal">214</span>
+<span class="normal">215</span>
+<span class="normal">216</span>
+<span class="normal">217</span>
+<span class="normal">218</span>
+<span class="normal">219</span>
+<span class="normal">220</span>
+<span class="normal">221</span>
+<span class="normal">222</span>
+<span class="normal">223</span>
+<span class="normal">224</span>
+<span class="normal">225</span>
+<span class="normal">226</span>
+<span class="normal">227</span>
+<span class="normal">228</span>
+<span class="normal">229</span>
+<span class="normal">230</span>
+<span class="normal">231</span>
+<span class="normal">232</span>
+<span class="normal">233</span>
+<span class="normal">234</span>
+<span class="normal">235</span>
+<span class="normal">236</span>
+<span class="normal">237</span>
+<span class="normal">238</span>
+<span class="normal">239</span>
+<span class="normal">240</span>
+<span class="normal">241</span>
+<span class="normal">242</span>
+<span class="normal">243</span>
+<span class="normal">244</span>
+<span class="normal">245</span>
+<span class="normal">246</span>
+<span class="normal">247</span>
+<span class="normal">248</span>
+<span class="normal">249</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">set_theme</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">"light"</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Activate a house theme for every figure effector draws after this call.</span>
+
+<span class="sd">    ```python</span>
+<span class="sd">    effector.set_theme("dark")</span>
+<span class="sd">    effector.set_theme("default")   # back to stock matplotlib</span>
+<span class="sd">    ```</span>
+
+<span class="sd">    | Name | Look |</span>
+<span class="sd">    |---|---|</span>
+<span class="sd">    | `"light"` | the default: off-white surface, colorblind-safe palette |</span>
+<span class="sd">    | `"dark"` | the same palette on a dark surface |</span>
+<span class="sd">    | `"paper"` | pure white, no grid, 300-dpi savefig — print-ready |</span>
+<span class="sd">    | `"default"` | restore stock matplotlib rcParams |</span>
+
+<span class="sd">    !!! note "Global by design"</span>
+<span class="sd">        The chrome (background, font, grid, spines) lives in matplotlib's</span>
+<span class="sd">        global ``rcParams`` — matplotlib re-reads those at draw time, so a</span>
+<span class="sd">        local ``rc_context`` would revert before render. Palette colors and</span>
+<span class="sd">        chrome switch together for *new* figures; existing figures keep their</span>
+<span class="sd">        look.</span>
+
+<span class="sd">    Args:</span>
+<span class="sd">        name: one of the names above (default `"light"`).</span>
+
+<span class="sd">    Raises:</span>
+<span class="sd">        ValueError: unknown theme name.</span>
+<span class="sd">    """</span>
+    <span class="k">global</span> <span class="n">_ACTIVE</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="o">==</span> <span class="s2">"default"</span><span class="p">:</span>
+        <span class="n">mpl</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">mpl</span><span class="o">.</span><span class="n">rcParamsDefault</span><span class="p">)</span>
+        <span class="n">_ACTIVE</span> <span class="o">=</span> <span class="n">LIGHT</span>
+        <span class="k">return</span>
+    <span class="k">if</span> <span class="n">name</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">THEMES</span><span class="p">:</span>
+        <span class="n">valid</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">THEMES</span><span class="p">)</span> <span class="o">+</span> <span class="p">[</span><span class="s2">"default"</span><span class="p">]</span>
+        <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">"unknown theme </span><span class="si">{</span><span class="n">name</span><span class="si">!r}</span><span class="s2">; choose from </span><span class="si">{</span><span class="n">valid</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="n">_ACTIVE</span> <span class="o">=</span> <span class="n">THEMES</span><span class="p">[</span><span class="n">name</span><span class="p">]</span>
+    <span class="n">apply_theme</span><span class="p">(</span><span class="n">_ACTIVE</span><span class="p">)</span>
+</code></pre></div></td></tr></tbody></table></div>
+            </details>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/givasile/effector" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"></path></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.footer", "header.autohide", "content.code.copy", "content.code.select", "content.tabs.link", "content.code.annotate"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

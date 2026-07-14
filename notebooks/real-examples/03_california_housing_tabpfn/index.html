@@ -272,170 +272,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../api_docs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Docs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Design
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The design contract (R1-R11)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../method_semantics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Method semantics by feature type
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../guides/" class="md-nav__link">
         
   
@@ -471,6 +307,33 @@
     
   
     Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
   
 
     
@@ -575,6 +438,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#feature-importance-one-click-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Feature importance &amp; one-click explanation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#regional-effects" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -601,6 +475,17 @@
     <span class="md-ellipsis">
       
         Longitude (west to east)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-method-sanity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-method sanity check
       
     </span>
   </a>
@@ -642,60 +527,10 @@
 
 <span class="n">california_housing</span> <span class="o">=</span> <span class="n">fetch_california_housing</span><span class="p">(</span><span class="n">as_frame</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tqdm/auto.py:21: TqdmWarning: IProgress not found. Please update jupyter and ipywidgets. See https://ipywidgets.readthedocs.io/en/stable/user_install.html
-  from .autonotebook import tqdm as notebook_tqdm
-</code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">california_housing</span><span class="o">.</span><span class="n">DESCR</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>.. _california_housing_dataset:
-
-California Housing dataset
---------------------------
-
-**Data Set Characteristics:**
-
-:Number of Instances: 20640
-
-:Number of Attributes: 8 numeric, predictive attributes and the target
-
-:Attribute Information:
-    - MedInc        median income in block group
-    - HouseAge      median house age in block group
-    - AveRooms      average number of rooms per household
-    - AveBedrms     average number of bedrooms per household
-    - Population    block group population
-    - AveOccup      average number of household members
-    - Latitude      block group latitude
-    - Longitude     block group longitude
-
-:Missing Attribute Values: None
-
-This dataset was obtained from the StatLib repository.
-https://www.dcc.fc.up.pt/~ltorgo/Regression/cal_housing.html
-
-The target variable is the median house value for California districts,
-expressed in hundreds of thousands of dollars ($100,000).
-
-This dataset was derived from the 1990 U.S. census, using one row per census
-block group. A block group is the smallest geographical unit for which the U.S.
-Census Bureau publishes sample data (a block group typically has a population
-of 600 to 3,000 people).
-
-A household is a group of people residing within a home. Since the average
-number of rooms and bedrooms in this dataset are provided per household, these
-columns may take surprisingly large values for block groups with few households
-and many empty houses, such as vacation resorts.
-
-It can be downloaded/loaded using the
-:func:`sklearn.datasets.fetch_california_housing` function.
-
-.. rubric:: References
-
-- Pace, R. Kelley and Ronald Barry, Sparse Spatial Autoregressions,
-  Statistics and Probability Letters, 33 (1997) 291-297
-</code></pre>
 <div class="highlight"><pre><span></span><code><span class="n">feature_names</span> <span class="o">=</span> <span class="n">california_housing</span><span class="o">.</span><span class="n">feature_names</span>
 <span class="n">target_name</span><span class="o">=</span> <span class="n">california_housing</span><span class="o">.</span><span class="n">target_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="nb">type</span><span class="p">(</span><span class="n">california_housing</span><span class="o">.</span><span class="n">frame</span><span class="p">)</span>
@@ -712,21 +547,6 @@ It can be downloaded/loaded using the
 <span class="nb">print</span><span class="p">(</span><span class="s2">"---------------------------------"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Target: </span><span class="si">{:15}</span><span class="s2">, unique: </span><span class="si">{:4d}</span><span class="s2">, Mean: </span><span class="si">{:6.2f}</span><span class="s2">, Std: </span><span class="si">{:6.2f}</span><span class="s2">, Min: </span><span class="si">{:6.2f}</span><span class="s2">, Max: </span><span class="si">{:6.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">y</span><span class="o">.</span><span class="n">unique</span><span class="p">()),</span> <span class="n">y</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">y</span><span class="o">.</span><span class="n">max</span><span class="p">()))</span>
 </code></pre></div>
-<pre><code>Design matrix shape: (20640, 8)
----------------------------------
-Feature: MedInc         , unique: 12928, Mean:   3.87, Std:   1.90, Min:   0.50, Max:  15.00
-Feature: HouseAge       , unique:   52, Mean:  28.64, Std:  12.59, Min:   1.00, Max:  52.00
-Feature: AveRooms       , unique: 19392, Mean:   5.43, Std:   2.47, Min:   0.85, Max: 141.91
-Feature: AveBedrms      , unique: 14233, Mean:   1.10, Std:   0.47, Min:   0.33, Max:  34.07
-Feature: Population     , unique: 3888, Mean: 1425.48, Std: 1132.46, Min:   3.00, Max: 35682.00
-Feature: AveOccup       , unique: 18841, Mean:   3.07, Std:  10.39, Min:   0.69, Max: 1243.33
-Feature: Latitude       , unique:  862, Mean:  35.63, Std:   2.14, Min:  32.54, Max:  41.95
-Feature: Longitude      , unique:  844, Mean: -119.57, Std:   2.00, Min: -124.35, Max: -114.31
-
-Target shape: (20640,)
----------------------------------
-Target: MedHouseVal    , unique: 3842, Mean:   2.07, Std:   1.15, Min:   0.15, Max:   5.00
-</code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">preprocess</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="c1"># Compute mean and std for outlier detection</span>
     <span class="n">X_mean</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
@@ -782,430 +602,6 @@ Target: MedHouseVal    , unique: 3842, Mean:   2.07, Std:   1.15, Min:   0.15, M
 <div class="highlight"><pre><span></span><code><span class="n">model</span> <span class="o">=</span> <span class="n">tabpfn</span><span class="o">.</span><span class="n">TabPFNRegressor</span><span class="p">(</span><span class="n">n_jobs</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">device</span><span class="o">=</span><span class="s2">"cpu"</span><span class="p">)</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">Y_train</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tabpfn/base.py:101: UserWarning: Downloading model to /Users/dimitriskyriakopoulos/Library/Caches/tabpfn/tabpfn-v2-regressor.ckpt.
-  model, bardist, config_ = load_model_criterion_config(
-/Users/dimitriskyriakopoulos/Documents/ath/Effector/Code/eff-env/lib/python3.10/site-packages/tabpfn/regressor.py:460: UserWarning: Running on CPU with more than 200 samples may be slow.
-Consider using a GPU or the tabpfn-client API: https://github.com/PriorLabs/tabpfn-client
-  check_cpu_warning(
-</code></pre>
-<style>#sk-container-id-1 {
-  /* Definition of color scheme common for light and dark mode */
-  --sklearn-color-text: #000;
-  --sklearn-color-text-muted: #666;
-  --sklearn-color-line: gray;
-  /* Definition of color scheme for unfitted estimators */
-  --sklearn-color-unfitted-level-0: #fff5e6;
-  --sklearn-color-unfitted-level-1: #f6e4d2;
-  --sklearn-color-unfitted-level-2: #ffe0b3;
-  --sklearn-color-unfitted-level-3: chocolate;
-  /* Definition of color scheme for fitted estimators */
-  --sklearn-color-fitted-level-0: #f0f8ff;
-  --sklearn-color-fitted-level-1: #d4ebff;
-  --sklearn-color-fitted-level-2: #b3dbfd;
-  --sklearn-color-fitted-level-3: cornflowerblue;
-
-  /* Specific color for light theme */
-  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
-  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
-  --sklearn-color-icon: #696969;
-
-  @media (prefers-color-scheme: dark) {
-    /* Redefinition of color scheme for dark theme */
-    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
-    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
-    --sklearn-color-icon: #878787;
-  }
-}
-
-#sk-container-id-1 {
-  color: var(--sklearn-color-text);
-}
-
-#sk-container-id-1 pre {
-  padding: 0;
-}
-
-#sk-container-id-1 input.sk-hidden--visually {
-  border: 0;
-  clip: rect(1px 1px 1px 1px);
-  clip: rect(1px, 1px, 1px, 1px);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-}
-
-#sk-container-id-1 div.sk-dashed-wrapped {
-  border: 1px dashed var(--sklearn-color-line);
-  margin: 0 0.4em 0.5em 0.4em;
-  box-sizing: border-box;
-  padding-bottom: 0.4em;
-  background-color: var(--sklearn-color-background);
-}
-
-#sk-container-id-1 div.sk-container {
-  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
-     but bootstrap.min.css set `[hidden] { display: none !important; }`
-     so we also need the `!important` here to be able to override the
-     default hidden behavior on the sphinx rendered scikit-learn.org.
-     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
-  display: inline-block !important;
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-text-repr-fallback {
-  display: none;
-}
-
-div.sk-parallel-item,
-div.sk-serial,
-div.sk-item {
-  /* draw centered vertical line to link estimators */
-  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
-  background-size: 2px 100%;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-/* Parallel-specific style estimator block */
-
-#sk-container-id-1 div.sk-parallel-item::after {
-  content: "";
-  width: 100%;
-  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
-  flex-grow: 1;
-}
-
-#sk-container-id-1 div.sk-parallel {
-  display: flex;
-  align-items: stretch;
-  justify-content: center;
-  background-color: var(--sklearn-color-background);
-  position: relative;
-}
-
-#sk-container-id-1 div.sk-parallel-item {
-  display: flex;
-  flex-direction: column;
-}
-
-#sk-container-id-1 div.sk-parallel-item:first-child::after {
-  align-self: flex-end;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:last-child::after {
-  align-self: flex-start;
-  width: 50%;
-}
-
-#sk-container-id-1 div.sk-parallel-item:only-child::after {
-  width: 0;
-}
-
-/* Serial-specific style estimator block */
-
-#sk-container-id-1 div.sk-serial {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background-color: var(--sklearn-color-background);
-  padding-right: 1em;
-  padding-left: 1em;
-}
-
-
-/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
-clickable and can be expanded/collapsed.
-- Pipeline and ColumnTransformer use this feature and define the default style
-- Estimators will overwrite some part of the style using the `sk-estimator` class
-*/
-
-/* Pipeline and ColumnTransformer style (default) */
-
-#sk-container-id-1 div.sk-toggleable {
-  /* Default theme specific background. It is overwritten whether we have a
-  specific estimator or a Pipeline/ColumnTransformer */
-  background-color: var(--sklearn-color-background);
-}
-
-/* Toggleable label */
-#sk-container-id-1 label.sk-toggleable__label {
-  cursor: pointer;
-  display: flex;
-  width: 100%;
-  margin-bottom: 0;
-  padding: 0.5em;
-  box-sizing: border-box;
-  text-align: center;
-  align-items: start;
-  justify-content: space-between;
-  gap: 0.5em;
-}
-
-#sk-container-id-1 label.sk-toggleable__label .caption {
-  font-size: 0.6rem;
-  font-weight: lighter;
-  color: var(--sklearn-color-text-muted);
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:before {
-  /* Arrow on the left of the label */
-  content: "▸";
-  float: left;
-  margin-right: 0.25em;
-  color: var(--sklearn-color-icon);
-}
-
-#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
-  color: var(--sklearn-color-text);
-}
-
-/* Toggleable content - dropdown */
-
-#sk-container-id-1 div.sk-toggleable__content {
-  max-height: 0;
-  max-width: 0;
-  overflow: hidden;
-  text-align: left;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content pre {
-  margin: 0.2em;
-  border-radius: 0.25em;
-  color: var(--sklearn-color-text);
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-toggleable__content.fitted pre {
-  /* unfitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
-  /* Expand drop-down */
-  max-height: 200px;
-  max-width: 100%;
-  overflow: auto;
-}
-
-#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
-  content: "▾";
-}
-
-/* Pipeline/ColumnTransformer-specific style */
-
-#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator-specific style */
-
-/* Colorize estimator box */
-#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-#sk-container-id-1 div.sk-label label.sk-toggleable__label,
-#sk-container-id-1 div.sk-label label {
-  /* The background is the default theme color */
-  color: var(--sklearn-color-text-on-default-background);
-}
-
-/* On hover, darken the color of the background */
-#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-/* Label box, darken color on hover, fitted */
-#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
-  color: var(--sklearn-color-text);
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Estimator label */
-
-#sk-container-id-1 div.sk-label label {
-  font-family: monospace;
-  font-weight: bold;
-  display: inline-block;
-  line-height: 1.2em;
-}
-
-#sk-container-id-1 div.sk-label-container {
-  text-align: center;
-}
-
-/* Estimator-specific */
-#sk-container-id-1 div.sk-estimator {
-  font-family: monospace;
-  border: 1px dotted var(--sklearn-color-border-box);
-  border-radius: 0.25em;
-  box-sizing: border-box;
-  margin-bottom: 0.5em;
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-0);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-0);
-}
-
-/* on hover */
-#sk-container-id-1 div.sk-estimator:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-2);
-}
-
-#sk-container-id-1 div.sk-estimator.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-2);
-}
-
-/* Specification for estimator info (e.g. "i" and "?") */
-
-/* Common style for "i" and "?" */
-
-.sk-estimator-doc-link,
-a:link.sk-estimator-doc-link,
-a:visited.sk-estimator-doc-link {
-  float: right;
-  font-size: smaller;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1em;
-  height: 1em;
-  width: 1em;
-  text-decoration: none !important;
-  margin-left: 0.5em;
-  text-align: center;
-  /* unfitted */
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-  color: var(--sklearn-color-unfitted-level-1);
-}
-
-.sk-estimator-doc-link.fitted,
-a:link.sk-estimator-doc-link.fitted,
-a:visited.sk-estimator-doc-link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-div.sk-estimator:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover,
-div.sk-label-container:hover .sk-estimator-doc-link:hover,
-.sk-estimator-doc-link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover,
-div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
-.sk-estimator-doc-link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-/* Span, style for the box shown on hovering the info icon */
-.sk-estimator-doc-link span {
-  display: none;
-  z-index: 9999;
-  position: relative;
-  font-weight: normal;
-  right: .2ex;
-  padding: .5ex;
-  margin: .5ex;
-  width: min-content;
-  min-width: 20ex;
-  max-width: 50ex;
-  color: var(--sklearn-color-text);
-  box-shadow: 2pt 2pt 4pt #999;
-  /* unfitted */
-  background: var(--sklearn-color-unfitted-level-0);
-  border: .5pt solid var(--sklearn-color-unfitted-level-3);
-}
-
-.sk-estimator-doc-link.fitted span {
-  /* fitted */
-  background: var(--sklearn-color-fitted-level-0);
-  border: var(--sklearn-color-fitted-level-3);
-}
-
-.sk-estimator-doc-link:hover span {
-  display: block;
-}
-
-/* "?"-specific style due to the `<a>` HTML tag */
-
-#sk-container-id-1 a.estimator_doc_link {
-  float: right;
-  font-size: 1rem;
-  line-height: 1em;
-  font-family: monospace;
-  background-color: var(--sklearn-color-background);
-  border-radius: 1rem;
-  height: 1rem;
-  width: 1rem;
-  text-decoration: none;
-  /* unfitted */
-  color: var(--sklearn-color-unfitted-level-1);
-  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted {
-  /* fitted */
-  border: var(--sklearn-color-fitted-level-1) 1pt solid;
-  color: var(--sklearn-color-fitted-level-1);
-}
-
-/* On hover */
-#sk-container-id-1 a.estimator_doc_link:hover {
-  /* unfitted */
-  background-color: var(--sklearn-color-unfitted-level-3);
-  color: var(--sklearn-color-background);
-  text-decoration: none;
-}
-
-#sk-container-id-1 a.estimator_doc_link.fitted:hover {
-  /* fitted */
-  background-color: var(--sklearn-color-fitted-level-3);
-}
-</style>
-<div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>TabPFNRegressor(device='cpu', n_jobs=7)</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>TabPFNRegressor</div></div><div><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted"><pre>TabPFNRegressor(device='cpu', n_jobs=7)</pre></div> </div></div></div></div>
-
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">model_forward</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div>
@@ -1223,104 +619,65 @@ div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
 <span class="n">toc</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">toc</span> <span class="o">-</span> <span class="n">tic</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>374.93519401550293
-</code></pre>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">8</span><span class="p">):</span>
     <span class="n">ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">i</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">,</span> <span class="n">dy_limits</span><span class="o">=</span><span class="n">dy_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_3.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_4.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_4.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_5.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_5.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_6.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_6.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_7.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_17_7.png"></a></p>
+<h2 id="feature-importance-one-click-explanation">Feature importance &amp; one-click explanation</h2>
+<p><code>importances()</code> ranks features by the dispersion of their mean ALE effect (the
+μ-twin of heterogeneity), and <code>effector.explain(...)</code> runs the whole pipeline
+(fit → rank → regional split of the heterogeneous features) into a single
+serializable <code>Report</code>. TabPFN is expensive to query, so we pass a modest
+<code>nof_instances</code> for the auto-explanation.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># per-feature importance = dispersion of the mean ALE effect (already fitted above)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"importances:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">ale</span><span class="o">.</span><span class="n">importances</span><span class="p">(),</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># one-click auto-explanation -&gt; Report (serializable; self-contained HTML)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span>
+    <span class="n">X_test</span><span class="p">,</span>
+    <span class="n">model_forward</span><span class="p">,</span>
+    <span class="n">method</span><span class="o">=</span><span class="s2">"ale"</span><span class="p">,</span>
+    <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span>
+    <span class="n">nof_instances</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
 <h2 id="regional-effects">Regional Effects</h2>
-<div class="highlight"><pre><span></span><code><span class="n">r_ale</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">RegionalALE</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">})</span>
+<div class="highlight"><pre><span></span><code><span class="n">ale_reg</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span>
+    <span class="n">data</span><span class="o">=</span><span class="n">X_train</span><span class="p">,</span>
+    <span class="n">model</span><span class="o">=</span><span class="n">model_forward</span><span class="p">,</span>
+    <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span>
+    <span class="n">nof_instances</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">ale_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="s2">"all"</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">finder</span> <span class="o">=</span> <span class="s2">"best"</span>
+<span class="n">partitions</span> <span class="o">=</span> <span class="p">{</span><span class="n">feat</span><span class="p">:</span> <span class="n">ale_reg</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="n">feat</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="n">finder</span><span class="p">)</span> <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">]}</span>
 </code></pre></div>
 <h2 id="latitude-south-to-north">Latitude (south to north)</h2>
-<div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">partitions</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:43&lt;00:00, 43.15s/it]
-
-
-
-Feature 6 - Full partition tree:
-🌳 Full Tree Structure:
-───────────────────────
-Latitude 🔹 [id: 0 | heter: 0.58 | inst: 500 | w: 1.00]
-    Longitude ≤ -120.76 🔹 [id: 1 | heter: 0.09 | inst: 180 | w: 0.36]
-        Longitude ≤ -122.31 🔹 [id: 2 | heter: 0.03 | inst: 41 | w: 0.08]
-        Longitude &gt; -122.31 🔹 [id: 3 | heter: 0.08 | inst: 139 | w: 0.28]
-    Longitude &gt; -120.76 🔹 [id: 4 | heter: 0.49 | inst: 320 | w: 0.64]
-        MedInc ≤ 4.55 🔹 [id: 5 | heter: 0.30 | inst: 228 | w: 0.46]
-        MedInc &gt; 4.55 🔹 [id: 6 | heter: 0.44 | inst: 92 | w: 0.18]
---------------------------------------------------
-Feature 6 - Statistics per tree level:
-🌳 Tree Summary:
-─────────────────
-Level 0🔹heter: 0.58
-    Level 1🔹heter: 0.35 | 🔻0.23 (40.17%)
-        Level 2🔹heter: 0.24 | 🔻0.10 (29.77%)
-</code></pre>
-<div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">partitions</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_22_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_22_0.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move north.  </p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>
-    <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+    <span class="n">partitions</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_24_1.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">]:</span>
-    <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
+    <span class="n">partitions</span><span class="p">[</span><span class="mi">6</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_25_3.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move north.  </p>
 <p><strong>Regional Trends:</strong> Moreorless the same, with minor different curves.</p>
 <h2 id="longitude-west-to-east">Longitude (west to east)</h2>
-<div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">partitions</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>Feature 7 - Full partition tree:
-🌳 Full Tree Structure:
-───────────────────────
-Longitude 🔹 [id: 0 | heter: 0.77 | inst: 500 | w: 1.00]
-    Latitude ≤ 35.46 🔹 [id: 1 | heter: 0.58 | inst: 283 | w: 0.57]
-        Latitude ≤ 33.65 🔹 [id: 2 | heter: 0.44 | inst: 55 | w: 0.11]
-        Latitude &gt; 33.65 🔹 [id: 3 | heter: 0.38 | inst: 228 | w: 0.46]
-    Latitude &gt; 35.46 🔹 [id: 4 | heter: 0.18 | inst: 217 | w: 0.43]
-        AveRooms ≤ 6.19 🔹 [id: 5 | heter: 0.13 | inst: 170 | w: 0.34]
-        AveRooms &gt; 6.19 🔹 [id: 6 | heter: 0.12 | inst: 47 | w: 0.09]
---------------------------------------------------
-Feature 7 - Statistics per tree level:
-🌳 Tree Summary:
-─────────────────
-Level 0🔹heter: 0.77
-    Level 1🔹heter: 0.40 | 🔻0.36 (47.30%)
-        Level 2🔹heter: 0.28 | 🔻0.13 (31.51%)
-</code></pre>
-<div class="highlight"><pre><span></span><code><span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">partitions</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">)</span>
 </code></pre></div>
-<pre><code>100%|██████████| 1/1 [00:50&lt;00:00, 50.61s/it]
-</code></pre>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_29_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_29_1.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move east.  </p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">]:</span>
-    <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+    <span class="n">partitions</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_31_1.png"></a></p>
 <div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">node_idx</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]:</span>
-    <span class="n">r_ale</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span> <span class="n">node_idx</span><span class="o">=</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
+    <span class="n">partitions</span><span class="p">[</span><span class="mi">7</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">node_idx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scale_x_list</span><span class="o">=</span><span class="n">scale_x_list</span><span class="p">,</span> <span class="n">scale_y</span><span class="o">=</span><span class="n">scale_y</span><span class="p">,</span> <span class="n">y_limits</span><span class="o">=</span><span class="n">y_limits</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_0.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_0.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_1.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_1.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_2.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_2.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_3.png" data-desc-position="bottom"><img alt="png" src="../03_california_housing_tabpfn_files/03_california_housing_tabpfn_32_3.png"></a></p>
 <p><strong>Global Trend:</strong> House prices decrease as we move eastward.  </p>
 <p><strong>Regional Trends:</strong><br>
 - <strong>South (latitude &lt;= 35.85):</strong> Prices drop more sharply in the second half from west to east.
@@ -1329,6 +686,38 @@ Level 0🔹heter: 0.77
 - <strong>North (latitude &gt; 35.85):</strong> Prices drop more sharply in the first half from west to east.<br>
   - <strong>AveRooms &lt;= 6.19:</strong> The pattern follows the overall northern trend, with a steep early drop.
   - <strong>AveRooms &gt; 6.19:</strong> The decline becomes smoother and more linear</p>
+<h2 id="cross-method-sanity-check">Cross-method sanity check</h2>
+<p>The one-liner <code>effector.explain</code> with every engine this notebook's model
+supports. Everything must run end to end; the closing table puts the reads
+side by side. Where methods disagree — ranking, accepted splits, R² — that is
+a property of the data/model worth a closer look, not an error.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">_out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"reports"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"03_california_housing_tabpfn"</span>
+<span class="n">_out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># === cross-method sweep: effector.explain on every applicable engine ======</span>
+<span class="n">sweep_reports</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">_m</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"shapdp"</span><span class="p">]:</span>
+    <span class="n">_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"nof_instances"</span><span class="p">:</span> <span class="mi">300</span><span class="p">}</span> <span class="k">if</span> <span class="n">_m</span> <span class="o">==</span> <span class="s2">"shapdp"</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- </span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2"> "</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span>
+        <span class="n">X_test</span><span class="p">,</span> <span class="n">model_forward</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">_m</span><span class="p">,</span> <span class="n">schema</span><span class="o">=</span><span class="p">{</span><span class="s2">"feature_names"</span><span class="p">:</span> <span class="n">feature_names</span><span class="p">,</span> <span class="s2">"target_name"</span><span class="p">:</span> <span class="n">target_name</span><span class="p">},</span> <span class="o">**</span><span class="n">_kw</span>
+    <span class="p">)</span>
+    <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">_out</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"report_</span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2">.html"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'method'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'ranking (plotted)'</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'GAM R2'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'final R2'</span><span class="si">:</span><span class="s2">&gt;9</span><span class="si">}</span><span class="s2">  splits"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_m</span><span class="p">,</span> <span class="n">_r</span> <span class="ow">in</span> <span class="n">sweep_reports</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">_rank</span> <span class="o">=</span> <span class="s2">" &gt; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">fr</span> <span class="ow">in</span> <span class="n">_r</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">_ev</span> <span class="o">=</span> <span class="n">_r</span><span class="o">.</span><span class="n">explained_variance</span>
+    <span class="k">if</span> <span class="n">_ev</span><span class="p">:</span>
+        <span class="n">_sp</span> <span class="o">=</span> <span class="s2">"; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'on'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">_ev</span><span class="p">[</span><span class="s2">"stages"</span><span class="p">])</span> <span class="ow">or</span> <span class="s2">"none"</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'gam_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.1%</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'regional_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8.1%</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">_sp</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;7</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">  (derivative scale: no variance ledger)"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">reports stored in </span><span class="si">{</span><span class="n">_out</span><span class="si">}</span><span class="s2">/"</span><span class="p">)</span>
+</code></pre></div>
 
 
 

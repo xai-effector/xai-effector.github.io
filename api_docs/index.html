@@ -6,10 +6,10 @@
       
       
       
-        <link rel="prev" href="../quickstart/">
+        <link rel="prev" href="../examples/">
       
       
-        <link rel="next" href="../design/">
+        <link rel="next" href="../contributing/">
       
       
         
@@ -271,178 +271,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Docs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Design
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The design contract (R1-R11)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../method_semantics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Method semantics by feature type
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../guides/" class="md-nav__link">
         
   
@@ -486,6 +314,41 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
     </li>
   
 
@@ -582,30 +445,77 @@
 <p>API DOCS:</p>
 <ul>
 <li>
+<p><a href="api_ingestion/">Input layer — Schema &amp; from_dataframe</a></p>
+<ul>
+<li><a href="api_ingestion/#effector.ingestion.Schema"><code>effector.Schema</code></a></li>
+<li><a href="api_ingestion/#effector.ingestion.from_dataframe"><code>effector.from_dataframe</code></a></li>
+</ul>
+</li>
+<li>
+<p><a href="api_adapters/">Adapters — model wrappers, the explicit final pass</a></p>
+<ul>
+<li><a href="api_adapters/#effector.adapters.from_sklearn"><code>effector.adapters.from_sklearn</code></a></li>
+<li><a href="api_adapters/#effector.adapters.classifier_proba"><code>effector.adapters.classifier_proba</code></a></li>
+<li><a href="api_adapters/#effector.adapters.from_torch"><code>effector.adapters.from_torch</code></a></li>
+<li><a href="api_adapters/#effector.adapters.check"><code>effector.adapters.check</code></a></li>
+</ul>
+</li>
+<li>
 <p><a href="api_global/">Global effect</a>:</p>
 <ul>
 <li><a href="api_global/#effector.global_effect_pdp.PDP"><code>effector.PDP</code></a></li>
 <li><a href="api_global/#effector.global_effect_ale.RHALE"><code>effector.RHALE</code></a></li>
 <li><a href="api_global/#effector.global_effect_shap.ShapDP"><code>effector.ShapDP</code></a></li>
-<li><a href="api_global/#effector.global_effect_ale.RHALE"><code>effector.ALE</code></a></li>
+<li><a href="api_global/#effector.global_effect_ale.ALE"><code>effector.ALE</code></a></li>
 <li><a href="api_global/#effector.global_effect_pdp.DerPDP"><code>effector.DerPDP</code></a></li>
 </ul>
 </li>
 <li>
-<p><a href="api_regional/">Regional Effect Docs</a></p>
+<p><a href="api_partition/">Regional effects — find_regions &amp; Partition</a></p>
 <ul>
-<li><a href="api_regional/#effector.regional_effect_pdp.RegionalPDP"><code>effector.RegionalPDP</code></a></li>
-<li><a href="api_regional/#effector.regional_effect_ale.RegionalRHALE"><code>effector.RegionalRHALE</code></a></li>
-<li><a href="api_regional/#effector.regional_effect_shap.RegionalShapDP"><code>effector.RegionalShapDP</code></a></li>
-<li><a href="api_regional/#effector.regional_effect_ale.RegionalALE"><code>effector.RegionalALE</code></a></li>
-<li><a href="api_regional/#effector.regional_effect_pdp.RegionalDerPDP"><code>effector.RegionalDerPDP</code></a></li>
+<li><a href="api_partition/#effector.global_effect.GlobalEffectBase.find_regions"><code>effector.GlobalEffectBase.find_regions</code></a>
+  — singular <code>feature=</code> → <code>Partition</code>, plural <code>features=</code> (list / <code>"all"</code> /
+  <code>"heterogeneous"</code>) → <code>{name: Partition}</code></li>
+<li><a href="api_partition/#effector.partition.Partition"><code>effector.Partition</code></a></li>
+<li><a href="api_partition/#effector.partition.Region"><code>effector.Region</code></a></li>
+</ul>
+</li>
+<li>
+<p><a href="api_calm/">Explained variance — select_regions &amp; the CALM chain</a></p>
+<ul>
+<li><a href="api_calm/#effector.global_effect.GlobalEffectBase.select_regions"><code>effector.GlobalEffectBase.select_regions</code></a>
+  — which found splits earn their keep, as a <code>CalmSequence</code></li>
+<li><a href="api_calm/#effector.calm.CalmSequence"><code>effector.CalmSequence</code></a></li>
+<li><a href="api_calm/#effector.calm.CALM"><code>effector.CALM</code></a></li>
+</ul>
+</li>
+<li>
+<p><a href="api_visualization/">Triage, comparison &amp; theme</a></p>
+<ul>
+<li><a href="api_visualization/#effector.visualization.plot_triage"><code>effector.plot_triage</code></a>
+  — importance × heterogeneity plane, before/after arrows with <code>partitions=</code></li>
+<li><a href="api_visualization/#effector.visualization.compare"><code>effector.compare</code></a>
+  — overlay fitted engines on one feature</li>
+<li><a href="api_visualization/#effector.feature_effect.FeatureEffect"><code>effector.FeatureEffect</code></a>
+  — the single-model comparison facade</li>
+<li><a href="api_visualization/#effector.theme.set_theme"><code>effector.set_theme</code></a></li>
+</ul>
+</li>
+<li>
+<p><a href="api_report/">One-click report — explain &amp; Report</a></p>
+<ul>
+<li><a href="api_report/#effector.report.explain"><code>effector.explain</code></a></li>
+<li><a href="api_report/#effector.global_effect.GlobalEffectBase.explain"><code>effector.GlobalEffectBase.explain</code></a>
+  — the one-liner on an already-constructed engine</li>
+<li><a href="api_report/#effector.report.Report"><code>effector.Report</code></a></li>
 </ul>
 </li>
 <li>
 <p><a href="api_axis_partitioning/"><code>effector.axis_partitioning</code></a></p>
 </li>
 <li><a href="api_space_partitioning/"><code>effector.space_partitioning</code></a></li>
-<li><a href="api_tree/"><code>effector.tree</code></a></li>
+<li><a href="api_proposers/"><code>effector.proposers</code></a></li>
+<li><a href="api_extras/">Extras — models, datasets, benchmarks</a></li>
 </ul>
 
 
@@ -638,7 +548,7 @@
       <nav class="md-footer__inner md-grid" aria-label="Footer">
         
           
-          <a href="../quickstart/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Quickstart">
+          <a href="../examples/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Examples">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
@@ -648,20 +558,20 @@
                 Previous
               </span>
               <div class="md-ellipsis">
-                Quickstart
+                Examples
               </div>
             </div>
           </a>
         
         
           
-          <a href="../design/" class="md-footer__link md-footer__link--next" aria-label="Next: The design contract (R1-R11)">
+          <a href="../contributing/" class="md-footer__link md-footer__link--next" aria-label="Next: Contributing">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                The design contract (R1-R11)
+                Contributing
               </div>
             </div>
             <div class="md-footer__button md-icon">

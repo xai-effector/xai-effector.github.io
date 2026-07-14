@@ -16,7 +16,7 @@
     
     
       
-        <title>Efficiency of global methods - effector</title>
+        <title>Runtime of global effect methods - effector</title>
       
     
     
@@ -79,7 +79,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#efficiency-of-global-methods" class="md-skip">
+        <a href="#runtime-of-global-effect-methods" class="md-skip">
           Skip to content
         </a>
       
@@ -114,7 +114,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Efficiency of global methods
+              Runtime of global effect methods
             
           </span>
         </div>
@@ -272,170 +272,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../api_docs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Docs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Design
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The design contract (R1-R11)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../method_semantics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Method semantics by feature type
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../guides/" class="md-nav__link">
         
   
@@ -471,6 +307,33 @@
     
   
     Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
   
 
     
@@ -564,130 +427,24 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#t_1-runtime-vs-n" class="md-nav__link">
+  <a href="#the-call-inventory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        \(T_1\): runtime vs N
+        The call inventory
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="\(T_1\): runtime vs N">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-one-feature" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For one feature
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-all-features" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For all features
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#t_2-runtime-vs-t_f" class="md-nav__link">
+  <a href="#wall-clock-check" class="md-nav__link">
     <span class="md-ellipsis">
       
-        \(T_2\): runtime vs. \(t_f\):
+        Wall-clock check
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="\(T_2\): runtime vs. \(t_f\):">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#for-a-single-feature" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For a single feature
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#for-all-features_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        For all features
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#conclusion_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Conclusion
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#total-runtime" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Total Runtime
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Total Runtime">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#binning-cost-the-role-of-k-and-binning_method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Binning cost: the role of K and binning_method
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -696,6 +453,17 @@
     <span class="md-ellipsis">
       
         SHAP-DP
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#summary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Summary
       
     </span>
   </a>
@@ -719,1091 +487,242 @@
 
 
 
-<h1 id="efficiency-of-global-methods">Efficiency of global methods</h1>
+<h1 id="runtime-of-global-effect-methods">Runtime of global effect methods</h1>
 <ul>
 <li>Author: <a href="https://givasile.github.io/">givasile</a></li>
-<li>Runtime: ~11 min (deliberate benchmark)</li>
-<li>Description: Benchmarks how the runtime of each global method (PDP, d-PDP,
-  ALE, RHALE, SHAP-DP) scales with the number of instances <span class="arithmatex">\(N\)</span> and the cost
-  of a model call <span class="arithmatex">\(t_f\)</span>, ending with a summary cost table per method.</li>
+<li>Runtime: ~30 sec</li>
+<li>Description: effector's cost model in one line — <strong>runtime ≈ (number of
+  model calls) × (cost of one call)</strong> — and how to count the calls per method.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
+<p>Everything effector computes is derived from a small set of <em>model-touching</em>
+computations (the per-instance local effects), which are computed once and
+cached. Everything else — heterogeneity, importance, regional effects,
+re-plots — is numpy on top of that cache and is effectively free. So the only
+question that matters for runtime is: <strong>how many times does each method call
+the model, and on how many rows?</strong></p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+
 <span class="kn">import</span><span class="w"> </span><span class="nn">numpy</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">np</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">timeit</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">effector</span>
+
 <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">21</span><span class="p">)</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">predict</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DoubleConditionalInteraction</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">predict</span>
 
-<span class="k">def</span><span class="w"> </span><span class="nf">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">):</span>
-    <span class="k">def</span><span class="w"> </span><span class="nf">jacobian</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
-        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-        <span class="n">model</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DoubleConditionalInteraction</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">jacobian</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="kc">None</span><span class="p">,):</span>
-    <span class="n">fit_time_list</span><span class="p">,</span> <span class="n">eval_time_list</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
-    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
-    <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">M</span><span class="p">)</span>
-    <span class="n">axis_limits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">D</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">D</span><span class="p">])</span>
+<span class="n">N</span><span class="p">,</span> <span class="n">D</span> <span class="o">=</span> <span class="mi">10_000</span><span class="p">,</span> <span class="mi">3</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">N</span><span class="p">,</span> <span class="n">D</span><span class="p">))</span>
+<span class="n">axis_limits</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">D</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">]</span> <span class="o">*</span> <span class="n">D</span><span class="p">])</span>
 
-    <span class="n">method_map</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">"pdp"</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">,</span>
-        <span class="s2">"d_pdp"</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">,</span>
-        <span class="s2">"ale"</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">,</span>
-        <span class="s2">"rhale"</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">,</span>
-        <span class="s2">"shap_dp"</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">DoubleConditionalInteraction</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">CountingModel</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">"""Wrap a callable and count how many times it is invoked."""</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_calls</span> <span class="o">=</span> <span class="n">fn</span><span class="p">,</span> <span class="mi">0</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">n_calls</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+<h2 id="the-call-inventory">The call inventory</h2>
+<p>The model is called in exactly three situations:</p>
+<ol>
+<li><strong>filling the local-effects cache</strong> — once per feature (or once per object,
+   for methods whose raw material covers all features at once);</li>
+<li><strong>(d-)PDP evaluation at never-before-seen positions</strong> — the missing
+   positions only, cached afterwards;</li>
+<li><strong>the average model output</strong> (<code>show_avg_output=True</code>) — once per object.</li>
+</ol>
+<p>Let's count, method by method, over a full working session: fit one feature,
+plot it, plot it again, then ask for the heterogeneity, the importance, and a
+regional partition.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">session_counts</span><span class="p">(</span><span class="n">name</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">"""Model/jacobian calls at each step of a typical session."""</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">CountingModel</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">predict</span><span class="p">)</span>
+    <span class="n">jac</span> <span class="o">=</span> <span class="n">CountingModel</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">jacobian</span><span class="p">)</span>
+    <span class="n">ctor</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"PDP"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
+        <span class="s2">"d-PDP"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
+        <span class="s2">"ALE"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
+        <span class="s2">"RHALE"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">jac</span><span class="p">,</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
     <span class="p">}</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">ctor</span><span class="p">[</span><span class="n">name</span><span class="p">]()</span>
+    <span class="n">counts</span><span class="p">,</span> <span class="n">last</span> <span class="o">=</span> <span class="p">{},</span> <span class="mi">0</span>
 
-    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">repetitions</span><span class="p">):</span>
-        <span class="c1"># general kwargs</span>
-        <span class="n">method_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"data"</span><span class="p">:</span> <span class="n">X</span><span class="p">,</span> <span class="s2">"model"</span><span class="p">:</span> <span class="n">model</span><span class="p">,</span> <span class="s2">"axis_limits"</span><span class="p">:</span> <span class="n">axis_limits</span><span class="p">,</span> <span class="s2">"nof_instances"</span><span class="p">:</span> <span class="s2">"all"</span><span class="p">}</span>
-        <span class="n">fit_kwargs</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"features"</span><span class="p">:</span> <span class="n">features</span><span class="p">,</span> <span class="s2">"centering"</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span> <span class="s2">"points_for_centering"</span><span class="p">:</span> <span class="n">K</span><span class="p">}</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="n">label</span><span class="p">):</span>
+        <span class="k">nonlocal</span> <span class="n">last</span>
+        <span class="n">total</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">n_calls</span> <span class="o">+</span> <span class="n">jac</span><span class="o">.</span><span class="n">n_calls</span>
+        <span class="n">counts</span><span class="p">[</span><span class="n">label</span><span class="p">]</span> <span class="o">=</span> <span class="n">total</span> <span class="o">-</span> <span class="n">last</span>
+        <span class="n">last</span> <span class="o">=</span> <span class="n">total</span>
 
-        <span class="c1"># specialize kwargs per method</span>
-        <span class="k">if</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"d_pdp"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">]:</span>
-            <span class="n">method_kwargs</span><span class="p">[</span><span class="s2">"model_jac"</span><span class="p">]</span> <span class="o">=</span> <span class="n">model_jac</span>
-        <span class="k">if</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"ale"</span><span class="p">]:</span>
-            <span class="n">fit_kwargs</span><span class="p">[</span><span class="s2">"binning_method"</span><span class="p">]</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">axis_partitioning</span><span class="o">.</span><span class="n">Fixed</span><span class="p">(</span><span class="n">nof_bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">step</span><span class="p">(</span><span class="s2">"fit(0)"</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">step</span><span class="p">(</span><span class="s2">"plot(0)"</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">step</span><span class="p">(</span><span class="s2">"re-plot(0)"</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">eval_heter</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">heter_score</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">importance</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">step</span><span class="p">(</span><span class="s2">"heter+importance"</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">find_regions</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">step</span><span class="p">(</span><span class="s2">"find_regions(0)"</span><span class="p">)</span>
+    <span class="n">m</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
+    <span class="n">step</span><span class="p">(</span><span class="s2">"fit(all)"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">counts</span>
 
-        <span class="c1"># init</span>
-        <span class="n">method</span> <span class="o">=</span> <span class="n">method_map</span><span class="p">[</span><span class="n">method_name</span><span class="p">](</span><span class="o">**</span><span class="n">method_kwargs</span><span class="p">)</span>
+<span class="n">names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"PDP"</span><span class="p">,</span> <span class="s2">"d-PDP"</span><span class="p">,</span> <span class="s2">"ALE"</span><span class="p">,</span> <span class="s2">"RHALE"</span><span class="p">]</span>
+<span class="n">rows</span> <span class="o">=</span> <span class="p">{</span><span class="n">name</span><span class="p">:</span> <span class="n">session_counts</span><span class="p">(</span><span class="n">name</span><span class="p">)</span> <span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">}</span>
+<span class="n">steps</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">next</span><span class="p">(</span><span class="nb">iter</span><span class="p">(</span><span class="n">rows</span><span class="o">.</span><span class="n">values</span><span class="p">())))</span>
 
-        <span class="c1"># fit</span>
-        <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="n">method</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="o">**</span><span class="n">fit_kwargs</span><span class="p">)</span>
-        <span class="n">fit_time_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'model calls per step'</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s2">&gt;18</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">steps</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="p">(</span><span class="mi">22</span> <span class="o">+</span> <span class="mi">18</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">steps</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;22</span><span class="si">}</span><span class="s2">"</span> <span class="o">+</span> <span class="s2">""</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">rows</span><span class="p">[</span><span class="n">name</span><span class="p">][</span><span class="n">s</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;18</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">steps</span><span class="p">))</span>
 
-        <span class="c1"># eval</span>
-        <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
-        <span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="n">features</span><span class="p">:</span>
-            <span class="n">method</span><span class="o">.</span><span class="n">eval</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">,</span> <span class="n">centering</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-            <span class="n">method</span><span class="o">.</span><span class="n">eval_heter</span><span class="p">(</span><span class="n">feature</span><span class="o">=</span><span class="n">feat</span><span class="p">,</span> <span class="n">xs</span><span class="o">=</span><span class="n">xx</span><span class="p">)</span>
-        <span class="n">eval_time_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="p">{</span><span class="s2">"fit"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fit_time_list</span><span class="p">),</span> <span class="s2">"eval"</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">eval_time_list</span><span class="p">),</span> <span class="s2">"total"</span><span class="p">:</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">fit_time_list</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">eval_time_list</span><span class="p">))}</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span><span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s2">"all"</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span>
-
-<span class="k">def</span><span class="w"> </span><span class="nf">bar_plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">time_dict</span><span class="p">,</span> <span class="n">methods</span><span class="p">,</span> <span class="n">metric</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">xlabel</span><span class="p">,</span> <span class="n">ylabel</span><span class="p">,</span> <span class="n">bar_width</span><span class="o">=</span><span class="mf">0.02</span><span class="p">):</span>
-
-    <span class="n">bar_width</span> <span class="o">=</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="n">xs</span><span class="p">))</span> <span class="o">/</span> <span class="mi">40</span>
-    <span class="n">method_to_label</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"ale"</span><span class="p">:</span> <span class="s2">"ALE"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">:</span> <span class="s2">"RHALE"</span><span class="p">,</span> <span class="s2">"pdp"</span><span class="p">:</span> <span class="s2">"PDP"</span><span class="p">,</span> <span class="s2">"d_pdp"</span><span class="p">:</span> <span class="s2">"d-pdp"</span><span class="p">,</span> <span class="s2">"shap_dp"</span><span class="p">:</span> <span class="s2">"SHAP DP"</span><span class="p">}</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-
-    <span class="c1"># Calculate the offsets for each bar group</span>
-    <span class="n">offsets</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="o">*</span><span class="n">bar_width</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">bar_width</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">methods</span><span class="p">))</span>
-
-    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">method</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">methods</span><span class="p">):</span>
-        <span class="n">label</span> <span class="o">=</span> <span class="n">method_to_label</span><span class="p">[</span><span class="n">method</span><span class="p">]</span>
-        <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span>
-            <span class="n">xs</span> <span class="o">+</span> <span class="n">offsets</span><span class="p">[</span><span class="n">i</span><span class="p">],</span>
-            <span class="p">[</span><span class="n">tt</span><span class="p">[</span><span class="n">metric</span><span class="p">]</span> <span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="n">time_dict</span><span class="p">[</span><span class="n">method</span><span class="p">]],</span>
-            <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">,</span>
-            <span class="n">width</span><span class="o">=</span><span class="n">bar_width</span>
-        <span class="p">)</span>
-
-    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="n">xlabel</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="n">ylabel</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
-    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
-<h2 id="t_1-runtime-vs-n"><span class="arithmatex">\(T_1\)</span>: runtime vs N</h2>
-<h3 id="for-one-feature">For one feature</h3>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.001</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10_000</span>
-<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"d_pdp"</span><span class="p">]</span>
-<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10_000</span><span class="p">,</span> <span class="mi">25_000</span><span class="p">,</span> <span class="mi">50_000</span><span class="p">])</span>
-<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span> <span class="c1"># ["fit", "eval", "total"]:</span>
-    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: .fit() + .eval() -- single feature"</span>
-
-    <span class="n">bar_plot</span><span class="p">(</span>
-        <span class="n">vec</span><span class="p">,</span> 
-        <span class="n">time_dict</span><span class="p">,</span> 
-        <span class="n">method_names</span><span class="p">,</span>
-        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">"N: number of instances"</span><span class="p">,</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
-<span class="p">)</span>
-</code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_global_files/efficiency_global_9_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_9_0.png"></a></p>
-<h3 id="for-all-features">For all features</h3>
-<div class="highlight"><pre><span></span><code><span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">)]</span>
-<span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"d_pdp"</span><span class="p">]</span>
-<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10_000</span><span class="p">,</span> <span class="mi">25_000</span><span class="p">,</span> <span class="mi">50_000</span><span class="p">])</span>
-<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span> <span class="c1"># ["fit", "eval", "total"]:</span>
-    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: .fit() + .eval() -- single feature"</span>
-
-    <span class="n">bar_plot</span><span class="p">(</span>
-        <span class="n">vec</span><span class="p">,</span> 
-        <span class="n">time_dict</span><span class="p">,</span> 
-        <span class="n">method_names</span><span class="p">,</span>
-        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">"N: number of instances"</span><span class="p">,</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
-<span class="p">)</span>
-</code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_global_files/efficiency_global_12_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_12_0.png"></a></p>
-<h3 id="conclusion">Conclusion</h3>
+<pre><code>model calls per step              fit(0)           plot(0)        re-plot(0)  heter+importance   find_regions(0)          fit(all)
+----------------------------------------------------------------------------------------------------------------------------------
+PDP                                    1                 1                 0                 0                 0                 2
+d-PDP                                  1                 1                 0                 0                 0                 2
+ALE                                    2                 0                 0                 0                 0                 4
+RHALE                                  1                 0                 0                 0                 0                 0
+</code></pre>
+<p>Reading the table:</p>
 <table>
 <thead>
 <tr>
 <th>Method</th>
-<th><code>.fit()</code></th>
-<th><code>.eval()</code></th>
-<th><span class="arithmatex">\(T_1\)</span> (single feature)</th>
-<th><span class="arithmatex">\(T_1\)</span> (all features)</th>
+<th>who pays, and when</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>PDP / d-PDP</strong></td>
-<td><span class="arithmatex">\(c_1 N\)</span></td>
-<td><span class="arithmatex">\(c_2 N\)</span></td>
-<td><span class="arithmatex">\((c_1 + c_2) N\)</span></td>
-<td><span class="arithmatex">\(D (c_1 + c_2) N\)</span></td>
+<td>one call per <em>batch of new positions</em>: <code>fit</code> evaluates the ICE table on the internal grid, the first <code>plot</code> adds the display positions. Each call predicts <code>(positions × N)</code> rows, so <code>N</code> is the knob that matters.</td>
 </tr>
 <tr>
 <td><strong>ALE</strong></td>
-<td><span class="arithmatex">\(\epsilon\)</span></td>
-<td>Free</td>
-<td><span class="arithmatex">\(\epsilon\)</span></td>
-<td><span class="arithmatex">\(D \epsilon \approx 0\)</span></td>
+<td>two calls per feature (the secant's right and left bin edges), each on <code>N</code> rows.</td>
 </tr>
 <tr>
 <td><strong>RHALE</strong></td>
-<td><span class="arithmatex">\(\epsilon\)</span></td>
-<td>Free</td>
-<td><span class="arithmatex">\(\epsilon\)</span></td>
-<td><span class="arithmatex">\(D \epsilon \approx 0\)</span></td>
+<td><strong>one jacobian call per object</strong> — it covers <em>all</em> features, so <code>fit(all)</code> costs nothing extra.</td>
 </tr>
 </tbody>
 </table>
-<blockquote>
-<p>Here, <span class="arithmatex">\(c_1\)</span> and <span class="arithmatex">\(c_2\)</span> are small but nonzero, meaning the runtime scales linearly with <span class="arithmatex">\(N\)</span> but remains low. In contrast, <span class="arithmatex">\(\epsilon\)</span> is extremely small, making ALE and RHALE effectively free in practice.  </p>
-</blockquote>
-<h2 id="t_2-runtime-vs-t_f"><span class="arithmatex">\(T_2\)</span>: runtime vs. <span class="arithmatex">\(t_f\)</span>:</h2>
-<p>To isolate the impact of <span class="arithmatex">\(t_f\)</span>, we reduce <span class="arithmatex">\(N\)</span> to a small value. This assumes that the execution time of <span class="arithmatex">\(f(X)\)</span> remains constant regardless of the dataset size <span class="arithmatex">\(X\)</span>. While this is not always true in general, it is a reasonable assumption for many ML models with vectorized implementations, as long as <span class="arithmatex">\(f(X)\)</span> can be computed in a single pass.</p>
-<h3 id="for-a-single-feature">For a single feature</h3>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.001</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">1_000</span>
-<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
-<span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"d_pdp"</span><span class="p">]</span>
-<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
-<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span> <span class="c1"># ["fit", "eval", "total"]:</span>
-    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- single feature"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: .fit() + .eval() -- single feature"</span>
+<p>And the zeros are the point: <strong>re-plots, heterogeneity, importance, and the
+entire regional search are model-free.</strong> Once the local effects are cached,
+you can explore as much as you like at numpy speed.</p>
+<h2 id="wall-clock-check">Wall-clock check</h2>
+<p>Same story in seconds: wrap the model with an artificial delay of 50 ms per
+call and time a first plot (pays the cache fill) against a second one (free).</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">slow</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mf">0.05</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">wrapped</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">fn</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">wrapped</span>
 
-    <span class="n">bar_plot</span><span class="p">(</span>
-        <span class="n">vec</span><span class="p">,</span> 
-        <span class="n">time_dict</span><span class="p">,</span> 
-        <span class="n">method_names</span><span class="p">,</span>
-        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">"time (sec) to execute f(dataset)"</span><span class="p">,</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
-<span class="p">)</span>
-</code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_global_files/efficiency_global_18_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_18_0.png"></a></p>
-<h3 id="for-all-features_1">For all features</h3>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10_000</span>
-<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">features</span><span class="o">=</span><span class="p">[</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">D</span><span class="p">)]</span>
-<span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"d_pdp"</span><span class="p">]</span>
-<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
-<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"total"</span><span class="p">]:</span> <span class="c1">#["fit", "eval", "total"]:</span>
-    <span class="k">if</span> <span class="n">metric</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"fit"</span><span class="p">,</span> <span class="s2">"eval"</span><span class="p">]:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: ."</span> <span class="o">+</span> <span class="n">metric</span> <span class="o">+</span> <span class="s2">"() -- all features"</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">title</span> <span class="o">=</span> <span class="s2">"Runtime: .fit() + .eval() -- all features"</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'method'</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}{</span><span class="s1">'first plot'</span><span class="si">:</span><span class="s2">&gt;14</span><span class="si">}{</span><span class="s1">'second plot'</span><span class="si">:</span><span class="s2">&gt;14</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"-"</span> <span class="o">*</span> <span class="mi">38</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">name</span> <span class="ow">in</span> <span class="n">names</span><span class="p">:</span>
+    <span class="n">ctor</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">"PDP"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">PDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">slow</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">predict</span><span class="p">),</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
+        <span class="s2">"d-PDP"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">DerPDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">slow</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">predict</span><span class="p">),</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">slow</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">jacobian</span><span class="p">),</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
+        <span class="s2">"ALE"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">ALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">slow</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">predict</span><span class="p">),</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
+        <span class="s2">"RHALE"</span><span class="p">:</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">effector</span><span class="o">.</span><span class="n">RHALE</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">slow</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">predict</span><span class="p">),</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">slow</span><span class="p">(</span><span class="n">f</span><span class="o">.</span><span class="n">jacobian</span><span class="p">),</span> <span class="n">axis_limits</span><span class="o">=</span><span class="n">axis_limits</span><span class="p">),</span>
+    <span class="p">}</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">ctor</span><span class="p">[</span><span class="n">name</span><span class="p">]()</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+    <span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">&lt;10</span><span class="si">}{</span><span class="n">t1</span><span class="si">:</span><span class="s2">&gt;13.2f</span><span class="si">}</span><span class="s2">s</span><span class="si">{</span><span class="n">t2</span><span class="si">:</span><span class="s2">&gt;13.2f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
 
-    <span class="n">bar_plot</span><span class="p">(</span>
-        <span class="n">vec</span><span class="p">,</span> 
-        <span class="n">time_dict</span><span class="p">,</span> 
-        <span class="n">method_names</span><span class="p">,</span>
-        <span class="n">metric</span><span class="o">=</span><span class="n">metric</span><span class="p">,</span>
-        <span class="n">title</span><span class="o">=</span><span class="n">title</span><span class="p">,</span>
-        <span class="n">xlabel</span><span class="o">=</span><span class="s2">"time (sec) to execute f(dataset)"</span><span class="p">,</span>
-        <span class="n">ylabel</span><span class="o">=</span><span class="s2">"time (sec)"</span>
-<span class="p">)</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span><span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s2">"all"</span><span class="p">)</span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_global_files/efficiency_global_22_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_22_0.png"></a></p>
-<h3 id="conclusion_1">Conclusion</h3>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th><code>.fit()</code></th>
-<th><code>.eval()</code></th>
-<th><span class="arithmatex">\(T_2\)</span> (one feature)</th>
-<th><span class="arithmatex">\(T_2\)</span> (all features)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>PDP / d-PDP</strong></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-<td><span class="arithmatex">\(2t_f\)</span></td>
-<td><span class="arithmatex">\(2Dt_f\)</span></td>
-</tr>
-<tr>
-<td><strong>ALE</strong></td>
-<td><span class="arithmatex">\(2t_f\)</span></td>
-<td>Free</td>
-<td><span class="arithmatex">\(2t_f\)</span></td>
-<td><span class="arithmatex">\(2Dt_f\)</span></td>
-</tr>
-<tr>
-<td><strong>RHALE</strong></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-<td>Free</td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-</tr>
-</tbody>
-</table>
-<h2 id="total-runtime">Total Runtime</h2>
-<p>Adding the two parts, we have the total runtime:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th><span class="arithmatex">\(T = T_1 + T_2\)</span> (one feature)</th>
-<th><span class="arithmatex">\(T = T_1 + T_2\)</span> (all features)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>PDP / d-PDP</strong></td>
-<td><span class="arithmatex">\((c_1 + c_2) N + 2 t_f\)</span></td>
-<td><span class="arithmatex">\(D (c_1 + c_2) N + 2 D t_f\)</span></td>
-</tr>
-<tr>
-<td><strong>ALE</strong></td>
-<td><span class="arithmatex">\(2 t_f\)</span></td>
-<td><span class="arithmatex">\(2 D t_f\)</span></td>
-</tr>
-<tr>
-<td><strong>RHALE</strong></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-</tr>
-</tbody>
-</table>
-<h3 id="binning-cost-the-role-of-k-and-binning_method">Binning cost: the role of <code>K</code> and <code>binning_method</code></h3>
-<p>The table above folds binning into the constants by using <code>Fixed(nof_bins=20)</code>. But <strong>ALE and RHALE bin the local effects inside <code>.fit()</code></strong>, and that step has its own cost — a pure-numpy pass over the <span class="arithmatex">\(N\)</span> local effects, <em>independent of the model</em>. With <span class="arithmatex">\(K\)</span> the number of bins, the per-feature binning cost <span class="arithmatex">\(C_\text{bin}\)</span> depends on the <code>binning_method</code> (<code>effector.axis_partitioning</code>):</p>
-<table>
-<thead>
-<tr>
-<th><code>binning_method</code></th>
-<th>complexity</th>
-<th>notes</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>Fixed</code></td>
-<td><span class="arithmatex">\(O(N)\)</span></td>
-<td>uniform grid; <strong>ALE's only option</strong></td>
-</tr>
-<tr>
-<td><code>Quantile</code></td>
-<td><span class="arithmatex">\(O(N \log N)\)</span></td>
-<td>equal-frequency edges; adapts to skewed <span class="arithmatex">\(x\)</span>, ignores <span class="arithmatex">\(y\)</span></td>
-</tr>
-<tr>
-<td><code>Agglomerative</code></td>
-<td><span class="arithmatex">\(O(N + K^2)\)</span></td>
-<td>greedy bottom-up merge of similar bins</td>
-</tr>
-<tr>
-<td><code>DynamicProgramming</code></td>
-<td><span class="arithmatex">\(O(N + K^2)\)</span></td>
-<td>globally optimal bins; <strong>RHALE / ShapDP default</strong></td>
-</tr>
-</tbody>
-</table>
-<p>Because it touches no model, <span class="arithmatex">\(C_\text{bin}\)</span> is negligible against any nonzero <span class="arithmatex">\(t_f\)</span> — <strong>as long as it stays sub-model-call.</strong> The catch is that it is paid <strong>per feature</strong> (<span class="arithmatex">\(D \cdot C_\text{bin}\)</span>), so a slow binner over many features can quietly dominate when <span class="arithmatex">\(t_f\)</span> is small.</p>
-<p>Measured at <span class="arithmatex">\(N = 50{,}000\)</span> (per feature): <code>Fixed</code> ≈ 1.5 ms, <code>Quantile</code> ≈ 2 ms, <code>Agglomerative</code> ≈ 1 ms, <code>DynamicProgramming</code> ≈ 1.5 ms — all millisecond-scale.</p>
-<div class="admonition note">
-<p class="admonition-title">DynamicProgramming used to be the landmine</p>
-<p><code>DynamicProgramming</code> was previously <span class="arithmatex">\(O(K^3 N)\)</span>: at <span class="arithmatex">\(N = 50{,}000,\ K = 40\)</span> it cost <strong>≈ 3.3 s per feature</strong> (≈ <strong>66 s</strong> for <span class="arithmatex">\(D = 20\)</span>) — which could dwarf the model itself for fast <span class="arithmatex">\(t_f\)</span>, and even make RHALE slower than PDP. It is now <span class="arithmatex">\(O(N + K^2)\)</span> (<strong>≈ 1.5 ms</strong>, a ~2000× speedup), which is why it is now the RHALE/ShapDP default: optimal <em>and</em> cheap.</p>
-</div>
-<p>Making binning explicit, the totals for the two accumulation-based methods become:</p>
-<table>
-<thead>
-<tr>
-<th>Method</th>
-<th><span class="arithmatex">\(T\)</span> (all features)</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>ALE</strong></td>
-<td><span class="arithmatex">\(2 D\, t_f + D \cdot O(N)\)</span></td>
-</tr>
-<tr>
-<td><strong>RHALE</strong></td>
-<td><span class="arithmatex">\(t_f + D \cdot C_\text{bin}(N, K, \texttt{binning\_method})\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>RHALE still needs only <strong>one</strong> Jacobian pass for all <span class="arithmatex">\(D\)</span> features, so it stays model-bound: for realistic <span class="arithmatex">\(t_f\)</span>, <span class="arithmatex">\(C_\text{bin}\)</span> is milliseconds and any <code>binning_method</code> is a fine choice.</p>
+<pre><code>method        first plot   second plot
+--------------------------------------
+
+
+PDP                0.20s         0.03s
+
+
+d-PDP              0.24s         0.03s
+
+
+ALE                0.25s         0.03s
+RHALE              0.08s         0.02s
+</code></pre>
 <h2 id="shap-dp">SHAP-DP</h2>
-<p>SHAP-DP is a much slower method, compared to the others. Let's see how it scales with <span class="arithmatex">\(N\)</span> and <span class="arithmatex">\(t_f\)</span>.</p>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">10_000</span>
-<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
+<p>SHAP-DP is the exception in magnitude, not in structure: its local effect is
+the per-instance SHAP value, and the explainer that computes the <code>(N, D)</code>
+table is <em>itself</em> a loop of model calls (controlled by <code>budget</code>). The table is
+computed <strong>once per object</strong> — after that, SHAP-DP is as free as everything
+else. The practical knobs are <code>nof_instances</code> (default 1,000) and <code>budget</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">m</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">ShapDP</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">budget</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+
+<span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+<span class="n">tic</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">();</span> <span class="n">m</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">show_plot</span><span class="o">=</span><span class="kc">False</span><span class="p">);</span> <span class="n">t3</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">tic</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"first plot (computes the SHAP table): </span><span class="si">{</span><span class="n">t1</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"second plot (cache):                  </span><span class="si">{</span><span class="n">t2</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2">s"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"first plot of ANOTHER feature:        </span><span class="si">{</span><span class="n">t3</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2">s  (the table is shared)"</span><span class="p">)</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">matplotlib.pyplot</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">plt</span><span class="p">;</span> <span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">(</span><span class="s2">"all"</span><span class="p">)</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"shap_dp"</span><span class="p">]</span>
-<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">])</span>
-<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">N</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
-</code></pre></div>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer: 51it [00:10, 10.01s/it]                </p>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer: 51it [00:10, 10.04s/it]                </p>
-<p>ExactExplainer explainer:  50%|█████     | 50/100 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 52/100 [00:10&lt;00:04,  9.82it/s]</p>
-<p>ExactExplainer explainer:  53%|█████▎    | 53/100 [00:10&lt;00:06,  6.95it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 54/100 [00:10&lt;00:07,  6.01it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▌    | 55/100 [00:10&lt;00:08,  5.54it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 56/100 [00:11&lt;00:08,  5.31it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▋    | 57/100 [00:11&lt;00:08,  5.18it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 58/100 [00:11&lt;00:08,  5.10it/s]</p>
-<p>ExactExplainer explainer:  59%|█████▉    | 59/100 [00:11&lt;00:08,  5.04it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 60/100 [00:11&lt;00:08,  5.00it/s]</p>
-<p>ExactExplainer explainer:  61%|██████    | 61/100 [00:12&lt;00:07,  4.96it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 62/100 [00:12&lt;00:07,  4.92it/s]</p>
-<p>ExactExplainer explainer:  63%|██████▎   | 63/100 [00:12&lt;00:07,  4.91it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 64/100 [00:12&lt;00:07,  4.88it/s]</p>
-<p>ExactExplainer explainer:  65%|██████▌   | 65/100 [00:12&lt;00:07,  4.86it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 66/100 [00:13&lt;00:06,  4.87it/s]</p>
-<p>ExactExplainer explainer:  67%|██████▋   | 67/100 [00:13&lt;00:06,  4.86it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 68/100 [00:13&lt;00:06,  4.89it/s]</p>
-<p>ExactExplainer explainer:  69%|██████▉   | 69/100 [00:13&lt;00:06,  4.90it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 70/100 [00:13&lt;00:06,  4.91it/s]</p>
-<p>ExactExplainer explainer:  71%|███████   | 71/100 [00:14&lt;00:05,  4.91it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 72/100 [00:14&lt;00:05,  4.89it/s]</p>
-<p>ExactExplainer explainer:  73%|███████▎  | 73/100 [00:14&lt;00:05,  4.89it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 74/100 [00:14&lt;00:05,  4.88it/s]</p>
-<p>ExactExplainer explainer:  75%|███████▌  | 75/100 [00:14&lt;00:05,  4.90it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 76/100 [00:15&lt;00:04,  4.91it/s]</p>
-<p>ExactExplainer explainer:  77%|███████▋  | 77/100 [00:15&lt;00:04,  4.91it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 78/100 [00:15&lt;00:04,  4.92it/s]</p>
-<p>ExactExplainer explainer:  79%|███████▉  | 79/100 [00:15&lt;00:04,  4.92it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 80/100 [00:15&lt;00:04,  4.92it/s]</p>
-<p>ExactExplainer explainer:  81%|████████  | 81/100 [00:16&lt;00:03,  4.93it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 82/100 [00:16&lt;00:03,  4.93it/s]</p>
-<p>ExactExplainer explainer:  83%|████████▎ | 83/100 [00:16&lt;00:03,  4.93it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 84/100 [00:16&lt;00:03,  4.93it/s]</p>
-<p>ExactExplainer explainer:  85%|████████▌ | 85/100 [00:17&lt;00:03,  4.91it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 86/100 [00:17&lt;00:02,  4.91it/s]</p>
-<p>ExactExplainer explainer:  87%|████████▋ | 87/100 [00:17&lt;00:02,  4.90it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 88/100 [00:17&lt;00:02,  4.91it/s]</p>
-<p>ExactExplainer explainer:  89%|████████▉ | 89/100 [00:17&lt;00:02,  4.92it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 90/100 [00:18&lt;00:02,  4.92it/s]</p>
-<p>ExactExplainer explainer:  91%|█████████ | 91/100 [00:18&lt;00:01,  4.89it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 92/100 [00:18&lt;00:01,  4.87it/s]</p>
-<p>ExactExplainer explainer:  93%|█████████▎| 93/100 [00:18&lt;00:01,  4.89it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 94/100 [00:18&lt;00:01,  4.89it/s]</p>
-<p>ExactExplainer explainer:  95%|█████████▌| 95/100 [00:19&lt;00:01,  4.90it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 96/100 [00:19&lt;00:00,  4.90it/s]</p>
-<p>ExactExplainer explainer:  97%|█████████▋| 97/100 [00:19&lt;00:00,  4.88it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 98/100 [00:19&lt;00:00,  4.88it/s]</p>
-<p>ExactExplainer explainer:  99%|█████████▉| 99/100 [00:19&lt;00:00,  4.88it/s]</p>
-<p>ExactExplainer explainer: 100%|██████████| 100/100 [00:20&lt;00:00,  4.89it/s]</p>
-<p>ExactExplainer explainer: 101it [00:20,  4.89it/s]                         </p>
-<p>ExactExplainer explainer: 101it [00:20,  2.51it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 50/100 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 52/100 [00:10&lt;00:04,  9.82it/s]</p>
-<p>ExactExplainer explainer:  53%|█████▎    | 53/100 [00:10&lt;00:06,  6.84it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 54/100 [00:10&lt;00:07,  5.93it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▌    | 55/100 [00:10&lt;00:08,  5.52it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 56/100 [00:11&lt;00:08,  5.27it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▋    | 57/100 [00:11&lt;00:08,  5.13it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 58/100 [00:11&lt;00:08,  5.04it/s]</p>
-<p>ExactExplainer explainer:  59%|█████▉    | 59/100 [00:11&lt;00:08,  5.00it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 60/100 [00:11&lt;00:08,  4.98it/s]</p>
-<p>ExactExplainer explainer:  61%|██████    | 61/100 [00:12&lt;00:07,  4.93it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 62/100 [00:12&lt;00:07,  4.93it/s]</p>
-<p>ExactExplainer explainer:  63%|██████▎   | 63/100 [00:12&lt;00:07,  4.92it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 64/100 [00:12&lt;00:07,  4.90it/s]</p>
-<p>ExactExplainer explainer:  65%|██████▌   | 65/100 [00:12&lt;00:07,  4.90it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 66/100 [00:13&lt;00:06,  4.88it/s]</p>
-<p>ExactExplainer explainer:  67%|██████▋   | 67/100 [00:13&lt;00:06,  4.87it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 68/100 [00:13&lt;00:06,  4.88it/s]</p>
-<p>ExactExplainer explainer:  69%|██████▉   | 69/100 [00:13&lt;00:06,  4.88it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 70/100 [00:13&lt;00:06,  4.89it/s]</p>
-<p>ExactExplainer explainer:  71%|███████   | 71/100 [00:14&lt;00:05,  4.87it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 72/100 [00:14&lt;00:05,  4.85it/s]</p>
-<p>ExactExplainer explainer:  73%|███████▎  | 73/100 [00:14&lt;00:05,  4.86it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 74/100 [00:14&lt;00:05,  4.88it/s]</p>
-<p>ExactExplainer explainer:  75%|███████▌  | 75/100 [00:14&lt;00:05,  4.88it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 76/100 [00:15&lt;00:04,  4.87it/s]</p>
-<p>ExactExplainer explainer:  77%|███████▋  | 77/100 [00:15&lt;00:04,  4.84it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 78/100 [00:15&lt;00:04,  4.85it/s]</p>
-<p>ExactExplainer explainer:  79%|███████▉  | 79/100 [00:15&lt;00:04,  4.86it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 80/100 [00:15&lt;00:04,  4.87it/s]</p>
-<p>ExactExplainer explainer:  81%|████████  | 81/100 [00:16&lt;00:03,  4.87it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 82/100 [00:16&lt;00:03,  4.86it/s]</p>
-<p>ExactExplainer explainer:  83%|████████▎ | 83/100 [00:16&lt;00:03,  4.87it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 84/100 [00:16&lt;00:03,  4.87it/s]</p>
-<p>ExactExplainer explainer:  85%|████████▌ | 85/100 [00:17&lt;00:03,  4.86it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 86/100 [00:17&lt;00:02,  4.86it/s]</p>
-<p>ExactExplainer explainer:  87%|████████▋ | 87/100 [00:17&lt;00:02,  4.87it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 88/100 [00:17&lt;00:02,  4.85it/s]</p>
-<p>ExactExplainer explainer:  89%|████████▉ | 89/100 [00:17&lt;00:02,  4.87it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 90/100 [00:18&lt;00:02,  4.88it/s]</p>
-<p>ExactExplainer explainer:  91%|█████████ | 91/100 [00:18&lt;00:01,  4.86it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 92/100 [00:18&lt;00:01,  4.87it/s]</p>
-<p>ExactExplainer explainer:  93%|█████████▎| 93/100 [00:18&lt;00:01,  4.88it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 94/100 [00:18&lt;00:01,  4.86it/s]</p>
-<p>ExactExplainer explainer:  95%|█████████▌| 95/100 [00:19&lt;00:01,  4.85it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 96/100 [00:19&lt;00:00,  4.86it/s]</p>
-<p>ExactExplainer explainer:  97%|█████████▋| 97/100 [00:19&lt;00:00,  4.85it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 98/100 [00:19&lt;00:00,  4.87it/s]</p>
-<p>ExactExplainer explainer:  99%|█████████▉| 99/100 [00:19&lt;00:00,  4.88it/s]</p>
-<p>ExactExplainer explainer: 100%|██████████| 100/100 [00:20&lt;00:00,  4.89it/s]</p>
-<p>ExactExplainer explainer: 101it [00:20,  4.88it/s]                         </p>
-<p>ExactExplainer explainer: 101it [00:20,  2.51it/s]</p>
-<p>ExactExplainer explainer:  25%|██▌       | 50/200 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 52/200 [00:10&lt;00:14,  9.90it/s]</p>
-<p>ExactExplainer explainer:  26%|██▋       | 53/200 [00:10&lt;00:21,  6.94it/s]</p>
-<p>ExactExplainer explainer:  27%|██▋       | 54/200 [00:10&lt;00:24,  5.98it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 55/200 [00:10&lt;00:26,  5.57it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 56/200 [00:11&lt;00:26,  5.35it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 57/200 [00:11&lt;00:27,  5.20it/s]</p>
-<p>ExactExplainer explainer:  29%|██▉       | 58/200 [00:11&lt;00:28,  5.05it/s]</p>
-<p>ExactExplainer explainer:  30%|██▉       | 59/200 [00:11&lt;00:28,  4.91it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 60/200 [00:11&lt;00:28,  4.88it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 61/200 [00:12&lt;00:28,  4.89it/s]</p>
-<p>ExactExplainer explainer:  31%|███       | 62/200 [00:12&lt;00:28,  4.87it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 63/200 [00:12&lt;00:28,  4.87it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 64/200 [00:12&lt;00:27,  4.89it/s]</p>
-<p>ExactExplainer explainer:  32%|███▎      | 65/200 [00:12&lt;00:27,  4.88it/s]</p>
-<p>ExactExplainer explainer:  33%|███▎      | 66/200 [00:13&lt;00:27,  4.89it/s]</p>
-<p>ExactExplainer explainer:  34%|███▎      | 67/200 [00:13&lt;00:27,  4.90it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 68/200 [00:13&lt;00:27,  4.87it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 69/200 [00:13&lt;00:26,  4.86it/s]</p>
-<p>ExactExplainer explainer:  35%|███▌      | 70/200 [00:13&lt;00:26,  4.86it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 71/200 [00:14&lt;00:26,  4.89it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 72/200 [00:14&lt;00:26,  4.90it/s]</p>
-<p>ExactExplainer explainer:  36%|███▋      | 73/200 [00:14&lt;00:25,  4.90it/s]</p>
-<p>ExactExplainer explainer:  37%|███▋      | 74/200 [00:14&lt;00:25,  4.89it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 75/200 [00:14&lt;00:25,  4.90it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 76/200 [00:15&lt;00:25,  4.91it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 77/200 [00:15&lt;00:25,  4.92it/s]</p>
-<p>ExactExplainer explainer:  39%|███▉      | 78/200 [00:15&lt;00:24,  4.91it/s]</p>
-<p>ExactExplainer explainer:  40%|███▉      | 79/200 [00:15&lt;00:24,  4.92it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 80/200 [00:15&lt;00:24,  4.91it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 81/200 [00:16&lt;00:24,  4.90it/s]</p>
-<p>ExactExplainer explainer:  41%|████      | 82/200 [00:16&lt;00:24,  4.91it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 83/200 [00:16&lt;00:23,  4.92it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 84/200 [00:16&lt;00:23,  4.93it/s]</p>
-<p>ExactExplainer explainer:  42%|████▎     | 85/200 [00:17&lt;00:23,  4.94it/s]</p>
-<p>ExactExplainer explainer:  43%|████▎     | 86/200 [00:17&lt;00:23,  4.94it/s]</p>
-<p>ExactExplainer explainer:  44%|████▎     | 87/200 [00:17&lt;00:22,  4.94it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 88/200 [00:17&lt;00:22,  4.94it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 89/200 [00:17&lt;00:22,  4.93it/s]</p>
-<p>ExactExplainer explainer:  45%|████▌     | 90/200 [00:18&lt;00:22,  4.89it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 91/200 [00:18&lt;00:22,  4.89it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 92/200 [00:18&lt;00:22,  4.89it/s]</p>
-<p>ExactExplainer explainer:  46%|████▋     | 93/200 [00:18&lt;00:21,  4.89it/s]</p>
-<p>ExactExplainer explainer:  47%|████▋     | 94/200 [00:18&lt;00:21,  4.88it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 95/200 [00:19&lt;00:21,  4.86it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 96/200 [00:19&lt;00:21,  4.88it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 97/200 [00:19&lt;00:21,  4.88it/s]</p>
-<p>ExactExplainer explainer:  49%|████▉     | 98/200 [00:19&lt;00:20,  4.87it/s]</p>
-<p>ExactExplainer explainer:  50%|████▉     | 99/200 [00:19&lt;00:20,  4.85it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 100/200 [00:20&lt;00:20,  4.86it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 101/200 [00:20&lt;00:20,  4.85it/s]</p>
-<p>ExactExplainer explainer:  51%|█████     | 102/200 [00:20&lt;00:20,  4.85it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 103/200 [00:20&lt;00:19,  4.86it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 104/200 [00:20&lt;00:19,  4.84it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▎    | 105/200 [00:21&lt;00:19,  4.86it/s]</p>
-<p>ExactExplainer explainer:  53%|█████▎    | 106/200 [00:21&lt;00:19,  4.88it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▎    | 107/200 [00:21&lt;00:19,  4.89it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 108/200 [00:21&lt;00:18,  4.89it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▍    | 109/200 [00:21&lt;00:18,  4.89it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▌    | 110/200 [00:22&lt;00:18,  4.88it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 111/200 [00:22&lt;00:18,  4.88it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 112/200 [00:22&lt;00:18,  4.87it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▋    | 113/200 [00:22&lt;00:17,  4.86it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▋    | 114/200 [00:22&lt;00:17,  4.85it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▊    | 115/200 [00:23&lt;00:17,  4.86it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 116/200 [00:23&lt;00:17,  4.87it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 117/200 [00:23&lt;00:17,  4.86it/s]</p>
-<p>ExactExplainer explainer:  59%|█████▉    | 118/200 [00:23&lt;00:16,  4.88it/s]</p>
-<p>ExactExplainer explainer:  60%|█████▉    | 119/200 [00:23&lt;00:16,  4.89it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 120/200 [00:24&lt;00:16,  4.89it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 121/200 [00:24&lt;00:16,  4.90it/s]</p>
-<p>ExactExplainer explainer:  61%|██████    | 122/200 [00:24&lt;00:15,  4.91it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 123/200 [00:24&lt;00:15,  4.91it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 124/200 [00:24&lt;00:15,  4.92it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▎   | 125/200 [00:25&lt;00:15,  4.92it/s]</p>
-<p>ExactExplainer explainer:  63%|██████▎   | 126/200 [00:25&lt;00:15,  4.92it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▎   | 127/200 [00:25&lt;00:14,  4.92it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 128/200 [00:25&lt;00:14,  4.91it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 129/200 [00:26&lt;00:14,  4.91it/s]</p>
-<p>ExactExplainer explainer:  65%|██████▌   | 130/200 [00:26&lt;00:14,  4.89it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 131/200 [00:26&lt;00:14,  4.90it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 132/200 [00:26&lt;00:13,  4.87it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▋   | 133/200 [00:26&lt;00:13,  4.88it/s]</p>
-<p>ExactExplainer explainer:  67%|██████▋   | 134/200 [00:27&lt;00:13,  4.90it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 135/200 [00:27&lt;00:13,  4.89it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 136/200 [00:27&lt;00:13,  4.86it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 137/200 [00:27&lt;00:12,  4.88it/s]</p>
-<p>ExactExplainer explainer:  69%|██████▉   | 138/200 [00:27&lt;00:12,  4.87it/s]</p>
-<p>ExactExplainer explainer:  70%|██████▉   | 139/200 [00:28&lt;00:12,  4.84it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 140/200 [00:28&lt;00:12,  4.87it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 141/200 [00:28&lt;00:12,  4.89it/s]</p>
-<p>ExactExplainer explainer:  71%|███████   | 142/200 [00:28&lt;00:11,  4.90it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 143/200 [00:28&lt;00:11,  4.92it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 144/200 [00:29&lt;00:11,  4.92it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▎  | 145/200 [00:29&lt;00:11,  4.93it/s]</p>
-<p>ExactExplainer explainer:  73%|███████▎  | 146/200 [00:29&lt;00:10,  4.93it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▎  | 147/200 [00:29&lt;00:10,  4.91it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 148/200 [00:29&lt;00:10,  4.91it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 149/200 [00:30&lt;00:10,  4.91it/s]</p>
-<p>ExactExplainer explainer:  75%|███████▌  | 150/200 [00:30&lt;00:10,  4.89it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 151/200 [00:30&lt;00:10,  4.89it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 152/200 [00:30&lt;00:09,  4.89it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▋  | 153/200 [00:30&lt;00:09,  4.87it/s]</p>
-<p>ExactExplainer explainer:  77%|███████▋  | 154/200 [00:31&lt;00:09,  4.87it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 155/200 [00:31&lt;00:09,  4.86it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 156/200 [00:31&lt;00:09,  4.88it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 157/200 [00:31&lt;00:08,  4.88it/s]</p>
-<p>ExactExplainer explainer:  79%|███████▉  | 158/200 [00:31&lt;00:08,  4.87it/s]</p>
-<p>ExactExplainer explainer:  80%|███████▉  | 159/200 [00:32&lt;00:08,  4.86it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 160/200 [00:32&lt;00:08,  4.87it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 161/200 [00:32&lt;00:08,  4.85it/s]</p>
-<p>ExactExplainer explainer:  81%|████████  | 162/200 [00:32&lt;00:07,  4.84it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 163/200 [00:32&lt;00:07,  4.86it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 164/200 [00:33&lt;00:07,  4.87it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▎ | 165/200 [00:33&lt;00:07,  4.86it/s]</p>
-<p>ExactExplainer explainer:  83%|████████▎ | 166/200 [00:33&lt;00:06,  4.88it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▎ | 167/200 [00:33&lt;00:06,  4.85it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 168/200 [00:34&lt;00:06,  4.84it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 169/200 [00:34&lt;00:06,  4.84it/s]</p>
-<p>ExactExplainer explainer:  85%|████████▌ | 170/200 [00:34&lt;00:06,  4.87it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 171/200 [00:34&lt;00:05,  4.89it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 172/200 [00:34&lt;00:05,  4.91it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▋ | 173/200 [00:35&lt;00:05,  4.92it/s]</p>
-<p>ExactExplainer explainer:  87%|████████▋ | 174/200 [00:35&lt;00:05,  4.92it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 175/200 [00:35&lt;00:05,  4.92it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 176/200 [00:35&lt;00:04,  4.93it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 177/200 [00:35&lt;00:04,  4.93it/s]</p>
-<p>ExactExplainer explainer:  89%|████████▉ | 178/200 [00:36&lt;00:04,  4.92it/s]</p>
-<p>ExactExplainer explainer:  90%|████████▉ | 179/200 [00:36&lt;00:04,  4.92it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 180/200 [00:36&lt;00:04,  4.91it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 181/200 [00:36&lt;00:03,  4.88it/s]</p>
-<p>ExactExplainer explainer:  91%|█████████ | 182/200 [00:36&lt;00:03,  4.90it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 183/200 [00:37&lt;00:03,  4.91it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 184/200 [00:37&lt;00:03,  4.91it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▎| 185/200 [00:37&lt;00:03,  4.92it/s]</p>
-<p>ExactExplainer explainer:  93%|█████████▎| 186/200 [00:37&lt;00:02,  4.92it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▎| 187/200 [00:37&lt;00:02,  4.91it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 188/200 [00:38&lt;00:02,  4.89it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 189/200 [00:38&lt;00:02,  4.90it/s]</p>
-<p>ExactExplainer explainer:  95%|█████████▌| 190/200 [00:38&lt;00:02,  4.91it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 191/200 [00:38&lt;00:01,  4.92it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 192/200 [00:38&lt;00:01,  4.91it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▋| 193/200 [00:39&lt;00:01,  4.91it/s]</p>
-<p>ExactExplainer explainer:  97%|█████████▋| 194/200 [00:39&lt;00:01,  4.89it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 195/200 [00:39&lt;00:01,  4.89it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 196/200 [00:39&lt;00:00,  4.88it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 197/200 [00:39&lt;00:00,  4.85it/s]</p>
-<p>ExactExplainer explainer:  99%|█████████▉| 198/200 [00:40&lt;00:00,  4.85it/s]</p>
-<p>ExactExplainer explainer: 100%|█████████▉| 199/200 [00:40&lt;00:00,  4.87it/s]</p>
-<p>ExactExplainer explainer: 100%|██████████| 200/200 [00:40&lt;00:00,  4.88it/s]</p>
-<p>ExactExplainer explainer: 201it [00:40,  4.86it/s]                         </p>
-<p>ExactExplainer explainer: 201it [00:40,  3.71it/s]</p>
-<p>ExactExplainer explainer:  25%|██▌       | 50/200 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 52/200 [00:10&lt;00:15,  9.78it/s]</p>
-<p>ExactExplainer explainer:  26%|██▋       | 53/200 [00:10&lt;00:21,  6.90it/s]</p>
-<p>ExactExplainer explainer:  27%|██▋       | 54/200 [00:10&lt;00:24,  5.95it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 55/200 [00:10&lt;00:26,  5.53it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 56/200 [00:11&lt;00:27,  5.29it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 57/200 [00:11&lt;00:27,  5.14it/s]</p>
-<p>ExactExplainer explainer:  29%|██▉       | 58/200 [00:11&lt;00:28,  5.06it/s]</p>
-<p>ExactExplainer explainer:  30%|██▉       | 59/200 [00:11&lt;00:28,  4.99it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 60/200 [00:11&lt;00:28,  4.95it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 61/200 [00:12&lt;00:28,  4.94it/s]</p>
-<p>ExactExplainer explainer:  31%|███       | 62/200 [00:12&lt;00:28,  4.92it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 63/200 [00:12&lt;00:28,  4.89it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 64/200 [00:12&lt;00:27,  4.89it/s]</p>
-<p>ExactExplainer explainer:  32%|███▎      | 65/200 [00:12&lt;00:27,  4.89it/s]</p>
-<p>ExactExplainer explainer:  33%|███▎      | 66/200 [00:13&lt;00:27,  4.90it/s]</p>
-<p>ExactExplainer explainer:  34%|███▎      | 67/200 [00:13&lt;00:27,  4.90it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 68/200 [00:13&lt;00:27,  4.87it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 69/200 [00:13&lt;00:26,  4.88it/s]</p>
-<p>ExactExplainer explainer:  35%|███▌      | 70/200 [00:13&lt;00:26,  4.87it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 71/200 [00:14&lt;00:26,  4.88it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 72/200 [00:14&lt;00:26,  4.86it/s]</p>
-<p>ExactExplainer explainer:  36%|███▋      | 73/200 [00:14&lt;00:26,  4.85it/s]</p>
-<p>ExactExplainer explainer:  37%|███▋      | 74/200 [00:14&lt;00:25,  4.85it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 75/200 [00:14&lt;00:25,  4.84it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 76/200 [00:15&lt;00:25,  4.86it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 77/200 [00:15&lt;00:25,  4.87it/s]</p>
-<p>ExactExplainer explainer:  39%|███▉      | 78/200 [00:15&lt;00:25,  4.85it/s]</p>
-<p>ExactExplainer explainer:  40%|███▉      | 79/200 [00:15&lt;00:24,  4.86it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 80/200 [00:16&lt;00:24,  4.85it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 81/200 [00:16&lt;00:24,  4.87it/s]</p>
-<p>ExactExplainer explainer:  41%|████      | 82/200 [00:16&lt;00:24,  4.86it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 83/200 [00:16&lt;00:24,  4.86it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 84/200 [00:16&lt;00:23,  4.85it/s]</p>
-<p>ExactExplainer explainer:  42%|████▎     | 85/200 [00:17&lt;00:23,  4.87it/s]</p>
-<p>ExactExplainer explainer:  43%|████▎     | 86/200 [00:17&lt;00:23,  4.88it/s]</p>
-<p>ExactExplainer explainer:  44%|████▎     | 87/200 [00:17&lt;00:23,  4.85it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 88/200 [00:17&lt;00:23,  4.84it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 89/200 [00:17&lt;00:22,  4.86it/s]</p>
-<p>ExactExplainer explainer:  45%|████▌     | 90/200 [00:18&lt;00:22,  4.84it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 91/200 [00:18&lt;00:22,  4.86it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 92/200 [00:18&lt;00:22,  4.85it/s]</p>
-<p>ExactExplainer explainer:  46%|████▋     | 93/200 [00:18&lt;00:22,  4.85it/s]</p>
-<p>ExactExplainer explainer:  47%|████▋     | 94/200 [00:18&lt;00:21,  4.87it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 95/200 [00:19&lt;00:21,  4.86it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 96/200 [00:19&lt;00:21,  4.88it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 97/200 [00:19&lt;00:21,  4.88it/s]</p>
-<p>ExactExplainer explainer:  49%|████▉     | 98/200 [00:19&lt;00:20,  4.88it/s]</p>
-<p>ExactExplainer explainer:  50%|████▉     | 99/200 [00:19&lt;00:20,  4.88it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 100/200 [00:20&lt;00:20,  4.88it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 101/200 [00:20&lt;00:20,  4.87it/s]</p>
-<p>ExactExplainer explainer:  51%|█████     | 102/200 [00:20&lt;00:20,  4.85it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 103/200 [00:20&lt;00:19,  4.86it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 104/200 [00:20&lt;00:19,  4.87it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▎    | 105/200 [00:21&lt;00:19,  4.85it/s]</p>
-<p>ExactExplainer explainer:  53%|█████▎    | 106/200 [00:21&lt;00:19,  4.84it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▎    | 107/200 [00:21&lt;00:19,  4.83it/s]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 108/200 [00:21&lt;00:19,  4.83it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▍    | 109/200 [00:21&lt;00:18,  4.85it/s]</p>
-<p>ExactExplainer explainer:  55%|█████▌    | 110/200 [00:22&lt;00:18,  4.85it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 111/200 [00:22&lt;00:18,  4.87it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 112/200 [00:22&lt;00:18,  4.86it/s]</p>
-<p>ExactExplainer explainer:  56%|█████▋    | 113/200 [00:22&lt;00:17,  4.85it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▋    | 114/200 [00:23&lt;00:17,  4.85it/s]</p>
-<p>ExactExplainer explainer:  57%|█████▊    | 115/200 [00:23&lt;00:17,  4.84it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 116/200 [00:23&lt;00:17,  4.86it/s]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 117/200 [00:23&lt;00:16,  4.89it/s]</p>
-<p>ExactExplainer explainer:  59%|█████▉    | 118/200 [00:23&lt;00:16,  4.89it/s]</p>
-<p>ExactExplainer explainer:  60%|█████▉    | 119/200 [00:24&lt;00:16,  4.90it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 120/200 [00:24&lt;00:16,  4.89it/s]</p>
-<p>ExactExplainer explainer:  60%|██████    | 121/200 [00:24&lt;00:16,  4.90it/s]</p>
-<p>ExactExplainer explainer:  61%|██████    | 122/200 [00:24&lt;00:16,  4.87it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 123/200 [00:24&lt;00:15,  4.88it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 124/200 [00:25&lt;00:15,  4.87it/s]</p>
-<p>ExactExplainer explainer:  62%|██████▎   | 125/200 [00:25&lt;00:15,  4.88it/s]</p>
-<p>ExactExplainer explainer:  63%|██████▎   | 126/200 [00:25&lt;00:15,  4.88it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▎   | 127/200 [00:25&lt;00:14,  4.89it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 128/200 [00:25&lt;00:14,  4.89it/s]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 129/200 [00:26&lt;00:14,  4.89it/s]</p>
-<p>ExactExplainer explainer:  65%|██████▌   | 130/200 [00:26&lt;00:14,  4.87it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 131/200 [00:26&lt;00:14,  4.89it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 132/200 [00:26&lt;00:13,  4.89it/s]</p>
-<p>ExactExplainer explainer:  66%|██████▋   | 133/200 [00:26&lt;00:13,  4.87it/s]</p>
-<p>ExactExplainer explainer:  67%|██████▋   | 134/200 [00:27&lt;00:13,  4.87it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 135/200 [00:27&lt;00:13,  4.85it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 136/200 [00:27&lt;00:13,  4.84it/s]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 137/200 [00:27&lt;00:13,  4.83it/s]</p>
-<p>ExactExplainer explainer:  69%|██████▉   | 138/200 [00:27&lt;00:12,  4.83it/s]</p>
-<p>ExactExplainer explainer:  70%|██████▉   | 139/200 [00:28&lt;00:12,  4.82it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 140/200 [00:28&lt;00:12,  4.81it/s]</p>
-<p>ExactExplainer explainer:  70%|███████   | 141/200 [00:28&lt;00:12,  4.82it/s]</p>
-<p>ExactExplainer explainer:  71%|███████   | 142/200 [00:28&lt;00:12,  4.81it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 143/200 [00:28&lt;00:11,  4.81it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 144/200 [00:29&lt;00:11,  4.82it/s]</p>
-<p>ExactExplainer explainer:  72%|███████▎  | 145/200 [00:29&lt;00:11,  4.85it/s]</p>
-<p>ExactExplainer explainer:  73%|███████▎  | 146/200 [00:29&lt;00:11,  4.84it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▎  | 147/200 [00:29&lt;00:10,  4.83it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 148/200 [00:30&lt;00:10,  4.82it/s]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 149/200 [00:30&lt;00:10,  4.82it/s]</p>
-<p>ExactExplainer explainer:  75%|███████▌  | 150/200 [00:30&lt;00:10,  4.84it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 151/200 [00:30&lt;00:10,  4.84it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 152/200 [00:30&lt;00:09,  4.83it/s]</p>
-<p>ExactExplainer explainer:  76%|███████▋  | 153/200 [00:31&lt;00:09,  4.85it/s]</p>
-<p>ExactExplainer explainer:  77%|███████▋  | 154/200 [00:31&lt;00:09,  4.83it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 155/200 [00:31&lt;00:09,  4.84it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 156/200 [00:31&lt;00:09,  4.85it/s]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 157/200 [00:31&lt;00:08,  4.85it/s]</p>
-<p>ExactExplainer explainer:  79%|███████▉  | 158/200 [00:32&lt;00:08,  4.87it/s]</p>
-<p>ExactExplainer explainer:  80%|███████▉  | 159/200 [00:32&lt;00:08,  4.85it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 160/200 [00:32&lt;00:08,  4.83it/s]</p>
-<p>ExactExplainer explainer:  80%|████████  | 161/200 [00:32&lt;00:08,  4.86it/s]</p>
-<p>ExactExplainer explainer:  81%|████████  | 162/200 [00:32&lt;00:07,  4.85it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 163/200 [00:33&lt;00:07,  4.85it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 164/200 [00:33&lt;00:07,  4.84it/s]</p>
-<p>ExactExplainer explainer:  82%|████████▎ | 165/200 [00:33&lt;00:07,  4.83it/s]</p>
-<p>ExactExplainer explainer:  83%|████████▎ | 166/200 [00:33&lt;00:07,  4.84it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▎ | 167/200 [00:33&lt;00:06,  4.83it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 168/200 [00:34&lt;00:06,  4.82it/s]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 169/200 [00:34&lt;00:06,  4.83it/s]</p>
-<p>ExactExplainer explainer:  85%|████████▌ | 170/200 [00:34&lt;00:06,  4.84it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 171/200 [00:34&lt;00:05,  4.85it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 172/200 [00:34&lt;00:05,  4.85it/s]</p>
-<p>ExactExplainer explainer:  86%|████████▋ | 173/200 [00:35&lt;00:05,  4.85it/s]</p>
-<p>ExactExplainer explainer:  87%|████████▋ | 174/200 [00:35&lt;00:05,  4.87it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 175/200 [00:35&lt;00:05,  4.86it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 176/200 [00:35&lt;00:04,  4.88it/s]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 177/200 [00:35&lt;00:04,  4.88it/s]</p>
-<p>ExactExplainer explainer:  89%|████████▉ | 178/200 [00:36&lt;00:04,  4.85it/s]</p>
-<p>ExactExplainer explainer:  90%|████████▉ | 179/200 [00:36&lt;00:04,  4.84it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 180/200 [00:36&lt;00:04,  4.84it/s]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 181/200 [00:36&lt;00:03,  4.85it/s]</p>
-<p>ExactExplainer explainer:  91%|█████████ | 182/200 [00:37&lt;00:03,  4.84it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 183/200 [00:37&lt;00:03,  4.84it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 184/200 [00:37&lt;00:03,  4.83it/s]</p>
-<p>ExactExplainer explainer:  92%|█████████▎| 185/200 [00:37&lt;00:03,  4.86it/s]</p>
-<p>ExactExplainer explainer:  93%|█████████▎| 186/200 [00:37&lt;00:02,  4.87it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▎| 187/200 [00:38&lt;00:02,  4.85it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 188/200 [00:38&lt;00:02,  4.83it/s]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 189/200 [00:38&lt;00:02,  4.82it/s]</p>
-<p>ExactExplainer explainer:  95%|█████████▌| 190/200 [00:38&lt;00:02,  4.81it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 191/200 [00:38&lt;00:01,  4.84it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 192/200 [00:39&lt;00:01,  4.84it/s]</p>
-<p>ExactExplainer explainer:  96%|█████████▋| 193/200 [00:39&lt;00:01,  4.84it/s]</p>
-<p>ExactExplainer explainer:  97%|█████████▋| 194/200 [00:39&lt;00:01,  4.86it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 195/200 [00:39&lt;00:01,  4.87it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 196/200 [00:39&lt;00:00,  4.87it/s]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 197/200 [00:40&lt;00:00,  4.84it/s]</p>
-<p>ExactExplainer explainer:  99%|█████████▉| 198/200 [00:40&lt;00:00,  4.83it/s]</p>
-<p>ExactExplainer explainer: 100%|█████████▉| 199/200 [00:40&lt;00:00,  4.83it/s]</p>
-<p>ExactExplainer explainer: 100%|██████████| 200/200 [00:40&lt;00:00,  4.82it/s]</p>
-<p>ExactExplainer explainer: 201it [00:40,  4.85it/s]                         </p>
-<p>ExactExplainer explainer: 201it [00:40,  3.69it/s]</p>
-<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">vec</span><span class="p">,</span>
-    <span class="p">[</span><span class="n">tt</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="n">time_dict</span><span class="p">[</span><span class="s2">"shap_dp"</span><span class="p">]],</span>
-    <span class="s2">"o-"</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Runtime: SHAP DP"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"N: number of instances"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"time (sec)"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_global_files/efficiency_global_28_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_28_0.png"></a></p>
-<div class="highlight"><pre><span></span><code><span class="n">t</span> <span class="o">=</span> <span class="mf">0.1</span>
-<span class="n">N</span> <span class="o">=</span> <span class="mi">50</span>
-<span class="n">D</span> <span class="o">=</span> <span class="mi">3</span>
-<span class="n">K</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">M</span> <span class="o">=</span> <span class="mi">100</span>
-<span class="n">features</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="n">repetitions</span> <span class="o">=</span> <span class="mi">2</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><span class="c1"># compare with t_f</span>
-<span class="n">method_names</span> <span class="o">=</span> <span class="p">[</span><span class="s2">"shap_dp"</span><span class="p">]</span>
-<span class="n">vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">.01</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mf">1.</span><span class="p">])</span>
-<span class="n">time_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">method_name</span><span class="p">:</span> <span class="p">[]</span> <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">}</span>
-<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">vec</span><span class="p">:</span>
-    <span class="n">model</span> <span class="o">=</span> <span class="n">return_predict</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="n">model_jac</span> <span class="o">=</span> <span class="n">return_jacobian</span><span class="p">(</span><span class="n">t</span><span class="p">)</span>
-    <span class="k">for</span> <span class="n">method_name</span> <span class="ow">in</span> <span class="n">method_names</span><span class="p">:</span>
-        <span class="n">time_dict</span><span class="p">[</span><span class="n">method_name</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span>
-            <span class="n">measure_time</span><span class="p">(</span><span class="n">method_name</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">N</span><span class="p">,</span> <span class="n">M</span><span class="p">,</span> <span class="n">D</span><span class="p">,</span> <span class="n">repetitions</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">model_jac</span><span class="o">=</span><span class="n">model_jac</span><span class="p">))</span>
-</code></pre></div>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer: 51it [00:10, 10.06s/it]                </p>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer: 51it [00:10, 10.04s/it]                </p>
-<p>ExactExplainer explainer:  22%|██▏       | 11/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 13/50 [00:11&lt;00:18,  1.99it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 14/50 [00:12&lt;00:25,  1.40it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 15/50 [00:13&lt;00:28,  1.22it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 16/50 [00:14&lt;00:30,  1.13it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 17/50 [00:15&lt;00:30,  1.08it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 18/50 [00:16&lt;00:30,  1.05it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 19/50 [00:17&lt;00:30,  1.03it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 20/50 [00:18&lt;00:29,  1.02it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 21/50 [00:19&lt;00:28,  1.01it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 22/50 [00:20&lt;00:27,  1.01it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 23/50 [00:21&lt;00:26,  1.00it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 24/50 [00:22&lt;00:25,  1.00it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 25/50 [00:23&lt;00:25,  1.00s/it]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 26/50 [00:24&lt;00:24,  1.00s/it]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 27/50 [00:25&lt;00:23,  1.00s/it]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 28/50 [00:26&lt;00:22,  1.00s/it]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 29/50 [00:27&lt;00:21,  1.00s/it]</p>
-<p>ExactExplainer explainer:  60%|██████    | 30/50 [00:28&lt;00:20,  1.00s/it]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 31/50 [00:29&lt;00:19,  1.00s/it]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 32/50 [00:30&lt;00:18,  1.00s/it]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 33/50 [00:31&lt;00:17,  1.00s/it]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 34/50 [00:32&lt;00:16,  1.00s/it]</p>
-<p>ExactExplainer explainer:  70%|███████   | 35/50 [00:33&lt;00:15,  1.00s/it]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 36/50 [00:34&lt;00:14,  1.00s/it]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 37/50 [00:35&lt;00:13,  1.00s/it]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 38/50 [00:36&lt;00:12,  1.00s/it]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 39/50 [00:37&lt;00:11,  1.00s/it]</p>
-<p>ExactExplainer explainer:  80%|████████  | 40/50 [00:38&lt;00:10,  1.00s/it]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 41/50 [00:39&lt;00:09,  1.00s/it]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 42/50 [00:40&lt;00:08,  1.00s/it]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 43/50 [00:41&lt;00:07,  1.00s/it]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 44/50 [00:42&lt;00:06,  1.00s/it]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 45/50 [00:43&lt;00:05,  1.00s/it]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 46/50 [00:44&lt;00:04,  1.00s/it]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 47/50 [00:45&lt;00:03,  1.00s/it]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 48/50 [00:46&lt;00:02,  1.00s/it]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 49/50 [00:47&lt;00:01,  1.00s/it]</p>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [00:48&lt;00:00,  1.00s/it]</p>
-<p>ExactExplainer explainer: 51it [00:49,  1.00s/it]                        </p>
-<p>ExactExplainer explainer: 51it [00:49,  1.24s/it]</p>
-<p>ExactExplainer explainer:  22%|██▏       | 11/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 13/50 [00:11&lt;00:18,  1.99it/s]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 14/50 [00:12&lt;00:25,  1.41it/s]</p>
-<p>ExactExplainer explainer:  30%|███       | 15/50 [00:13&lt;00:28,  1.22it/s]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 16/50 [00:14&lt;00:30,  1.13it/s]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 17/50 [00:15&lt;00:30,  1.08it/s]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 18/50 [00:16&lt;00:30,  1.05it/s]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 19/50 [00:17&lt;00:29,  1.04it/s]</p>
-<p>ExactExplainer explainer:  40%|████      | 20/50 [00:18&lt;00:29,  1.02it/s]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 21/50 [00:19&lt;00:28,  1.01it/s]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 22/50 [00:20&lt;00:27,  1.01it/s]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 23/50 [00:21&lt;00:26,  1.01it/s]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 24/50 [00:22&lt;00:25,  1.00it/s]</p>
-<p>ExactExplainer explainer:  50%|█████     | 25/50 [00:23&lt;00:24,  1.00it/s]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 26/50 [00:24&lt;00:24,  1.00s/it]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 27/50 [00:25&lt;00:23,  1.00s/it]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 28/50 [00:26&lt;00:22,  1.00s/it]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 29/50 [00:27&lt;00:21,  1.00s/it]</p>
-<p>ExactExplainer explainer:  60%|██████    | 30/50 [00:28&lt;00:20,  1.00s/it]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 31/50 [00:29&lt;00:19,  1.00s/it]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 32/50 [00:30&lt;00:18,  1.00s/it]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 33/50 [00:31&lt;00:17,  1.00s/it]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 34/50 [00:32&lt;00:16,  1.00s/it]</p>
-<p>ExactExplainer explainer:  70%|███████   | 35/50 [00:33&lt;00:15,  1.00s/it]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 36/50 [00:34&lt;00:14,  1.00s/it]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 37/50 [00:35&lt;00:13,  1.00s/it]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 38/50 [00:36&lt;00:12,  1.00s/it]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 39/50 [00:37&lt;00:11,  1.00s/it]</p>
-<p>ExactExplainer explainer:  80%|████████  | 40/50 [00:38&lt;00:10,  1.00s/it]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 41/50 [00:39&lt;00:09,  1.00s/it]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 42/50 [00:40&lt;00:08,  1.00s/it]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 43/50 [00:41&lt;00:07,  1.00s/it]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 44/50 [00:42&lt;00:06,  1.00s/it]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 45/50 [00:43&lt;00:05,  1.00s/it]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 46/50 [00:44&lt;00:04,  1.00s/it]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 47/50 [00:45&lt;00:03,  1.00s/it]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 48/50 [00:46&lt;00:02,  1.00s/it]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 49/50 [00:47&lt;00:01,  1.00s/it]</p>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [00:48&lt;00:00,  1.00s/it]</p>
-<p>ExactExplainer explainer: 51it [00:49,  1.00s/it]                        </p>
-<p>ExactExplainer explainer: 51it [00:49,  1.24s/it]</p>
-<p>ExactExplainer explainer:  12%|█▏        | 6/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  16%|█▌        | 8/50 [00:13&lt;00:42,  1.00s/it]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 9/50 [00:15&lt;00:58,  1.42s/it]</p>
-<p>ExactExplainer explainer:  20%|██        | 10/50 [00:17&lt;01:05,  1.64s/it]</p>
-<p>ExactExplainer explainer:  22%|██▏       | 11/50 [00:19&lt;01:08,  1.76s/it]</p>
-<p>ExactExplainer explainer:  24%|██▍       | 12/50 [00:21&lt;01:10,  1.84s/it]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 13/50 [00:23&lt;01:10,  1.90s/it]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 14/50 [00:25&lt;01:09,  1.93s/it]</p>
-<p>ExactExplainer explainer:  30%|███       | 15/50 [00:27&lt;01:08,  1.95s/it]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 16/50 [00:29&lt;01:06,  1.97s/it]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 17/50 [00:31&lt;01:05,  1.98s/it]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 18/50 [00:33&lt;01:03,  1.99s/it]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 19/50 [00:35&lt;01:01,  1.99s/it]</p>
-<p>ExactExplainer explainer:  40%|████      | 20/50 [00:37&lt;00:59,  2.00s/it]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 21/50 [00:39&lt;00:57,  2.00s/it]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 22/50 [00:41&lt;00:56,  2.00s/it]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 23/50 [00:43&lt;00:54,  2.00s/it]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 24/50 [00:45&lt;00:52,  2.00s/it]</p>
-<p>ExactExplainer explainer:  50%|█████     | 25/50 [00:47&lt;00:50,  2.00s/it]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 26/50 [00:49&lt;00:48,  2.00s/it]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 27/50 [00:51&lt;00:46,  2.00s/it]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 28/50 [00:53&lt;00:44,  2.00s/it]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 29/50 [00:55&lt;00:42,  2.00s/it]</p>
-<p>ExactExplainer explainer:  60%|██████    | 30/50 [00:57&lt;00:40,  2.00s/it]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 31/50 [00:59&lt;00:38,  2.00s/it]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 32/50 [01:01&lt;00:36,  2.00s/it]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 33/50 [01:03&lt;00:34,  2.00s/it]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 34/50 [01:05&lt;00:32,  2.00s/it]</p>
-<p>ExactExplainer explainer:  70%|███████   | 35/50 [01:07&lt;00:30,  2.00s/it]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 36/50 [01:09&lt;00:28,  2.00s/it]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 37/50 [01:11&lt;00:26,  2.00s/it]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 38/50 [01:13&lt;00:24,  2.00s/it]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 39/50 [01:15&lt;00:22,  2.00s/it]</p>
-<p>ExactExplainer explainer:  80%|████████  | 40/50 [01:17&lt;00:20,  2.00s/it]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 41/50 [01:19&lt;00:18,  2.00s/it]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 42/50 [01:21&lt;00:16,  2.00s/it]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 43/50 [01:23&lt;00:14,  2.00s/it]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 44/50 [01:25&lt;00:12,  2.00s/it]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 45/50 [01:27&lt;00:10,  2.01s/it]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 46/50 [01:29&lt;00:08,  2.01s/it]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 47/50 [01:31&lt;00:06,  2.01s/it]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 48/50 [01:33&lt;00:04,  2.01s/it]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 49/50 [01:35&lt;00:02,  2.01s/it]</p>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [01:37&lt;00:00,  2.01s/it]</p>
-<p>ExactExplainer explainer: 51it [01:39,  2.01s/it]                        </p>
-<p>ExactExplainer explainer: 51it [01:39,  2.20s/it]</p>
-<p>ExactExplainer explainer:  12%|█▏        | 6/50 [00:00&lt;?, ?it/s]</p>
-<p>ExactExplainer explainer:  16%|█▌        | 8/50 [00:13&lt;00:42,  1.00s/it]</p>
-<p>ExactExplainer explainer:  18%|█▊        | 9/50 [00:15&lt;00:58,  1.42s/it]</p>
-<p>ExactExplainer explainer:  20%|██        | 10/50 [00:17&lt;01:05,  1.64s/it]</p>
-<p>ExactExplainer explainer:  22%|██▏       | 11/50 [00:19&lt;01:08,  1.77s/it]</p>
-<p>ExactExplainer explainer:  24%|██▍       | 12/50 [00:21&lt;01:10,  1.85s/it]</p>
-<p>ExactExplainer explainer:  26%|██▌       | 13/50 [00:23&lt;01:10,  1.90s/it]</p>
-<p>ExactExplainer explainer:  28%|██▊       | 14/50 [00:25&lt;01:09,  1.93s/it]</p>
-<p>ExactExplainer explainer:  30%|███       | 15/50 [00:27&lt;01:08,  1.95s/it]</p>
-<p>ExactExplainer explainer:  32%|███▏      | 16/50 [00:29&lt;01:06,  1.97s/it]</p>
-<p>ExactExplainer explainer:  34%|███▍      | 17/50 [00:31&lt;01:05,  1.98s/it]</p>
-<p>ExactExplainer explainer:  36%|███▌      | 18/50 [00:33&lt;01:03,  1.99s/it]</p>
-<p>ExactExplainer explainer:  38%|███▊      | 19/50 [00:35&lt;01:01,  1.99s/it]</p>
-<p>ExactExplainer explainer:  40%|████      | 20/50 [00:37&lt;00:59,  2.00s/it]</p>
-<p>ExactExplainer explainer:  42%|████▏     | 21/50 [00:39&lt;00:57,  2.00s/it]</p>
-<p>ExactExplainer explainer:  44%|████▍     | 22/50 [00:41&lt;00:56,  2.00s/it]</p>
-<p>ExactExplainer explainer:  46%|████▌     | 23/50 [00:43&lt;00:54,  2.00s/it]</p>
-<p>ExactExplainer explainer:  48%|████▊     | 24/50 [00:45&lt;00:52,  2.00s/it]</p>
-<p>ExactExplainer explainer:  50%|█████     | 25/50 [00:47&lt;00:50,  2.00s/it]</p>
-<p>ExactExplainer explainer:  52%|█████▏    | 26/50 [00:49&lt;00:48,  2.00s/it]</p>
-<p>ExactExplainer explainer:  54%|█████▍    | 27/50 [00:51&lt;00:46,  2.00s/it]</p>
-<p>ExactExplainer explainer:  56%|█████▌    | 28/50 [00:53&lt;00:44,  2.00s/it]</p>
-<p>ExactExplainer explainer:  58%|█████▊    | 29/50 [00:55&lt;00:42,  2.00s/it]</p>
-<p>ExactExplainer explainer:  60%|██████    | 30/50 [00:57&lt;00:40,  2.01s/it]</p>
-<p>ExactExplainer explainer:  62%|██████▏   | 31/50 [00:59&lt;00:38,  2.00s/it]</p>
-<p>ExactExplainer explainer:  64%|██████▍   | 32/50 [01:01&lt;00:36,  2.01s/it]</p>
-<p>ExactExplainer explainer:  66%|██████▌   | 33/50 [01:03&lt;00:34,  2.01s/it]</p>
-<p>ExactExplainer explainer:  68%|██████▊   | 34/50 [01:05&lt;00:32,  2.00s/it]</p>
-<p>ExactExplainer explainer:  70%|███████   | 35/50 [01:07&lt;00:30,  2.00s/it]</p>
-<p>ExactExplainer explainer:  72%|███████▏  | 36/50 [01:09&lt;00:28,  2.00s/it]</p>
-<p>ExactExplainer explainer:  74%|███████▍  | 37/50 [01:11&lt;00:26,  2.00s/it]</p>
-<p>ExactExplainer explainer:  76%|███████▌  | 38/50 [01:13&lt;00:24,  2.00s/it]</p>
-<p>ExactExplainer explainer:  78%|███████▊  | 39/50 [01:15&lt;00:22,  2.00s/it]</p>
-<p>ExactExplainer explainer:  80%|████████  | 40/50 [01:17&lt;00:20,  2.00s/it]</p>
-<p>ExactExplainer explainer:  82%|████████▏ | 41/50 [01:19&lt;00:18,  2.00s/it]</p>
-<p>ExactExplainer explainer:  84%|████████▍ | 42/50 [01:21&lt;00:16,  2.00s/it]</p>
-<p>ExactExplainer explainer:  86%|████████▌ | 43/50 [01:23&lt;00:14,  2.00s/it]</p>
-<p>ExactExplainer explainer:  88%|████████▊ | 44/50 [01:25&lt;00:12,  2.00s/it]</p>
-<p>ExactExplainer explainer:  90%|█████████ | 45/50 [01:27&lt;00:10,  2.01s/it]</p>
-<p>ExactExplainer explainer:  92%|█████████▏| 46/50 [01:29&lt;00:08,  2.01s/it]</p>
-<p>ExactExplainer explainer:  94%|█████████▍| 47/50 [01:31&lt;00:06,  2.01s/it]</p>
-<p>ExactExplainer explainer:  96%|█████████▌| 48/50 [01:33&lt;00:04,  2.01s/it]</p>
-<p>ExactExplainer explainer:  98%|█████████▊| 49/50 [01:35&lt;00:02,  2.01s/it]</p>
-<p>ExactExplainer explainer: 100%|██████████| 50/50 [01:37&lt;00:00,  2.01s/it]</p>
-<p>ExactExplainer explainer: 51it [01:39,  2.01s/it]                        </p>
-<p>ExactExplainer explainer: 51it [01:39,  2.21s/it]</p>
-<div class="highlight"><pre><span></span><code><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-    <span class="n">vec</span><span class="p">,</span>
-    <span class="p">[</span><span class="n">tt</span><span class="p">[</span><span class="s2">"total"</span><span class="p">]</span> <span class="k">for</span> <span class="n">tt</span> <span class="ow">in</span> <span class="n">time_dict</span><span class="p">[</span><span class="s2">"shap_dp"</span><span class="p">]],</span>
-    <span class="s2">"o-"</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Runtime: SHAP DP"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"time (sec) to execute f(dataset)"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"time (sec)"</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">vec</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-</code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../efficiency_global_files/efficiency_global_31_0.png" data-desc-position="bottom"><img alt="png" src="../efficiency_global_files/efficiency_global_31_0.png"></a></p>
-<p>So if we add shap-DP to the table, we have:</p>
+<pre><code>first plot (computes the SHAP table):   6.45s
+second plot (cache):                    0.01s
+first plot of ANOTHER feature:          0.01s  (the table is shared)
+</code></pre>
+<h2 id="summary">Summary</h2>
+<p>Model calls for a <code>D</code>-feature dataset (<code>t_f</code> = cost of one model call on <code>N</code>
+rows):</p>
 <table>
 <thead>
 <tr>
 <th>Method</th>
-<th><span class="arithmatex">\(T = T_1 + T_2\)</span> (one feature)</th>
-<th><span class="arithmatex">\(T = T_1 + T_2\)</span> (all features)</th>
+<th>fit one feature</th>
+<th>fit all <code>D</code></th>
+<th>everything afterwards</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><strong>PDP / d-PDP</strong></td>
-<td><span class="arithmatex">\((c_{PDP}) N + 2 t_f\)</span></td>
-<td><span class="arithmatex">\(D c_{PDP} N + 2 D t_f\)</span></td>
+<td><span class="arithmatex">\(1\)</span> call (grid × N rows)</td>
+<td><span class="arithmatex">\(D\)</span> calls</td>
+<td>free, except brand-new eval positions</td>
 </tr>
 <tr>
 <td><strong>ALE</strong></td>
-<td><span class="arithmatex">\(2 t_f\)</span></td>
-<td><span class="arithmatex">\(2 D t_f\)</span></td>
+<td><span class="arithmatex">\(2\)</span> calls</td>
+<td><span class="arithmatex">\(2D\)</span> calls</td>
+<td>free</td>
 </tr>
 <tr>
 <td><strong>RHALE</strong></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
-<td><span class="arithmatex">\(t_f\)</span></td>
+<td><span class="arithmatex">\(1\)</span> jacobian call</td>
+<td><strong>that same <span class="arithmatex">\(1\)</span> call</strong></td>
+<td>free</td>
 </tr>
 <tr>
 <td><strong>SHAP-DP</strong></td>
-<td><span class="arithmatex">\(c_{SHAP-DP} N t_f\)</span></td>
-<td><span class="arithmatex">\(c_{SHAP-DP} D N t_f\)</span></td>
+<td>one explainer run (budget-driven)</td>
+<td>that same run</td>
+<td>free</td>
 </tr>
 </tbody>
 </table>
-<p>But <span class="arithmatex">\(c_{SHAP-DP}\)</span> is a large constant $c_{SHAP-DP} \approx 2 $.
-In contrast, <span class="arithmatex">\(c_{PDP} \approx 10^{-5}\)</span>.</p>
-<div class="highlight"><pre><span></span><code>
-</code></pre></div>
+<p>Practical advice:</p>
+<ul>
+<li><strong>RHALE with <code>model_jac</code></strong> is the cheapest method at scale: one call, all
+  features, and the regional search included.</li>
+<li><strong><code>nof_instances</code></strong> (constructor) is the one knob that shrinks every call:
+  effector subsamples once and every method works on the subset.</li>
+<li>Binning (<code>binning_method</code>) is pure numpy and costs milliseconds — pick it
+  for statistical, not computational, reasons.</li>
+</ul>
 
 
 

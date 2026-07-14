@@ -272,170 +272,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../quickstart/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Quickstart
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../api_docs/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    API Docs
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
-        
-          
-          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Design
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_4">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Design
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix="">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../design/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    The design contract (R1-R11)
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../method_semantics/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Method semantics by feature type
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-    
-      
-      
-  
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../../../guides/" class="md-nav__link">
         
   
@@ -471,6 +307,33 @@
     
   
     Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../api_docs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    API Docs
   
 
     
@@ -785,6 +648,28 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#importance-one-click-explanation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Importance &amp; one-click explanation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cross-method-sanity-check" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cross-method sanity check
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -809,6 +694,7 @@
 <li>Description: Global effects and heterogeneity (PDP, ALE, RHALE) on a model
   with a general-form interaction <span class="arithmatex">\(x_1 x_2^2\)</span>; all estimates are derived
   analytically and tested against <code>effector.benchmarks</code>.</li>
+<li>📄 The whole notebook in one page: <a href="https://xai-effector.github.io/static/reports/06_general_interaction_independent_uniform_global_pdp.html">PDP report</a></li>
 </ul>
 <p>In this example, we show global effects of a model with general form interactions using PDP, ALE, and RHALE.
 In particular, we:</p>
@@ -1174,6 +1060,183 @@ so its variance across instances is</p>
 exactly zero, yet the ICE curves fan out with variance <span class="arithmatex">\((x_2^2 - 1/3)^2 / 3\)</span> —
 an interaction that a mean-only reading would miss entirely. This is also the
 signal that regional methods exploit to find meaningful subspaces.</p>
+<h2 id="importance-one-click-explanation">Importance &amp; one-click explanation</h2>
+<p>Two conveniences on top of the global effects above:</p>
+<ul>
+<li><code>importances()</code> ranks features by the <strong>dispersion of the mean effect</strong> — the
+  <span class="arithmatex">\(\mu\)</span>-twin of heterogeneity. Here <span class="arithmatex">\(x_3\)</span> (the <span class="arithmatex">\(e^{x_3}\)</span> term) and <span class="arithmatex">\(x_1\)</span> (the
+  <span class="arithmatex">\(\tfrac{1}{3}x_1\)</span> slope) carry the visible mean effect, while <span class="arithmatex">\(x_2\)</span> has a mean
+  effect of ~0 and so scores near zero — even though it is the most <em>heterogeneous</em>
+  feature.</li>
+<li><code>effector.explain(...)</code> runs the whole pipeline once (fit → rank → per-feature
+  mean/heterogeneity curves → region search) and returns a serializable <code>Report</code>
+  with a self-contained HTML view.</li>
+</ul>
+<div class="highlight"><pre><span></span><code><span class="c1"># per-feature importance = dispersion of the mean effect (mu-twin of heterogeneity)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"importances:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">pdp</span><span class="o">.</span><span class="n">importances</span><span class="p">(),</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># one-click auto-explanation -&gt; Report (serializable; self-contained HTML)</span>
+<span class="n">report</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s2">"pdp"</span><span class="p">,</span> <span class="n">nof_instances</span><span class="o">=</span><span class="s2">"all"</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># the whole notebook, in one page: the report published with this example</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">_out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"reports"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"06_general_interaction_independent_uniform_global"</span>
+<span class="n">_out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">report</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">_out</span> <span class="o">/</span> <span class="s2">"report_pdp.html"</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>importances: [0.19  0.009 0.668]
+[effector] global effects   (GAM)  -&gt; 94.0% of the model's variance
+           regional effects (CALM) -&gt; 99.6%
+
+  ════════════════════════════════════════════════════════════════════════
+  PDP report  ·  target: y
+  ════════════════════════════════════════════════════════════════════════
+
+  DATA &amp; MODEL
+  ────────────────────────────────────────────────────────────────────────
+    instances     1,000
+    features      3  ·  3 continuous
+    model output  mean 1.17 · std 0.7 · range [-0.432, 3.1]
+
+  EXPLAINED VARIANCE
+  ────────────────────────────────────────────────────────────────────────
+    step         split on                 solo     ΔR²      R²       heter
+    ──────────────────────────────────────────────────────────────────────
+    GAM          (all features global)       —       —   94.0%           —
+  + x_1          x_0                     +5.6%   +5.6%   99.6% 0.17 → 0.04
+    ──────────────────────────────────────────────────────────────────────
+    FINAL                                                99.6%
+
+  REJECTED SPLITS                                            min gain 1.0%
+  ────────────────────────────────────────────────────────────────────────
+    feature      split on                 solo     ΔR²    reason
+    ──────────────────────────────────────────────────────────────────────
+  ✗ x_0          x_1                     +4.8%   -4.0%    redundant
+
+    ✗ redundant: it would explain variance on its own (see solo),
+      but the accepted splits already account for it.
+
+  FEATURES                                ranked, in the selected snapshot
+  ────────────────────────────────────────────────────────────────────────
+    feature        importance                          heter      #regions
+    ──────────────────────────────────────────────────────────────────────
+    x_2                0.6679  ██████████████████     0.0000             1
+    x_0                0.1897  █████                  0.1713             1
+    x_1                0.1481  ████                   0.0440             4
+    ──────────────────────────────────────────────────────────────────────
+    the features above carry 100% of the total importance mass
+
+
+
+Feature 1 - Full partition tree:
+🌳 Full Tree Structure:
+───────────────────────
+x_1 🔹 [id: 0 | heter: 0.17 | inst: 1000 | w: 1.00]
+    x_0 &lt; -0.00 🔹 [id: 1 | heter: 0.09 | inst: 510 | w: 0.51]
+        x_0 &lt; -0.50 🔹 [id: 2 | heter: 0.04 | inst: 268 | w: 0.27]
+        -0.50 ≤ x_0 &lt; -0.00 🔹 [id: 3 | heter: 0.05 | inst: 242 | w: 0.24]
+    x_0 ≥ -0.00 🔹 [id: 4 | heter: 0.09 | inst: 490 | w: 0.49]
+        -0.00 ≤ x_0 &lt; 0.50 🔹 [id: 5 | heter: 0.04 | inst: 254 | w: 0.25]
+        x_0 ≥ 0.50 🔹 [id: 6 | heter: 0.04 | inst: 236 | w: 0.24]
+--------------------------------------------------
+Feature 1 - Statistics per tree level:
+🌳 Tree Summary:
+─────────────────
+Level 0🔹heter: 0.17
+    Level 1🔹heter: 0.09 | 🔻0.09 (50.14%)
+        Level 2🔹heter: 0.04 | 🔻0.04 (48.85%)
+
+
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+</code></pre>
+<h2 id="cross-method-sanity-check">Cross-method sanity check</h2>
+<p>The one-liner <code>effector.explain</code> with every engine this notebook's model
+supports. Everything must run end to end; the closing table puts the reads
+side by side. Where methods disagree — ranking, accepted splits, R² — that is
+a property of the data/model worth a closer look, not an error.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="n">_out</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">"reports"</span><span class="p">)</span> <span class="o">/</span> <span class="s2">"06_general_interaction_independent_uniform_global"</span>
+<span class="n">_out</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="n">parents</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># === cross-method sweep: effector.explain on every applicable engine ======</span>
+<span class="n">sweep_reports</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">_m</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">"pdp"</span><span class="p">,</span> <span class="s2">"derpdp"</span><span class="p">,</span> <span class="s2">"ale"</span><span class="p">,</span> <span class="s2">"rhale"</span><span class="p">,</span> <span class="s2">"shapdp"</span><span class="p">]:</span>
+    <span class="n">_kw</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"nof_instances"</span><span class="p">:</span> <span class="mi">300</span><span class="p">}</span> <span class="k">if</span> <span class="n">_m</span> <span class="o">==</span> <span class="s2">"shapdp"</span> <span class="k">else</span> <span class="p">{}</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"--- </span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2"> "</span> <span class="o">+</span> <span class="s2">"-"</span> <span class="o">*</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">explain</span><span class="p">(</span>
+        <span class="n">x</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">jacobian</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="n">_m</span><span class="p">,</span> <span class="o">**</span><span class="n">_kw</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="n">_m</span> <span class="o">!=</span> <span class="s2">"pdp"</span><span class="p">:</span>  <span class="c1"># the published report is the narrated one above</span>
+        <span class="n">sweep_reports</span><span class="p">[</span><span class="n">_m</span><span class="p">]</span><span class="o">.</span><span class="n">to_html</span><span class="p">(</span><span class="n">_out</span> <span class="o">/</span> <span class="sa">f</span><span class="s2">"report_</span><span class="si">{</span><span class="n">_m</span><span class="si">}</span><span class="s2">.html"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="s1">'method'</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'ranking (plotted)'</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'GAM R2'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'final R2'</span><span class="si">:</span><span class="s2">&gt;9</span><span class="si">}</span><span class="s2">  splits"</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">_m</span><span class="p">,</span> <span class="n">_r</span> <span class="ow">in</span> <span class="n">sweep_reports</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">_rank</span> <span class="o">=</span> <span class="s2">" &gt; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">fr</span><span class="o">.</span><span class="n">name</span> <span class="k">for</span> <span class="n">fr</span> <span class="ow">in</span> <span class="n">_r</span><span class="o">.</span><span class="n">features</span><span class="p">)</span>
+    <span class="n">_ev</span> <span class="o">=</span> <span class="n">_r</span><span class="o">.</span><span class="n">explained_variance</span>
+    <span class="k">if</span> <span class="n">_ev</span><span class="p">:</span>
+        <span class="n">_sp</span> <span class="o">=</span> <span class="s2">"; "</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="si">}</span><span class="s2"> on </span><span class="si">{</span><span class="n">s</span><span class="p">[</span><span class="s1">'on'</span><span class="p">]</span><span class="si">}</span><span class="s2">"</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">_ev</span><span class="p">[</span><span class="s2">"stages"</span><span class="p">])</span> <span class="ow">or</span> <span class="s2">"none"</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'gam_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;7.1%</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_ev</span><span class="p">[</span><span class="s1">'regional_r2'</span><span class="p">]</span><span class="si">:</span><span class="s2">&gt;8.1%</span><span class="si">}</span><span class="s2">  </span><span class="si">{</span><span class="n">_sp</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">_m</span><span class="si">:</span><span class="s2">&lt;8</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="n">_rank</span><span class="si">:</span><span class="s2">&lt;44</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;7</span><span class="si">}</span><span class="s2"> </span><span class="si">{</span><span class="s1">'-'</span><span class="si">:</span><span class="s2">&gt;8</span><span class="si">}</span><span class="s2">  (derivative scale: no variance ledger)"</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">reports stored in </span><span class="si">{</span><span class="n">_out</span><span class="si">}</span><span class="s2">/"</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>--- pdp --------------------------------------------------
+[effector] global effects   (GAM)  -&gt; 94.0% of the model's variance
+           regional effects (CALM) -&gt; 99.6%
+--- derpdp --------------------------------------------------
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- ale --------------------------------------------------
+[effector] global effects   (GAM)  -&gt; 93.9% of the model's variance
+           regional effects (CALM) -&gt; 99.6%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- rhale --------------------------------------------------
+
+
+[effector] global effects   (GAM)  -&gt; 94.0% of the model's variance
+           regional effects (CALM) -&gt; 99.6%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+--- shapdp --------------------------------------------------
+
+
+[effector] global effects   (GAM)  -&gt; 94.3% of the model's variance
+           regional effects (CALM) -&gt; 99.6%
+
+
+/home/givasile/github/packages/effector/effector/report.py:606: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+
+
+
+method   ranking (plotted)                              GAM R2  final R2  splits
+pdp      x_2 &gt; x_0 &gt; x_1                                94.0%    99.6%  x_1 on x_0
+derpdp   x_2 &gt; x_0                                          -        -  (derivative scale: no variance ledger)
+ale      x_2 &gt; x_0 &gt; x_1                                93.9%    99.6%  x_1 on x_0
+rhale    x_2 &gt; x_0 &gt; x_1                                94.0%    99.6%  x_1 on x_0
+shapdp   x_2 &gt; x_0 &gt; x_1                                94.3%    99.6%  x_1 on x_0; x_0 on x_1
+
+reports stored in reports/06_general_interaction_independent_uniform_global/
+</code></pre>
 
 
 
