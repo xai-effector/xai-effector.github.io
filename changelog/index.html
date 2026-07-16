@@ -391,6 +391,24 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Changelog
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -407,6 +425,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unreleased
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -432,6 +497,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Unreleased
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Fixed
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -448,6 +549,11 @@
 
 
 <h1 id="changelog">Changelog</h1>
+<h2 id="unreleased">Unreleased</h2>
+<h3 id="fixed">Fixed</h3>
+<ul>
+<li><strong>Display units honor the schema's <code>scale_y</code></strong>: every surface labeled "(target units)" — <code>effector.plot_triage</code>, <code>CALM.plot_triage</code>, and the report's importance/heterogeneity bars, triage plane, ranked tables, ledger heter columns, and <code>heter_threshold</code> chip — now bridges the model-unit scalars by <code>scale_y["std"]</code>, so a model trained on a standardized target reads in the target's own scale (matching the curve plots, which already rescaled). Unbound reports render the same as bound ones: <code>Report</code> stamps <code>scale_y</code>/<code>scale_x_list</code>, and the unbound curve fallback applies them. The engine verbs (<code>importance</code>, <code>heter_score</code>) and all stamped/serialized payloads stay in model-output units, so <code>find_regions</code> thresholds and old dicts are unaffected.</li>
+</ul>
 <h1 id="050-2026-07-14">[0.5.0] - 2026-07-14</h1>
 <h3 id="breaking">Breaking</h3>
 <ul>
@@ -486,7 +592,7 @@
 <ul>
 <li><code>Partition.plot(idx)</code> inherits each global class's own <code>plot</code> defaults (e.g. PDP still defaults <code>heterogeneity="ice"</code>), so there is no visual change versus the old per-method regional plot wrappers.</li>
 </ul>
-<h3 id="fixed">Fixed</h3>
+<h3 id="fixed_1">Fixed</h3>
 <ul>
 <li>global effects: a centering-triggered auto-refit (e.g. <code>fit(centering=False, order=[...])</code> then <code>eval</code>/<code>plot</code> with centering) no longer discards the method-specific <code>fit</code> kwargs — <code>order</code>/<code>binning_method</code> (and <code>use_vectorized</code>) are replayed from the original <code>fit</code>, overriding only <code>centering</code>, instead of silently falling back to the defaults</li>
 <li>the split search no longer overflows on a high-cardinality categorical conditioning feature (the subset enumeration is capped)</li>
@@ -523,7 +629,7 @@
 <li><code>PDP</code>/<code>RegionalPDP</code> default centering is now <code>zero_integral</code> (was <code>False</code>), so <code>eval(centering=None)</code> and the global/regional plots center consistently with <code>ALE</code>/<code>ShapDP</code></li>
 <li>the method / feature-type capability matrix (e.g. <code>RHALE</code> and <code>DerPDP</code> on nominal) is enforced at regional <code>fit</code> time, not only later at <code>plot</code>, so <code>fit</code>/<code>summary</code>/<code>plot</code> stay consistent for an unsupported feature of interest</li>
 </ul>
-<h3 id="fixed_1">Fixed</h3>
+<h3 id="fixed_2">Fixed</h3>
 <ul>
 <li><code>ALE</code>/<code>RHALE</code> <code>.plot()</code> crashed on a categorical feature whose level codes are not <code>0..K-1</code> (e.g. ordinal hours <code>1..24</code>): the plot grid was built from positional codes <code>0..K-1</code> and rejected by <code>eval</code>; it now draws at the observed level values</li>
 <li><code>tree</code> display no longer crashes on per-feature <code>None</code> entries in <code>scale_x_list</code></li>
@@ -542,7 +648,7 @@
 <li>modernized GitHub Actions CI: replaced <code>black</code>/<code>flake8</code>/<code>isort</code> with <code>ruff</code>, added a Python 3.10-3.13 test matrix, gated PyPI publishing behind a main-ancestry check + test run + wheel smoke test, added a docs build-check on PRs, pinned workflow permissions, added concurrency cancellation, and added <code>dependabot.yml</code></li>
 <li>PyPI releases now auto-create a matching GitHub Release with notes from this changelog</li>
 </ul>
-<h3 id="fixed_2">Fixed</h3>
+<h3 id="fixed_3">Fixed</h3>
 <ul>
 <li>fixed a latent <code>NameError</code> in <code>RegionalEffectBase._fit_feature</code>'s string-based <code>space_partitioner</code> fallback (<code>effector/regional_effect.py</code>)</li>
 <li>fixed <code>prep_dale_fit_params</code> validating <code>max_nof_bins</code> twice instead of <code>min_points_per_bin</code> (<code>effector/helpers.py</code>)</li>
@@ -559,7 +665,7 @@
 <li>dropped the unused <code>overrides</code> dependency</li>
 </ul>
 <h1 id="0112-2025-07-13">[0.1.12] - 2025-07-13</h1>
-<h3 id="fixed_3">Fixed</h3>
+<h3 id="fixed_4">Fixed</h3>
 <ul>
 <li>fixed bug in <code>project.toml</code>, added dependency to <code>overrides</code></li>
 </ul>
@@ -568,18 +674,18 @@
 <ul>
 <li>added codecov to the project</li>
 </ul>
-<h3 id="fixed_4">Fixed</h3>
+<h3 id="fixed_5">Fixed</h3>
 <ul>
 <li>fixed all notebooks to work with the latest version of Effector</li>
 <li>fixed bug in <code>RegionalPDP</code> plots, where <code>centering</code> was not working properly, it was set to <code>False</code> and the user defined argument was not being passed.</li>
 </ul>
 <h2 id="0110-2025-06-18">[0.1.10] - 2025-06-18</h2>
-<h3 id="fixed_5">Fixed</h3>
+<h3 id="fixed_6">Fixed</h3>
 <ul>
 <li>bug in <code>project.toml</code></li>
 </ul>
 <h2 id="019-2025-06-18">[0.1.9] - 2025-06-18</h2>
-<h3 id="fixed_6">Fixed</h3>
+<h3 id="fixed_7">Fixed</h3>
 <ul>
 <li>bug in github actions</li>
 </ul>
@@ -618,7 +724,7 @@
 <li><code>space_partitioning.Best</code> (default) is a node-wise partitioning, i.e., it splits each node based on the split that maximizes the heterogeneity drop.</li>
 <li><code>space_partitioning.BestDepthWise</code> is a depth-wise partitioning, i.e., all nodes of a certain level are split based on the same condition.</li>
 </ul>
-<h3 id="fixed_7">Fixed</h3>
+<h3 id="fixed_8">Fixed</h3>
 <ul>
 <li>fixed bug in <code>space_partitioning.Best()</code>; partitioning now checks that the absolute heterogeneity should be over a threshold to be considered a valuable split</li>
 <li>fixed bug in RegionalPDP plots, where <code>centering</code> was not working properly, it was set to <code>False</code> and the user defined argument was not being passed.</li>
