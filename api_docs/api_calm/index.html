@@ -801,7 +801,7 @@ derivative scale, where summing does not approximate <code>f̂</code>.</p>
 
 
 <h3 id="effector.global_effect.GlobalEffectBase.select_regions" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">global_effect</span><span class="o">.</span><span class="n">GlobalEffectBase</span><span class="o">.</span><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">global_effect</span><span class="o">.</span><span class="n">GlobalEffectBase</span><span class="o">.</span><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h3>
 
@@ -930,6 +930,85 @@ the splits already applied — to earn a snapshot.</p>
                   <code>0.01</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>(N,)</code> vector replacing <code>f̂(X)</code> as the selection
+objective (e.g. ground-truth labels: "which splits predict
+better" instead of "which splits explain the teacher"). The
+curves still come from this effect; only the offsets fit and
+the R² denominator change.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>relative_gain</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional hybrid gate — when set, each round's
+threshold is <code>min(min_r2_gain, relative_gain * (1 - cum_r2))</code>:
+a near-saturated chain still accepts a split explaining at
+least <code>relative_gain</code> of the <em>remaining</em> unexplained variance.
+Never stricter than <code>min_r2_gain</code>; <code>None</code> (default) is the
+absolute rule, unchanged.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_conditional_interactions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the conditional
+interactions of the selected partitions — one per (feature,
+conditioning feature) pair, so <code>x1 | x2</code> and <code>x2 | x1</code> are
+two. A partition is accepted whole, so the sequence stops
+before the round that would exceed the cap. <code>None</code> (default)
+is no cap; 0 keeps the GAM.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_partitions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the number of selected
+partitions (split features). <code>None</code> (default) is no cap.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -966,7 +1045,16 @@ the splits already applied — to earn a snapshot.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>).</p>
+                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>, or the name of the cap that</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>stopped the sequence).</p>
               </div>
             </td>
           </tr>
@@ -990,7 +1078,8 @@ the splits already applied — to earn a snapshot.</p>
             <td>
               <div class="doc-md-description">
                 <p>the method is derivative-scale (no output-scale
-surrogate) or <code>Var(f̂) == 0</code>.</p>
+surrogate), <code>Var(f̂) == 0</code>, or a cap is not <code>None</code> or an
+integer &gt;= 0.</p>
               </div>
             </td>
           </tr>
@@ -1078,7 +1167,41 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="normal">1026</span>
 <span class="normal">1027</span>
 <span class="normal">1028</span>
-<span class="normal">1029</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -1086,6 +1209,10 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
     <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
     <span class="n">min_r2_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_gain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_conditional_interactions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Greedily select which partitions earn their complexity — the CALM chain.</span>
 
@@ -1126,15 +1253,36 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="sd">        min_r2_gain: smallest explained-variance marginal (fraction of</span>
 <span class="sd">            `Var(f̂)`, default 0.01 = 1 pt) a split must add — on top of</span>
 <span class="sd">            the splits already applied — to earn a snapshot.</span>
+<span class="sd">        target: optional `(N,)` vector replacing `f̂(X)` as the selection</span>
+<span class="sd">            objective (e.g. ground-truth labels: "which splits predict</span>
+<span class="sd">            better" instead of "which splits explain the teacher"). The</span>
+<span class="sd">            curves still come from this effect; only the offsets fit and</span>
+<span class="sd">            the R² denominator change.</span>
+<span class="sd">        relative_gain: optional hybrid gate — when set, each round's</span>
+<span class="sd">            threshold is ``min(min_r2_gain, relative_gain * (1 - cum_r2))``:</span>
+<span class="sd">            a near-saturated chain still accepts a split explaining at</span>
+<span class="sd">            least `relative_gain` of the *remaining* unexplained variance.</span>
+<span class="sd">            Never stricter than `min_r2_gain`; `None` (default) is the</span>
+<span class="sd">            absolute rule, unchanged.</span>
+<span class="sd">        max_conditional_interactions: optional cap on the conditional</span>
+<span class="sd">            interactions of the selected partitions — one per (feature,</span>
+<span class="sd">            conditioning feature) pair, so `x1 | x2` and `x2 | x1` are</span>
+<span class="sd">            two. A partition is accepted whole, so the sequence stops</span>
+<span class="sd">            before the round that would exceed the cap. `None` (default)</span>
+<span class="sd">            is no cap; 0 keeps the GAM.</span>
+<span class="sd">        max_partitions: optional cap on the number of selected</span>
+<span class="sd">            partitions (split features). `None` (default) is no cap.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a `CalmSequence` — `[GAM, calm1, ...]`, R² non-decreasing along</span>
 <span class="sd">        it, with the rejected splits in `.skipped`</span>
-<span class="sd">        (`"redundant"`/`"below_threshold"`).</span>
+<span class="sd">        (`"redundant"`/`"below_threshold"`, or the name of the cap that</span>
+<span class="sd">        stopped the sequence).</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: the method is derivative-scale (no output-scale</span>
-<span class="sd">            surrogate) or `Var(f̂) == 0`.</span>
+<span class="sd">            surrogate), `Var(f̂) == 0`, or a cap is not `None` or an</span>
+<span class="sd">            integer &gt;= 0.</span>
 <span class="sd">    """</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">effector</span><span class="w"> </span><span class="kn">import</span> <span class="n">explained_variance</span> <span class="k">as</span> <span class="n">_ev</span>  <span class="c1"># lazy: one-way dep guard</span>
 
@@ -1156,7 +1304,16 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
             <span class="n">supported</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">continue</span>
-    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">supported</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parts</span><span class="p">,</span>
+        <span class="n">supported</span><span class="p">,</span>
+        <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">relative_gain</span><span class="o">=</span><span class="n">relative_gain</span><span class="p">,</span>
+        <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="n">max_conditional_interactions</span><span class="p">,</span>
+        <span class="n">max_partitions</span><span class="o">=</span><span class="n">max_partitions</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>
     </div>
@@ -1168,7 +1325,7 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 
 
 <h3 id="effector.calm.CalmSequence" class="doc doc-heading">
-              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">calm</span><span class="o">.</span><span class="n">CalmSequence</span><span class="p">(</span><span class="n">calms</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span></code>
+              <code class="highlight language-python"><span class="n">effector</span><span class="o">.</span><span class="n">calm</span><span class="o">.</span><span class="n">CalmSequence</span><span class="p">(</span><span class="n">calms</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h3>
 
@@ -1335,12 +1492,44 @@ is the <em>sequential</em> marginal, so the gains sum exactly to
 <span class="normal">365</span>
 <span class="normal">366</span>
 <span class="normal">367</span>
-<span class="normal">368</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">calms</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">skipped</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">):</span>
+<span class="normal">368</span>
+<span class="normal">369</span>
+<span class="normal">370</span>
+<span class="normal">371</span>
+<span class="normal">372</span>
+<span class="normal">373</span>
+<span class="normal">374</span>
+<span class="normal">375</span>
+<span class="normal">376</span>
+<span class="normal">377</span>
+<span class="normal">378</span>
+<span class="normal">379</span>
+<span class="normal">380</span>
+<span class="normal">381</span>
+<span class="normal">382</span>
+<span class="normal">383</span>
+<span class="normal">384</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span>
+    <span class="bp">self</span><span class="p">,</span>
+    <span class="n">calms</span><span class="p">,</span>
+    <span class="o">*</span><span class="p">,</span>
+    <span class="n">skipped</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">min_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">):</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">calms</span><span class="p">:</span>
         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">"CalmSequence needs at least the GAM snapshot."</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">calms</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">calms</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">skipped</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">skipped</span><span class="p">)</span> <span class="k">if</span> <span class="n">skipped</span> <span class="k">else</span> <span class="p">[]</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">min_gain</span> <span class="o">=</span> <span class="nb">float</span><span class="p">(</span><span class="n">min_gain</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">relative_gain</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">relative_gain</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">float</span><span class="p">(</span><span class="n">relative_gain</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">max_conditional_interactions</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="kc">None</span>
+        <span class="k">if</span> <span class="n">max_conditional_interactions</span> <span class="ow">is</span> <span class="kc">None</span>
+        <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_conditional_interactions</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">max_partitions</span> <span class="o">=</span> <span class="kc">None</span> <span class="k">if</span> <span class="n">max_partitions</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">max_partitions</span><span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
                   </details>
 
@@ -1512,29 +1701,29 @@ for terminals and logs that mangle unicode.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/calm.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">409</span>
-<span class="normal">410</span>
-<span class="normal">411</span>
-<span class="normal">412</span>
-<span class="normal">413</span>
-<span class="normal">414</span>
-<span class="normal">415</span>
-<span class="normal">416</span>
-<span class="normal">417</span>
-<span class="normal">418</span>
-<span class="normal">419</span>
-<span class="normal">420</span>
-<span class="normal">421</span>
-<span class="normal">422</span>
-<span class="normal">423</span>
-<span class="normal">424</span>
-<span class="normal">425</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">425</span>
 <span class="normal">426</span>
 <span class="normal">427</span>
 <span class="normal">428</span>
 <span class="normal">429</span>
 <span class="normal">430</span>
-<span class="normal">431</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+<span class="normal">431</span>
+<span class="normal">432</span>
+<span class="normal">433</span>
+<span class="normal">434</span>
+<span class="normal">435</span>
+<span class="normal">436</span>
+<span class="normal">437</span>
+<span class="normal">438</span>
+<span class="normal">439</span>
+<span class="normal">440</span>
+<span class="normal">441</span>
+<span class="normal">442</span>
+<span class="normal">443</span>
+<span class="normal">444</span>
+<span class="normal">445</span>
+<span class="normal">446</span>
+<span class="normal">447</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">ascii</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Print the decision sequence as the report's ledger tables:</span>
 <span class="sd">    EXPLAINED VARIANCE (the GAM, each accepted split, the FINAL R²),</span>
 <span class="sd">    then REJECTED SPLITS with the reason each one was refused.</span>
@@ -1579,11 +1768,11 @@ for terminals and logs that mangle unicode.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/calm.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">403</span>
-<span class="normal">404</span>
-<span class="normal">405</span>
-<span class="normal">406</span>
-<span class="normal">407</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">effect</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">419</span>
+<span class="normal">420</span>
+<span class="normal">421</span>
+<span class="normal">422</span>
+<span class="normal">423</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">bind</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">effect</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Bind every snapshot (mask verification included). Returns `self`."""</span>
     <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">calms</span><span class="p">:</span>
         <span class="n">c</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">effect</span><span class="p">)</span>
@@ -1612,23 +1801,32 @@ payload: the flat decision-sequence keys (<code>gam_r2</code>, <code>regional_r2
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/calm.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">441</span>
-<span class="normal">442</span>
-<span class="normal">443</span>
-<span class="normal">444</span>
-<span class="normal">445</span>
-<span class="normal">446</span>
-<span class="normal">447</span>
-<span class="normal">448</span>
-<span class="normal">449</span>
-<span class="normal">450</span>
-<span class="normal">451</span>
-<span class="normal">452</span>
-<span class="normal">453</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">457</span>
+<span class="normal">458</span>
+<span class="normal">459</span>
+<span class="normal">460</span>
+<span class="normal">461</span>
+<span class="normal">462</span>
+<span class="normal">463</span>
+<span class="normal">464</span>
+<span class="normal">465</span>
+<span class="normal">466</span>
+<span class="normal">467</span>
+<span class="normal">468</span>
+<span class="normal">469</span>
+<span class="normal">470</span>
+<span class="normal">471</span>
+<span class="normal">472</span>
+<span class="normal">473</span>
+<span class="normal">474</span>
+<span class="normal">475</span>
+<span class="normal">476</span>
+<span class="normal">477</span>
+<span class="normal">478</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_dict</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Serialize the chain — a superset of the report's explained-variance</span>
 <span class="sd">    payload: the flat decision-sequence keys (`gam_r2`, `regional_r2`,</span>
 <span class="sd">    `min_gain`, `stages`, `skipped`) plus the full `calms` list."""</span>
-    <span class="k">return</span> <span class="p">{</span>
+    <span class="n">d</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">"schema_version"</span><span class="p">:</span> <span class="n">_SCHEMA_VERSION</span><span class="p">,</span>
         <span class="s2">"gam_r2"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">gam_r2</span><span class="p">,</span>
         <span class="s2">"regional_r2"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">regional_r2</span><span class="p">,</span>
@@ -1637,6 +1835,15 @@ payload: the flat decision-sequence keys (<code>gam_r2</code>, <code>regional_r2
         <span class="s2">"skipped"</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">skipped</span><span class="p">,</span>
         <span class="s2">"calms"</span><span class="p">:</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">to_dict</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">calms</span><span class="p">],</span>
     <span class="p">}</span>
+    <span class="c1"># emitted only when set: default-path chains stay byte-identical to</span>
+    <span class="c1"># every chain written before the hybrid gate existed</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">relative_gain</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">[</span><span class="s2">"relative_gain"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">relative_gain</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_conditional_interactions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">[</span><span class="s2">"max_conditional_interactions"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_conditional_interactions</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_partitions</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">d</span><span class="p">[</span><span class="s2">"max_partitions"</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_partitions</span>
+    <span class="k">return</span> <span class="n">d</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>
     </div>
@@ -1663,19 +1870,22 @@ payload: the flat decision-sequence keys (<code>gam_r2</code>, <code>regional_r2
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/calm.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">455</span>
-<span class="normal">456</span>
-<span class="normal">457</span>
-<span class="normal">458</span>
-<span class="normal">459</span>
-<span class="normal">460</span>
-<span class="normal">461</span>
-<span class="normal">462</span>
-<span class="normal">463</span>
-<span class="normal">464</span>
-<span class="normal">465</span>
-<span class="normal">466</span>
-<span class="normal">467</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">480</span>
+<span class="normal">481</span>
+<span class="normal">482</span>
+<span class="normal">483</span>
+<span class="normal">484</span>
+<span class="normal">485</span>
+<span class="normal">486</span>
+<span class="normal">487</span>
+<span class="normal">488</span>
+<span class="normal">489</span>
+<span class="normal">490</span>
+<span class="normal">491</span>
+<span class="normal">492</span>
+<span class="normal">493</span>
+<span class="normal">494</span>
+<span class="normal">495</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@classmethod</span>
 <span class="k">def</span><span class="w"> </span><span class="nf">from_dict</span><span class="p">(</span><span class="bp">cls</span><span class="p">,</span> <span class="n">d</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Rebuild an **unbound** chain from `to_dict()` output."""</span>
     <span class="k">if</span> <span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"schema_version"</span><span class="p">)</span> <span class="o">!=</span> <span class="n">_SCHEMA_VERSION</span><span class="p">:</span>
@@ -1687,6 +1897,9 @@ payload: the flat decision-sequence keys (<code>gam_r2</code>, <code>regional_r2
         <span class="p">[</span><span class="n">CALM</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">d</span><span class="p">[</span><span class="s2">"calms"</span><span class="p">]],</span>
         <span class="n">skipped</span><span class="o">=</span><span class="n">d</span><span class="p">[</span><span class="s2">"skipped"</span><span class="p">],</span>
         <span class="n">min_gain</span><span class="o">=</span><span class="n">d</span><span class="p">[</span><span class="s2">"min_gain"</span><span class="p">],</span>
+        <span class="n">relative_gain</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"relative_gain"</span><span class="p">),</span>
+        <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"max_conditional_interactions"</span><span class="p">),</span>
+        <span class="n">max_partitions</span><span class="o">=</span><span class="n">d</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"max_partitions"</span><span class="p">),</span>
     <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>

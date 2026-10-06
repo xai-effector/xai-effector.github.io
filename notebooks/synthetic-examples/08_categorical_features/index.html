@@ -831,7 +831,7 @@ Level 0🔹heter: 0.44
 
 <span class="c1"># effector is numpy-only: convert the DataFrame to (X, schema) at the door.</span>
 <span class="n">X</span><span class="p">,</span> <span class="n">schema_nominal</span> <span class="o">=</span> <span class="n">effector</span><span class="o">.</span><span class="n">from_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
-<span class="n">levels</span> <span class="o">=</span> <span class="n">schema_nominal</span><span class="o">.</span><span class="n">category_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>  <span class="c1"># e.g. ['blue', 'green', 'red']</span>
+<span class="n">levels</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">schema_nominal</span><span class="o">.</span><span class="n">category_names</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>  <span class="c1"># the names by code: ['blue', 'green', 'red']</span>
 
 <span class="c1"># the model is numpy-&gt;numpy; it receives the encoded codes in column 0.</span>
 <span class="n">color_effect</span> <span class="o">=</span> <span class="p">{</span><span class="s2">"red"</span><span class="p">:</span> <span class="mf">2.0</span><span class="p">,</span> <span class="s2">"green"</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s2">"blue"</span><span class="p">:</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">}</span>

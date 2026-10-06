@@ -391,24 +391,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Changelog
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -425,53 +407,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#unreleased" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unreleased
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unreleased">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fixed
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -497,42 +432,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-      
-        <li class="md-nav__item">
-  <a href="#unreleased" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Unreleased
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Unreleased">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fixed" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fixed
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -549,21 +448,38 @@
 
 
 <h1 id="changelog">Changelog</h1>
-<h2 id="unreleased">Unreleased</h2>
+<h1 id="060-2026-10-06">[0.6.0] - 2026-10-06</h1>
+<h3 id="breaking">Breaking</h3>
+<ul>
+<li><strong><code>from_dataframe</code> returns <code>category_names</code> as dicts</strong>: each encoded column's entry is now a <code>{code: name}</code> dict over <strong>every declared level</strong> (it was a list with one name per <em>observed</em> level). Names are keyed by the code they belong to, so a level the frame does not show cannot shift the others. Migration: <code>names = schema.category_names[j]</code> → <code>names = list(schema.category_names[j].values())</code> for the names in code order, or look a code up directly with <code>schema.category_names[j][code]</code>. A <code>Schema</code> you write by hand may still use a list.</li>
+<li><strong>NaN and infinity are rejected on numpy input</strong>: every constructor now raises a <code>ValueError</code> naming the first column that contains missing or infinite values. Before, such data was accepted and failed later — <code>find_regions</code> and any verb on the affected feature raised an unrelated error, <code>importance</code> returned <code>NaN</code> — while the effects of the clean columns still computed. effector has no missing-value semantics; impute or drop first (<code>from_dataframe</code> already rejected missing values).</li>
+<li><strong>Integer-valued features print without decimals</strong>: a rule on a feature whose values are all integers (in display units) is written as the integers it admits — <code>hr ≤ 6</code> where it read <code>hr &lt; 6.90</code>, <code>year = 0</code> where it read <code>year = 0.00</code>. This changes region labels in <code>Partition.show()</code>, plot titles and reports. A value that rounds to zero prints as <code>0.00</code>, never <code>-0.00</code>.</li>
+</ul>
+<h3 id="added">Added</h3>
+<ul>
+<li><strong><code>select_regions(..., target=)</code></strong>: an optional <code>(N,)</code> vector that replaces <code>f̂(X)</code> as the selection objective — e.g. the ground-truth labels, "which splits <em>predict</em> better" instead of "which splits explain the model". The curves still come from the effect; only the offsets fit and the R² denominator change.</li>
+<li><strong><code>select_regions(..., relative_gain=)</code></strong>: an optional hybrid gate. When set, a round's threshold is <code>min(min_r2_gain, relative_gain * (1 - cum_r2))</code>, so a near-saturated chain still accepts a split that explains at least <code>relative_gain</code> of the <em>remaining</em> unexplained variance. Never stricter than <code>min_r2_gain</code>; <code>None</code> (default) is the absolute rule, unchanged.</li>
+<li><strong><code>select_regions(..., max_conditional_interactions=, max_partitions=)</code></strong>: optional caps on the selected partitions — conditional interactions counted one per (feature, conditioning feature) pair, and the number of split features. A partition is accepted whole, so the sequence stops before the round that would exceed a cap: a capped chain is a prefix of the uncapped one. Splits a cap left out land in <code>.skipped</code> with the cap's name as the reason (<code>interaction cap</code> / <code>partition cap</code> in the printed ledger). <code>CalmSequence</code> stores and serializes the gate and the caps, only when set.</li>
+<li><strong><code>from_dataframe(df, return_encoding=True)</code></strong> also returns a <code>DataFrameEncoding</code>, whose <code>transform(df_new)</code> encodes a later frame with the codes of the original one — columns matched by name, every level keeping its code, an unseen level raising.</li>
+<li><strong><code>Schema.category_names</code> accepts a <code>{level value: name}</code> dict</strong> per feature, next to the list form; levels absent from the data are fine.</li>
+<li><strong><code>Partition.conditions(idx)</code></strong> — a region's rule as a list, one formatted condition per feature — and <strong><code>Partition.tree_lines()</code></strong> — the partition as a plain tree, one line per region, leaves with their number of instances.</li>
+<li><code>effector.ingestion.check_finite(data, feature_names)</code> — the NaN / infinity check as a function.</li>
+</ul>
 <h3 id="fixed">Fixed</h3>
 <ul>
+<li><strong>A candidate partition with an empty region is skipped</strong> in <code>select_regions</code> (reason <code>empty_region</code>) instead of failing when its snapshot is built.</li>
 <li><strong>Display units honor the schema's <code>scale_y</code></strong>: every surface labeled "(target units)" — <code>effector.plot_triage</code>, <code>CALM.plot_triage</code>, and the report's importance/heterogeneity bars, triage plane, ranked tables, ledger heter columns, and <code>heter_threshold</code> chip — now bridges the model-unit scalars by <code>scale_y["std"]</code>, so a model trained on a standardized target reads in the target's own scale (matching the curve plots, which already rescaled). Unbound reports render the same as bound ones: <code>Report</code> stamps <code>scale_y</code>/<code>scale_x_list</code>, and the unbound curve fallback applies them. The engine verbs (<code>importance</code>, <code>heter_score</code>) and all stamped/serialized payloads stay in model-output units, so <code>find_regions</code> thresholds and old dicts are unaffected.</li>
 <li><strong>HTML report surfaces missed by the <code>scale_y</code> bridge</strong>: the decision-sequence table's heterogeneity column, the per-feature and global-baseline chips, the rejected-split note, and the per-leaf statistics (figure captions and the unbound leaf table) still rendered raw model-unit scalars while the rest of the page was bridged. They now use the same <code>scale_y["std"]</code> bridge and the ranked table's <code>.4g</code> format, so one page reads in one unit. The partition-tree <code>&lt;pre&gt;</code> dump keeps model units by design (it is the verbatim <code>Partition.show()</code> payload).</li>
 </ul>
 <h1 id="050-2026-07-14">[0.5.0] - 2026-07-14</h1>
-<h3 id="breaking">Breaking</h3>
+<h3 id="breaking_1">Breaking</h3>
 <ul>
 <li><strong><code>Regional*</code> classes removed</strong> (<code>RegionalPDP</code>, <code>RegionalDerPDP</code>, <code>RegionalALE</code>, <code>RegionalRHALE</code>, <code>RegionalShapDP</code>) with no backward-compatibility shim. Regional questions are now asked on the <strong>global</strong> effect object via <code>find_regions(feature) -&gt; Partition</code> (design contract R12: partitions are values, not stored state). Migration: <code>RegionalPDP(X, f).fit(0); r.summary(0); r.plot(0, i)</code> → <code>pdp = PDP(X, f); pdp.fit(0); part = pdp.find_regions(0); part.show(); part.plot(i)</code>. The old <code>space_partitioner=</code> fit kwarg becomes the <code>finder=</code> kwarg of <code>find_regions</code>; <code>r.eval(0, i, xs, heterogeneity=True)</code> (tuple) splits into <code>part.eval(i, xs)</code> + <code>part.eval_heter(i, xs)</code>.</li>
 <li><strong>Two-block lifecycle (R14)</strong>: <code>fit</code> computes the frame-gated local effects — the <em>only</em> model touch — and every summary (centering included) is a memoized, model-free reduction on top. The <code>points_for_centering</code> fit kwarg and the <code>requires_refit</code> machinery are gone; changing <code>centering</code> at <code>eval</code>/<code>plot</code> time never recomputes local effects behind your back.</li>
 <li><strong>Scalar units contract</strong>: <code>heter_score</code> and <code>importance</code> now return values in <strong>output units</strong> (RMS over the data), directly comparable to the target's scale and to each other. Slope-scale methods (RHALE, DerPDP) are bridged by the feature's std; nominal features use order-free all-pairs level differences. <code>ShapDP</code> no longer overrides <code>importance</code> with <code>mean(|φ|)</code> — it inherits the shared default. Any thresholds tuned against the old variance-flavored numbers must be recalibrated.</li>
 <li><code>Report.to_html(path)</code> writes the file and returns <code>None</code> (it used to return the multi-megabyte HTML string, echoing it in interactive shells).</li>
 </ul>
-<h3 id="added">Added</h3>
+<h3 id="added_1">Added</h3>
 <ul>
 <li><code>GlobalEffectBase.find_regions(feature, *, finder="best", candidate_conditioning_features="all") -&gt; Partition</code> on every global class — a model-free heterogeneity split search (every candidate scored by <code>heter_score(feature, mask)</code>, re-summarized from the cached local effects). Returns a <code>Partition</code> value object (<code>effector.Partition</code> / <code>effector.Region</code>) with <code>show</code>/<code>eval</code>/<code>eval_heter</code>/<code>plot</code>/<code>to_dict</code>; nothing is stored on the effect.</li>
 <li>A <strong>finder protocol</strong> on <code>space_partitioning</code> (<code>Base.find_regions</code>): a finder consumes only <code>(score_fn: mask-&gt;float, data, metadata, its own config)</code> and returns a <code>Partition</code>, so new finders plug in with no changes elsewhere. The min-points / degeneracy (<code>BIG_M</code>) guard lives in the finder, never in the effect.</li>
@@ -602,7 +518,7 @@
 <li><code>Report.show</code>/<code>to_html</code>: the DATA &amp; MODEL header now speaks the figures' <code>scale_y</code> units (it printed raw model-output units); the <code>#regions</code> column counts a partition's <strong>leaves</strong> (it counted tree nodes, disagreeing with the regional section); the HTML rejected-split notes say <code>%</code> like every other surface (two <code>-pt</code> leftovers)</li>
 </ul>
 <h1 id="040-2026-07-06">[0.4.0] - 2026-07-06</h1>
-<h3 id="breaking_1">Breaking</h3>
+<h3 id="breaking_2">Breaking</h3>
 <ul>
 <li>one <code>schema=</code> argument replaces the metadata kwargs on every public constructor: <code>feature_names=</code>, <code>target_name=</code> (all classes) and <code>feature_types=</code>, <code>cat_limit=</code> (regional classes) are removed; pass <code>schema={"feature_names": ..., "feature_types": ..., "cat_limit": ..., "target_name": ..., "scale_x_list": ..., "scale_y": ...}</code> (or an <code>effector.Schema</code>) instead — every field optional, explicit fields win over inference</li>
 <li>SHAP configuration moved to the constructor: <code>budget</code>, <code>shap_explainer_kwargs</code>, <code>shap_explanation_kwargs</code> are no longer <code>fit</code> kwargs on <code>ShapDP</code>/<code>RegionalShapDP</code> (and <code>RegionalShapDP</code> gains <code>shap_values=</code> for parity); <code>fit</code> keeps only the analysis args</li>
@@ -610,7 +526,7 @@
 <li><code>DerPDP.plot</code>/<code>RegionalDerPDP.plot</code>: <code>dy_limits</code> renamed to <code>y_limits</code> (its only axis); ALE/RHALE plots dropped <code>nof_points</code> (the curve is drawn exactly at the bin limits)</li>
 <li><code>utils.get_feature_types</code> deprecated (delegates to <code>effector.ingestion.infer_feature_types</code>) and its vocabulary changed to the three-way taxonomy</li>
 </ul>
-<h3 id="added_1">Added</h3>
+<h3 id="added_2">Added</h3>
 <ul>
 <li><strong>effector is numpy-only</strong> (R10): <code>data</code> must be a 2-D numeric numpy array and <code>model</code>/<code>model_jac</code> are <code>numpy → numpy</code> callables, called exactly as given (never wrapped) — a DataFrame passed to a constructor is rejected with a pointer to <code>from_dataframe</code>. <code>effector.from_dataframe(df) -&gt; (X, schema)</code> is the opt-in convenience that reads a DataFrame's names/dtypes/category labels into a numpy matrix + populated <code>Schema</code> (it never touches the model); pandas stays an optional dependency, never imported on the numpy path</li>
 <li>three-way feature taxonomy <code>continuous</code>/<code>ordinal</code>/<code>nominal</code> (aliases <code>cont</code>/<code>cat</code>), stored on every class as <code>feature_types</code> + <code>feature_metadata</code>; heuristic type inferences (low-cardinality int) emit a <code>UserWarning</code> nudging an explicit declaration</li>
@@ -639,7 +555,7 @@
 <li><code>helpers.prep_data</code>: the subsample <code>indices</code> (stored as <code>self.indices</code> on every effect object) are now original-relative — they index <code>data</code> as passed in even when the <code>axis_limits</code> filter dropped rows (<code>data_in[indices] == data_out</code>), giving a stable handle back to the user's rows</li>
 </ul>
 <h1 id="030-2026-07-04">[0.3.0] - 2026-07-04</h1>
-<h3 id="added_2">Added</h3>
+<h3 id="added_3">Added</h3>
 <ul>
 <li><code>random_state</code> on every public effect-class constructor (<code>PDP</code>, <code>DerPDP</code>, <code>ALE</code>, <code>RHALE</code>, <code>ShapDP</code>, the 5 regional variants, and <code>FeatureEffect</code>); default <code>21</code>, so two identical constructions give identical <code>eval</code>/<code>fit</code>/<code>plot</code> output out of the box, <code>None</code> opts into fresh randomness. The seed also drives plot-time ICE/SHAP-scatter subsampling and is passed to the shap/shapiq explainer (<code>seed=</code>/<code>random_state=</code>) unless overridden via <code>shap_explainer_kwargs</code>. No effector code touches the global <code>np.random</code> state anymore.</li>
 </ul>
@@ -671,7 +587,7 @@
 <li>fixed bug in <code>project.toml</code>, added dependency to <code>overrides</code></li>
 </ul>
 <h2 id="0111-2025-07-10">[0.1.11] - 2025-07-10</h2>
-<h3 id="added_3">Added</h3>
+<h3 id="added_4">Added</h3>
 <ul>
 <li>added codecov to the project</li>
 </ul>
@@ -691,7 +607,7 @@
 <li>bug in github actions</li>
 </ul>
 <h2 id="018-2025-06-18">[0.1.8] - 2025-06-18</h2>
-<h3 id="added_4">Added</h3>
+<h3 id="added_5">Added</h3>
 <ul>
 <li>NO2 real example</li>
 </ul>
@@ -704,7 +620,7 @@
 <li>added dependecies to <code>requirement-dev.txt</code></li>
 </ul>
 <h2 id="017-2025-05-08">[0.1.7] - 2025-05-08</h2>
-<h3 id="added_5">Added</h3>
+<h3 id="added_6">Added</h3>
 <ul>
 <li>added organizations the that support the project</li>
 </ul>
@@ -718,7 +634,7 @@
 <li>REAME.md and index.md: added refereces to effector</li>
 </ul>
 <h2 id="015-2025-03-24">[0.1.5] - 2025-03-24</h2>
-<h3 id="added_6">Added</h3>
+<h3 id="added_7">Added</h3>
 <ul>
 <li>added <code>ucimlrepo</code> to the dependencies</li>
 <li><code>space_partitioning</code> module with <code>Best</code> and <code>BestDepthWise</code> classes for space partitioning.</li>
@@ -756,7 +672,7 @@
 <li>default plot titles now display full method name, e.g., <code>Accumulated Local Effects</code> instead of <code>ALE</code>.</li>
 <li>changed README.md to reflect the new changes.</li>
 </ul>
-<h3 id="added_7">Added</h3>
+<h3 id="added_8">Added</h3>
 <ul>
 <li>license</li>
 <li>documentation for space partitioning methods</li>
@@ -778,7 +694,7 @@
 </li>
 </ul>
 <h2 id="010-2025-02-17">[0.1.0] - 2025-02-17</h2>
-<h3 id="added_8">Added</h3>
+<h3 id="added_9">Added</h3>
 <ul>
 <li>Initialized changelog file and added basic versioning structure.</li>
 </ul>

@@ -1614,7 +1614,7 @@ reproducible); <code>None</code> for non-deterministic behavior.</p>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01) (effector.global_effect_ale.ALE.select_regions)" href="#effector.global_effect_ale.ALE.select_regions">select_regions</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01, target=None, relative_gain=None, max_conditional_interactions=None, max_partitions=None) (effector.global_effect_ale.ALE.select_regions)" href="#effector.global_effect_ale.ALE.select_regions">select_regions</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Greedily select which partitions earn their complexity — the CALM chain.</p>
@@ -2588,28 +2588,28 @@ reported curve on.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1031</span>
-<span class="normal">1032</span>
-<span class="normal">1033</span>
-<span class="normal">1034</span>
-<span class="normal">1035</span>
-<span class="normal">1036</span>
-<span class="normal">1037</span>
-<span class="normal">1038</span>
-<span class="normal">1039</span>
-<span class="normal">1040</span>
-<span class="normal">1041</span>
-<span class="normal">1042</span>
-<span class="normal">1043</span>
-<span class="normal">1044</span>
-<span class="normal">1045</span>
-<span class="normal">1046</span>
-<span class="normal">1047</span>
-<span class="normal">1048</span>
-<span class="normal">1049</span>
-<span class="normal">1050</span>
-<span class="normal">1051</span>
-<span class="normal">1052</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span>
+<span class="normal">1081</span>
+<span class="normal">1082</span>
+<span class="normal">1083</span>
+<span class="normal">1084</span>
+<span class="normal">1085</span>
+<span class="normal">1086</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The evaluation grid on which this feature's effect is model-free.</span>
 
 <span class="sd">    The observed levels for a discrete feature; otherwise</span>
@@ -3006,48 +3006,48 @@ the fitted effect, not a loss/permutation importance.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1108</span>
-<span class="normal">1109</span>
-<span class="normal">1110</span>
-<span class="normal">1111</span>
-<span class="normal">1112</span>
-<span class="normal">1113</span>
-<span class="normal">1114</span>
-<span class="normal">1115</span>
-<span class="normal">1116</span>
-<span class="normal">1117</span>
-<span class="normal">1118</span>
-<span class="normal">1119</span>
-<span class="normal">1120</span>
-<span class="normal">1121</span>
-<span class="normal">1122</span>
-<span class="normal">1123</span>
-<span class="normal">1124</span>
-<span class="normal">1125</span>
-<span class="normal">1126</span>
-<span class="normal">1127</span>
-<span class="normal">1128</span>
-<span class="normal">1129</span>
-<span class="normal">1130</span>
-<span class="normal">1131</span>
-<span class="normal">1132</span>
-<span class="normal">1133</span>
-<span class="normal">1134</span>
-<span class="normal">1135</span>
-<span class="normal">1136</span>
-<span class="normal">1137</span>
-<span class="normal">1138</span>
-<span class="normal">1139</span>
-<span class="normal">1140</span>
-<span class="normal">1141</span>
-<span class="normal">1142</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1142</span>
 <span class="normal">1143</span>
 <span class="normal">1144</span>
 <span class="normal">1145</span>
 <span class="normal">1146</span>
 <span class="normal">1147</span>
 <span class="normal">1148</span>
-<span class="normal">1149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span>
+<span class="normal">1157</span>
+<span class="normal">1158</span>
+<span class="normal">1159</span>
+<span class="normal">1160</span>
+<span class="normal">1161</span>
+<span class="normal">1162</span>
+<span class="normal">1163</span>
+<span class="normal">1164</span>
+<span class="normal">1165</span>
+<span class="normal">1166</span>
+<span class="normal">1167</span>
+<span class="normal">1168</span>
+<span class="normal">1169</span>
+<span class="normal">1170</span>
+<span class="normal">1171</span>
+<span class="normal">1172</span>
+<span class="normal">1173</span>
+<span class="normal">1174</span>
+<span class="normal">1175</span>
+<span class="normal">1176</span>
+<span class="normal">1177</span>
+<span class="normal">1178</span>
+<span class="normal">1179</span>
+<span class="normal">1180</span>
+<span class="normal">1181</span>
+<span class="normal">1182</span>
+<span class="normal">1183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -3189,45 +3189,45 @@ nominal feature) return <code>NaN</code>, with one <code>UserWarning</code> nami
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1168</span>
-<span class="normal">1169</span>
-<span class="normal">1170</span>
-<span class="normal">1171</span>
-<span class="normal">1172</span>
-<span class="normal">1173</span>
-<span class="normal">1174</span>
-<span class="normal">1175</span>
-<span class="normal">1176</span>
-<span class="normal">1177</span>
-<span class="normal">1178</span>
-<span class="normal">1179</span>
-<span class="normal">1180</span>
-<span class="normal">1181</span>
-<span class="normal">1182</span>
-<span class="normal">1183</span>
-<span class="normal">1184</span>
-<span class="normal">1185</span>
-<span class="normal">1186</span>
-<span class="normal">1187</span>
-<span class="normal">1188</span>
-<span class="normal">1189</span>
-<span class="normal">1190</span>
-<span class="normal">1191</span>
-<span class="normal">1192</span>
-<span class="normal">1193</span>
-<span class="normal">1194</span>
-<span class="normal">1195</span>
-<span class="normal">1196</span>
-<span class="normal">1197</span>
-<span class="normal">1198</span>
-<span class="normal">1199</span>
-<span class="normal">1200</span>
-<span class="normal">1201</span>
-<span class="normal">1202</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1202</span>
 <span class="normal">1203</span>
 <span class="normal">1204</span>
 <span class="normal">1205</span>
-<span class="normal">1206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
+<span class="normal">1206</span>
+<span class="normal">1207</span>
+<span class="normal">1208</span>
+<span class="normal">1209</span>
+<span class="normal">1210</span>
+<span class="normal">1211</span>
+<span class="normal">1212</span>
+<span class="normal">1213</span>
+<span class="normal">1214</span>
+<span class="normal">1215</span>
+<span class="normal">1216</span>
+<span class="normal">1217</span>
+<span class="normal">1218</span>
+<span class="normal">1219</span>
+<span class="normal">1220</span>
+<span class="normal">1221</span>
+<span class="normal">1222</span>
+<span class="normal">1223</span>
+<span class="normal">1224</span>
+<span class="normal">1225</span>
+<span class="normal">1226</span>
+<span class="normal">1227</span>
+<span class="normal">1228</span>
+<span class="normal">1229</span>
+<span class="normal">1230</span>
+<span class="normal">1231</span>
+<span class="normal">1232</span>
+<span class="normal">1233</span>
+<span class="normal">1234</span>
+<span class="normal">1235</span>
+<span class="normal">1236</span>
+<span class="normal">1237</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span>
+<span class="normal">1240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">rule</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Rule"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -3603,7 +3603,7 @@ finder instance (e.g. <code>effector.space_partitioning.Best(...)</code>).</p>
 
 
 <h4 id="effector.global_effect_ale.ALE.select_regions" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -3732,6 +3732,85 @@ the splits already applied — to earn a snapshot.</p>
                   <code>0.01</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>(N,)</code> vector replacing <code>f̂(X)</code> as the selection
+objective (e.g. ground-truth labels: "which splits predict
+better" instead of "which splits explain the teacher"). The
+curves still come from this effect; only the offsets fit and
+the R² denominator change.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>relative_gain</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional hybrid gate — when set, each round's
+threshold is <code>min(min_r2_gain, relative_gain * (1 - cum_r2))</code>:
+a near-saturated chain still accepts a split explaining at
+least <code>relative_gain</code> of the <em>remaining</em> unexplained variance.
+Never stricter than <code>min_r2_gain</code>; <code>None</code> (default) is the
+absolute rule, unchanged.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_conditional_interactions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the conditional
+interactions of the selected partitions — one per (feature,
+conditioning feature) pair, so <code>x1 | x2</code> and <code>x2 | x1</code> are
+two. A partition is accepted whole, so the sequence stops
+before the round that would exceed the cap. <code>None</code> (default)
+is no cap; 0 keeps the GAM.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_partitions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the number of selected
+partitions (split features). <code>None</code> (default) is no cap.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -3768,7 +3847,16 @@ the splits already applied — to earn a snapshot.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>).</p>
+                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>, or the name of the cap that</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>stopped the sequence).</p>
               </div>
             </td>
           </tr>
@@ -3792,7 +3880,8 @@ the splits already applied — to earn a snapshot.</p>
             <td>
               <div class="doc-md-description">
                 <p>the method is derivative-scale (no output-scale
-surrogate) or <code>Var(f̂) == 0</code>.</p>
+surrogate), <code>Var(f̂) == 0</code>, or a cap is not <code>None</code> or an
+integer &gt;= 0.</p>
               </div>
             </td>
           </tr>
@@ -3880,7 +3969,41 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="normal">1026</span>
 <span class="normal">1027</span>
 <span class="normal">1028</span>
-<span class="normal">1029</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -3888,6 +4011,10 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
     <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
     <span class="n">min_r2_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_gain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_conditional_interactions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Greedily select which partitions earn their complexity — the CALM chain.</span>
 
@@ -3928,15 +4055,36 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="sd">        min_r2_gain: smallest explained-variance marginal (fraction of</span>
 <span class="sd">            `Var(f̂)`, default 0.01 = 1 pt) a split must add — on top of</span>
 <span class="sd">            the splits already applied — to earn a snapshot.</span>
+<span class="sd">        target: optional `(N,)` vector replacing `f̂(X)` as the selection</span>
+<span class="sd">            objective (e.g. ground-truth labels: "which splits predict</span>
+<span class="sd">            better" instead of "which splits explain the teacher"). The</span>
+<span class="sd">            curves still come from this effect; only the offsets fit and</span>
+<span class="sd">            the R² denominator change.</span>
+<span class="sd">        relative_gain: optional hybrid gate — when set, each round's</span>
+<span class="sd">            threshold is ``min(min_r2_gain, relative_gain * (1 - cum_r2))``:</span>
+<span class="sd">            a near-saturated chain still accepts a split explaining at</span>
+<span class="sd">            least `relative_gain` of the *remaining* unexplained variance.</span>
+<span class="sd">            Never stricter than `min_r2_gain`; `None` (default) is the</span>
+<span class="sd">            absolute rule, unchanged.</span>
+<span class="sd">        max_conditional_interactions: optional cap on the conditional</span>
+<span class="sd">            interactions of the selected partitions — one per (feature,</span>
+<span class="sd">            conditioning feature) pair, so `x1 | x2` and `x2 | x1` are</span>
+<span class="sd">            two. A partition is accepted whole, so the sequence stops</span>
+<span class="sd">            before the round that would exceed the cap. `None` (default)</span>
+<span class="sd">            is no cap; 0 keeps the GAM.</span>
+<span class="sd">        max_partitions: optional cap on the number of selected</span>
+<span class="sd">            partitions (split features). `None` (default) is no cap.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a `CalmSequence` — `[GAM, calm1, ...]`, R² non-decreasing along</span>
 <span class="sd">        it, with the rejected splits in `.skipped`</span>
-<span class="sd">        (`"redundant"`/`"below_threshold"`).</span>
+<span class="sd">        (`"redundant"`/`"below_threshold"`, or the name of the cap that</span>
+<span class="sd">        stopped the sequence).</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: the method is derivative-scale (no output-scale</span>
-<span class="sd">            surrogate) or `Var(f̂) == 0`.</span>
+<span class="sd">            surrogate), `Var(f̂) == 0`, or a cap is not `None` or an</span>
+<span class="sd">            integer &gt;= 0.</span>
 <span class="sd">    """</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">effector</span><span class="w"> </span><span class="kn">import</span> <span class="n">explained_variance</span> <span class="k">as</span> <span class="n">_ev</span>  <span class="c1"># lazy: one-way dep guard</span>
 
@@ -3958,7 +4106,16 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
             <span class="n">supported</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">continue</span>
-    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">supported</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parts</span><span class="p">,</span>
+        <span class="n">supported</span><span class="p">,</span>
+        <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">relative_gain</span><span class="o">=</span><span class="n">relative_gain</span><span class="p">,</span>
+        <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="n">max_conditional_interactions</span><span class="p">,</span>
+        <span class="n">max_partitions</span><span class="o">=</span><span class="n">max_partitions</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>
     </div>
@@ -4141,41 +4298,7 @@ splits.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1054</span>
-<span class="normal">1055</span>
-<span class="normal">1056</span>
-<span class="normal">1057</span>
-<span class="normal">1058</span>
-<span class="normal">1059</span>
-<span class="normal">1060</span>
-<span class="normal">1061</span>
-<span class="normal">1062</span>
-<span class="normal">1063</span>
-<span class="normal">1064</span>
-<span class="normal">1065</span>
-<span class="normal">1066</span>
-<span class="normal">1067</span>
-<span class="normal">1068</span>
-<span class="normal">1069</span>
-<span class="normal">1070</span>
-<span class="normal">1071</span>
-<span class="normal">1072</span>
-<span class="normal">1073</span>
-<span class="normal">1074</span>
-<span class="normal">1075</span>
-<span class="normal">1076</span>
-<span class="normal">1077</span>
-<span class="normal">1078</span>
-<span class="normal">1079</span>
-<span class="normal">1080</span>
-<span class="normal">1081</span>
-<span class="normal">1082</span>
-<span class="normal">1083</span>
-<span class="normal">1084</span>
-<span class="normal">1085</span>
-<span class="normal">1086</span>
-<span class="normal">1087</span>
-<span class="normal">1088</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1088</span>
 <span class="normal">1089</span>
 <span class="normal">1090</span>
 <span class="normal">1091</span>
@@ -4193,7 +4316,41 @@ splits.</p>
 <span class="normal">1103</span>
 <span class="normal">1104</span>
 <span class="normal">1105</span>
-<span class="normal">1106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
+<span class="normal">1106</span>
+<span class="normal">1107</span>
+<span class="normal">1108</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span>
+<span class="normal">1112</span>
+<span class="normal">1113</span>
+<span class="normal">1114</span>
+<span class="normal">1115</span>
+<span class="normal">1116</span>
+<span class="normal">1117</span>
+<span class="normal">1118</span>
+<span class="normal">1119</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -5163,7 +5320,7 @@ reproducible); <code>None</code> for non-deterministic behavior.</p>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01) (effector.global_effect_ale.RHALE.select_regions)" href="#effector.global_effect_ale.RHALE.select_regions">select_regions</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01, target=None, relative_gain=None, max_conditional_interactions=None, max_partitions=None) (effector.global_effect_ale.RHALE.select_regions)" href="#effector.global_effect_ale.RHALE.select_regions">select_regions</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Greedily select which partitions earn their complexity — the CALM chain.</p>
@@ -6199,28 +6356,28 @@ reported curve on.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1031</span>
-<span class="normal">1032</span>
-<span class="normal">1033</span>
-<span class="normal">1034</span>
-<span class="normal">1035</span>
-<span class="normal">1036</span>
-<span class="normal">1037</span>
-<span class="normal">1038</span>
-<span class="normal">1039</span>
-<span class="normal">1040</span>
-<span class="normal">1041</span>
-<span class="normal">1042</span>
-<span class="normal">1043</span>
-<span class="normal">1044</span>
-<span class="normal">1045</span>
-<span class="normal">1046</span>
-<span class="normal">1047</span>
-<span class="normal">1048</span>
-<span class="normal">1049</span>
-<span class="normal">1050</span>
-<span class="normal">1051</span>
-<span class="normal">1052</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span>
+<span class="normal">1081</span>
+<span class="normal">1082</span>
+<span class="normal">1083</span>
+<span class="normal">1084</span>
+<span class="normal">1085</span>
+<span class="normal">1086</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The evaluation grid on which this feature's effect is model-free.</span>
 
 <span class="sd">    The observed levels for a discrete feature; otherwise</span>
@@ -6617,48 +6774,48 @@ the fitted effect, not a loss/permutation importance.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1108</span>
-<span class="normal">1109</span>
-<span class="normal">1110</span>
-<span class="normal">1111</span>
-<span class="normal">1112</span>
-<span class="normal">1113</span>
-<span class="normal">1114</span>
-<span class="normal">1115</span>
-<span class="normal">1116</span>
-<span class="normal">1117</span>
-<span class="normal">1118</span>
-<span class="normal">1119</span>
-<span class="normal">1120</span>
-<span class="normal">1121</span>
-<span class="normal">1122</span>
-<span class="normal">1123</span>
-<span class="normal">1124</span>
-<span class="normal">1125</span>
-<span class="normal">1126</span>
-<span class="normal">1127</span>
-<span class="normal">1128</span>
-<span class="normal">1129</span>
-<span class="normal">1130</span>
-<span class="normal">1131</span>
-<span class="normal">1132</span>
-<span class="normal">1133</span>
-<span class="normal">1134</span>
-<span class="normal">1135</span>
-<span class="normal">1136</span>
-<span class="normal">1137</span>
-<span class="normal">1138</span>
-<span class="normal">1139</span>
-<span class="normal">1140</span>
-<span class="normal">1141</span>
-<span class="normal">1142</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1142</span>
 <span class="normal">1143</span>
 <span class="normal">1144</span>
 <span class="normal">1145</span>
 <span class="normal">1146</span>
 <span class="normal">1147</span>
 <span class="normal">1148</span>
-<span class="normal">1149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span>
+<span class="normal">1157</span>
+<span class="normal">1158</span>
+<span class="normal">1159</span>
+<span class="normal">1160</span>
+<span class="normal">1161</span>
+<span class="normal">1162</span>
+<span class="normal">1163</span>
+<span class="normal">1164</span>
+<span class="normal">1165</span>
+<span class="normal">1166</span>
+<span class="normal">1167</span>
+<span class="normal">1168</span>
+<span class="normal">1169</span>
+<span class="normal">1170</span>
+<span class="normal">1171</span>
+<span class="normal">1172</span>
+<span class="normal">1173</span>
+<span class="normal">1174</span>
+<span class="normal">1175</span>
+<span class="normal">1176</span>
+<span class="normal">1177</span>
+<span class="normal">1178</span>
+<span class="normal">1179</span>
+<span class="normal">1180</span>
+<span class="normal">1181</span>
+<span class="normal">1182</span>
+<span class="normal">1183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -6800,45 +6957,45 @@ nominal feature) return <code>NaN</code>, with one <code>UserWarning</code> nami
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1168</span>
-<span class="normal">1169</span>
-<span class="normal">1170</span>
-<span class="normal">1171</span>
-<span class="normal">1172</span>
-<span class="normal">1173</span>
-<span class="normal">1174</span>
-<span class="normal">1175</span>
-<span class="normal">1176</span>
-<span class="normal">1177</span>
-<span class="normal">1178</span>
-<span class="normal">1179</span>
-<span class="normal">1180</span>
-<span class="normal">1181</span>
-<span class="normal">1182</span>
-<span class="normal">1183</span>
-<span class="normal">1184</span>
-<span class="normal">1185</span>
-<span class="normal">1186</span>
-<span class="normal">1187</span>
-<span class="normal">1188</span>
-<span class="normal">1189</span>
-<span class="normal">1190</span>
-<span class="normal">1191</span>
-<span class="normal">1192</span>
-<span class="normal">1193</span>
-<span class="normal">1194</span>
-<span class="normal">1195</span>
-<span class="normal">1196</span>
-<span class="normal">1197</span>
-<span class="normal">1198</span>
-<span class="normal">1199</span>
-<span class="normal">1200</span>
-<span class="normal">1201</span>
-<span class="normal">1202</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1202</span>
 <span class="normal">1203</span>
 <span class="normal">1204</span>
 <span class="normal">1205</span>
-<span class="normal">1206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
+<span class="normal">1206</span>
+<span class="normal">1207</span>
+<span class="normal">1208</span>
+<span class="normal">1209</span>
+<span class="normal">1210</span>
+<span class="normal">1211</span>
+<span class="normal">1212</span>
+<span class="normal">1213</span>
+<span class="normal">1214</span>
+<span class="normal">1215</span>
+<span class="normal">1216</span>
+<span class="normal">1217</span>
+<span class="normal">1218</span>
+<span class="normal">1219</span>
+<span class="normal">1220</span>
+<span class="normal">1221</span>
+<span class="normal">1222</span>
+<span class="normal">1223</span>
+<span class="normal">1224</span>
+<span class="normal">1225</span>
+<span class="normal">1226</span>
+<span class="normal">1227</span>
+<span class="normal">1228</span>
+<span class="normal">1229</span>
+<span class="normal">1230</span>
+<span class="normal">1231</span>
+<span class="normal">1232</span>
+<span class="normal">1233</span>
+<span class="normal">1234</span>
+<span class="normal">1235</span>
+<span class="normal">1236</span>
+<span class="normal">1237</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span>
+<span class="normal">1240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">rule</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Rule"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -7214,7 +7371,7 @@ finder instance (e.g. <code>effector.space_partitioning.Best(...)</code>).</p>
 
 
 <h4 id="effector.global_effect_ale.RHALE.select_regions" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -7343,6 +7500,85 @@ the splits already applied — to earn a snapshot.</p>
                   <code>0.01</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>(N,)</code> vector replacing <code>f̂(X)</code> as the selection
+objective (e.g. ground-truth labels: "which splits predict
+better" instead of "which splits explain the teacher"). The
+curves still come from this effect; only the offsets fit and
+the R² denominator change.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>relative_gain</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional hybrid gate — when set, each round's
+threshold is <code>min(min_r2_gain, relative_gain * (1 - cum_r2))</code>:
+a near-saturated chain still accepts a split explaining at
+least <code>relative_gain</code> of the <em>remaining</em> unexplained variance.
+Never stricter than <code>min_r2_gain</code>; <code>None</code> (default) is the
+absolute rule, unchanged.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_conditional_interactions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the conditional
+interactions of the selected partitions — one per (feature,
+conditioning feature) pair, so <code>x1 | x2</code> and <code>x2 | x1</code> are
+two. A partition is accepted whole, so the sequence stops
+before the round that would exceed the cap. <code>None</code> (default)
+is no cap; 0 keeps the GAM.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_partitions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the number of selected
+partitions (split features). <code>None</code> (default) is no cap.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -7379,7 +7615,16 @@ the splits already applied — to earn a snapshot.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>).</p>
+                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>, or the name of the cap that</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>stopped the sequence).</p>
               </div>
             </td>
           </tr>
@@ -7403,7 +7648,8 @@ the splits already applied — to earn a snapshot.</p>
             <td>
               <div class="doc-md-description">
                 <p>the method is derivative-scale (no output-scale
-surrogate) or <code>Var(f̂) == 0</code>.</p>
+surrogate), <code>Var(f̂) == 0</code>, or a cap is not <code>None</code> or an
+integer &gt;= 0.</p>
               </div>
             </td>
           </tr>
@@ -7491,7 +7737,41 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="normal">1026</span>
 <span class="normal">1027</span>
 <span class="normal">1028</span>
-<span class="normal">1029</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -7499,6 +7779,10 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
     <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
     <span class="n">min_r2_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_gain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_conditional_interactions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Greedily select which partitions earn their complexity — the CALM chain.</span>
 
@@ -7539,15 +7823,36 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="sd">        min_r2_gain: smallest explained-variance marginal (fraction of</span>
 <span class="sd">            `Var(f̂)`, default 0.01 = 1 pt) a split must add — on top of</span>
 <span class="sd">            the splits already applied — to earn a snapshot.</span>
+<span class="sd">        target: optional `(N,)` vector replacing `f̂(X)` as the selection</span>
+<span class="sd">            objective (e.g. ground-truth labels: "which splits predict</span>
+<span class="sd">            better" instead of "which splits explain the teacher"). The</span>
+<span class="sd">            curves still come from this effect; only the offsets fit and</span>
+<span class="sd">            the R² denominator change.</span>
+<span class="sd">        relative_gain: optional hybrid gate — when set, each round's</span>
+<span class="sd">            threshold is ``min(min_r2_gain, relative_gain * (1 - cum_r2))``:</span>
+<span class="sd">            a near-saturated chain still accepts a split explaining at</span>
+<span class="sd">            least `relative_gain` of the *remaining* unexplained variance.</span>
+<span class="sd">            Never stricter than `min_r2_gain`; `None` (default) is the</span>
+<span class="sd">            absolute rule, unchanged.</span>
+<span class="sd">        max_conditional_interactions: optional cap on the conditional</span>
+<span class="sd">            interactions of the selected partitions — one per (feature,</span>
+<span class="sd">            conditioning feature) pair, so `x1 | x2` and `x2 | x1` are</span>
+<span class="sd">            two. A partition is accepted whole, so the sequence stops</span>
+<span class="sd">            before the round that would exceed the cap. `None` (default)</span>
+<span class="sd">            is no cap; 0 keeps the GAM.</span>
+<span class="sd">        max_partitions: optional cap on the number of selected</span>
+<span class="sd">            partitions (split features). `None` (default) is no cap.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a `CalmSequence` — `[GAM, calm1, ...]`, R² non-decreasing along</span>
 <span class="sd">        it, with the rejected splits in `.skipped`</span>
-<span class="sd">        (`"redundant"`/`"below_threshold"`).</span>
+<span class="sd">        (`"redundant"`/`"below_threshold"`, or the name of the cap that</span>
+<span class="sd">        stopped the sequence).</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: the method is derivative-scale (no output-scale</span>
-<span class="sd">            surrogate) or `Var(f̂) == 0`.</span>
+<span class="sd">            surrogate), `Var(f̂) == 0`, or a cap is not `None` or an</span>
+<span class="sd">            integer &gt;= 0.</span>
 <span class="sd">    """</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">effector</span><span class="w"> </span><span class="kn">import</span> <span class="n">explained_variance</span> <span class="k">as</span> <span class="n">_ev</span>  <span class="c1"># lazy: one-way dep guard</span>
 
@@ -7569,7 +7874,16 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
             <span class="n">supported</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">continue</span>
-    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">supported</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parts</span><span class="p">,</span>
+        <span class="n">supported</span><span class="p">,</span>
+        <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">relative_gain</span><span class="o">=</span><span class="n">relative_gain</span><span class="p">,</span>
+        <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="n">max_conditional_interactions</span><span class="p">,</span>
+        <span class="n">max_partitions</span><span class="o">=</span><span class="n">max_partitions</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>
     </div>
@@ -7752,41 +8066,7 @@ splits.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1054</span>
-<span class="normal">1055</span>
-<span class="normal">1056</span>
-<span class="normal">1057</span>
-<span class="normal">1058</span>
-<span class="normal">1059</span>
-<span class="normal">1060</span>
-<span class="normal">1061</span>
-<span class="normal">1062</span>
-<span class="normal">1063</span>
-<span class="normal">1064</span>
-<span class="normal">1065</span>
-<span class="normal">1066</span>
-<span class="normal">1067</span>
-<span class="normal">1068</span>
-<span class="normal">1069</span>
-<span class="normal">1070</span>
-<span class="normal">1071</span>
-<span class="normal">1072</span>
-<span class="normal">1073</span>
-<span class="normal">1074</span>
-<span class="normal">1075</span>
-<span class="normal">1076</span>
-<span class="normal">1077</span>
-<span class="normal">1078</span>
-<span class="normal">1079</span>
-<span class="normal">1080</span>
-<span class="normal">1081</span>
-<span class="normal">1082</span>
-<span class="normal">1083</span>
-<span class="normal">1084</span>
-<span class="normal">1085</span>
-<span class="normal">1086</span>
-<span class="normal">1087</span>
-<span class="normal">1088</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1088</span>
 <span class="normal">1089</span>
 <span class="normal">1090</span>
 <span class="normal">1091</span>
@@ -7804,7 +8084,41 @@ splits.</p>
 <span class="normal">1103</span>
 <span class="normal">1104</span>
 <span class="normal">1105</span>
-<span class="normal">1106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
+<span class="normal">1106</span>
+<span class="normal">1107</span>
+<span class="normal">1108</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span>
+<span class="normal">1112</span>
+<span class="normal">1113</span>
+<span class="normal">1114</span>
+<span class="normal">1115</span>
+<span class="normal">1116</span>
+<span class="normal">1117</span>
+<span class="normal">1118</span>
+<span class="normal">1119</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -8721,7 +9035,7 @@ reproducible); <code>None</code> for non-deterministic behavior.</p>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01) (effector.global_effect_pdp.PDP.select_regions)" href="#effector.global_effect_pdp.PDP.select_regions">select_regions</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01, target=None, relative_gain=None, max_conditional_interactions=None, max_partitions=None) (effector.global_effect_pdp.PDP.select_regions)" href="#effector.global_effect_pdp.PDP.select_regions">select_regions</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Greedily select which partitions earn their complexity — the CALM chain.</p>
@@ -9560,28 +9874,28 @@ reported curve on.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1031</span>
-<span class="normal">1032</span>
-<span class="normal">1033</span>
-<span class="normal">1034</span>
-<span class="normal">1035</span>
-<span class="normal">1036</span>
-<span class="normal">1037</span>
-<span class="normal">1038</span>
-<span class="normal">1039</span>
-<span class="normal">1040</span>
-<span class="normal">1041</span>
-<span class="normal">1042</span>
-<span class="normal">1043</span>
-<span class="normal">1044</span>
-<span class="normal">1045</span>
-<span class="normal">1046</span>
-<span class="normal">1047</span>
-<span class="normal">1048</span>
-<span class="normal">1049</span>
-<span class="normal">1050</span>
-<span class="normal">1051</span>
-<span class="normal">1052</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span>
+<span class="normal">1081</span>
+<span class="normal">1082</span>
+<span class="normal">1083</span>
+<span class="normal">1084</span>
+<span class="normal">1085</span>
+<span class="normal">1086</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The evaluation grid on which this feature's effect is model-free.</span>
 
 <span class="sd">    The observed levels for a discrete feature; otherwise</span>
@@ -9978,48 +10292,48 @@ the fitted effect, not a loss/permutation importance.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1108</span>
-<span class="normal">1109</span>
-<span class="normal">1110</span>
-<span class="normal">1111</span>
-<span class="normal">1112</span>
-<span class="normal">1113</span>
-<span class="normal">1114</span>
-<span class="normal">1115</span>
-<span class="normal">1116</span>
-<span class="normal">1117</span>
-<span class="normal">1118</span>
-<span class="normal">1119</span>
-<span class="normal">1120</span>
-<span class="normal">1121</span>
-<span class="normal">1122</span>
-<span class="normal">1123</span>
-<span class="normal">1124</span>
-<span class="normal">1125</span>
-<span class="normal">1126</span>
-<span class="normal">1127</span>
-<span class="normal">1128</span>
-<span class="normal">1129</span>
-<span class="normal">1130</span>
-<span class="normal">1131</span>
-<span class="normal">1132</span>
-<span class="normal">1133</span>
-<span class="normal">1134</span>
-<span class="normal">1135</span>
-<span class="normal">1136</span>
-<span class="normal">1137</span>
-<span class="normal">1138</span>
-<span class="normal">1139</span>
-<span class="normal">1140</span>
-<span class="normal">1141</span>
-<span class="normal">1142</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1142</span>
 <span class="normal">1143</span>
 <span class="normal">1144</span>
 <span class="normal">1145</span>
 <span class="normal">1146</span>
 <span class="normal">1147</span>
 <span class="normal">1148</span>
-<span class="normal">1149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span>
+<span class="normal">1157</span>
+<span class="normal">1158</span>
+<span class="normal">1159</span>
+<span class="normal">1160</span>
+<span class="normal">1161</span>
+<span class="normal">1162</span>
+<span class="normal">1163</span>
+<span class="normal">1164</span>
+<span class="normal">1165</span>
+<span class="normal">1166</span>
+<span class="normal">1167</span>
+<span class="normal">1168</span>
+<span class="normal">1169</span>
+<span class="normal">1170</span>
+<span class="normal">1171</span>
+<span class="normal">1172</span>
+<span class="normal">1173</span>
+<span class="normal">1174</span>
+<span class="normal">1175</span>
+<span class="normal">1176</span>
+<span class="normal">1177</span>
+<span class="normal">1178</span>
+<span class="normal">1179</span>
+<span class="normal">1180</span>
+<span class="normal">1181</span>
+<span class="normal">1182</span>
+<span class="normal">1183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -10161,45 +10475,45 @@ nominal feature) return <code>NaN</code>, with one <code>UserWarning</code> nami
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1168</span>
-<span class="normal">1169</span>
-<span class="normal">1170</span>
-<span class="normal">1171</span>
-<span class="normal">1172</span>
-<span class="normal">1173</span>
-<span class="normal">1174</span>
-<span class="normal">1175</span>
-<span class="normal">1176</span>
-<span class="normal">1177</span>
-<span class="normal">1178</span>
-<span class="normal">1179</span>
-<span class="normal">1180</span>
-<span class="normal">1181</span>
-<span class="normal">1182</span>
-<span class="normal">1183</span>
-<span class="normal">1184</span>
-<span class="normal">1185</span>
-<span class="normal">1186</span>
-<span class="normal">1187</span>
-<span class="normal">1188</span>
-<span class="normal">1189</span>
-<span class="normal">1190</span>
-<span class="normal">1191</span>
-<span class="normal">1192</span>
-<span class="normal">1193</span>
-<span class="normal">1194</span>
-<span class="normal">1195</span>
-<span class="normal">1196</span>
-<span class="normal">1197</span>
-<span class="normal">1198</span>
-<span class="normal">1199</span>
-<span class="normal">1200</span>
-<span class="normal">1201</span>
-<span class="normal">1202</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1202</span>
 <span class="normal">1203</span>
 <span class="normal">1204</span>
 <span class="normal">1205</span>
-<span class="normal">1206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
+<span class="normal">1206</span>
+<span class="normal">1207</span>
+<span class="normal">1208</span>
+<span class="normal">1209</span>
+<span class="normal">1210</span>
+<span class="normal">1211</span>
+<span class="normal">1212</span>
+<span class="normal">1213</span>
+<span class="normal">1214</span>
+<span class="normal">1215</span>
+<span class="normal">1216</span>
+<span class="normal">1217</span>
+<span class="normal">1218</span>
+<span class="normal">1219</span>
+<span class="normal">1220</span>
+<span class="normal">1221</span>
+<span class="normal">1222</span>
+<span class="normal">1223</span>
+<span class="normal">1224</span>
+<span class="normal">1225</span>
+<span class="normal">1226</span>
+<span class="normal">1227</span>
+<span class="normal">1228</span>
+<span class="normal">1229</span>
+<span class="normal">1230</span>
+<span class="normal">1231</span>
+<span class="normal">1232</span>
+<span class="normal">1233</span>
+<span class="normal">1234</span>
+<span class="normal">1235</span>
+<span class="normal">1236</span>
+<span class="normal">1237</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span>
+<span class="normal">1240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">rule</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Rule"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -10575,7 +10889,7 @@ finder instance (e.g. <code>effector.space_partitioning.Best(...)</code>).</p>
 
 
 <h4 id="effector.global_effect_pdp.PDP.select_regions" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -10704,6 +11018,85 @@ the splits already applied — to earn a snapshot.</p>
                   <code>0.01</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>(N,)</code> vector replacing <code>f̂(X)</code> as the selection
+objective (e.g. ground-truth labels: "which splits predict
+better" instead of "which splits explain the teacher"). The
+curves still come from this effect; only the offsets fit and
+the R² denominator change.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>relative_gain</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional hybrid gate — when set, each round's
+threshold is <code>min(min_r2_gain, relative_gain * (1 - cum_r2))</code>:
+a near-saturated chain still accepts a split explaining at
+least <code>relative_gain</code> of the <em>remaining</em> unexplained variance.
+Never stricter than <code>min_r2_gain</code>; <code>None</code> (default) is the
+absolute rule, unchanged.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_conditional_interactions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the conditional
+interactions of the selected partitions — one per (feature,
+conditioning feature) pair, so <code>x1 | x2</code> and <code>x2 | x1</code> are
+two. A partition is accepted whole, so the sequence stops
+before the round that would exceed the cap. <code>None</code> (default)
+is no cap; 0 keeps the GAM.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_partitions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the number of selected
+partitions (split features). <code>None</code> (default) is no cap.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -10740,7 +11133,16 @@ the splits already applied — to earn a snapshot.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>).</p>
+                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>, or the name of the cap that</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>stopped the sequence).</p>
               </div>
             </td>
           </tr>
@@ -10764,7 +11166,8 @@ the splits already applied — to earn a snapshot.</p>
             <td>
               <div class="doc-md-description">
                 <p>the method is derivative-scale (no output-scale
-surrogate) or <code>Var(f̂) == 0</code>.</p>
+surrogate), <code>Var(f̂) == 0</code>, or a cap is not <code>None</code> or an
+integer &gt;= 0.</p>
               </div>
             </td>
           </tr>
@@ -10852,7 +11255,41 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="normal">1026</span>
 <span class="normal">1027</span>
 <span class="normal">1028</span>
-<span class="normal">1029</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -10860,6 +11297,10 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
     <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
     <span class="n">min_r2_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_gain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_conditional_interactions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Greedily select which partitions earn their complexity — the CALM chain.</span>
 
@@ -10900,15 +11341,36 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="sd">        min_r2_gain: smallest explained-variance marginal (fraction of</span>
 <span class="sd">            `Var(f̂)`, default 0.01 = 1 pt) a split must add — on top of</span>
 <span class="sd">            the splits already applied — to earn a snapshot.</span>
+<span class="sd">        target: optional `(N,)` vector replacing `f̂(X)` as the selection</span>
+<span class="sd">            objective (e.g. ground-truth labels: "which splits predict</span>
+<span class="sd">            better" instead of "which splits explain the teacher"). The</span>
+<span class="sd">            curves still come from this effect; only the offsets fit and</span>
+<span class="sd">            the R² denominator change.</span>
+<span class="sd">        relative_gain: optional hybrid gate — when set, each round's</span>
+<span class="sd">            threshold is ``min(min_r2_gain, relative_gain * (1 - cum_r2))``:</span>
+<span class="sd">            a near-saturated chain still accepts a split explaining at</span>
+<span class="sd">            least `relative_gain` of the *remaining* unexplained variance.</span>
+<span class="sd">            Never stricter than `min_r2_gain`; `None` (default) is the</span>
+<span class="sd">            absolute rule, unchanged.</span>
+<span class="sd">        max_conditional_interactions: optional cap on the conditional</span>
+<span class="sd">            interactions of the selected partitions — one per (feature,</span>
+<span class="sd">            conditioning feature) pair, so `x1 | x2` and `x2 | x1` are</span>
+<span class="sd">            two. A partition is accepted whole, so the sequence stops</span>
+<span class="sd">            before the round that would exceed the cap. `None` (default)</span>
+<span class="sd">            is no cap; 0 keeps the GAM.</span>
+<span class="sd">        max_partitions: optional cap on the number of selected</span>
+<span class="sd">            partitions (split features). `None` (default) is no cap.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a `CalmSequence` — `[GAM, calm1, ...]`, R² non-decreasing along</span>
 <span class="sd">        it, with the rejected splits in `.skipped`</span>
-<span class="sd">        (`"redundant"`/`"below_threshold"`).</span>
+<span class="sd">        (`"redundant"`/`"below_threshold"`, or the name of the cap that</span>
+<span class="sd">        stopped the sequence).</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: the method is derivative-scale (no output-scale</span>
-<span class="sd">            surrogate) or `Var(f̂) == 0`.</span>
+<span class="sd">            surrogate), `Var(f̂) == 0`, or a cap is not `None` or an</span>
+<span class="sd">            integer &gt;= 0.</span>
 <span class="sd">    """</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">effector</span><span class="w"> </span><span class="kn">import</span> <span class="n">explained_variance</span> <span class="k">as</span> <span class="n">_ev</span>  <span class="c1"># lazy: one-way dep guard</span>
 
@@ -10930,7 +11392,16 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
             <span class="n">supported</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">continue</span>
-    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">supported</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parts</span><span class="p">,</span>
+        <span class="n">supported</span><span class="p">,</span>
+        <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">relative_gain</span><span class="o">=</span><span class="n">relative_gain</span><span class="p">,</span>
+        <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="n">max_conditional_interactions</span><span class="p">,</span>
+        <span class="n">max_partitions</span><span class="o">=</span><span class="n">max_partitions</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>
     </div>
@@ -11113,41 +11584,7 @@ splits.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1054</span>
-<span class="normal">1055</span>
-<span class="normal">1056</span>
-<span class="normal">1057</span>
-<span class="normal">1058</span>
-<span class="normal">1059</span>
-<span class="normal">1060</span>
-<span class="normal">1061</span>
-<span class="normal">1062</span>
-<span class="normal">1063</span>
-<span class="normal">1064</span>
-<span class="normal">1065</span>
-<span class="normal">1066</span>
-<span class="normal">1067</span>
-<span class="normal">1068</span>
-<span class="normal">1069</span>
-<span class="normal">1070</span>
-<span class="normal">1071</span>
-<span class="normal">1072</span>
-<span class="normal">1073</span>
-<span class="normal">1074</span>
-<span class="normal">1075</span>
-<span class="normal">1076</span>
-<span class="normal">1077</span>
-<span class="normal">1078</span>
-<span class="normal">1079</span>
-<span class="normal">1080</span>
-<span class="normal">1081</span>
-<span class="normal">1082</span>
-<span class="normal">1083</span>
-<span class="normal">1084</span>
-<span class="normal">1085</span>
-<span class="normal">1086</span>
-<span class="normal">1087</span>
-<span class="normal">1088</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1088</span>
 <span class="normal">1089</span>
 <span class="normal">1090</span>
 <span class="normal">1091</span>
@@ -11165,7 +11602,41 @@ splits.</p>
 <span class="normal">1103</span>
 <span class="normal">1104</span>
 <span class="normal">1105</span>
-<span class="normal">1106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
+<span class="normal">1106</span>
+<span class="normal">1107</span>
+<span class="normal">1108</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span>
+<span class="normal">1112</span>
+<span class="normal">1113</span>
+<span class="normal">1114</span>
+<span class="normal">1115</span>
+<span class="normal">1116</span>
+<span class="normal">1117</span>
+<span class="normal">1118</span>
+<span class="normal">1119</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -11940,7 +12411,7 @@ reproducible); <code>None</code> for non-deterministic behavior.</p>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01) (effector.global_effect_pdp.DerPDP.select_regions)" href="#effector.global_effect_pdp.DerPDP.select_regions">select_regions</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01, target=None, relative_gain=None, max_conditional_interactions=None, max_partitions=None) (effector.global_effect_pdp.DerPDP.select_regions)" href="#effector.global_effect_pdp.DerPDP.select_regions">select_regions</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Greedily select which partitions earn their complexity — the CALM chain.</p>
@@ -12789,28 +13260,28 @@ reported curve on.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1031</span>
-<span class="normal">1032</span>
-<span class="normal">1033</span>
-<span class="normal">1034</span>
-<span class="normal">1035</span>
-<span class="normal">1036</span>
-<span class="normal">1037</span>
-<span class="normal">1038</span>
-<span class="normal">1039</span>
-<span class="normal">1040</span>
-<span class="normal">1041</span>
-<span class="normal">1042</span>
-<span class="normal">1043</span>
-<span class="normal">1044</span>
-<span class="normal">1045</span>
-<span class="normal">1046</span>
-<span class="normal">1047</span>
-<span class="normal">1048</span>
-<span class="normal">1049</span>
-<span class="normal">1050</span>
-<span class="normal">1051</span>
-<span class="normal">1052</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span>
+<span class="normal">1081</span>
+<span class="normal">1082</span>
+<span class="normal">1083</span>
+<span class="normal">1084</span>
+<span class="normal">1085</span>
+<span class="normal">1086</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The evaluation grid on which this feature's effect is model-free.</span>
 
 <span class="sd">    The observed levels for a discrete feature; otherwise</span>
@@ -13207,48 +13678,48 @@ the fitted effect, not a loss/permutation importance.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1108</span>
-<span class="normal">1109</span>
-<span class="normal">1110</span>
-<span class="normal">1111</span>
-<span class="normal">1112</span>
-<span class="normal">1113</span>
-<span class="normal">1114</span>
-<span class="normal">1115</span>
-<span class="normal">1116</span>
-<span class="normal">1117</span>
-<span class="normal">1118</span>
-<span class="normal">1119</span>
-<span class="normal">1120</span>
-<span class="normal">1121</span>
-<span class="normal">1122</span>
-<span class="normal">1123</span>
-<span class="normal">1124</span>
-<span class="normal">1125</span>
-<span class="normal">1126</span>
-<span class="normal">1127</span>
-<span class="normal">1128</span>
-<span class="normal">1129</span>
-<span class="normal">1130</span>
-<span class="normal">1131</span>
-<span class="normal">1132</span>
-<span class="normal">1133</span>
-<span class="normal">1134</span>
-<span class="normal">1135</span>
-<span class="normal">1136</span>
-<span class="normal">1137</span>
-<span class="normal">1138</span>
-<span class="normal">1139</span>
-<span class="normal">1140</span>
-<span class="normal">1141</span>
-<span class="normal">1142</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1142</span>
 <span class="normal">1143</span>
 <span class="normal">1144</span>
 <span class="normal">1145</span>
 <span class="normal">1146</span>
 <span class="normal">1147</span>
 <span class="normal">1148</span>
-<span class="normal">1149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span>
+<span class="normal">1157</span>
+<span class="normal">1158</span>
+<span class="normal">1159</span>
+<span class="normal">1160</span>
+<span class="normal">1161</span>
+<span class="normal">1162</span>
+<span class="normal">1163</span>
+<span class="normal">1164</span>
+<span class="normal">1165</span>
+<span class="normal">1166</span>
+<span class="normal">1167</span>
+<span class="normal">1168</span>
+<span class="normal">1169</span>
+<span class="normal">1170</span>
+<span class="normal">1171</span>
+<span class="normal">1172</span>
+<span class="normal">1173</span>
+<span class="normal">1174</span>
+<span class="normal">1175</span>
+<span class="normal">1176</span>
+<span class="normal">1177</span>
+<span class="normal">1178</span>
+<span class="normal">1179</span>
+<span class="normal">1180</span>
+<span class="normal">1181</span>
+<span class="normal">1182</span>
+<span class="normal">1183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -13390,45 +13861,45 @@ nominal feature) return <code>NaN</code>, with one <code>UserWarning</code> nami
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1168</span>
-<span class="normal">1169</span>
-<span class="normal">1170</span>
-<span class="normal">1171</span>
-<span class="normal">1172</span>
-<span class="normal">1173</span>
-<span class="normal">1174</span>
-<span class="normal">1175</span>
-<span class="normal">1176</span>
-<span class="normal">1177</span>
-<span class="normal">1178</span>
-<span class="normal">1179</span>
-<span class="normal">1180</span>
-<span class="normal">1181</span>
-<span class="normal">1182</span>
-<span class="normal">1183</span>
-<span class="normal">1184</span>
-<span class="normal">1185</span>
-<span class="normal">1186</span>
-<span class="normal">1187</span>
-<span class="normal">1188</span>
-<span class="normal">1189</span>
-<span class="normal">1190</span>
-<span class="normal">1191</span>
-<span class="normal">1192</span>
-<span class="normal">1193</span>
-<span class="normal">1194</span>
-<span class="normal">1195</span>
-<span class="normal">1196</span>
-<span class="normal">1197</span>
-<span class="normal">1198</span>
-<span class="normal">1199</span>
-<span class="normal">1200</span>
-<span class="normal">1201</span>
-<span class="normal">1202</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1202</span>
 <span class="normal">1203</span>
 <span class="normal">1204</span>
 <span class="normal">1205</span>
-<span class="normal">1206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
+<span class="normal">1206</span>
+<span class="normal">1207</span>
+<span class="normal">1208</span>
+<span class="normal">1209</span>
+<span class="normal">1210</span>
+<span class="normal">1211</span>
+<span class="normal">1212</span>
+<span class="normal">1213</span>
+<span class="normal">1214</span>
+<span class="normal">1215</span>
+<span class="normal">1216</span>
+<span class="normal">1217</span>
+<span class="normal">1218</span>
+<span class="normal">1219</span>
+<span class="normal">1220</span>
+<span class="normal">1221</span>
+<span class="normal">1222</span>
+<span class="normal">1223</span>
+<span class="normal">1224</span>
+<span class="normal">1225</span>
+<span class="normal">1226</span>
+<span class="normal">1227</span>
+<span class="normal">1228</span>
+<span class="normal">1229</span>
+<span class="normal">1230</span>
+<span class="normal">1231</span>
+<span class="normal">1232</span>
+<span class="normal">1233</span>
+<span class="normal">1234</span>
+<span class="normal">1235</span>
+<span class="normal">1236</span>
+<span class="normal">1237</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span>
+<span class="normal">1240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">rule</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Rule"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -13804,7 +14275,7 @@ finder instance (e.g. <code>effector.space_partitioning.Best(...)</code>).</p>
 
 
 <h4 id="effector.global_effect_pdp.DerPDP.select_regions" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -13933,6 +14404,85 @@ the splits already applied — to earn a snapshot.</p>
                   <code>0.01</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>(N,)</code> vector replacing <code>f̂(X)</code> as the selection
+objective (e.g. ground-truth labels: "which splits predict
+better" instead of "which splits explain the teacher"). The
+curves still come from this effect; only the offsets fit and
+the R² denominator change.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>relative_gain</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional hybrid gate — when set, each round's
+threshold is <code>min(min_r2_gain, relative_gain * (1 - cum_r2))</code>:
+a near-saturated chain still accepts a split explaining at
+least <code>relative_gain</code> of the <em>remaining</em> unexplained variance.
+Never stricter than <code>min_r2_gain</code>; <code>None</code> (default) is the
+absolute rule, unchanged.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_conditional_interactions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the conditional
+interactions of the selected partitions — one per (feature,
+conditioning feature) pair, so <code>x1 | x2</code> and <code>x2 | x1</code> are
+two. A partition is accepted whole, so the sequence stops
+before the round that would exceed the cap. <code>None</code> (default)
+is no cap; 0 keeps the GAM.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_partitions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the number of selected
+partitions (split features). <code>None</code> (default) is no cap.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -13969,7 +14519,16 @@ the splits already applied — to earn a snapshot.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>).</p>
+                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>, or the name of the cap that</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>stopped the sequence).</p>
               </div>
             </td>
           </tr>
@@ -13993,7 +14552,8 @@ the splits already applied — to earn a snapshot.</p>
             <td>
               <div class="doc-md-description">
                 <p>the method is derivative-scale (no output-scale
-surrogate) or <code>Var(f̂) == 0</code>.</p>
+surrogate), <code>Var(f̂) == 0</code>, or a cap is not <code>None</code> or an
+integer &gt;= 0.</p>
               </div>
             </td>
           </tr>
@@ -14081,7 +14641,41 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="normal">1026</span>
 <span class="normal">1027</span>
 <span class="normal">1028</span>
-<span class="normal">1029</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -14089,6 +14683,10 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
     <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
     <span class="n">min_r2_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_gain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_conditional_interactions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Greedily select which partitions earn their complexity — the CALM chain.</span>
 
@@ -14129,15 +14727,36 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="sd">        min_r2_gain: smallest explained-variance marginal (fraction of</span>
 <span class="sd">            `Var(f̂)`, default 0.01 = 1 pt) a split must add — on top of</span>
 <span class="sd">            the splits already applied — to earn a snapshot.</span>
+<span class="sd">        target: optional `(N,)` vector replacing `f̂(X)` as the selection</span>
+<span class="sd">            objective (e.g. ground-truth labels: "which splits predict</span>
+<span class="sd">            better" instead of "which splits explain the teacher"). The</span>
+<span class="sd">            curves still come from this effect; only the offsets fit and</span>
+<span class="sd">            the R² denominator change.</span>
+<span class="sd">        relative_gain: optional hybrid gate — when set, each round's</span>
+<span class="sd">            threshold is ``min(min_r2_gain, relative_gain * (1 - cum_r2))``:</span>
+<span class="sd">            a near-saturated chain still accepts a split explaining at</span>
+<span class="sd">            least `relative_gain` of the *remaining* unexplained variance.</span>
+<span class="sd">            Never stricter than `min_r2_gain`; `None` (default) is the</span>
+<span class="sd">            absolute rule, unchanged.</span>
+<span class="sd">        max_conditional_interactions: optional cap on the conditional</span>
+<span class="sd">            interactions of the selected partitions — one per (feature,</span>
+<span class="sd">            conditioning feature) pair, so `x1 | x2` and `x2 | x1` are</span>
+<span class="sd">            two. A partition is accepted whole, so the sequence stops</span>
+<span class="sd">            before the round that would exceed the cap. `None` (default)</span>
+<span class="sd">            is no cap; 0 keeps the GAM.</span>
+<span class="sd">        max_partitions: optional cap on the number of selected</span>
+<span class="sd">            partitions (split features). `None` (default) is no cap.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a `CalmSequence` — `[GAM, calm1, ...]`, R² non-decreasing along</span>
 <span class="sd">        it, with the rejected splits in `.skipped`</span>
-<span class="sd">        (`"redundant"`/`"below_threshold"`).</span>
+<span class="sd">        (`"redundant"`/`"below_threshold"`, or the name of the cap that</span>
+<span class="sd">        stopped the sequence).</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: the method is derivative-scale (no output-scale</span>
-<span class="sd">            surrogate) or `Var(f̂) == 0`.</span>
+<span class="sd">            surrogate), `Var(f̂) == 0`, or a cap is not `None` or an</span>
+<span class="sd">            integer &gt;= 0.</span>
 <span class="sd">    """</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">effector</span><span class="w"> </span><span class="kn">import</span> <span class="n">explained_variance</span> <span class="k">as</span> <span class="n">_ev</span>  <span class="c1"># lazy: one-way dep guard</span>
 
@@ -14159,7 +14778,16 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
             <span class="n">supported</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">continue</span>
-    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">supported</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parts</span><span class="p">,</span>
+        <span class="n">supported</span><span class="p">,</span>
+        <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">relative_gain</span><span class="o">=</span><span class="n">relative_gain</span><span class="p">,</span>
+        <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="n">max_conditional_interactions</span><span class="p">,</span>
+        <span class="n">max_partitions</span><span class="o">=</span><span class="n">max_partitions</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>
     </div>
@@ -14342,41 +14970,7 @@ splits.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1054</span>
-<span class="normal">1055</span>
-<span class="normal">1056</span>
-<span class="normal">1057</span>
-<span class="normal">1058</span>
-<span class="normal">1059</span>
-<span class="normal">1060</span>
-<span class="normal">1061</span>
-<span class="normal">1062</span>
-<span class="normal">1063</span>
-<span class="normal">1064</span>
-<span class="normal">1065</span>
-<span class="normal">1066</span>
-<span class="normal">1067</span>
-<span class="normal">1068</span>
-<span class="normal">1069</span>
-<span class="normal">1070</span>
-<span class="normal">1071</span>
-<span class="normal">1072</span>
-<span class="normal">1073</span>
-<span class="normal">1074</span>
-<span class="normal">1075</span>
-<span class="normal">1076</span>
-<span class="normal">1077</span>
-<span class="normal">1078</span>
-<span class="normal">1079</span>
-<span class="normal">1080</span>
-<span class="normal">1081</span>
-<span class="normal">1082</span>
-<span class="normal">1083</span>
-<span class="normal">1084</span>
-<span class="normal">1085</span>
-<span class="normal">1086</span>
-<span class="normal">1087</span>
-<span class="normal">1088</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1088</span>
 <span class="normal">1089</span>
 <span class="normal">1090</span>
 <span class="normal">1091</span>
@@ -14394,7 +14988,41 @@ splits.</p>
 <span class="normal">1103</span>
 <span class="normal">1104</span>
 <span class="normal">1105</span>
-<span class="normal">1106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
+<span class="normal">1106</span>
+<span class="normal">1107</span>
+<span class="normal">1108</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span>
+<span class="normal">1112</span>
+<span class="normal">1113</span>
+<span class="normal">1114</span>
+<span class="normal">1115</span>
+<span class="normal">1116</span>
+<span class="normal">1117</span>
+<span class="normal">1118</span>
+<span class="normal">1119</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -15283,7 +15911,7 @@ of the chosen backend (same code path as above).</p>
               </td>
             </tr>
             <tr class="doc-section-item">
-              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01) (effector.global_effect_shap.ShapDP.select_regions)" href="#effector.global_effect_shap.ShapDP.select_regions">select_regions</a></code></td>
+              <td><code><a class="autorefs autorefs-internal" title="select_regions(partitions=None, *, features='heterogeneous', finder='best', candidate_conditioning_features='all', min_r2_gain=0.01, target=None, relative_gain=None, max_conditional_interactions=None, max_partitions=None) (effector.global_effect_shap.ShapDP.select_regions)" href="#effector.global_effect_shap.ShapDP.select_regions">select_regions</a></code></td>
               <td>
                 <div class="doc-md-description">
                   <p>Greedily select which partitions earn their complexity — the CALM chain.</p>
@@ -16347,28 +16975,28 @@ reported curve on.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1031</span>
-<span class="normal">1032</span>
-<span class="normal">1033</span>
-<span class="normal">1034</span>
-<span class="normal">1035</span>
-<span class="normal">1036</span>
-<span class="normal">1037</span>
-<span class="normal">1038</span>
-<span class="normal">1039</span>
-<span class="normal">1040</span>
-<span class="normal">1041</span>
-<span class="normal">1042</span>
-<span class="normal">1043</span>
-<span class="normal">1044</span>
-<span class="normal">1045</span>
-<span class="normal">1046</span>
-<span class="normal">1047</span>
-<span class="normal">1048</span>
-<span class="normal">1049</span>
-<span class="normal">1050</span>
-<span class="normal">1051</span>
-<span class="normal">1052</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1065</span>
+<span class="normal">1066</span>
+<span class="normal">1067</span>
+<span class="normal">1068</span>
+<span class="normal">1069</span>
+<span class="normal">1070</span>
+<span class="normal">1071</span>
+<span class="normal">1072</span>
+<span class="normal">1073</span>
+<span class="normal">1074</span>
+<span class="normal">1075</span>
+<span class="normal">1076</span>
+<span class="normal">1077</span>
+<span class="normal">1078</span>
+<span class="normal">1079</span>
+<span class="normal">1080</span>
+<span class="normal">1081</span>
+<span class="normal">1082</span>
+<span class="normal">1083</span>
+<span class="normal">1084</span>
+<span class="normal">1085</span>
+<span class="normal">1086</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">grid</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">"""The evaluation grid on which this feature's effect is model-free.</span>
 
 <span class="sd">    The observed levels for a discrete feature; otherwise</span>
@@ -16765,48 +17393,48 @@ the fitted effect, not a loss/permutation importance.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1108</span>
-<span class="normal">1109</span>
-<span class="normal">1110</span>
-<span class="normal">1111</span>
-<span class="normal">1112</span>
-<span class="normal">1113</span>
-<span class="normal">1114</span>
-<span class="normal">1115</span>
-<span class="normal">1116</span>
-<span class="normal">1117</span>
-<span class="normal">1118</span>
-<span class="normal">1119</span>
-<span class="normal">1120</span>
-<span class="normal">1121</span>
-<span class="normal">1122</span>
-<span class="normal">1123</span>
-<span class="normal">1124</span>
-<span class="normal">1125</span>
-<span class="normal">1126</span>
-<span class="normal">1127</span>
-<span class="normal">1128</span>
-<span class="normal">1129</span>
-<span class="normal">1130</span>
-<span class="normal">1131</span>
-<span class="normal">1132</span>
-<span class="normal">1133</span>
-<span class="normal">1134</span>
-<span class="normal">1135</span>
-<span class="normal">1136</span>
-<span class="normal">1137</span>
-<span class="normal">1138</span>
-<span class="normal">1139</span>
-<span class="normal">1140</span>
-<span class="normal">1141</span>
-<span class="normal">1142</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1142</span>
 <span class="normal">1143</span>
 <span class="normal">1144</span>
 <span class="normal">1145</span>
 <span class="normal">1146</span>
 <span class="normal">1147</span>
 <span class="normal">1148</span>
-<span class="normal">1149</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
+<span class="normal">1149</span>
+<span class="normal">1150</span>
+<span class="normal">1151</span>
+<span class="normal">1152</span>
+<span class="normal">1153</span>
+<span class="normal">1154</span>
+<span class="normal">1155</span>
+<span class="normal">1156</span>
+<span class="normal">1157</span>
+<span class="normal">1158</span>
+<span class="normal">1159</span>
+<span class="normal">1160</span>
+<span class="normal">1161</span>
+<span class="normal">1162</span>
+<span class="normal">1163</span>
+<span class="normal">1164</span>
+<span class="normal">1165</span>
+<span class="normal">1166</span>
+<span class="normal">1167</span>
+<span class="normal">1168</span>
+<span class="normal">1169</span>
+<span class="normal">1170</span>
+<span class="normal">1171</span>
+<span class="normal">1172</span>
+<span class="normal">1173</span>
+<span class="normal">1174</span>
+<span class="normal">1175</span>
+<span class="normal">1176</span>
+<span class="normal">1177</span>
+<span class="normal">1178</span>
+<span class="normal">1179</span>
+<span class="normal">1180</span>
+<span class="normal">1181</span>
+<span class="normal">1182</span>
+<span class="normal">1183</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importance</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">feature</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">str</span><span class="p">],</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -16948,45 +17576,45 @@ nominal feature) return <code>NaN</code>, with one <code>UserWarning</code> nami
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1168</span>
-<span class="normal">1169</span>
-<span class="normal">1170</span>
-<span class="normal">1171</span>
-<span class="normal">1172</span>
-<span class="normal">1173</span>
-<span class="normal">1174</span>
-<span class="normal">1175</span>
-<span class="normal">1176</span>
-<span class="normal">1177</span>
-<span class="normal">1178</span>
-<span class="normal">1179</span>
-<span class="normal">1180</span>
-<span class="normal">1181</span>
-<span class="normal">1182</span>
-<span class="normal">1183</span>
-<span class="normal">1184</span>
-<span class="normal">1185</span>
-<span class="normal">1186</span>
-<span class="normal">1187</span>
-<span class="normal">1188</span>
-<span class="normal">1189</span>
-<span class="normal">1190</span>
-<span class="normal">1191</span>
-<span class="normal">1192</span>
-<span class="normal">1193</span>
-<span class="normal">1194</span>
-<span class="normal">1195</span>
-<span class="normal">1196</span>
-<span class="normal">1197</span>
-<span class="normal">1198</span>
-<span class="normal">1199</span>
-<span class="normal">1200</span>
-<span class="normal">1201</span>
-<span class="normal">1202</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1202</span>
 <span class="normal">1203</span>
 <span class="normal">1204</span>
 <span class="normal">1205</span>
-<span class="normal">1206</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
+<span class="normal">1206</span>
+<span class="normal">1207</span>
+<span class="normal">1208</span>
+<span class="normal">1209</span>
+<span class="normal">1210</span>
+<span class="normal">1211</span>
+<span class="normal">1212</span>
+<span class="normal">1213</span>
+<span class="normal">1214</span>
+<span class="normal">1215</span>
+<span class="normal">1216</span>
+<span class="normal">1217</span>
+<span class="normal">1218</span>
+<span class="normal">1219</span>
+<span class="normal">1220</span>
+<span class="normal">1221</span>
+<span class="normal">1222</span>
+<span class="normal">1223</span>
+<span class="normal">1224</span>
+<span class="normal">1225</span>
+<span class="normal">1226</span>
+<span class="normal">1227</span>
+<span class="normal">1228</span>
+<span class="normal">1229</span>
+<span class="normal">1230</span>
+<span class="normal">1231</span>
+<span class="normal">1232</span>
+<span class="normal">1233</span>
+<span class="normal">1234</span>
+<span class="normal">1235</span>
+<span class="normal">1236</span>
+<span class="normal">1237</span>
+<span class="normal">1238</span>
+<span class="normal">1239</span>
+<span class="normal">1240</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">importances</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">mask</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="n">rule</span><span class="p">:</span> <span class="n">Union</span><span class="p">[</span><span class="kc">None</span><span class="p">,</span> <span class="nb">str</span><span class="p">,</span> <span class="s2">"Rule"</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
@@ -17362,7 +17990,7 @@ finder instance (e.g. <code>effector.space_partitioning.Best(...)</code>).</p>
 
 
 <h4 id="effector.global_effect_shap.ShapDP.select_regions" class="doc doc-heading">
-            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span></code>
+            <code class="highlight language-python"><span class="n">select_regions</span><span class="p">(</span><span class="n">partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">*</span><span class="p">,</span> <span class="n">features</span><span class="o">=</span><span class="s1">'heterogeneous'</span><span class="p">,</span> <span class="n">finder</span><span class="o">=</span><span class="s1">'best'</span><span class="p">,</span> <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s1">'all'</span><span class="p">,</span> <span class="n">min_r2_gain</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">relative_gain</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">max_partitions</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span></code>
 
 </h4>
 
@@ -17491,6 +18119,85 @@ the splits already applied — to earn a snapshot.</p>
                   <code>0.01</code>
             </td>
           </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>target</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="numpy.ndarray">ndarray</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional <code>(N,)</code> vector replacing <code>f̂(X)</code> as the selection
+objective (e.g. ground-truth labels: "which splits predict
+better" instead of "which splits explain the teacher"). The
+curves still come from this effect; only the offsets fit and
+the R² denominator change.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>relative_gain</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="float">float</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional hybrid gate — when set, each round's
+threshold is <code>min(min_r2_gain, relative_gain * (1 - cum_r2))</code>:
+a near-saturated chain still accepts a split explaining at
+least <code>relative_gain</code> of the <em>remaining</em> unexplained variance.
+Never stricter than <code>min_r2_gain</code>; <code>None</code> (default) is the
+absolute rule, unchanged.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_conditional_interactions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the conditional
+interactions of the selected partitions — one per (feature,
+conditioning feature) pair, so <code>x1 | x2</code> and <code>x2 | x1</code> are
+two. A partition is accepted whole, so the sequence stops
+before the round that would exceed the cap. <code>None</code> (default)
+is no cap; 0 keeps the GAM.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+                <code>max_partitions</code>
+            </td>
+            <td>
+                  <code><span title="typing.Optional">Optional</span>[<span title="int">int</span>]</code>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>optional cap on the number of selected
+partitions (split features). <code>None</code> (default) is no cap.</p>
+              </div>
+            </td>
+            <td>
+                  <code>None</code>
+            </td>
+          </tr>
       </tbody>
     </table>
 
@@ -17527,7 +18234,16 @@ the splits already applied — to earn a snapshot.</p>
             </td>
             <td>
               <div class="doc-md-description">
-                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>).</p>
+                <p>(<code>"redundant"</code>/<code>"below_threshold"</code>, or the name of the cap that</p>
+              </div>
+            </td>
+          </tr>
+          <tr class="doc-section-item">
+            <td>
+            </td>
+            <td>
+              <div class="doc-md-description">
+                <p>stopped the sequence).</p>
               </div>
             </td>
           </tr>
@@ -17551,7 +18267,8 @@ the splits already applied — to earn a snapshot.</p>
             <td>
               <div class="doc-md-description">
                 <p>the method is derivative-scale (no output-scale
-surrogate) or <code>Var(f̂) == 0</code>.</p>
+surrogate), <code>Var(f̂) == 0</code>, or a cap is not <code>None</code> or an
+integer &gt;= 0.</p>
               </div>
             </td>
           </tr>
@@ -17639,7 +18356,41 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="normal">1026</span>
 <span class="normal">1027</span>
 <span class="normal">1028</span>
-<span class="normal">1029</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
+<span class="normal">1029</span>
+<span class="normal">1030</span>
+<span class="normal">1031</span>
+<span class="normal">1032</span>
+<span class="normal">1033</span>
+<span class="normal">1034</span>
+<span class="normal">1035</span>
+<span class="normal">1036</span>
+<span class="normal">1037</span>
+<span class="normal">1038</span>
+<span class="normal">1039</span>
+<span class="normal">1040</span>
+<span class="normal">1041</span>
+<span class="normal">1042</span>
+<span class="normal">1043</span>
+<span class="normal">1044</span>
+<span class="normal">1045</span>
+<span class="normal">1046</span>
+<span class="normal">1047</span>
+<span class="normal">1048</span>
+<span class="normal">1049</span>
+<span class="normal">1050</span>
+<span class="normal">1051</span>
+<span class="normal">1052</span>
+<span class="normal">1053</span>
+<span class="normal">1054</span>
+<span class="normal">1055</span>
+<span class="normal">1056</span>
+<span class="normal">1057</span>
+<span class="normal">1058</span>
+<span class="normal">1059</span>
+<span class="normal">1060</span>
+<span class="normal">1061</span>
+<span class="normal">1062</span>
+<span class="normal">1063</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">select_regions</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="n">partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">dict</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
@@ -17647,6 +18398,10 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
     <span class="n">finder</span><span class="o">=</span><span class="s2">"best"</span><span class="p">,</span>
     <span class="n">candidate_conditioning_features</span><span class="o">=</span><span class="s2">"all"</span><span class="p">,</span>
     <span class="n">min_r2_gain</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.01</span><span class="p">,</span>
+    <span class="n">target</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">relative_gain</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">float</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_conditional_interactions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+    <span class="n">max_partitions</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">int</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
 <span class="p">):</span>
 <span class="w">    </span><span class="sd">"""Greedily select which partitions earn their complexity — the CALM chain.</span>
 
@@ -17687,15 +18442,36 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
 <span class="sd">        min_r2_gain: smallest explained-variance marginal (fraction of</span>
 <span class="sd">            `Var(f̂)`, default 0.01 = 1 pt) a split must add — on top of</span>
 <span class="sd">            the splits already applied — to earn a snapshot.</span>
+<span class="sd">        target: optional `(N,)` vector replacing `f̂(X)` as the selection</span>
+<span class="sd">            objective (e.g. ground-truth labels: "which splits predict</span>
+<span class="sd">            better" instead of "which splits explain the teacher"). The</span>
+<span class="sd">            curves still come from this effect; only the offsets fit and</span>
+<span class="sd">            the R² denominator change.</span>
+<span class="sd">        relative_gain: optional hybrid gate — when set, each round's</span>
+<span class="sd">            threshold is ``min(min_r2_gain, relative_gain * (1 - cum_r2))``:</span>
+<span class="sd">            a near-saturated chain still accepts a split explaining at</span>
+<span class="sd">            least `relative_gain` of the *remaining* unexplained variance.</span>
+<span class="sd">            Never stricter than `min_r2_gain`; `None` (default) is the</span>
+<span class="sd">            absolute rule, unchanged.</span>
+<span class="sd">        max_conditional_interactions: optional cap on the conditional</span>
+<span class="sd">            interactions of the selected partitions — one per (feature,</span>
+<span class="sd">            conditioning feature) pair, so `x1 | x2` and `x2 | x1` are</span>
+<span class="sd">            two. A partition is accepted whole, so the sequence stops</span>
+<span class="sd">            before the round that would exceed the cap. `None` (default)</span>
+<span class="sd">            is no cap; 0 keeps the GAM.</span>
+<span class="sd">        max_partitions: optional cap on the number of selected</span>
+<span class="sd">            partitions (split features). `None` (default) is no cap.</span>
 
 <span class="sd">    Returns:</span>
 <span class="sd">        a `CalmSequence` — `[GAM, calm1, ...]`, R² non-decreasing along</span>
 <span class="sd">        it, with the rejected splits in `.skipped`</span>
-<span class="sd">        (`"redundant"`/`"below_threshold"`).</span>
+<span class="sd">        (`"redundant"`/`"below_threshold"`, or the name of the cap that</span>
+<span class="sd">        stopped the sequence).</span>
 
 <span class="sd">    Raises:</span>
 <span class="sd">        ValueError: the method is derivative-scale (no output-scale</span>
-<span class="sd">            surrogate) or `Var(f̂) == 0`.</span>
+<span class="sd">            surrogate), `Var(f̂) == 0`, or a cap is not `None` or an</span>
+<span class="sd">            integer &gt;= 0.</span>
 <span class="sd">    """</span>
     <span class="kn">from</span><span class="w"> </span><span class="nn">effector</span><span class="w"> </span><span class="kn">import</span> <span class="n">explained_variance</span> <span class="k">as</span> <span class="n">_ev</span>  <span class="c1"># lazy: one-way dep guard</span>
 
@@ -17717,7 +18493,16 @@ surrogate) or <code>Var(f̂) == 0</code>.</p>
             <span class="n">supported</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
         <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
             <span class="k">continue</span>
-    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parts</span><span class="p">,</span> <span class="n">supported</span><span class="p">,</span> <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">_ev</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+        <span class="bp">self</span><span class="p">,</span>
+        <span class="n">parts</span><span class="p">,</span>
+        <span class="n">supported</span><span class="p">,</span>
+        <span class="n">min_gain</span><span class="o">=</span><span class="n">min_r2_gain</span><span class="p">,</span>
+        <span class="n">target</span><span class="o">=</span><span class="n">target</span><span class="p">,</span>
+        <span class="n">relative_gain</span><span class="o">=</span><span class="n">relative_gain</span><span class="p">,</span>
+        <span class="n">max_conditional_interactions</span><span class="o">=</span><span class="n">max_conditional_interactions</span><span class="p">,</span>
+        <span class="n">max_partitions</span><span class="o">=</span><span class="n">max_partitions</span><span class="p">,</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></tbody></table></div>
             </details>
     </div>
@@ -17900,41 +18685,7 @@ splits.</p>
 
             <details class="mkdocstrings-source">
               <summary>Source code in <code>effector/global_effect.py</code></summary>
-              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1054</span>
-<span class="normal">1055</span>
-<span class="normal">1056</span>
-<span class="normal">1057</span>
-<span class="normal">1058</span>
-<span class="normal">1059</span>
-<span class="normal">1060</span>
-<span class="normal">1061</span>
-<span class="normal">1062</span>
-<span class="normal">1063</span>
-<span class="normal">1064</span>
-<span class="normal">1065</span>
-<span class="normal">1066</span>
-<span class="normal">1067</span>
-<span class="normal">1068</span>
-<span class="normal">1069</span>
-<span class="normal">1070</span>
-<span class="normal">1071</span>
-<span class="normal">1072</span>
-<span class="normal">1073</span>
-<span class="normal">1074</span>
-<span class="normal">1075</span>
-<span class="normal">1076</span>
-<span class="normal">1077</span>
-<span class="normal">1078</span>
-<span class="normal">1079</span>
-<span class="normal">1080</span>
-<span class="normal">1081</span>
-<span class="normal">1082</span>
-<span class="normal">1083</span>
-<span class="normal">1084</span>
-<span class="normal">1085</span>
-<span class="normal">1086</span>
-<span class="normal">1087</span>
-<span class="normal">1088</span>
+              <div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1088</span>
 <span class="normal">1089</span>
 <span class="normal">1090</span>
 <span class="normal">1091</span>
@@ -17952,7 +18703,41 @@ splits.</p>
 <span class="normal">1103</span>
 <span class="normal">1104</span>
 <span class="normal">1105</span>
-<span class="normal">1106</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
+<span class="normal">1106</span>
+<span class="normal">1107</span>
+<span class="normal">1108</span>
+<span class="normal">1109</span>
+<span class="normal">1110</span>
+<span class="normal">1111</span>
+<span class="normal">1112</span>
+<span class="normal">1113</span>
+<span class="normal">1114</span>
+<span class="normal">1115</span>
+<span class="normal">1116</span>
+<span class="normal">1117</span>
+<span class="normal">1118</span>
+<span class="normal">1119</span>
+<span class="normal">1120</span>
+<span class="normal">1121</span>
+<span class="normal">1122</span>
+<span class="normal">1123</span>
+<span class="normal">1124</span>
+<span class="normal">1125</span>
+<span class="normal">1126</span>
+<span class="normal">1127</span>
+<span class="normal">1128</span>
+<span class="normal">1129</span>
+<span class="normal">1130</span>
+<span class="normal">1131</span>
+<span class="normal">1132</span>
+<span class="normal">1133</span>
+<span class="normal">1134</span>
+<span class="normal">1135</span>
+<span class="normal">1136</span>
+<span class="normal">1137</span>
+<span class="normal">1138</span>
+<span class="normal">1139</span>
+<span class="normal">1140</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">explain</span><span class="p">(</span>
     <span class="bp">self</span><span class="p">,</span>
     <span class="o">*</span><span class="p">,</span>
     <span class="n">y</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
